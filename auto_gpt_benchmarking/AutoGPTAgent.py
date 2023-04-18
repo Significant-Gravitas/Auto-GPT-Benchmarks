@@ -11,7 +11,7 @@ Eventualy we will also save and log all of the associated output and thinking fo
 """
 from pathlib import Path
 import os
-
+from glob import glob
 
 class AutoGPTAgent:
     """
@@ -25,16 +25,15 @@ class AutoGPTAgent:
     """
     def _clean_up_workspace(self):
         """
-        Cleans up the workspace by deleting the prompt.txt and output.txt files.
+        Cleans up the workspace by deleting all files in the directory.
         :return:
         """
-        # check if the files are there and delete them if they are
-        if self.prompt_file.exists():
-            self.prompt_file.unlink()
-        if self.output_file.exists():
-            self.output_file.unlink()
-        if self.file_logger.exists():
-            self.file_logger.unlink()
+        # Iterate through all the files in the workspace directory
+        for file_path in glob(str(self.auto_workspace / '*')):
+            file = Path(file_path)
+            # Check if it's a file and delete it if it is
+            if file.is_file():
+                file.unlink()
 
     def _copy_ai_settings(self):
         self.ai_settings_dest.write_text(self.ai_settings_file.read_text())
