@@ -1,34 +1,29 @@
 # Auto-GPT-Benchmarks
-A set of standardised benchmarks to assess the performance of Auto-GPTs.
+A set of standardized benchmarks to assess the performance of Auto-GPTs.
 
-# What is next?
+# Overview
+The Auto-GPT-Benchmarks project aims to provide a comprehensive suite of benchmarks to evaluate the performance of Auto-GPTs. These benchmarks focus on various tasks, such as code fixes backed by testing, which help to measure the capabilities of the models effectively.
 
-- [ ] Build longer form tasks, (code fix backed by testing)
-- [ ] Explicitly note the common failure modes in the test harness and fix them. Most of these appear to be failure modes with the core AutoGPT project
-- [ ] Switch to a ubuntu container so it can do more things (git, bash, etc)
-- [ ] Lower priority, but put this in a webserver backend so we have a good API rather than doing container and file management for our interface between evals and our agent.
-- [ ] Get token counting data from the model Add scores to result files based on pricing associated with tokens and models used
-- [ ] Think about how this can be applied to other projects besides AutoGPT so we can be THE agent evaluation framework.
-- [ ] Copy the OpenAI Eval files from the tmp file they are saved to somewhere we can track the results
-- [ ] Support multi-threaded evals. OpenAI has great support for this. The docker system built here doesn't.
+# Key Features
+- [ ] Includes a variety of tasks to assess Auto-GPT performance
+- [ ] Supports integration with evaluation frameworks for seamless benchmarking
+- [ ] Provides token counting and pricing information for models
+- [ ] Designed for extensibility to other projects, making it a versatile agent evaluation framework
 
+#Roadmap
+##High Priority
+1. Develop longer-form tasks, such as code fixes backed by testing, to evaluate the model's performance in more complex scenarios.
+2. Identify and address common failure modes in the test harness to improve reliability and stability.
+3. Migrate the project to an Ubuntu container to enable better integration with tools like Git and Bash.
 
-## Understanding OpenAI Evals
+###Medium Priority
+4. Implement a web server backend for a user-friendly API, replacing the current container and file management approach.
+5. Incorporate token counting data from the model and add scores to result files based on token usage and model pricing.
 
-The Evals docs are here and very good: https://github.com/openai/evals/tree/main/docs
-
-The basic idea is this:
-1. Use a completion function to point to the language model or in our case AutoGPT, the model you want to test.
-2. Register that completion function with the evals framework with a yaml in a `completion_fns` dir.
-3. Run the evals against the completion function.
-
-Then you can make more yaml defined evals and run them against the completion function as needed.
-
-### Completions Functions
-
-See our yaml file in `completion_fns` dir for the registration of the completion function.
-See our completion function itself in CompletionFn.py
-That points to the AutoGPT model we want to test which is spun up dynamically in a docker container in AutoGPTAgent.py
+###Low Priority
+6. Generalize the framework to support other projects besides Auto-GPT, positioning it as the go-to agent evaluation framework.
+7. Preserve OpenAI Eval files from temporary storage to a more permanent location for tracking results.
+8. Add support for multi-threaded evaluations to take advantage of OpenAI's capabilities.
 
 
 ## Setup
@@ -62,8 +57,25 @@ Build the container so we can run it procedurally!
 `docker build -t autogpt .`
 
 ## Running the tests
-
+In command line after you built 
 EVALS_THREADS=1 EVALS_THREAD_TIMEOUT=600 oaieval auto_gpt_completion_fn test-match --registry_path $PWD/auto_gpt_benchmarking
+
+# Understanding OpenAI Evals
+
+The Evals docs are here and very good: https://github.com/openai/evals/tree/main/docs
+
+The basic idea is this:
+1. Use a completion function to point to the language model or in our case AutoGPT, the model you want to test.
+2. Register that completion function with the evals framework with a yaml in a `completion_fns` dir.
+3. Run the evals against the completion function.
+
+Then you can make more yaml defined evals and run them against the completion function as needed.
+
+### Completions Functions
+
+See our yaml file in `completion_fns` dir for the registration of the completion function.
+See our completion function itself in CompletionFn.py
+That points to the AutoGPT model we want to test which is spun up dynamically in a docker container in AutoGPTAgent.py
 
 
 # Example final output:
