@@ -39,31 +39,36 @@ Do this with a path file in your venv. OpenAI evals needs to import it.
 Create a venv with
 
 `python3.9 -m venv venv`
+- Note for Mac users: if you dont have python3.9 install it with ` brew install python@3.9`
 
 Activate it with
 
 `source venv/bin/activate`
 
-Add a file to `venv/lib/python3.9/site-packages/benchmarking.pth` with the contents: 
-`/PATH/TO/REPO/Auto-GPT-Benchmarks-fork`
-
+Create a benchmarking.pth in the venv folder
+`echo $PWD > ./venv/lib/python3.9/site-packages/benchmarking.pth`
 This is because evals tries to import it directly.
 
 Install the requirements with
-
 `pip install -r requirements.txt`
 
 You must have a docker container built corresponding to the submodule below or the docker run command starting the agent will fail.
 
 Cd into the AutoGPT submodule and build/tag the dockerfile so the agent can be instantiated.
-`cd auto_gpt_benchmarks/Auto-GPT`
+`cd auto_gpt_benchmarking/Auto-GPT`
+
+Clone the AutoGPT submodule
+`git submodule init && git submodule update`
 
 Build the container so we can run it procedurally!
 `docker build -t autogpt .`
 
+`export OPENAI_API_KEY=<You-API-key-here>`
 ## Running the tests
 
-EVALS_THREADS=1 EVALS_THREAD_TIMEOUT=600 oaieval auto_gpt_completion_fn test-match --registry_path $PWD/auto_gpt_benchmarking
+ 
+Execute this script in the terminal to runn the evals
+`EVALS_THREADS=1 EVALS_THREAD_TIMEOUT=600 oaieval auto_gpt_completion_fn test-match --registry_path $PWD/auto_gpt_benchmarking`
 
 
 # Example final output:
