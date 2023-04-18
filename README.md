@@ -10,17 +10,17 @@ The Auto-GPT-Benchmarks project aims to provide a comprehensive suite of benchma
 - [ ] Provides token counting and pricing information for models
 - [ ] Designed for extensibility to other projects, making it a versatile agent evaluation framework
 
-#Roadmap
-##High Priority
+# Roadmap
+## High Priority
 1. Develop longer-form tasks, such as code fixes backed by testing, to evaluate the model's performance in more complex scenarios.
 2. Identify and address common failure modes in the test harness to improve reliability and stability.
 3. Migrate the project to an Ubuntu container to enable better integration with tools like Git and Bash.
 
-###Medium Priority
+### Medium Priority
 4. Implement a web server backend for a user-friendly API, replacing the current container and file management approach.
 5. Incorporate token counting data from the model and add scores to result files based on token usage and model pricing.
 
-###Low Priority
+### Low Priority
 6. Generalize the framework to support other projects besides Auto-GPT, positioning it as the go-to agent evaluation framework.
 7. Preserve OpenAI Eval files from temporary storage to a more permanent location for tracking results.
 8. Add support for multi-threaded evaluations to take advantage of OpenAI's capabilities.
