@@ -53,11 +53,20 @@ You must have a docker container built corresponding to the submodule below or t
 Cd into the AutoGPT submodule and build/tag the dockerfile so the agent can be instantiated.
 `cd auto_gpt_benchmarks/Auto-GPT`
 
-Build the container so we can run it procedurally!
+Build the container so we can run it procedurally! Make sure to have docker running on your computer.
 `docker build -t autogpt .`
 
+After docker is built, navigate to Auto-GPT\Auto-GPT-Benchmarks directory and set the API Key in command line for windows/mac/linux below:
+
+(Windows) set OPENAI_API_KEY=<insert here>
+(Mac/Linux) export OPENAI_API_KEY=<insert here> 
+
+
 ## Running the tests
-In command line after you built 
+In command line after you built the docker file
+
+
+
 EVALS_THREADS=1 EVALS_THREAD_TIMEOUT=600 oaieval auto_gpt_completion_fn test-match --registry_path $PWD/auto_gpt_benchmarking
 
 # Understanding OpenAI Evals
