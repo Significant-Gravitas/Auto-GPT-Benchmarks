@@ -56,10 +56,13 @@ Cd into the AutoGPT submodule and build/tag the dockerfile so the agent can be i
 Build the container so we can run it procedurally! Make sure to have docker running on your computer.
 `docker build -t autogpt .`
 
-After docker is built, navigate to Auto-GPT\Auto-GPT-Benchmarks directory and set the API Key in command line for windows/mac/linux below:
+After docker is built, change directory back to 'Auto-GPT\Auto-GPT-Benchmarks' and set the API Key in command line for windows/mac/linux below
 
-(Windows) set OPENAI_API_KEY=<insert here>
-(Mac/Linux) export OPENAI_API_KEY=<insert here> 
+(Windows) 
+'set OPENAI_API_KEY=API_key_goes_here'
+
+(Mac/Linux) 
+'export OPENAI_API_KEY=API_key_goes_here' 
 
 
 ## Running the tests
