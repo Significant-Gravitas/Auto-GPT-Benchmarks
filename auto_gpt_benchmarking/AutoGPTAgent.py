@@ -64,8 +64,8 @@ class AutoGPTAgent:
             if self.output_file.exists():
                 return self.output_file.read_text()
 
-    def __init__(self, prompt):
-        self.auto_gpt_path = Path(__file__).parent / "Auto-GPT"
+    def __init__(self, prompt, auto_gpt_path: str):
+        self.auto_gpt_path = Path(auto_gpt_path)
         self.auto_workspace = self.auto_gpt_path / "auto_gpt_workspace"
         self.prompt_file = self.auto_workspace / "prompt.txt"
         self.output_file = self.auto_workspace / "output.txt"
@@ -80,10 +80,8 @@ class AutoGPTAgent:
     def start(self):
         self._start_agent()
         answer = self._poll_for_output()
-        print('about to do clean up')
-        print(answer)
+        print(f"Prompt was: {self.prompt}, Answer was: {answer}")
         self._clean_up_workspace()
-        print('did clean up')
         return answer
 
 

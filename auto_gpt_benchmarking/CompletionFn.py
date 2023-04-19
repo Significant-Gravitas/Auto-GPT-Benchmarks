@@ -16,12 +16,12 @@ class AutoGPTCompletionResult(CompletionResult):
 
 
 class AutoGPTCompletionFn(CompletionFn):
-    def __init__(self, **kwargs) -> None:
-        pass
+    def __init__(self, auto_gpt_path, **kwargs) -> None:
+        self.auto_gpt_path = auto_gpt_path
 
     def __call__(self, prompt, **kwargs) -> AutoGPTCompletionResult:
         prompt = CompletionPrompt(prompt).to_formatted_prompt()
-        agent = AutoGPTAgent(prompt)
+        agent = AutoGPTAgent(prompt, self.auto_gpt_path)
         response = agent.start()
         record_sampling(prompt=prompt, sampled=response)
         return AutoGPTCompletionResult(response)

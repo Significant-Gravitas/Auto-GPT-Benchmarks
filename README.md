@@ -3,6 +3,7 @@ A set of standardised benchmarks to assess the performance of Auto-GPTs.
 
 # What is next?
 
+- [ ] Run the rest of the OpenAI Evals Especially the modelgraded ones
 - [ ] Build longer form tasks, (code fix backed by testing)
 - [ ] Explicitly note the common failure modes in the test harness and fix them. Most of these appear to be failure modes with the core AutoGPT project
 - [ ] Switch to a ubuntu container so it can do more things (git, bash, etc)
