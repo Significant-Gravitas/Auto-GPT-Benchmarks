@@ -45,7 +45,7 @@ Activate it with
 `source venv/bin/activate`
 
 Add a file to `venv/lib/python3.9/site-packages/benchmarking.pth` with the contents: 
-`/PATH/TO/REPO/Auto-GPT-Benchmarks-fork`
+`/PATH/TO/REPO/Auto-GPT-Benchmarks
 
 This is because evals tries to import it directly.
 
@@ -56,7 +56,7 @@ Install the requirements with
 You must have a docker container built corresponding to the submodule below or the docker run command starting the agent will fail.
 
 Cd into the AutoGPT submodule and build/tag the dockerfile so the agent can be instantiated.
-`cd auto_gpt_benchmarks/Auto-GPT`
+`cd auto_gpt_benchmarking/Auto-GPT`
 
 Build the container so we can run it procedurally!
 `docker build -t autogpt .`
