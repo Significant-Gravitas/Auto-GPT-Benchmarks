@@ -13,33 +13,35 @@ documented.
 
 Clone the repo with:
 
-`git clone git@github.com:Significant-Gravitas/Auto-GPT-Benchmarks.git`
-`cd Auto-GPT-Benchmarks`
+    `git clone git@github.com:Significant-Gravitas/Auto-GPT-Benchmarks.git`
+    `cd Auto-GPT-Benchmarks`
 
 Create a venv with
 
-`python3.9 -m venv venv`
+    `python3.9 -m venv venv`
 
 Activate it with
 
-`source venv/bin/activate`
+    `source venv/bin/activate`
 
 Install the requirements with:
 
-`pip install -r requirements.txt`
+    `pip install -r requirements.txt`
 
 If you haven't already clone the AutoGPT repo somewhere else on your machine.
 DO NOT CLONE IT INTO A SUBDIR OF THIS REPO.
 
-`cd somewhere/else`
-`git clone git@github.com:Significant-Gravitas/Auto-GPT.git`
+    `cd somewhere/else`
+    `git clone git@github.com:Significant-Gravitas/Auto-GPT.git`
 
 Run your first eval with:
 
-`cd Auto-GPT-Benchmarks`
-`python3 -m auto_gpt_benchmarking test-match --auto-gpt-path /your/path/to/Auto-GPT`
+    `cd Auto-GPT-Benchmarks`
+    `python3 -m auto_gpt_benchmarking test-match --auto-gpt-path /your/path/to/Auto-GPT`
+
 You should only need to use the --auto-gpt-path flag the first time you run it. Afterwards, that will be saved in 
-`auto_gpt_benchmarking/completion_fns/auto_gpt_completion_fn.yaml`.
+
+    `auto_gpt_benchmarking/completion_fns/auto_gpt_completion_fn.yaml`.
 
 To see a full list of available flags you can use run `python3 -m auto_gpt_benchmarking --help`
 Some of these are inherited from the openAI evals framework and do not work quite as intended as they are not applicable
