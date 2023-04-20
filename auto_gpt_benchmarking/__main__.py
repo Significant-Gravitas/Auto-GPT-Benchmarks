@@ -18,8 +18,7 @@ import sys
 from pathlib import Path
 from datetime import datetime
 import yaml
-import string
-import secrets
+from datetime import datetime
 
 
 def generate_random_string(length=16):
@@ -63,7 +62,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--seed", type=int, default=20220722)
     parser.add_argument("--user", type=str, default="")
     parser.add_argument("--record_path", type=str, default=str(Path(
-        __file__).parent.parent / "data" / f"eval-{generate_random_string(32)}.jsonl"))
+        __file__).parent.parent / "data" / f"eval-{datetime.now().strftime('%Y%m%d-%H%M%S')}-{generate_random_string(32)}.jsonl"))
     parser.add_argument(
         "--log_to_file", type=str, default=None,  # default=str(
         #   Path(__file__).parent.parent / "data" / "log" / "log.txt"
