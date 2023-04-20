@@ -138,7 +138,7 @@ class AutoGPTAgent:
             try:
                 self.container.kill()
                 self.container.remove()
-            except docker.errors.NotFound:
+            except docker.errors.APIError:
                 print('Couldn\'t find container to kill. Assuming container successfully killed itself.')
             if self.logging_task:
                 self.logging_task.cancel()

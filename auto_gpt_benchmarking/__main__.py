@@ -35,7 +35,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--timeout",
         type=int,
-        default=60,
+        default=300,
         help="The timeout for each thread",
     )
     parser.add_argument(
@@ -51,11 +51,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--visible", action=argparse.BooleanOptionalAction, default=None)
     parser.add_argument("--seed", type=int, default=20220722)
     parser.add_argument("--user", type=str, default="")
-    parser.add_argument("--record_path", type=str, default=str(Path(__file__).parent.parent / "data" / "records"))
+    parser.add_argument("--record_path", type=str, default=str(Path(__file__).parent.parent / "data" / "records.jsonl"))
     parser.add_argument(
-        "--log_to_file", type=str, default=str(
-            Path(__file__).parent.parent / "data" / "log" / f"log.txt"
-        ), help="Log to a file instead of stdout"
+        "--log_to_file", type=str, default=None,#default=str(
+         #   Path(__file__).parent.parent / "data" / "log" / "log.txt"
+      #  ), help="Log to a file instead of stdout"
     )
     parser.add_argument("--debug", action=argparse.BooleanOptionalAction, default=False)
     parser.add_argument("--local-run", action=argparse.BooleanOptionalAction, default=True)

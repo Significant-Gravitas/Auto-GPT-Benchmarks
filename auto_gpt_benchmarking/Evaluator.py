@@ -42,7 +42,7 @@ class OAIRunArgs:
         self.dry_run_logging = dry_run_logging
         # create the record and logging paths if they don't exist
         Path(self.record_path).parent.mkdir(parents=True, exist_ok=True)
-        Path(self.log_to_file).parent.mkdir(parents=True, exist_ok=True)
+        # Path(self.log_to_file).parent.mkdir(parents=True, exist_ok=True)
         # Registry path should be the auto_gpt_benchmarking folder
         self.registry_path = None
 
