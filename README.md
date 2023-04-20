@@ -35,6 +35,24 @@ DO NOT CLONE IT INTO A SUBDIR OF THIS REPO.
     `cd somewhere/else`
     `git clone git@github.com:Significant-Gravitas/Auto-GPT.git`
 
+You will need to update the .env file in the Auto-GPT repo to have your OpenAI api key. The file in question is at:
+
+    `Auto-GPT/.env`
+
+Finally, we assume you have a docker container built from the Dockerfile in the Auto-GPT repo.
+
+Build this with:
+
+    `cd Auto-GPT`
+    `docker build -t autogpt .`
+
+If you want to run with redis as your memory system, you can stand up a redis image in the AutoGPT repo with
+    
+    `docker compose up`
+
+Then you will need to adjust some variables in your .env file to use the redis memory backend. 
+See the AutoGPT docs on how to do that.
+
 Run your first eval with:
 
     `cd Auto-GPT-Benchmarks`
