@@ -22,14 +22,16 @@ import yaml
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
+    parser.add_argument("eval", type=str, help="Name of an eval. See registry.")
     parser.add_argument(
-        "completion_fn",
+        "--completion-fn",
         type=str,
+        dest="completion_fn",
+        default="auto_gpt_completion_fn",
         help="One or more CompletionFn URLs, separated by commas (,). "
              "A CompletionFn can either be the name of a model available in the OpenAI API or a key in the registry "
              "(see evals/registry/completion_fns).",
     )
-    parser.add_argument("eval", type=str, help="Name of an eval. See registry.")
     parser.add_argument(
         "--timeout",
         type=int,
@@ -87,7 +89,8 @@ def update_yaml_with_auto_gpt_path(yaml_path: str, auto_gpt_path: str or None) -
 
 def load_env_file(env_path: Path):
     if not env_path.exists():
-        raise FileNotFoundError('We need your api keys to start the AutoGPT agent and use OpenAI evals')
+        raise FileNotFoundError('You must set the OpenAI key in the AutoGPT env file. '
+                                'We need your api keys to start the AutoGPT agent and use OpenAI evals')
     with open(env_path, "r") as f:
         # find the OPENAI_API_KEY key split it from the equals sign and assign it so OpenAI evals can use it.
         for line in f.readlines():
@@ -98,6 +101,8 @@ def load_env_file(env_path: Path):
 
 if __name__ == "__main__":
     args = parse_args()
+    # do not run in multiprocessing mode We do not use this right now, as it disables OpenAI's timeouts :(
+    # os.environ["EVALS_SEQUENTIAL"] = "1"
     os.environ["EVALS_THREAD_TIMEOUT"] = str(args.timeout)
     os.environ["EVALS_THREADS"] = str(1)
 
@@ -107,8 +112,8 @@ if __name__ == "__main__":
         args.auto_gpt_path
     )
 
-    # Add the AutoGPT path to the system path
-    sys.path.append(str(autogpt_path))
+    # Add the benchmarks path to the system path so we can import auto_gpt_benchmarking
+    sys.path.append(str(Path(__file__).parent.parent.absolute()))
 
     # load all of the environment variables in the auto-gpt path/.env file
     load_env_file(Path(autogpt_path) / ".env")
