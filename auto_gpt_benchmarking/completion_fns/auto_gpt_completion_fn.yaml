@@ -1,4 +1,4 @@
 auto_gpt_completion_fn:
   args:
-    auto_gpt_path: /home/douglas/AGI/Auto-GPT
+    auto_gpt_path:
   class: auto_gpt_benchmarking.CompletionFn:AutoGPTCompletionFn

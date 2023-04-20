@@ -14,7 +14,6 @@ class AutoGPTCompletionResult(CompletionResult):
 
 
 class AutoGPTCompletionFn(CompletionFn):
-    _instances = []
 
     def __init__(self, auto_gpt_path, **kwargs) -> None:
         self.auto_gpt_path = auto_gpt_path
