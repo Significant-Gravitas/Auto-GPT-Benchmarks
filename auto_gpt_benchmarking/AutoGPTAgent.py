@@ -106,13 +106,20 @@ class AutoGPTAgent:
                 return self.output_file.read_text()
 
     def __init__(self, prompt, auto_gpt_path: str):
+        print(auto_gpt_path)
         self.auto_gpt_path = Path(auto_gpt_path)
+        print(f"AutoGPT Path: {self.auto_gpt_path}")
         self.auto_workspace = self.auto_gpt_path / "auto_gpt_workspace"
+        # if the workspace doesn't exist, create it
+        if not self.auto_workspace.exists():
+            self.auto_workspace.mkdir()
         self.prompt_file = self.auto_workspace / "prompt.txt"
         self.output_file = self.auto_workspace / "output.txt"
         self.file_logger = self.auto_workspace / "file_logger.txt"
         self.ai_settings_file = Path(__file__).parent / "AutoGPTData" / "ai_settings.yaml"
         self.ai_settings_dest = self.auto_workspace / "ai_settings.yaml"
+        print(f"ai_settings_file: {self.ai_settings_file}")
+        print(f"ai_settings_dest: {self.ai_settings_dest}")
         self.prompt = prompt
         self._clean_up_workspace()
         self._copy_ai_settings()
