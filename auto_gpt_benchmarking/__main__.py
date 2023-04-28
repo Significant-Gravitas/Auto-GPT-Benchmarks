@@ -21,19 +21,17 @@ import yaml
 from datetime import datetime
 
 
-
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
-    parser.add_argument(
-        "eval", type=str, help="Name of an eval. See registry.")
+    parser.add_argument("eval", type=str, help="Name of an eval. See registry.")
     parser.add_argument(
         "--completion-fn",
         type=str,
         dest="completion_fn",
         default="auto_gpt_completion_fn",
         help="One or more CompletionFn URLs, separated by commas (,). "
-             "A CompletionFn can either be the name of a model available in the OpenAI API or a key in the registry "
-             "(see evals/registry/completion_fns).",
+        "A CompletionFn can either be the name of a model available in the OpenAI API or a key in the registry "
+        "(see evals/registry/completion_fns).",
     )
     parser.add_argument(
         "--timeout",
@@ -46,31 +44,42 @@ def parse_args() -> argparse.Namespace:
         type=str,
         default=None,
         help="The path to the AutoGPT code. This updates auto_gpt_competion_fn.yaml in completion fns. "
-             "So you only need to set this once.",
+        "So you only need to set this once.",
     )
     parser.add_argument("--extra_eval_params", type=str, default="")
     parser.add_argument("--max_samples", type=int, default=None)
+    parser.add_argument("--cache", action=argparse.BooleanOptionalAction, default=True)
     parser.add_argument(
-        "--cache", action=argparse.BooleanOptionalAction, default=True)
-    parser.add_argument(
-        "--visible", action=argparse.BooleanOptionalAction, default=None)
+        "--visible", action=argparse.BooleanOptionalAction, default=None
+    )
     parser.add_argument("--seed", type=int, default=20220722)
     parser.add_argument("--user", type=str, default="")
-    parser.add_argument("--record_path", type=str, default=str(Path(
-        __file__).parent.parent / "data" / f"eval-{datetime.now().strftime('%Y%m%d-%H%M%S')}.jsonl"))
     parser.add_argument(
-        "--log_to_file", type=str, default=None,  # default=str(
+        "--record_path",
+        type=str,
+        default=str(
+            Path(__file__).parent.parent
+            / "data"
+            / f"eval-{datetime.now().strftime('%Y%m%d-%H%M%S')}.jsonl"
+        ),
+    )
+    parser.add_argument(
+        "--log_to_file",
+        type=str,
+        default=None,  # default=str(
         #   Path(__file__).parent.parent / "data" / "log" / "log.txt"
         #  ), help="Log to a file instead of stdout"
     )
+    parser.add_argument("--debug", action=argparse.BooleanOptionalAction, default=False)
     parser.add_argument(
-        "--debug", action=argparse.BooleanOptionalAction, default=False)
+        "--local-run", action=argparse.BooleanOptionalAction, default=True
+    )
     parser.add_argument(
-        "--local-run", action=argparse.BooleanOptionalAction, default=True)
+        "--dry-run", action=argparse.BooleanOptionalAction, default=False
+    )
     parser.add_argument(
-        "--dry-run", action=argparse.BooleanOptionalAction, default=False)
-    parser.add_argument("--dry-run-logging",
-                        action=argparse.BooleanOptionalAction, default=True)
+        "--dry-run-logging", action=argparse.BooleanOptionalAction, default=True
+    )
     return parser.parse_args()
 
 
@@ -85,9 +94,13 @@ def update_yaml_with_auto_gpt_path(yaml_path: str, auto_gpt_path: str or None) -
     """
     with open(yaml_path, "r") as f:
         yaml_data = yaml.safe_load(f)
-    if yaml_data["auto_gpt_completion_fn"]["args"]["auto_gpt_path"] is None and auto_gpt_path is None:
+    if (
+        yaml_data["auto_gpt_completion_fn"]["args"]["auto_gpt_path"] is None
+        and auto_gpt_path is None
+    ):
         raise Exception(
-            "You must specify a auto_gpt_path in the yaml file or pass it in as a parameter")
+            "You must specify a auto_gpt_path in the yaml file or pass it in as a parameter"
+        )
     if auto_gpt_path is None:
         auto_gpt_path = yaml_data["auto_gpt_completion_fn"]["args"]["auto_gpt_path"]
     if auto_gpt_path is not None:
@@ -100,8 +113,10 @@ def update_yaml_with_auto_gpt_path(yaml_path: str, auto_gpt_path: str or None) -
 
 def load_env_file(env_path: Path):
     if not env_path.exists():
-        raise FileNotFoundError('You must set the OpenAI key in the AutoGPT env file. '
-                                'We need your api keys to start the AutoGPT agent and use OpenAI evals')
+        raise FileNotFoundError(
+            "You must set the OpenAI key in the AutoGPT env file. "
+            "We need your api keys to start the AutoGPT agent and use OpenAI evals"
+        )
     with open(env_path, "r") as f:
         # find the OPENAI_API_KEY key split it from the equals sign and assign it so OpenAI evals can use it.
         for line in f.readlines():
@@ -119,9 +134,8 @@ if __name__ == "__main__":
 
     # Update the yaml file with the auto_gpt_path
     autogpt_path = update_yaml_with_auto_gpt_path(
-        str(Path(__file__).parent / "completion_fns" /
-            "auto_gpt_completion_fn.yaml"),
-        args.auto_gpt_path
+        str(Path(__file__).parent / "completion_fns" / "auto_gpt_completion_fn.yaml"),
+        args.auto_gpt_path,
     )
 
     # Add the benchmarks path to the system path so we can import auto_gpt_benchmarking
@@ -133,6 +147,7 @@ if __name__ == "__main__":
     # Obviously, a top level import would be better. This allows us to set the API key with the env file, as it gets
     # set in the evaluator. We can't set it before the import because the import will fail without an API key.
     from auto_gpt_benchmarking.Evaluator import Evaluator, OAIRunArgs
+
     run_args = OAIRunArgs(
         completion_fn=args.completion_fn,
         eval=args.eval,
@@ -147,10 +162,9 @@ if __name__ == "__main__":
         debug=args.debug,
         local_run=args.local_run,
         dry_run=args.dry_run,
-        dry_run_logging=args.dry_run_logging)
+        dry_run_logging=args.dry_run_logging,
+    )
 
     # Run the evals
-    evaluator = Evaluator(
-        run_args
-    )
+    evaluator = Evaluator(run_args)
     evaluator.run()

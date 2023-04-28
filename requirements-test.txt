@@ -1,0 +1,8 @@
+ipytest
+pytest
+
+black
+bandit
+flake8
+flake8-bugbear
+mypy

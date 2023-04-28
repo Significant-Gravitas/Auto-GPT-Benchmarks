@@ -14,7 +14,6 @@ class AutoGPTCompletionResult(CompletionResult):
 
 
 class AutoGPTCompletionFn(CompletionFn):
-
     def __init__(self, auto_gpt_path, **kwargs) -> None:
         self.auto_gpt_path = auto_gpt_path
         self.agent = None
@@ -30,5 +29,3 @@ class AutoGPTCompletionFn(CompletionFn):
     def kill_agent(self):
         if self.agent:
             self.agent.kill()
-
-

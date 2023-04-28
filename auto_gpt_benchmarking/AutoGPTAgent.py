@@ -25,6 +25,7 @@ class AutoGPTAgent:
     If the model has used more than 50,000 tokens, it kills the model.
     If the model has used less than 50,000 tokens, it returns the output.txt file.
     """
+
     def _clean_up_workspace(self):
         """
         Cleans up the workspace by deleting the prompt.txt and output.txt files.
@@ -44,14 +45,18 @@ class AutoGPTAgent:
     def _copy_prompt(self) -> None:
         self.prompt_file.write_text(self.prompt)
 
-    async def _stream_logs(self, container: aiodocker.containers.DockerContainer) -> None:
+    async def _stream_logs(
+        self, container: aiodocker.containers.DockerContainer
+    ) -> None:
         try:
-            async for line in container.log(stdout=True, stderr=True, follow=True, tail="all"):
+            async for line in container.log(
+                stdout=True, stderr=True, follow=True, tail="all"
+            ):
                 print(line.strip())
                 await asyncio.sleep(1)
         except aiodocker.exceptions.DockerError as e:
             # Handle Docker errors (e.g., container is killed or removed)
-            print('Docker error: {}'.format(e))
+            print("Docker error: {}".format(e))
 
     async def _run_stream_logs(self) -> None:
         """
@@ -64,7 +69,7 @@ class AutoGPTAgent:
                 await self._stream_logs(container)
             except aiodocker.exceptions.DockerError as e:
                 # Handle cases when the container is not found
-                print('Container not found: {}'.format(e))
+                print("Container not found: {}".format(e))
 
     def _start_agent(self):
         """
@@ -78,21 +83,28 @@ class AutoGPTAgent:
         client = docker.from_env()
         env_file = self.auto_gpt_path / ".env"
         envs = [
-            f"{line.strip()}" for line in open(
-                env_file
-            ) if line.strip() != "" and line.strip()[0] != "#" and line.strip()[0] != "\n"]
+            f"{line.strip()}"
+            for line in open(env_file)
+            if line.strip() != "" and line.strip()[0] != "#" and line.strip()[0] != "\n"
+        ]
 
         self.container = client.containers.run(
             image="autogpt",
             command="--continuous -C '/home/appuser/auto_gpt_workspace/ai_settings.yaml'",
             environment=envs,
             volumes={
-                self.auto_workspace: {"bind": "/home/appuser/auto_gpt_workspace", "mode": "rw"},
-                f"{self.auto_gpt_path}/autogpt": {"bind": "/home/appuser/autogpt", "mode": "rw"},
+                self.auto_workspace: {
+                    "bind": "/home/appuser/auto_gpt_workspace",
+                    "mode": "rw",
+                },
+                f"{self.auto_gpt_path}/autogpt": {
+                    "bind": "/home/appuser/autogpt",
+                    "mode": "rw",
+                },
             },
             stdin_open=True,
             tty=True,
-            detach=True
+            detach=True,
         )
         asyncio.run(self._run_stream_logs())
 
@@ -114,7 +126,9 @@ class AutoGPTAgent:
         self.prompt_file = self.auto_workspace / "prompt.txt"
         self.output_file = self.auto_workspace / "output.txt"
         self.file_logger = self.auto_workspace / "file_logger.txt"
-        self.ai_settings_file = Path(__file__).parent / "AutoGPTData" / "ai_settings.yaml"
+        self.ai_settings_file = (
+            Path(__file__).parent / "AutoGPTData" / "ai_settings.yaml"
+        )
         self.ai_settings_dest = self.auto_workspace / "ai_settings.yaml"
         self.prompt = prompt
         self._clean_up_workspace()
@@ -142,11 +156,9 @@ class AutoGPTAgent:
                 self.container.kill()
                 self.container.remove()
             except docker.errors.APIError:
-                print('Couldn\'t find container to kill. Assuming container successfully killed itself.')
+                print(
+                    "Couldn't find container to kill. Assuming container successfully killed itself."
+                )
             if self.logging_task:
                 self.logging_task.cancel()
         self.killing = False
-
-
-
-
