@@ -20,8 +20,8 @@ import docker
 
 
 class ContainerConfiguration:
-    def __init__(self, image: str, root: Path, **extras):
-        self.image = image
+    def __init__(self, baseimage: str, root: Path, **extras):
+        self.baseimage = baseimage
         self.root = root
         self.workspace = root / "auto_gpt_workspace"
         self.extras = dict(extras)
@@ -35,7 +35,7 @@ class ContainerConfiguration:
         lines = filter(bool, lines)
         # Remove any connected out lines
         lines = filter(lambda l: l[0] != "#", lines)
-
+        # Run the generator pipeline
         return list(lines)
 
     def get_volumes(self):
@@ -52,7 +52,7 @@ class ContainerConfiguration:
 
     def dict(self):
         return {
-            "image": self.image,
+            "image": self.baseimage,
             "environment": self.get_environment_variables(),
             "volumes": self.get_volumes(),
         }
@@ -158,10 +158,7 @@ class AutoGPTAgent:
         asyncio.run(self._run_stream_logs())
 
     def _poll_for_output(self):
-        """
-        This polls the output file to see if the model has finished.
-        :return:
-        """
+        """Polls until output.txt exists, and return its contents."""
         while True:
             if self.output_file.exists():
                 return self.output_file.read_text()
