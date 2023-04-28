@@ -18,10 +18,17 @@ import asyncio
 import aiodocker
 import docker
 
+from aiodocker.containers import DockerContainer
 
-class ContainerConfiguration:
-    def __init__(self, baseimage: str, root: Path, **extras):
-        self.baseimage = baseimage
+from . import constants
+
+
+class DockerContainerConfiguration:
+    @classmethod
+    def from_agent(cls, agent: "AutoGPTAgent", **extras):
+        return cls(agent.auto_gpt_path, **extras)
+
+    def __init__(self, root: Path, **extras):
         self.root = root
         self.workspace = root / "auto_gpt_workspace"
         self.extras = dict(extras)
@@ -52,10 +59,32 @@ class ContainerConfiguration:
 
     def dict(self):
         return {
-            "image": self.baseimage,
             "environment": self.get_environment_variables(),
             "volumes": self.get_volumes(),
         }
+
+
+class DockerContainerLogListener:
+    def __init__(self, container: DockerContainer, **configs):
+        self.container = container
+        self.configs = dict(configs)
+
+    async def run(self):
+        try:
+            async for line in self.container.log(**self.config):
+                logging.info(line.strip())
+                await asyncio.sleep(1)
+
+        except aiodocker.exceptions.DockerError:
+            logging.exception("Container killed or removed.")
+
+
+class AutoGPTWorkspace:
+    def __init__(self, root: Path):
+        self.root = root
+        self.prompt = self.auto_workspace / "prompt.txt"
+        self.output = self.auto_workspace / "output.txt"
+        self.ai_settings = self.auto_workspace / "ai_settings.yaml"
 
 
 class AutoGPTAgent:
@@ -70,31 +99,25 @@ class AutoGPTAgent:
         * Kills models using more than 50,000 tokens.
         * Otherwise, returns the output.txt file.
     """
+    container: DockerContainer
+    listener: asyncio.Task
+    killing: bool = False
 
-    def __init__(self, prompt, auto_gpt_path: str):
-        self.auto_gpt_path = Path(auto_gpt_path)
-        self.auto_workspace = self.auto_gpt_path / "auto_gpt_workspace"
-
-        # if the workspace doesn't exist, create it
-        if not self.auto_workspace.exists():
-            self.auto_workspace.mkdir()
-
-        self.prompt_file = self.auto_workspace / "prompt.txt"
-        self.output_file = self.auto_workspace / "output.txt"
-        self.file_logger = self.auto_workspace / "file_logger.txt"
-        self.ai_settings_file = (
-            Path(__file__).parent / "AutoGPTData" / "ai_settings.yaml"
-        )
-        self.ai_settings_dest = self.auto_workspace / "ai_settings.yaml"
+    def __init__(self, prompt: str, path: str):
         self.prompt = prompt
-        self._clean_up_workspace()
-        self._copy_ai_settings()
-        self._copy_prompt()
-        self.container = None
-        self.killing = False
-        self.logging_task = None
+        self.root = Path(path)
+        self.workspace = AutoGPTWorkspace(self.root / "auto_gpt_workspace")
 
-    def _clean_up_workspace(self):
+    async def setup(self):
+        # if the workspace doesn't exist, create it
+        if not self.auto_workspace.root.exists():
+            self.auto_workspace.root.mkdir()
+
+        await self.cleanup()
+        self.workspace.ai_settings.write_text(constants.AI_SETTINGS.read_text())
+        self.worspace.prompt.write_text(self.prompt)
+
+    async def cleanup(self):
         """
         Cleans up the workspace by deleting the prompt.txt and output.txt files.
         Check if the files are there and delete them if they are
@@ -105,43 +128,9 @@ class AutoGPTAgent:
         if self.file_logger.exists(): self.file_logger.unlink()
         # fmt:on
 
-    def _copy_ai_settings(self):
-        self.ai_settings_dest.write_text(self.ai_settings_file.read_text())
-
-    def _copy_prompt(self):
-        self.prompt_file.write_text(self.prompt)
-
-    async def _stream_logs(self, container: aiodocker.containers.DockerContainer):
-        try:
-            async for line in container.log(
-                stdout=True, stderr=True, follow=True, tail="all"
-            ):
-                logging.info(line.strip())
-                await asyncio.sleep(1)
-
-        except aiodocker.exceptions.DockerError:
-            logging.exception("Container killed or removed.")
-
-    async def _run_stream_logs(self):
+    async def start(self):
         """
-        This grabs the docker containers id and streams the logs to the console
-        with aiodocker.
-        """
-        async with aiodocker.Docker() as docker_client:
-            try:
-                container = docker_client.containers.container(self.container.id)
-                await self._stream_logs(container)
-
-            except aiodocker.exceptions.DockerError:
-                logging.exception("Container not found.")
-
-    def get_container_configuration(self) -> ContainerConfiguration:
-        extras = {"stdin_open": True, "tty": True, "detach": True}
-        return ContainerConfiguration("autogpt", self.auto_gpt_path, **extras)
-
-    def _start_agent(self):
-        """
-        Starts the agent in a docker container, assuming you have:
+        Run the agent in a docker container, assuming you have:
         
             1. Build the docker image built with:
 
@@ -149,33 +138,57 @@ class AutoGPTAgent:
 
             2. Set up the .env file in the Auto-GPT repo.
 
+        Awaits an answer 
         """
-        client = docker.from_env()
-        self.container = client.containers.run(
-            command="--continuous -C '/home/appuser/auto_gpt_workspace/ai_settings.yaml'",
-            **self.get_container_configuration().dict()
-        )
-        asyncio.run(self._run_stream_logs())
+        # Set up the agent by cleaning the workspace and copying the settings
+        await self.setup()
 
-    def _poll_for_output(self):
+        # Create a container that runs the autogpt image continuously
+        async with docker.from_env() as client:
+            self.container = client.containers.run(
+                image="autogpt",
+                command="--continuous -C '/app/config/ai_settings.yaml'",
+                **self.get_container_configuration().dict()
+            )
+
+        # Hook up a continuous log listener attached to the container
+        self.listener = asyncio.create_task(
+            DockerContainerLogListener(
+                self.container, stdout=True, stderr=True, follow=True, tail="all"
+            )
+        )
+
+        # Poll continuously for an answer
+        answer = await self.wait_for_answer()
+
+        logging.info(f"Prompt: {self.prompt}, Answer: {answer}")
+        await self.kill()
+
+        return answer
+
+    def get_container_configuration(self) -> DockerContainerConfiguration:
+        return DockerContainerConfiguration(
+            self.auto_gpt_path,
+            stdin_open=True,
+            tty=True,
+            detach=True,
+        )
+
+    async def wait_for_answer(self):
         """Polls until output.txt exists, and return its contents."""
         while True:
             if self.output_file.exists():
                 return self.output_file.read_text()
 
-    def start(self):
-        self._start_agent()
-        answer = self._poll_for_output()
-        logging.info(f"Prompt: {self.prompt}, Answer: {answer}")
-        self.kill()
-        return answer
-
-    def kill(self):
+    async def kill(self):
         # fmt:off
         if self.killing: return
         self.killing = True
-        self._clean_up_workspace()
 
+        # Clean-up the workspace
+        self.cleanup()
+
+        # Kill and remove the container if we have one
         if self.container:
             try:
                 self.container.kill()
@@ -187,7 +200,11 @@ class AutoGPTAgent:
                     "Assuming container successfully killed itself."
                 )
 
-            if self.logging_task: self.logging_task.cancel()
+        # Assuming that the listener exists and it's errored out and returned
+        # on Container Not Found
+        if self.listener and self.listener.done():
+            self.listener = None
 
+        # DONE
         self.killing = False
         # fmt:on
