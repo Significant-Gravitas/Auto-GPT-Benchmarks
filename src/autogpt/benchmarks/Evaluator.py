@@ -2,9 +2,8 @@
 The evaluator class actually executes the evals.
 """
 from evals.cli import oaieval
-from evals.registry import Registry
+
 from pathlib import Path
-from typing import List, Optional, Tuple
 import sys
 
 

@@ -41,7 +41,7 @@ class DockerContainerConfiguration:
         # Remove any blank lines
         lines = filter(bool, lines)
         # Remove any connected out lines
-        lines = filter(lambda l: l[0] != "#", lines)
+        lines = filter(lambda line: line[0] != "#", lines)
         # Run the generator pipeline
         return list(lines)
 
@@ -99,6 +99,7 @@ class AutoGPTAgent:
         * Kills models using more than 50,000 tokens.
         * Otherwise, returns the output.txt file.
     """
+
     container: DockerContainer
     listener: asyncio.Task
     killing: bool = False
@@ -121,7 +122,7 @@ class AutoGPTAgent:
         """
         Cleans up the workspace by deleting the prompt.txt and output.txt files.
         Check if the files are there and delete them if they are
-        """ 
+        """
         # fmt:off
         if self.prompt_file.exists(): self.prompt_file.unlink()
         if self.output_file.exists(): self.output_file.unlink()
@@ -131,14 +132,14 @@ class AutoGPTAgent:
     async def start(self):
         """
         Run the agent in a docker container, assuming you have:
-        
+
             1. Build the docker image built with:
 
                 > docker build -t autogpt .
 
             2. Set up the .env file in the Auto-GPT repo.
 
-        Awaits an answer 
+        Awaits an answer
         """
         # Set up the agent by cleaning the workspace and copying the settings
         await self.setup()
@@ -148,7 +149,7 @@ class AutoGPTAgent:
             self.container = client.containers.run(
                 image="autogpt",
                 command="--continuous -C '/app/config/ai_settings.yaml'",
-                **self.get_container_configuration().dict()
+                **self.get_container_configuration().dict(),
             )
 
         # Hook up a continuous log listener attached to the container

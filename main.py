@@ -4,7 +4,8 @@ import click
 
 
 @click.group()
-def cli(): pass
+def cli():
+    pass
 
 
 @cli.command()

@@ -1,24 +1,29 @@
 """
 This is the main evaluation file. In it you can specify the following:
 
-1. The number of threads to use for evaluation. This is set to 1 by default.And will remain that way until we can spin
- up containers on command
-2. The timeout for each thread. This is set to 60 seconds by default. This is the amount of time each thread will run
- for before it is killed when evaluating an agent
-3. The path to the AutoGPT code. This is a required parameter as we do not know where your code lives.
-4. The evals you would like to run. The options here are any OpenAI eval, or any of the evals defined in this repository
+1. The number of threads to use for evaluation. This is set to 1 by default.
+    And will remain that way until we can spin up containers on command
+2. The timeout for each thread. This is set to 60 seconds by default. This is
+    the amount of time each thread will run for before it is killed when
+    evaluating an agent
+3. The path to the AutoGPT code. This is a required parameter as we do not
+    know where your code lives.
+4. The evals you would like to run. The options here are any OpenAI eval, or
+    any of the evals defined in this repository
 
-
-What this file does is it parses the params given and then runs the evals with OpenAI's evals framework.
+What this file does is it parses the params given and then runs the evals
+with OpenAI's evals framework.
 """
 
 import argparse
 import os
 import sys
+
+from datetime import datetime
 from pathlib import Path
-from datetime import datetime
+
 import yaml
-from datetime import datetime
+
 
 
 def parse_args() -> argparse.Namespace:
@@ -29,9 +34,12 @@ def parse_args() -> argparse.Namespace:
         type=str,
         dest="completion_fn",
         default="auto_gpt_completion_fn",
-        help="One or more CompletionFn URLs, separated by commas (,). "
-        "A CompletionFn can either be the name of a model available in the OpenAI API or a key in the registry "
-        "(see evals/registry/completion_fns).",
+        help=(
+            "One or more CompletionFn URLs, separated by commas (,). "
+            "A CompletionFn can either be the name of a model available "
+            "in the OpenAI API or a key in the registry "
+            "(see evals/registry/completion_fns)."
+        ),
     )
     parser.add_argument(
         "--timeout",
@@ -43,8 +51,10 @@ def parse_args() -> argparse.Namespace:
         "--auto-gpt-path",
         type=str,
         default=None,
-        help="The path to the AutoGPT code. This updates auto_gpt_competion_fn.yaml in completion fns. "
-        "So you only need to set this once.",
+        help=(
+            "The path to the AutoGPT code. This updates auto_gpt_competion_fn.yaml "
+            "in completion fns. So you only need to set this once."
+        ),
     )
     parser.add_argument("--extra_eval_params", type=str, default="")
     parser.add_argument("--max_samples", type=int, default=None)
@@ -85,9 +95,12 @@ def parse_args() -> argparse.Namespace:
 
 def update_yaml_with_auto_gpt_path(yaml_path: str, auto_gpt_path: str or None) -> Path:
     """
-    If there is a given auto_gpt_path, then we need to update the yaml file to include it in the system path
+    If there is a given auto_gpt_path, then we need to update the yaml file
+    to include it in the system path
+
     If we don't have one. Then we get the path from the yaml.
     If none exists in the yaml and we don't have a path then we raise an exception.
+
     :param yaml_path: The path to the yaml file
     :param auto_gpt_path: The path to the AutoGPT code
     :return: The path to the AutoGPT code
@@ -99,7 +112,8 @@ def update_yaml_with_auto_gpt_path(yaml_path: str, auto_gpt_path: str or None) -
         and auto_gpt_path is None
     ):
         raise Exception(
-            "You must specify a auto_gpt_path in the yaml file or pass it in as a parameter"
+            "You must specify a auto_gpt_path in the yaml file "
+            "or pass it in as a parameter"
         )
     if auto_gpt_path is None:
         auto_gpt_path = yaml_data["auto_gpt_completion_fn"]["args"]["auto_gpt_path"]
@@ -118,7 +132,8 @@ def load_env_file(env_path: Path):
             "We need your api keys to start the AutoGPT agent and use OpenAI evals"
         )
     with open(env_path, "r") as f:
-        # find the OPENAI_API_KEY key split it from the equals sign and assign it so OpenAI evals can use it.
+        # find the OPENAI_API_KEY key split it from the equals sign and assign it
+        # so OpenAI evals can use it.
         for line in f.readlines():
             if line.startswith("OPENAI_API_KEY"):
                 os.environ["OPENAI_API_KEY"] = line.split("=")[1].strip()
@@ -127,7 +142,8 @@ def load_env_file(env_path: Path):
 
 if __name__ == "__main__":
     args = parse_args()
-    # do not run in multiprocessing mode We do not use this right now, as it disables OpenAI's timeouts :(
+    # do not run in multiprocessing mode We do not use this right now, as it
+    # disables OpenAI's timeouts :(
     # os.environ["EVALS_SEQUENTIAL"] = "1"
     os.environ["EVALS_THREAD_TIMEOUT"] = str(args.timeout)
     os.environ["EVALS_THREADS"] = str(1)
@@ -144,8 +160,9 @@ if __name__ == "__main__":
     # load all of the environment variables in the auto-gpt path/.env file
     load_env_file(Path(autogpt_path) / ".env")
 
-    # Obviously, a top level import would be better. This allows us to set the API key with the env file, as it gets
-    # set in the evaluator. We can't set it before the import because the import will fail without an API key.
+    # Obviously, a top level import would be better. This allows us to set the API
+    # key with the env file, as it gets set in the evaluator. We can't set it before
+    # the import because the import will fail without an API key.
     from auto_gpt_benchmarking.Evaluator import Evaluator, OAIRunArgs
 
     run_args = OAIRunArgs(
