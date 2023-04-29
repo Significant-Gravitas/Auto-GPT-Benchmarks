@@ -16,7 +16,6 @@ with OpenAI's evals framework.
 """
 
 import argparse
-import logging
 import os
 import sys
 
@@ -141,6 +140,10 @@ def load_env_file(env_path: Path):
 
 
 if __name__ == "__main__":
+    from .app import configure_logging
+
+    configure_logging()
+
     args = parse_args()
     # do not run in multiprocessing mode We do not use this right now, as it
     # disables OpenAI's timeouts :(

@@ -1,13 +1,22 @@
 import os
 import logging.config
+import pathlib
 
 import yaml
 
 
 def configure_logging():
-    with open(os.environ["LOGGING_CONFIG_PATH"], "r") as fh:
-        configs = yaml.safe_load(fh)
-    logging.config.dictConfig(configs)
+    # TODO:
+    #     TITLE: LOGGING_CONFIG_PATH
+    #     AUTHOR: frndlytm
+    #     DESCRIPTION:
+    #         Right now, assuming this env var is configured is VERY hairy.
+    #         It would be better to assume CONFIG_PATH and then get logging
+    #         config if it exists.
+    #
+    if (path := pathlib.Path(os.environ.get("LOGGING_CONFIG_PATH"))).exists():
+        configs = yaml.safe_load(path.read_text())
+        logging.config.dictConfig(configs)
 
-
-configure_logging()
+    else:
+        logging.basicConfig()
