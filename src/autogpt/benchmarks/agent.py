@@ -24,6 +24,7 @@ from . import constants
 
 
 class DockerContainerConfiguration:
+    
     @classmethod
     def from_agent(cls, agent: "AutoGPTAgent", **extras):
         return cls(agent.auto_gpt_path, **extras)
@@ -83,7 +84,7 @@ class DockerContainerLogListener:
         self.container = container
         self.configs = dict(configs)
 
-    async def run(self):
+    async def start(self):
         try:
             async for line in self.container.log(**self.config):
                 logging.info(line.strip())
@@ -94,6 +95,11 @@ class DockerContainerLogListener:
 
 
 class AutoGPTWorkspace:
+    """
+    AutoGPTWorkspace manages all the files that consitute a working Agent.
+    Basically, the assumption is that all operations that AutoGPT performs
+    happens inside its root directory or a descendant of the root directory.
+    """
     def __init__(self, root: Path):
         self.root = root
         self.prompt = self.root / "prompt.txt"
@@ -163,15 +169,19 @@ class AutoGPTAgent:
             self.container = client.containers.run(
                 image="autogpt",
                 command="--continuous -C '/app/config/ai_settings.yaml'",
-                **self.get_container_configuration().dict(),
+                **(
+                    DockerContainerConfiguration
+                    .from_agent(self, stdin_open=True, tty=True, detach=True)
+                    .dict()
+                )
             )
 
         # Hook up a continuous log listener attached to the container
-        self.listener = asyncio.create_task(
-            DockerContainerLogListener(
-                self.container, stdout=True, stderr=True, follow=True, tail="all"
-            )
+        listener = DockerContainerLogListener(
+            self.container, stdout=True, stderr=True, follow=True, tail="all"
         )
+
+        self.listener = asyncio.create_task(listener.start())
 
         # Poll continuously for an answer
         answer = await self.wait_for_answer()
@@ -180,14 +190,6 @@ class AutoGPTAgent:
         await self.kill()
 
         return answer
-
-    def get_container_configuration(self) -> DockerContainerConfiguration:
-        return DockerContainerConfiguration(
-            self.auto_gpt_path,
-            stdin_open=True,
-            tty=True,
-            detach=True,
-        )
 
     async def wait_for_answer(self):
         """Polls until output.txt exists, and return its contents."""
