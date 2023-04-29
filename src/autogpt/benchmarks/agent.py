@@ -65,6 +65,20 @@ class DockerContainerConfiguration:
 
 
 class DockerContainerLogListener:
+    """
+    DockerContainerLogListener is a background async Task that follows the
+    logs on the docker container.
+    """
+
+    # TODO:
+    #     TITLE: Investigate if DockerContainerLogListener is necessary
+    #     ISSUE:
+    #     AUTHOR: frndlytm
+    #     DESCRIPTION:
+    #         I'm not sure that this is actually necessary because initializing
+    #         the container can open a connection to stdin/stdout. If that connection
+    #         is blocking then this makes sense.
+    #
     def __init__(self, container: DockerContainer, **configs):
         self.container = container
         self.configs = dict(configs)
