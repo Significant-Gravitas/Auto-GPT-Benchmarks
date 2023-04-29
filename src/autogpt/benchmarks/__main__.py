@@ -16,6 +16,7 @@ with OpenAI's evals framework.
 """
 
 import argparse
+import logging
 import os
 import sys
 
@@ -23,7 +24,6 @@ from datetime import datetime
 from pathlib import Path
 
 import yaml
-
 
 
 def parse_args() -> argparse.Namespace:
@@ -163,7 +163,7 @@ if __name__ == "__main__":
     # Obviously, a top level import would be better. This allows us to set the API
     # key with the env file, as it gets set in the evaluator. We can't set it before
     # the import because the import will fail without an API key.
-    from auto_gpt_benchmarking.Evaluator import Evaluator, OAIRunArgs
+    from autogpt.benchmarks.evaluator import Evaluator, OAIRunArgs
 
     run_args = OAIRunArgs(
         completion_fn=args.completion_fn,

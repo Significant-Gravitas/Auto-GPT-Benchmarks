@@ -82,9 +82,9 @@ class DockerContainerLogListener:
 class AutoGPTWorkspace:
     def __init__(self, root: Path):
         self.root = root
-        self.prompt = self.auto_workspace / "prompt.txt"
-        self.output = self.auto_workspace / "output.txt"
-        self.ai_settings = self.auto_workspace / "ai_settings.yaml"
+        self.prompt = self.root / "prompt.txt"
+        self.output = self.root / "output.txt"
+        self.ai_settings = self.root / "ai_settings.yaml"
 
 
 class AutoGPTAgent:

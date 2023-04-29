@@ -1,0 +1,22 @@
+formatters:
+  brief:
+    format: "%(levelname): %(message)s"
+  precise:
+    format: "%(asctime)s %(levelname)-8s %(name)-15s %(message)s"
+
+handlers:
+  console:
+    class: logging.StreamHandler
+    formatter: brief
+    level: INFO
+    stream: ext://sys.stdout
+
+  file:
+    class: logging.handlers.FileHandler
+    formatter: precise
+    level: DEBUG
+    filename: /app/data/benchmarks.log
+
+loggers:
+  root:
+    handlers: [console, file]

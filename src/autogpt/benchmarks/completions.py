@@ -2,7 +2,8 @@ from evals.api import CompletionFn, CompletionResult
 
 from evals.prompt.base import CompletionPrompt
 from evals.record import record_sampling
-from auto_gpt_benchmarking.AutoGPTAgent import AutoGPTAgent
+
+from autogpt.benchmarks.agent import AutoGPTAgent
 
 
 class AutoGPTCompletionResult(CompletionResult):
