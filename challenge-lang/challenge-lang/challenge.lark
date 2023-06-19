@@ -1,0 +1,19 @@
+start: challenge
+
+challenge: "Challenge" CNAME challenge_body "EndChallenge"
+
+challenge_body: description artifacts tasks success_criteria
+
+description: "Description" ESCAPED_STRING
+artifacts: "Artifacts" "{" artifact+ "}"
+tasks: "Tasks" "{" task+ "}"
+success_criteria: "SuccessCriteria" "{" success_criterion+ "}"
+
+artifact: "Code" ESCAPED_STRING
+task: "Code" ESCAPED_STRING | "Test" ESCAPED_STRING | "Command" ESCAPED_STRING
+success_criterion: "Correctness" ESCAPED_STRING | "Efficiency" ESCAPED_STRING | "Design" ESCAPED_STRING
+
+%import common.CNAME
+%import common.ESCAPED_STRING
+%import common.WS
+%ignore WS
