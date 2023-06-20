@@ -24,4 +24,4 @@ testpaths = [
 ]
 
 [tool.poetry.scripts]
-"start benchmark" = "start_benchmark:start"
+"start auto-gpt-benchmark" = "start_benchmark:start"
