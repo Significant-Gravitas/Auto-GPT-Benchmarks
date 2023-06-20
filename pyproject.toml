@@ -9,6 +9,7 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.9"
 pytest = "^7.3.2"
+click = "^8.1.3"
 
 
 [build-system]
@@ -21,3 +22,6 @@ addopts = "-ra -q"
 testpaths = [
     "tests", "benchmark/challenges",
 ]
+
+[tool.poetry.scripts]
+"start benchmark" = "start_benchmark:start"
