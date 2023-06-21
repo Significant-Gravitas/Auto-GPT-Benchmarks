@@ -41,3 +41,33 @@ def server_response(request, config):
     #     response.status_code == 200
     # ), f"Request failed with status code {response.status_code}"
     mock_retrieval(task, config["workspace"])
+
+
+regression_txt = "agbenchmark/tests/regression/regression_tests.txt"
+
+
+def pytest_runtest_makereport(item, call):
+    if call.when != "call":
+        return
+    # Read the current regression tests
+    with open(regression_txt, "r") as f:
+        regression_tests = f.readlines()
+    if call.excinfo is None:
+        # If the test is not already in the file, write it to the file
+        if f"{item.nodeid}\n" not in regression_tests:
+            with open(regression_txt, "a") as f:
+                f.write(f"{item.nodeid}\n")
+    elif f"{item.nodeid}\n" in regression_tests:
+        regression_tests.remove(f"{item.nodeid}\n")
+        with open(regression_txt, "w") as f:
+            f.writelines(regression_tests)
+
+
+def pytest_collection_modifyitems(items):
+    with open(regression_txt, "r") as f:
+        regression_tests = f.readlines()
+    for item in items:
+        print("pytest_collection_modifyitems", item.nodeid)
+        if item.nodeid + "\n" in regression_tests:
+            print(regression_txt)
+            item.add_marker(pytest.mark.regression)
