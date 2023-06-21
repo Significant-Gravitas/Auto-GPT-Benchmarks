@@ -1,0 +1,411 @@
+diff --git a/agbenchmark/__init__.py b/agbenchmark/__init__.py
+deleted file mode 100644
+index e69de29..0000000
+diff --git a/agbenchmark/benchmark/__init__.py b/agbenchmark/benchmark/__init__.py
+deleted file mode 100644
+index e69de29..0000000
+diff --git a/agbenchmark/benchmark/benchmark.py b/agbenchmark/benchmark/benchmark.py
+deleted file mode 100644
+index 2f81242..0000000
+--- a/agbenchmark/benchmark/benchmark.py
++++ /dev/null
+@@ -1 +0,0 @@
+-# how well the agent did on the challenges, the metrics calculation
+diff --git a/agbenchmark/benchmark/challenges/Challenge.py b/agbenchmark/benchmark/challenges/Challenge.py
+deleted file mode 100644
+index bed522a..0000000
+--- a/agbenchmark/benchmark/challenges/Challenge.py
++++ /dev/null
+@@ -1,11 +0,0 @@
+-import json
+-
+-class Challenge(object):
+-    def __init__(self, json_data):
+-        self.json_data = json_data
+-
+-    @classmethod
+-    def from_json_file(cls, json_file):
+-        with open(json_file) as f:
+-            json_data = json.load(f)
+-        return cls(json_data)
+\ No newline at end of file
+diff --git a/agbenchmark/benchmark/challenges/__init__.py b/agbenchmark/benchmark/challenges/__init__.py
+deleted file mode 100644
+index e69de29..0000000
+diff --git a/agbenchmark/benchmark/challenges/adaptability/a1_test.py b/agbenchmark/benchmark/challenges/adaptability/a1_test.py
+deleted file mode 100644
+index e69de29..0000000
+diff --git a/agbenchmark/benchmark/challenges/basic_abilities/browse_test.py b/agbenchmark/benchmark/challenges/basic_abilities/browse_test.py
+deleted file mode 100644
+index e69de29..0000000
+diff --git a/agbenchmark/benchmark/challenges/basic_abilities/read_file_test.py b/agbenchmark/benchmark/challenges/basic_abilities/read_file_test.py
+deleted file mode 100644
+index e69de29..0000000
+diff --git a/agbenchmark/benchmark/challenges/basic_abilities/remember_context_test.py b/agbenchmark/benchmark/challenges/basic_abilities/remember_context_test.py
+deleted file mode 100644
+index e69de29..0000000
+diff --git a/agbenchmark/benchmark/challenges/basic_abilities/write_file_test.py b/agbenchmark/benchmark/challenges/basic_abilities/write_file_test.py
+deleted file mode 100644
+index e69de29..0000000
+diff --git a/agbenchmark/benchmark/challenges/code/c1_test.py b/agbenchmark/benchmark/challenges/code/c1_test.py
+deleted file mode 100644
+index e69de29..0000000
+diff --git a/agbenchmark/benchmark/challenges/memory/m1_test.py b/agbenchmark/benchmark/challenges/memory/m1_test.py
+deleted file mode 100644
+index e69de29..0000000
+diff --git a/agbenchmark/benchmark/challenges/retrieval/r1_test.py b/agbenchmark/benchmark/challenges/retrieval/r1_test.py
+deleted file mode 100644
+index f300d09..0000000
+--- a/agbenchmark/benchmark/challenges/retrieval/r1_test.py
++++ /dev/null
+@@ -1,29 +0,0 @@
+-from ..Challenge import Challenge
+-
+-
+-class RetrievelChallenge(Challenge):
+-    """ Chanllenge for information-retrieval """
+-    def __init__(self, json_data):
+-        self.json_data = json_data
+-        assert self.json_data["category"] == "information-retrieval"
+-
+-    @property
+-    def agent_input(self):
+-        return self.json_data["query"]
+-
+-    def scoring(self, content):
+-        for should_contain_word in self.json_data["ground"]["should_contain"]:
+-            if should_contain_word not in content:
+-                return 0.
+-        
+-        for should_not_contain_word in self.json_data["ground"]["should_not_contain"]:
+-            if should_not_contain_word in content:
+-                return 0.
+-        return 1.
+-
+-    def run(self, output_file):
+-        output = open(output_file).read().strip()
+-
+-        score = self.scoring(output)
+-
+-        return score
+\ No newline at end of file
+diff --git a/agbenchmark/benchmark/challenges/utils.py b/agbenchmark/benchmark/challenges/utils.py
+deleted file mode 100644
+index e69de29..0000000
+diff --git a/agbenchmark/benchmark/challenges/web_navigation/wn1_test.py b/agbenchmark/benchmark/challenges/web_navigation/wn1_test.py
+deleted file mode 100644
+index e69de29..0000000
+diff --git a/agbenchmark/benchmark/challenges/writing/w1_test.py b/agbenchmark/benchmark/challenges/writing/w1_test.py
+deleted file mode 100644
+index e69de29..0000000
+diff --git a/agbenchmark/benchmark/run.py b/agbenchmark/benchmark/run.py
+deleted file mode 100644
+index b07ac6b..0000000
+--- a/agbenchmark/benchmark/run.py
++++ /dev/null
+@@ -1 +0,0 @@
+-# running all of the different challenges
+diff --git a/agbenchmark/server/__init__.py b/agbenchmark/server/__init__.py
+deleted file mode 100644
+index e69de29..0000000
+diff --git a/agbenchmark/server/api.py b/agbenchmark/server/api.py
+deleted file mode 100644
+index e69de29..0000000
+diff --git a/agbenchmark/server/utils.py b/agbenchmark/server/utils.py
+deleted file mode 100644
+index e69de29..0000000
+diff --git a/agbenchmark/workspace/__init__.py b/agbenchmark/workspace/__init__.py
+deleted file mode 100644
+index e69de29..0000000
+diff --git a/agbenchmark/workspace/cloud_services/aws.py b/agbenchmark/workspace/cloud_services/aws.py
+deleted file mode 100644
+index e69de29..0000000
+diff --git a/agbenchmark/workspace/workspace_manager.py b/agbenchmark/workspace/workspace_manager.py
+deleted file mode 100644
+index cfcf3f7..0000000
+--- a/agbenchmark/workspace/workspace_manager.py
++++ /dev/null
+@@ -1 +0,0 @@
+-# Manages the workspaces including creation, deletion, etc
+diff --git a/auto-gpt-benchmarks/Challenge.py b/auto-gpt-benchmarks/Challenge.py
+index ee805dc..c62f191 100644
+--- a/auto-gpt-benchmarks/Challenge.py
++++ b/auto-gpt-benchmarks/Challenge.py
+@@ -1,71 +1,17 @@
+-import requests
+-import pytest
+ import os
+ 
+-import json
+ 
++class Challenge:
++    """The parent class to all specific challenges classes.
++    Defines helper methods for running a challenge"""
+ 
+-@pytest.mark.usefixtures("server_response")
+-class Challenge(object):
+-    def __init__(self, json_data):
+-        self.json_data = json_data
++    def open_file(self, workspace: str, filename: str):
++        with open(os.path.join(workspace, filename), "r") as f:
++            return f.read()
+ 
+-    @classmethod
+-    def from_json_file(cls, json_file):
+-        with open(json_file) as f:
+-            json_data = json.load(f)
+-        return cls(json_data)
+-
+-    # individual tests just pass the parameterization to the server_response fixture
+-    @pytest.mark.parametrize(
+-        "server_response",
+-        [
+-            "create a filed call file_to_check.txt in the workspace and do nothing else"
+-        ],  # VARIABLE
+-        indirect=True,
+-    )
+-    @pytest.mark.basic_abilities  # VARIABLE
+-    def test_file_in_workspace(workspace):  # VARIABLE
+-        pass
+-
+-
+-class RetrievelChallenge(Challenge):
+-    """Chanllenge for information-retrieval"""
+-
+-    def __init__(self, json_data):
+-        self.json_data = json_data
+-        assert self.json_data["category"] == "information-retrieval"
+-
+-
+-class WebChallenge(Challenge):
+-    """Chanllenge for information-retrieval"""
+-
+-    def __init__(self, json_data):
+-        self.json_data = json_data
+-        assert self.json_data["category"] == "information-retrieval"
+-
+-
+-# Playing with abstraction
+-
+-# @pytest.fixture
+-# def server_response(request, config):
+-#     task = request.param  # The task is passed in indirectly
+-#     print(f"Server starting at {request.module}")
+-#     response = requests.post(
+-#         f"{config['url']}:{config['hostname']}", data={"task": task}
+-#     )
+-#     assert (
+-#         response.status_code == 200
+-#     ), f"Request failed with status code {response.status_code}"
+-
+-
+-#
+-# class TestChallenge(object):
+-#     pass
+-
+-
+-# class TestRetrievalChallenge(TestChallenge):
+-
+-#     @pytest.fixture
+-#     def retrieve_info(self):
+-#         pass
++    def get_filenames_in_workspace(self, workspace: str):
++        return [
++            filename
++            for filename in os.listdir(workspace)
++            if os.path.isfile(os.path.join(workspace, filename))
++        ]
+diff --git a/auto-gpt-benchmarks/challenges/retrieval/r1_test.py b/auto-gpt-benchmarks/challenges/retrieval/r1_test.py
+index 156c2ae..c20bb85 100644
+--- a/auto-gpt-benchmarks/challenges/retrieval/r1_test.py
++++ b/auto-gpt-benchmarks/challenges/retrieval/r1_test.py
+@@ -1,8 +1,6 @@
+ from Retrieval import RetrievalChallenge
+ from define_task import Challenge, Ground
+ import pytest
+-import os
+-import json
+ 
+ data = Challenge(
+     category="retrieval",
+@@ -12,6 +10,7 @@ data = Challenge(
+         answer="Washington",
+         should_contain=["Washington"],
+         should_not_contain=["New York", "Los Angeles", "San Francisco"],
++        files=["file_to_check.txt"],
+     ),
+ )
+ 
+@@ -19,15 +18,15 @@ data = Challenge(
+ class TestRetrieval1(RetrievalChallenge):
+     """The first information-retrieval challenge"""
+ 
+-    @pytest.mark.parametrize("challenge_data", ["file1.json"], indirect=True)
+     @pytest.mark.parametrize(
+         "server_response",
+         ["create a filed call file_to_check.txt in the workspace and do nothing else"],
+         indirect=True,
+     )
+     @pytest.mark.retrieval
+-    def test_retrieval(self, workspace, challenge_data):
+-        with open(os.path.join(workspace, challenge_data["ground"]), "r") as f:
+-            json_data = json.load(f)
++    def test_retrieval(self, workspace):
++        file = self.open_file(workspace, data.ground.files[0])
+ 
+-        challenge_data["should_contain"] = challenge_data["answer"]
++        score = self.scoring(file, data.ground)
++
++        assert score
+diff --git a/data/retrieval/r1_test_data_0.json b/data/retrieval/r1_test_data_0.json
+index a64f7e0..fae0a93 100644
+--- a/data/retrieval/r1_test_data_0.json
++++ b/data/retrieval/r1_test_data_0.json
+@@ -1,10 +1,10 @@
+ {
+-    "category": "information-retrieval",
+-    "query": "what is the capital of America",
+-    "ground": {
+-        "answer": "Washington",
+-        "should_contain": ["Washington"],
+-        "should_not_contain": ["New York", "Los Angeles", "San Francisco"]
+-    },
+-    "difficulty_level": "easy"
+-}
+\ No newline at end of file
++  "category": "retrieval",
++  "task": "what is the capital of America",
++  "ground": {
++    "answer": "Washington",
++    "should_contain": ["Washington"],
++    "should_not_contain": ["New York", "Los Angeles", "San Francisco"]
++  },
++  "difficulty": "easy"
++}
+diff --git a/data/retrieval/r1_test_data_1.json b/data/retrieval/r1_test_data_1.json
+index 73dec4c..27ad9c6 100644
+--- a/data/retrieval/r1_test_data_1.json
++++ b/data/retrieval/r1_test_data_1.json
+@@ -1,10 +1,10 @@
+ {
+-    "category": "information-retrieval",
+-    "query": "The Nobel Prize in Literature 2012",
+-    "ground": {
+-        "answer": "Mo Yan",
+-        "should_contain": ["Mo Yan"],
+-        "should_not_contain": ["Murakami Haruki"]
+-    },
+-    "difficulty_level": "easy"
+-}
+\ No newline at end of file
++  "category": "retrieval",
++  "task": "The Nobel Prize in Literature 2012",
++  "ground": {
++    "answer": "Mo Yan",
++    "should_contain": ["Mo Yan"],
++    "should_not_contain": ["Murakami Haruki"]
++  },
++  "difficulty": "easy"
++}
+diff --git a/examples/basic_gpt_agent.py b/examples/basic_gpt_agent.py
+index e2cc380..d1c2b3b 100644
+--- a/examples/basic_gpt_agent.py
++++ b/examples/basic_gpt_agent.py
+@@ -1,26 +1,22 @@
+ import json
+ import openai
+-from agbenchmark.benchmark.challenges.retrieval.r1_test import RetrievelChallenge
+ 
+ 
+-def basic_gpt_agent(challenge_file):
+-    challenge = RetrievelChallenge.from_json_file(challenge_file)
+-
++def basic_gpt_agent(query):
+     response = openai.ChatCompletion.create(
+-        model="gpt-3.5-turbo-0613",
+-        messages=[{"role": "user", "content": challenge.agent_input}])
+-    answer = response["choices"][0]["message"]["content"]
++        model="gpt-3.5-turbo-0613", messages=[{"role": "user", "content": query}]
++    )
++
++    answer = response["choices"][0]["message"]["content"]  # type: ignore
+ 
+-    output_file = "./basic_gpt_agent_retrieval_results.txt"
++    output_file = "./workspace/file_to_check.txt"
+     with open(output_file, "w") as f:
+         f.write(answer)
+ 
+-    print("QUERY       : ", challenge.agent_input)
++    print("QUERY       : ", query)
+     print("AGENT ANSWER: ", answer)
+ 
+-    score = challenge.run(output_file)
+-
+-    print("AGENT SCORE : ", score)
+ 
+ if __name__ == "__main__":
+-    basic_gpt_agent("./data/retrieval/r1_test_data_1.json")
++    # server boilerplate example here
++    basic_gpt_agent("")
+diff --git a/poetry.lock b/poetry.lock
+index 12a0390..540590a 100644
+--- a/poetry.lock
++++ b/poetry.lock
+@@ -1,5 +1,19 @@
+ # This file is automatically @generated by Poetry 1.5.1 and should not be changed by hand.
+ 
++[[package]]
++name = "click"
++version = "8.1.3"
++description = "Composable command line interface toolkit"
++optional = false
++python-versions = ">=3.7"
++files = [
++    {file = "click-8.1.3-py3-none-any.whl", hash = "sha256:bb4d8133cb15a609f44e8213d9b391b0809795062913b383c62be0ee95b1db48"},
++    {file = "click-8.1.3.tar.gz", hash = "sha256:7682dc8afb30297001674575ea00d1814d808d6a36af415a82bd481d37ba7b8e"},
++]
++
++[package.dependencies]
++colorama = {version = "*", markers = "platform_system == \"Windows\""}
++
+ [[package]]
+ name = "colorama"
+ version = "0.4.6"
+@@ -98,4 +112,4 @@ files = [
+ [metadata]
+ lock-version = "2.0"
+ python-versions = "^3.9"
+-content-hash = "c5b989915c413ab901c39dd0c4f3b0fe203558c2879952a2460a52bda4f3e857"
++content-hash = "d24d55966e8f88986a74c992c6ecfc1875d92fb6100fbc605b8c30d330086ddc"
+diff --git a/pyproject.toml b/pyproject.toml
+index 2c099a5..4d26031 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -9,6 +9,7 @@ readme = "README.md"
+ [tool.poetry.dependencies]
+ python = "^3.9"
+ pytest = "^7.3.2"
++click = "^8.1.3"
+ 
+ 
+ [build-system]
+@@ -21,3 +22,6 @@ addopts = "-ra -q"
+ testpaths = [
+     "tests", "benchmark/challenges",
+ ]
++
++[tool.poetry.scripts]
++"start benchmark" = "start_benchmark:start"
+\ No newline at end of file
+diff --git a/tests/__init__.py b/tests/__init__.py
+deleted file mode 100644
+index e69de29..0000000
+diff --git a/tests/test_api.py b/tests/test_api.py
+deleted file mode 100644
+index e69de29..0000000
+diff --git a/tests/test_benchmark.py b/tests/test_benchmark.py
+deleted file mode 100644
+index e69de29..0000000
+diff --git a/tests/test_workspace_manager.py b/tests/test_workspace_manager.py
+deleted file mode 100644
+index e69de29..0000000

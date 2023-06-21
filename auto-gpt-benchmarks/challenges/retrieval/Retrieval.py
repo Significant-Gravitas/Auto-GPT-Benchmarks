@@ -1,0 +1,19 @@
+from Challenge import Challenge
+from define_task import Ground
+
+
+class RetrievalChallenge(Challenge):
+    """Challenge for information-retrieval"""
+
+    def scoring(self, content: str, ground: Ground):
+        if ground.should_contain:
+            for should_contain_word in ground.should_contain:
+                if should_contain_word not in content:
+                    return 0.0
+
+        if ground.should_not_contain:
+            for should_not_contain_word in ground.should_not_contain:
+                if should_not_contain_word in content:
+                    return 0.0
+
+        return 1.0
