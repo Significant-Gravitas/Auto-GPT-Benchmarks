@@ -1,18 +1,9 @@
 import pytest
-from Retrieval import RetrievalChallenge
+from agbenchmark.challenges.retrieval.Retrieval import RetrievalChallenge
 from agbenchmark.challenges.define_task_types import Challenge, Ground
+import os
 
-data = Challenge(
-    category="retrieval",
-    task="What is the capital of America?",
-    ground=Ground(
-        answer="Washington",
-        should_contain=["Washington"],
-        should_not_contain=["New York", "Los Angeles", "San Francisco"],
-        files=["file_to_check.txt"],
-    ),
-    difficulty="easy",
-)
+data = Challenge.deserialize(os.path.join(os.path.dirname(__file__), "r1_data.json"))
 
 
 class TestRetrieval1(RetrievalChallenge):
