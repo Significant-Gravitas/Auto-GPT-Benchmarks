@@ -1,6 +1,6 @@
 import pytest
 from Retrieval import RetrievalChallenge
-from define_task import Challenge, Ground
+from agbenchmark.challenges.define_task_types import Challenge, Ground
 
 data = Challenge(
     category="retrieval",
@@ -20,7 +20,7 @@ class TestRetrieval1(RetrievalChallenge):
 
     @pytest.mark.parametrize(
         "server_response",
-        ["create a filed call file_to_check.txt in the workspace and do nothing else"],
+        [data.task],
         indirect=True,
     )
     @pytest.mark.retrieval
@@ -28,5 +28,7 @@ class TestRetrieval1(RetrievalChallenge):
         file = self.open_file(workspace, data.ground.files[0])
 
         score = self.scoring(file, data.ground)
+
+        print("You score is:", score)
 
         assert score

@@ -1,5 +1,5 @@
 {
   "hostname": "localhost",
   "port": 8080,
-  "workspace": "/workspace"
+  "workspace": "agbenchmark/mocks/workspace"
 }

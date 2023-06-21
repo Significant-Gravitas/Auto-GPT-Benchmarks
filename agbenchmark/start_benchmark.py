@@ -1,13 +1,19 @@
 import click
 import pytest
 import json
+import os
 
 
-@click.command()
+@click.group()
+def cli():
+    pass
+
+
+@cli.command()
 @click.option("--challenge", default=None, help="Specific challenge to run")
 def start(challenge):
     """Start the benchmark tests. If a challenge flag is is provided, run the challenges with that mark."""
-    with open("config.json", "r") as f:
+    with open("agbenchmark/config.json", "r") as f:
         config = json.load(f)
 
     print("Current configuration:")
@@ -26,13 +32,16 @@ def start(challenge):
             "Please enter a new workspace path", default=config["workspace"]
         )
 
-        with open("config.json", "w") as f:
+        with open("agbenchmark/config.json", "w") as f:
             json.dump(config, f)
 
+    print("Starting benchmark tests...", challenge)
     if challenge:
-        pytest.main(["-m", challenge])
+        print(f"Running {challenge} challenges")
+        pytest.main(["agbenchmark", "-m", challenge, "-vs"])
     else:
-        pytest.main()
+        print("Running all challenges")
+        pytest.main(["agbenchmark", "-vs"])
 
 
 if __name__ == "__main__":
