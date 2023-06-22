@@ -11,7 +11,8 @@ def cli():
 
 @cli.command()
 @click.option("--challenge", default=None, help="Specific challenge to run")
-def start(challenge):
+@click.option("--noreg", is_flag=True, help="Skip regression tests")
+def start(challenge, noreg):
     """Start the benchmark tests. If a challenge flag is is provided, run the challenges with that mark."""
     with open("agbenchmark/config.json", "r") as f:
         config = json.load(f)
@@ -36,12 +37,29 @@ def start(challenge):
             json.dump(config, f)
 
     print("Starting benchmark tests...", challenge)
+    pytest_args = ["agbenchmark", "-vs"]
     if challenge:
-        print(f"Running {challenge} challenges")
-        pytest.main(["agbenchmark", "-m", challenge, "-vs"])
+        pytest_args.extend(
+            ["-m", challenge]
+        )  # run challenges that are of a specific marker
+        if noreg:
+            pytest_args.extend(
+                ["-k", "not regression"]
+            )  # run challenges that are of a specific marker but don't include regression challenges
+        print(
+            f"Running {'non-regression' + challenge if noreg else challenge} challenges"
+        )
     else:
-        print("Running all challenges")
-        pytest.main(["agbenchmark", "-vs"])
+        if noreg:
+            print("Running all non-regression challenges")
+            pytest_args.extend(
+                ["-k", "not regression"]
+            )  # run challenges that are not regression challenges
+        else:
+            print("Running all challenges")  # run all challenges
+
+    # Run pytest with the constructed arguments
+    pytest.main(pytest_args)
 
 
 if __name__ == "__main__":

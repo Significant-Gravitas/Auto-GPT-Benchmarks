@@ -3,6 +3,7 @@ import os
 import pytest
 import shutil
 from agbenchmark.mocks.tests.retrieval_manual import mock_retrieval
+from agbenchmark.tests.regression.RegressionManager import RegressionManager
 import requests
 
 
@@ -45,29 +46,31 @@ def server_response(request, config):
 
 regression_txt = "agbenchmark/tests/regression/regression_tests.txt"
 
+regression_manager = RegressionManager(regression_txt)
+
 
 def pytest_runtest_makereport(item, call):
-    if call.when != "call":
-        return
-    # Read the current regression tests
-    with open(regression_txt, "r") as f:
-        regression_tests = f.readlines()
-    if call.excinfo is None:
-        # If the test is not already in the file, write it to the file
-        if f"{item.nodeid}\n" not in regression_tests:
-            with open(regression_txt, "a") as f:
-                f.write(f"{item.nodeid}\n")
-    elif f"{item.nodeid}\n" in regression_tests:
-        regression_tests.remove(f"{item.nodeid}\n")
-        with open(regression_txt, "w") as f:
-            f.writelines(regression_tests)
+    """Called for each test report. Generated for each stage
+    of a test run (setup, call, teardown)."""
+    if call.when == "call":
+        if (
+            call.excinfo is None
+        ):  # if no error in the call stage, add it as a regression test
+            regression_manager.add_test(item.nodeid)
+        else:  # otherwise, :(
+            regression_manager.remove_test(item.nodeid)
 
 
 def pytest_collection_modifyitems(items):
-    with open(regression_txt, "r") as f:
-        regression_tests = f.readlines()
+    """Called once all test items are collected. Used
+    to add regression marker to collected test items."""
     for item in items:
         print("pytest_collection_modifyitems", item.nodeid)
-        if item.nodeid + "\n" in regression_tests:
-            print(regression_txt)
+        if item.nodeid + "\n" in regression_manager.tests:
+            print(regression_manager.tests)
             item.add_marker(pytest.mark.regression)
+
+
+def pytest_sessionfinish():
+    """Called at the end of the session to save regression tests"""
+    regression_manager.save()
