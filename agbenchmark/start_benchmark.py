@@ -74,20 +74,20 @@ def start(category, noreg, mock):
     if category:
         pytest_args.extend(
             ["-m", category]
-        )  # run categorys that are of a specific marker
+        )  # run categories that are of a specific marker
         if noreg:
             pytest_args.extend(
                 ["-k", "not regression"]
-            )  # run categorys that are of a specific marker but don't include regression categorys
-        print(f"Running {'non-regression' + category if noreg else category} categorys")
+            )  # run categories that are of a specific marker but don't include regression categories
+        print(f"Running {'non-regression' + category if noreg else category} categories")
     else:
         if noreg:
-            print("Running all non-regression categorys")
+            print("Running all non-regression categories")
             pytest_args.extend(
                 ["-k", "not regression"]
-            )  # run categorys that are not regression categorys
+            )  # run categories that are not regression categories
         else:
-            print("Running all categorys")  # run all categorys
+            print("Running all categories")  # run all categories
 
     if mock:
         pytest_args.append("--mock")
