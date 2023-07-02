@@ -48,7 +48,7 @@ jobs:
         run: |
           python -m venv venv
           source venv/bin/activate
-          poetry install
+          poetry install --only main
 
       - name: Build project
         run: |
