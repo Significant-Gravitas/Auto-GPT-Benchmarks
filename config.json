@@ -1,5 +1,6 @@
 {
   "workspace": "projects/my-new-project/workspace",
-  "func_path": "benchmarks.py",
+  "entry_path": "benchmarks.py",
+  "home_path": "",
   "cutoff": 60
 }
