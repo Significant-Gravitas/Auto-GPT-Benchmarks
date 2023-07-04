@@ -1,0 +1,21 @@
+{
+  "name": "basic_information_retrieval",
+  "category": ["retrieval"],
+  "task": "Write tesla's revenue in 2022 into a .txt file.",
+  "dependencies": [],
+  "ground": {
+    "answer": "81,462",
+    "should_contain": ["81"],
+    "should_not_contain": [],
+    "files": [".txt"]
+  },
+  "mock": {
+    "mock_func": "basic_retrieval_2_mock",
+    "mock_task": "Write tesla's revenue in 2022 into a .txt file."
+  },
+  "info": {
+    "difficulty": "basic",
+    "description": "Tests ability to retrieve information.",
+    "side_effects": ["tests if there is in fact an LLM attached"]
+  }
+}
