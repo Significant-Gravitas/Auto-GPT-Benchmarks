@@ -1,10 +1,11 @@
 import os
+from pathlib import Path
 from typing import Any, Dict
 
 from agbenchmark.challenges.retrieval.retrieval import RetrievalChallenge
 
 
-class TestRetrieval1(RetrievalChallenge):
+class TestRetrieval(RetrievalChallenge):
     """The first information-retrieval challenge"""
 
     def get_file_path(self) -> str:  # all tests must implement this method
@@ -12,7 +13,9 @@ class TestRetrieval1(RetrievalChallenge):
 
     def test_method(self, config: Dict[str, Any]) -> None:
         self.setup_challenge(config)
-        files_contents = self.open_files(config["workspace"], self.data.ground.files)
+
+        workspace = Path(os.getcwd()) / config["workspace"]
+        files_contents = self.open_files(workspace, self.data.ground.files)
 
         scores = []
         for file_content in files_contents:
