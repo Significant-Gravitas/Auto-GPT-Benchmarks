@@ -61,10 +61,3 @@ jobs:
           agbenchmark start --reg
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-
-      - name: Upload logs as artifact
-        if: always()
-        uses: actions/upload-artifact@v3
-        with:
-          name: mini-agi-logs
-          path: agent/mini-agi/logs
