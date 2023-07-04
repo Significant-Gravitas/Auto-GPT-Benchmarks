@@ -2,7 +2,7 @@
     "TestRetrieval": {
         "difficulty": "basic",
         "dependencies": [],
-        "test": "agbenchmark/challenges/retrieval/r1/r1_test.py"
+        "test": "agbenchmark/challenges/retrieval/r2/r2_test.py"
     },
     "TestWriteFile": {
         "difficulty": "basic",

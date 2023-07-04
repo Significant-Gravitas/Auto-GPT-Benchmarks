@@ -33,3 +33,14 @@ def basic_retrieval_mock(task: str, workspace: str) -> None:
         "file_to_check.txt",
         "25.89",
     )
+
+
+def basic_retrieval_2_mock(task: str, workspace: str) -> None:
+    """
+    This mock writes to a file (creates one if it doesn't exist)
+    """
+    Challenge.write_to_file(
+        workspace,
+        "file_to_check.txt",
+        "81,462",
+    )
