@@ -1,10 +1,14 @@
 {
   "name": "basic_information_retrieval",
 <<<<<<< HEAD
+<<<<<<< HEAD
   "category": ["retrieval"],
 =======
   "category": ["basic"],
 >>>>>>> 554ffe3 (Add retrieval challenge test)
+=======
+  "category": ["retrieval"],
+>>>>>>> 7cb1d2c (Add information retrieval challenge)
   "task": "Write the price of the book in this url 'http://books.toscrape.com/catalogue/meditations_33/index.html' to a .txt file.",
   "dependencies": [],
   "ground": {
