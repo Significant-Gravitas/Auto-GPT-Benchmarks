@@ -8,7 +8,7 @@
 	branch = benchmark-integration
 [submodule "agent/mini-agi"]
 	path = agent/mini-agi
-	url = https://github.com/muellerberndt/mini-agi.git
+	url = https://github.com/SilenNaihin/mini-agi.git
 	branch = benchmark-integration
 [submodule "agent/smol-developer"]
 	path = agent/smol-developer
