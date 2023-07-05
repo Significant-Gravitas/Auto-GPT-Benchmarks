@@ -1,6 +1,9 @@
 import glob
+import inspect
 import os
+import shutil
 from abc import ABC, abstractmethod
+from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 import pytest
@@ -44,6 +47,8 @@ class Challenge(ABC):
 
     def setup_challenge(self, config: Dict[str, Any]) -> None:
         from agbenchmark.agent_interface import run_agent
+
+        self.copy_artifacts_into_workspace(config)
 
         run_agent(self.task, self.mock, config)
 
@@ -124,3 +129,20 @@ class Challenge(ABC):
                     )
 
         return 1.0
+
+    def copy_artifacts_into_workspace(self, config: Dict[str, Any]) -> None:
+        curr_frame = inspect.currentframe()
+        outer_frame = inspect.getouterframes(curr_frame)[2]
+        caller_file_path = outer_frame.filename
+        caller_dir_path = os.path.dirname(os.path.abspath(caller_file_path))
+        source_dir = os.path.join(caller_dir_path, "artifacts")
+        destination_dir = str(Path(os.getcwd()) / config["workspace"])
+
+        # Check if source_dir exists, if not then return immediately.
+        if not os.path.exists(source_dir):
+            return
+
+        for file_name in os.listdir(source_dir):
+            full_file_name = os.path.join(source_dir, file_name)
+            if os.path.isfile(full_file_name):
+                shutil.copy(full_file_name, destination_dir)
