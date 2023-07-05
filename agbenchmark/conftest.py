@@ -2,6 +2,7 @@ import json
 import os
 import shutil
 from typing import Any, Dict, Generator, List
+from pathlib import Path  # noqa
 
 import pytest
 
