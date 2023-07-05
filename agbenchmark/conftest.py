@@ -1,8 +1,8 @@
 import json
 import os
 import shutil
-from typing import Any, Dict, Generator, List
 from pathlib import Path  # noqa
+from typing import Any, Dict, Generator, List
 
 import pytest
 
