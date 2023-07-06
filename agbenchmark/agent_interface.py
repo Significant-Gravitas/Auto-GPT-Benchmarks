@@ -13,9 +13,7 @@ load_dotenv()
 MOCK_FLAG = os.getenv("MOCK_TEST")
 
 
-def run_agent(
-    task: Optional[str], mock_func: Optional[str], config: Dict[str, Any]
-) -> None:
+def run_agent(task: str, mock_func: Optional[str], config: Dict[str, Any]) -> None:
     """Calling to get a response"""
 
     if mock_func == None and MOCK_FLAG == "True":

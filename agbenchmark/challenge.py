@@ -35,8 +35,8 @@ class Challenge(ABC):
         return self.data.mock.mock_func if self.data.mock else None
 
     @property
-    def task(self) -> Optional[str]:
-        return (
+    def task(self) -> str:
+        return str(
             self.data.mock.mock_task if self.data.mock and MOCK_TEST else self.data.task
         )
 
