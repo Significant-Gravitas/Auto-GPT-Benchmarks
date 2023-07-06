@@ -65,14 +65,14 @@ class Challenge(ABC):
 
     @staticmethod
     def open_file(workspace: str, filename: str) -> str:
-        script_dir = os.path.abspath(workspace)
+        script_dir = workspace
         workspace_dir = os.path.join(script_dir, filename)
         with open(workspace_dir, "r") as f:
             return f.read()
 
     @staticmethod
     def open_files(workspace: str, file_patterns: list) -> List[str]:
-        script_dir = os.path.abspath(workspace)
+        script_dir = workspace
         files_contents = []
 
         for file_pattern in file_patterns:
@@ -92,7 +92,7 @@ class Challenge(ABC):
 
     @staticmethod
     def write_to_file(workspace: str, filename: str, content: str) -> None:
-        script_dir = os.path.abspath(workspace)
+        script_dir = workspace
         print("Writing file at", script_dir)
         workspace_dir = os.path.join(script_dir, filename)
 
