@@ -85,8 +85,7 @@ class Challenge(ABC, metaclass=ChallengeMeta):
         with open(workspace_dir, "r") as f:
             return f.read()
 
-    @staticmethod
-    def get_artifacts_out(workspace: str, file_patterns: list) -> List[str]:
+    def get_artifacts_out(self, workspace: str, file_patterns: list) -> List[str]:
         script_dir = workspace
         files_contents = []
 
