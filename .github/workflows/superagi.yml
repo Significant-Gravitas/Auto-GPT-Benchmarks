@@ -57,8 +57,6 @@ jobs:
           cd agent/SuperAgi
           cp config_template.yaml config.yaml
           sed -i 's/OPENAI_API_KEY:.*/OPENAI_API_KEY: "'"${{ secrets.OPENAI_API_KEY }}"'"/' config.yaml
-          python -m venv venv
-          source venv/bin/activate
-          pip install -r requirements.txt
+          docker-compose up --build
           pip install ../../dist/agbenchmark-0.1.0-py3-none-any.whl
           agbenchmark start --reg
