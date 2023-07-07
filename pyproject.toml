@@ -38,6 +38,8 @@ markers = [
     "retrieval",
     "regression",
     "basic",
+    "code",
+    "memory"
 ]
 
 [tool.poetry.scripts]

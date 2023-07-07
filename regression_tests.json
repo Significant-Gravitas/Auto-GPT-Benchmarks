@@ -1,8 +1,28 @@
 {
+    "TestDebugSimpleTypoWithGuidance": {
+        "difficulty": "basic",
+        "dependencies": [],
+        "test": "agbenchmark/challenges/code/d1/debug_simple_typo_with_guidance_test.py"
+    },
     "TestBasicMemory": {
         "difficulty": "basic",
         "dependencies": [],
         "test": "agbenchmark/challenges/memory/m1/m1_test.py"
+    },
+    "TestRememberMultipleIds": {
+        "difficulty": "basic",
+        "dependencies": [],
+        "test": "agbenchmark/challenges/memory/m2/remember_multiple_ids_test.py"
+    },
+    "TestRememberMultipleIdsWithNoise": {
+        "difficulty": "medium",
+        "dependencies": [],
+        "test": "agbenchmark/challenges/memory/m3/remember_multiple_ids_with_noise_test.py"
+    },
+    "TestRememberMultiplePhrasesWithNoise": {
+        "difficulty": "medium",
+        "dependencies": [],
+        "test": "agbenchmark/challenges/memory/m4/remember_multiple_phrases_with_noise_test.py"
     },
     "TestRetrieval": {
         "difficulty": "basic",
@@ -19,6 +39,11 @@
         "dependencies": [],
         "test": "agbenchmark/challenges/retrieval/r2/r2_test.py"
     },
+    "TestRetrieval3": {
+        "difficulty": "basic",
+        "dependencies": [],
+        "test": "agbenchmark/challenges/retrieval/r3/r3_test.py"
+    },
     "TestReadFile": {
         "difficulty": "basic",
         "dependencies": [
@@ -26,9 +51,9 @@
         ],
         "test": "agbenchmark/tests/basic_abilities/read_file/read_file_test.py"
     },
-    "TestRetrieval3": {
+    "TestDebugSimpleTypoWithoutGuidance": {
         "difficulty": "basic",
         "dependencies": [],
-        "test": "agbenchmark/challenges/retrieval/r3/r3_test.py"
+        "test": "agbenchmark/challenges/code/d2/d2_test.py"
     }
 }
