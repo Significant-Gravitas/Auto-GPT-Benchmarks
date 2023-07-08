@@ -1,9 +1,9 @@
 from typing import Any, Dict
 
-from agbenchmark.challenges.interface.interface import InterfaceChallenge
+from agbenchmark.challenge import Challenge
 
 
-class TestWriteFile(InterfaceChallenge):
+class TestWriteFile(Challenge):
     """Testing if LLM can write to a file"""
 
     def test_method(self, config: Dict[str, Any]) -> None:

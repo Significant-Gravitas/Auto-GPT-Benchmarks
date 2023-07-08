@@ -1,9 +1,9 @@
 from typing import Any, Dict
 
-from agbenchmark.challenges.memory.memory import MemoryChallenge
+from agbenchmark.challenge import Challenge
 
 
-class TestRememberMultiplePhrasesWithNoise(MemoryChallenge):
+class TestRememberMultiplePhrasesWithNoise(Challenge):
     """The first memory challenge"""
 
     def test_method(self, config: Dict[str, Any]) -> None:

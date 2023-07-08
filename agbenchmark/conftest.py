@@ -147,7 +147,7 @@ def pytest_generate_tests(metafunc: Any) -> None:
         metafunc.parametrize("challenge_data", [params], indirect=True)
 
 
-# this is adding the dependency marker automatically from the json
+# this is adding the dependency marker and category markers automatically from the json
 def pytest_collection_modifyitems(items):
     data = get_regression_data()
 
@@ -162,5 +162,11 @@ def pytest_collection_modifyitems(items):
         # Filter dependencies if they exist in regression data
         dependencies = [dep for dep in dependencies if not data.get(dep, None)]
 
-        # Add marker dynamically
+        categories = test_class_instance.data.category
+
+        # Add depends marker dynamically
         item.add_marker(pytest.mark.depends(on=dependencies, name=name))
+
+        # Add category marker dynamically
+        for category in categories:
+            item.add_marker(getattr(pytest.mark, category))

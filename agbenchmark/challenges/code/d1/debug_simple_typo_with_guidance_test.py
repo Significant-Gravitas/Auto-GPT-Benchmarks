@@ -1,9 +1,9 @@
 from typing import Any, Dict
 
-from agbenchmark.challenges.code.code import CodeChallenge
+from agbenchmark.challenge import Challenge
 
 
-class TestDebugSimpleTypoWithGuidance(CodeChallenge):
+class TestDebugSimpleTypoWithGuidance(Challenge):
     """The first memory challenge"""
 
     def test_method(self, config: Dict[str, Any]) -> None:

@@ -1,9 +1,9 @@
 from typing import Any, Dict
 
-from agbenchmark.challenges.retrieval.retrieval import RetrievalChallenge
+from agbenchmark.challenge import Challenge
 
 
-class TestRetrieval2(RetrievalChallenge):
+class TestRetrieval2(Challenge):
     """The first information-retrieval challenge"""
 
     def test_method(self, config: Dict[str, Any]) -> None:
