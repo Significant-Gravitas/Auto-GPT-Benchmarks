@@ -25,10 +25,9 @@ Example:
 
 ```python
 {
-  "name": "basic_write_file",
   "category": ["basic"],
   "task": "Print the the capital of America to a .txt file",
-  "dependencies": [],
+  "dependencies": ["TestWriteFile"], # the class name of the test
   "ground": {
     "answer": "Washington",
     "should_contain": ["Washington"],

@@ -6,7 +6,12 @@ from typing import Any, Dict, Generator
 
 import pytest
 
-from agbenchmark.start_benchmark import CONFIG_PATH
+from agbenchmark.start_benchmark import (
+    CONFIG_PATH,
+    get_regression_data,
+    REGRESSION_TESTS_PATH,
+)
+from agbenchmark.RegressionManager import RegressionManager
 
 
 def resolve_workspace(config: Dict[str, Any]) -> str:
@@ -76,12 +81,31 @@ def workspace(config: Dict[str, Any]) -> Generator[str, None, None]:
 
 def pytest_addoption(parser: Any) -> None:
     parser.addoption("--mock", action="store_true", default=False)
+    parser.addoption("--improve", action="store_true", default=False)
+    parser.addoption("--maintain", action="store_true", default=False)
+
+
+@pytest.fixture(autouse=True)
+def check_regression(request):
+    test_name = request.node.parent.name
+    data = get_regression_data()
+
+    # Check if the test name exists in the regression tests
+    if request.config.getoption("--improve") and data.get(test_name, None):
+        pytest.skip("Skipping test because it's a regression test and --improve is set")
+    elif request.config.getoption("--maintain") and not data.get(test_name, None):
+        pytest.skip(
+            "Skipping test because it's not a regression test and --maintain is set"
+        )
 
 
 # this is to get the challenge_data from every test
 @pytest.fixture(autouse=True)
 def challenge_data(request: Any) -> None:
     return request.param
+
+
+regression_manager = RegressionManager(REGRESSION_TESTS_PATH)
 
 
 def pytest_runtest_makereport(item: Any, call: Any) -> None:
@@ -99,6 +123,15 @@ def pytest_runtest_makereport(item: Any, call: Any) -> None:
         }
 
         print("pytest_runtest_makereport", test_details)
+        if call.excinfo is None:
+            regression_manager.add_test(item.nodeid.split("::")[1], test_details)
+        else:
+            regression_manager.remove_test(item.nodeid.split("::")[1])
+
+
+def pytest_sessionfinish() -> None:
+    """Called at the end of the session to save regression tests"""
+    regression_manager.save()
 
 
 # this is so that all tests can inherit from the Challenge class
@@ -112,3 +145,22 @@ def pytest_generate_tests(metafunc: Any) -> None:
 
         # Add the parameters to the test function
         metafunc.parametrize("challenge_data", [params], indirect=True)
+
+
+# this is adding the dependency marker automatically from the json
+def pytest_collection_modifyitems(items):
+    data = get_regression_data()
+
+    for item in items:
+        # Assuming item.cls is your test class
+        test_class_instance = item.cls()
+
+        # Then you can access your properties
+        name = item.parent.cls.__name__
+        dependencies = test_class_instance.data.dependencies
+
+        # Filter dependencies if they exist in regression data
+        dependencies = [dep for dep in dependencies if not data.get(dep, None)]
+
+        # Add marker dynamically
+        item.add_marker(pytest.mark.depends(on=dependencies, name=name))

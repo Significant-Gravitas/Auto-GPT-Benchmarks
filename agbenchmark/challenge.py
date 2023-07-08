@@ -60,10 +60,6 @@ class Challenge(ABC, metaclass=ChallengeMeta):
 
         run_agent(self.task, config, self.__class__.CHALLENGE_LOCATION)
 
-    @property
-    def name(self) -> str:
-        return self.data.name
-
     @pytest.mark.parametrize(
         "challenge_data",
         [data],
@@ -145,3 +141,16 @@ class Challenge(ABC, metaclass=ChallengeMeta):
                     )
 
         return 1.0
+
+    def get_scores(self, config: Dict[str, Any]):
+        files_contents = self.get_artifacts_out(
+            config["workspace"], self.data.ground.files
+        )
+
+        scores = []
+        for file_content in files_contents:
+            score = self.scoring(file_content, self.data.ground)
+            print("Your score is:", score)
+            scores.append(score)
+
+        return scores

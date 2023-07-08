@@ -53,8 +53,7 @@ import os
 class TestWriteFile(BasicChallenge):
     """Testing if LLM can write to a file"""
 
-    @pytest.mark.depends(on=[], name="basic_write_file")
-    def test_method(self, workspace):
+    def test_method(self, config):
         # implement scoring logic by looking at workspace
 ```
 
