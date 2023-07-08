@@ -19,7 +19,6 @@ MOCK_TEST = mock_test_str.lower() == "true" if mock_test_str else False
 
 class ChallengeMeta(ABCMeta):
     def __init__(self, name: str, bases: Tuple[Type, ...], dct: Dict[str, Any]) -> None:
-
         super().__init__(name, bases, dct)
         try:
             frame = cast(types.FrameType, inspect.currentframe())
@@ -40,7 +39,8 @@ class Challenge(ABC, metaclass=ChallengeMeta):
     @property
     def data(self) -> ChallengeData:
         file_path = f"{self.CHALLENGE_LOCATION}/data.json"
-        Challenge._data_cache[file_path] = ChallengeData.deserialize(file_path)
+        if file_path not in Challenge._data_cache:
+            Challenge._data_cache[file_path] = ChallengeData.deserialize(file_path)
         return Challenge._data_cache[file_path]
 
     @property
