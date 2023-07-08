@@ -55,7 +55,7 @@ def start(category: str, maintain: bool, mock: bool) -> int:
         with open(CONFIG_PATH, "r") as f:
             config = json.load(f)
 
-    set_key(".env", "MOCK_TEST", "True" if mock else "False")
+    os.environ["MOCK_TEST"] = "True" if mock else "False"
 
     if not os.path.exists(REGRESSION_TESTS_PATH):
         with open(REGRESSION_TESTS_PATH, "a"):

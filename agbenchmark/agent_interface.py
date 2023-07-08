@@ -11,7 +11,8 @@ from agbenchmark.mocks.mock_manager import MockManager
 
 load_dotenv()
 
-MOCK_FLAG = os.getenv("MOCK_TEST")
+mock_test_str = os.getenv("MOCK_TEST")
+MOCK_FLAG = mock_test_str.lower() == "true" if mock_test_str else False
 
 
 def run_agent(
@@ -22,7 +23,7 @@ def run_agent(
 ) -> None:
     """Calling to get a response"""
 
-    if MOCK_FLAG == "True":
+    if MOCK_FLAG:
         copy_artifacts_into_workspace(
             config["workspace"], "artifacts_out", challenge_location
         )
