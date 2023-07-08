@@ -82,7 +82,7 @@ Add the below to create a file in the workspace prior to running a challenge. On
 
 ## Workspace
 
-If `--mock` flag is used it is at `agbenchmark/mocks/workspace`. Otherwise for mini-agi it is at `C:/Users/<name>/miniagi` - it will be automitcally set on config
+If `--mock` flag is used it is at `agbenchmark/workspace`. Otherwise for mini-agi it is at `C:/Users/<name>/miniagi` - it will be automitcally set on config
 
 #### Dataset
 

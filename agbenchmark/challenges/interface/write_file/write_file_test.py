@@ -2,10 +2,10 @@ from typing import Any, Dict
 
 import pytest
 
-from agbenchmark.tests.basic_abilities.basic_challenge import BasicChallenge
+from agbenchmark.challenges.interface.interface import InterfaceChallenge
 
 
-class TestWriteFile(BasicChallenge):
+class TestWriteFile(InterfaceChallenge):
     """Testing if LLM can write to a file"""
 
     @pytest.mark.depends(name="basic_write_file")

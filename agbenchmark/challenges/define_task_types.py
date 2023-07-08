@@ -4,11 +4,6 @@ from typing import List, Optional
 from pydantic import BaseModel
 
 
-class Mock(BaseModel):
-    mock_func: Optional[str] = None
-    mock_task: Optional[str] = None
-
-
 class Info(BaseModel):
     difficulty: str
     description: str
@@ -29,7 +24,6 @@ class ChallengeData(BaseModel):
     task: str
     dependencies: List[str]
     ground: Ground
-    mock: Optional[Mock] = None
     info: Info
 
     def serialize(self, path: str) -> None:

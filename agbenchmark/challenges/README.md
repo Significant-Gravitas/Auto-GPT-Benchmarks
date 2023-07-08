@@ -36,10 +36,6 @@ Example:
     "files": [".txt"],
     "type": "file"
   },
-  "mock": {
-    "mock_func": "basic_write_file_mock",
-    "mock_task": "What is the capital of America?"
-  },
   "info": {
     "difficulty": "basic",
     "description": "Tests the writing to file",

@@ -2,12 +2,11 @@ import json
 import os
 import shutil
 from pathlib import Path  # noqa
-from typing import Any, Dict, Generator, List
+from typing import Any, Dict, Generator
 
 import pytest
 
-from agbenchmark.start_benchmark import CONFIG_PATH, REGRESSION_TESTS_PATH
-from agbenchmark.tests.regression.RegressionManager import RegressionManager
+from agbenchmark.start_benchmark import CONFIG_PATH
 
 
 def resolve_workspace(config: Dict[str, Any]) -> str:
@@ -37,7 +36,7 @@ def config(request: Any) -> None:
         config = json.load(f)
 
     if request.config.getoption("--mock"):
-        config["workspace"] = "agbenchmark/mocks/workspace"
+        config["workspace"] = "agbenchmark/workspace"
     elif isinstance(config["workspace"], str):
         config["workspace"] = resolve_workspace(config)
     else:  # it's a input output dict
@@ -79,9 +78,6 @@ def pytest_addoption(parser: Any) -> None:
     parser.addoption("--mock", action="store_true", default=False)
 
 
-regression_manager = RegressionManager(REGRESSION_TESTS_PATH)
-
-
 # this is to get the challenge_data from every test
 @pytest.fixture(autouse=True)
 def challenge_data(request: Any) -> None:
@@ -103,25 +99,6 @@ def pytest_runtest_makereport(item: Any, call: Any) -> None:
         }
 
         print("pytest_runtest_makereport", test_details)
-        if call.excinfo is None:
-            regression_manager.add_test(item.nodeid.split("::")[1], test_details)
-        else:
-            regression_manager.remove_test(item.nodeid.split("::")[1])
-
-
-def pytest_collection_modifyitems(items: List[Any]) -> None:
-    """Called once all test items are collected. Used
-    to add regression and depends markers to collected test items."""
-    for item in items:
-        # regression add
-        if item.nodeid.split("::")[1] in regression_manager.tests:
-            print(regression_manager.tests)
-            item.add_marker(pytest.mark.regression)
-
-
-def pytest_sessionfinish() -> None:
-    """Called at the end of the session to save regression tests"""
-    regression_manager.save()
 
 
 # this is so that all tests can inherit from the Challenge class

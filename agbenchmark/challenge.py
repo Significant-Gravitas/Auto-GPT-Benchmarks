@@ -44,14 +44,8 @@ class Challenge(ABC, metaclass=ChallengeMeta):
         return Challenge._data_cache[file_path]
 
     @property
-    def mock(self) -> Optional[str]:
-        return self.data.mock.mock_func if self.data.mock else None
-
-    @property
     def task(self) -> str:
-        return str(
-            self.data.mock.mock_task if self.data.mock and MOCK_TEST else self.data.task
-        )
+        return self.data.task
 
     @property
     def dependencies(self) -> list:
@@ -64,7 +58,7 @@ class Challenge(ABC, metaclass=ChallengeMeta):
             config["workspace"], "artifacts_in", self.__class__.CHALLENGE_LOCATION
         )
 
-        run_agent(self.task, self.mock, config, self.__class__.CHALLENGE_LOCATION)
+        run_agent(self.task, config, self.__class__.CHALLENGE_LOCATION)
 
     @property
     def name(self) -> str:

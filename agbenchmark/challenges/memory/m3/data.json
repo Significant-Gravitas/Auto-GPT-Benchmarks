@@ -10,10 +10,6 @@
     "files": [".txt"],
     "type": "file"
   },
-  "mock": {
-    "mock_func": "remember_multiple_ids_mock",
-    "mock_task": "Follow the instructions in the instructions_1.txt file"
-  },
   "info": {
     "difficulty": "medium",
     "description": "Tests ability for the agent to remember information between each action. Multiple ids are presented in different files and the last file instructs the agent to write these ids into another file. Some noise is also added to the files to test the agent's ability to filter out noise.",

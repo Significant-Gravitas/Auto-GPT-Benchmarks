@@ -3,6 +3,6 @@ import pytest
 from agbenchmark.challenge import Challenge
 
 
-@pytest.mark.basic
-class BasicChallenge(Challenge):
+@pytest.mark.interface
+class InterfaceChallenge(Challenge):
     pass

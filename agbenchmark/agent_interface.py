@@ -3,11 +3,9 @@ import shutil
 import subprocess
 import sys
 import time
-from typing import Any, Dict, Optional
+from typing import Any, Dict
 
 from dotenv import load_dotenv
-
-from agbenchmark.mocks.mock_manager import MockManager
 
 load_dotenv()
 
@@ -17,7 +15,6 @@ MOCK_FLAG = mock_test_str.lower() == "true" if mock_test_str else False
 
 def run_agent(
     task: str,
-    mock_func: Optional[str],
     config: Dict[str, Any],
     challenge_location: str,
 ) -> None:
@@ -27,14 +24,6 @@ def run_agent(
         copy_artifacts_into_workspace(
             config["workspace"], "artifacts_out", challenge_location
         )
-        if mock_func is None:
-            print("No mock provided")
-            return
-        mock_manager = MockManager(
-            task, config
-        )  # workspace doesn't need to be passed in, stays the same
-        print("Server unavailable, using mock", mock_func)
-        mock_manager.delegate(mock_func)
     else:
         timeout = config["cutoff"]
         print(
@@ -100,6 +89,3 @@ def copy_artifacts_into_workspace(
         full_file_name = os.path.join(source_dir, file_name)
         if os.path.isfile(full_file_name):
             shutil.copy(full_file_name, workspace)
-
-
-ENVIRONMENT = os.getenv("ENVIRONMENT") or "production"

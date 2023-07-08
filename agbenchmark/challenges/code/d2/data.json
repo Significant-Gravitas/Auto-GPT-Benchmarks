@@ -10,10 +10,6 @@
     "files": ["test.py"],
     "type": "execute_python_code"
   },
-  "mock": {
-    "mock_func": null,
-    "mock_task": null
-  },
   "info": {
     "difficulty": "basic",
     "description": "Tests ability for the agent to debug python code with a simple typo in it, using a very broad prompt without guidance",
