@@ -58,7 +58,5 @@ jobs:
           cp config_template.yaml config.yaml
           sed -i 's/OPENAI_API_KEY:.*/OPENAI_API_KEY: "'"${{ secrets.OPENAI_API_KEY }}"'"/' config.yaml
           docker-compose up -d --build
-          echo 'Waiting for services to be ready...'
-          ./health-check.sh
           pip install ../../dist/agbenchmark-0.1.0-py3-none-any.whl
           agbenchmark start --reg
