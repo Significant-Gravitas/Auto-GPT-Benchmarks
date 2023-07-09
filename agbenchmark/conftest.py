@@ -1,9 +1,6 @@
 import json
 import os
 import shutil
-import importlib
-import types
-import glob
 from pathlib import Path  # noqa
 from typing import Any, Dict, Generator
 
@@ -15,7 +12,6 @@ from agbenchmark.start_benchmark import (
     REGRESSION_TESTS_PATH,
 )
 from agbenchmark.RegressionManager import RegressionManager
-from agbenchmark.challenge import Challenge
 
 
 def resolve_workspace(config: Dict[str, Any]) -> str:
@@ -138,55 +134,21 @@ def pytest_sessionfinish() -> None:
     regression_manager.save()
 
 
-# Get a list of all .json files
-json_files = glob.glob("agbenchmark/challenges/**/data.json", recursive=True)
+# this is so that all tests can inherit from the Challenge class
+def pytest_generate_tests(metafunc: Any) -> None:
+    if "challenge_data" in metafunc.fixturenames:
+        # Get the instance of the test class
+        test_class = metafunc.cls()
 
+        # Generate the parameters
+        params = test_class.data
 
-def pytest_generate_tests(metafunc):
-    print("generating")
-    if "config" in metafunc.fixturenames:
-        print("config exists")
-        # Dynamic class creation
-        for json_file in json_files:
-            with open(json_file, "r") as f:
-                data = json.load(f)
-
-                name = data.get("name", "")
-
-                class_name = "Test" + name
-
-            print("class_name", class_name)
-
-            challenge_location = os.path.dirname(os.path.abspath(json_file))
-
-            print("challenge_location", challenge_location)
-
-            # Define test class dynamically
-            challenge_class = types.new_class(class_name, (Challenge,))
-
-            print("challenge_class", challenge_class)
-            challenge_class.CHALLENGE_LOCATION = challenge_location
-
-            print(
-                "challenge_class.CHALLENGE_LOCATION", challenge_class.CHALLENGE_LOCATION
-            )
-
-            # Define test method within the dynamically created class
-            def test_method(self, config: Dict[str, Any]) -> None:
-                self.setup_challenge(config)
-
-                scores = self.get_scores(config)
-                assert 1 in scores
-
-            setattr(challenge_class, "test_method", test_method)
-
-            # Attach the new class to a module so it can be discovered by pytest
-            module = importlib.import_module(__name__)
-            setattr(module, class_name, challenge_class)
+        # Add the parameters to the test function
+        metafunc.parametrize("challenge_data", [params], indirect=True)
 
 
 # this is adding the dependency marker and category markers automatically from the json
-def pytest_collection_modifyitems(items):
+def pytest_collection_modifyitems(items, config):
     data = get_regression_data()
 
     for item in items:
@@ -197,8 +159,9 @@ def pytest_collection_modifyitems(items):
         name = item.parent.cls.__name__
         dependencies = test_class_instance.data.dependencies
 
-        # Filter dependencies if they exist in regression data
-        dependencies = [dep for dep in dependencies if not data.get(dep, None)]
+        # Filter dependencies if they exist in regression data if its an improvement test
+        if config.getoption("--improve"):
+            dependencies = [dep for dep in dependencies if not data.get(dep, None)]
 
         categories = test_class_instance.data.category
 
