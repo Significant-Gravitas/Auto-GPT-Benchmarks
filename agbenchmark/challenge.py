@@ -2,6 +2,9 @@ import glob
 import os
 import subprocess
 from typing import Any, Dict, List
+from abc import ABC
+
+import pytest
 
 from dotenv import load_dotenv
 
@@ -13,7 +16,7 @@ mock_test_str = os.getenv("MOCK_TEST")
 MOCK_TEST = mock_test_str.lower() == "true" if mock_test_str else False
 
 
-class Challenge:
+class Challenge(ABC):
     """The parent class to all specific challenges classes.
     Defines helper methods for running a challenge"""
 

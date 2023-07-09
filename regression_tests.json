@@ -1,9 +1,4 @@
 {
-    "TestWriteFile": {
-        "difficulty": "basic",
-        "dependencies": [],
-        "test": "agbenchmark/challenges/interface/write_file/write_file_test.py"
-    },
     "TestBasicMemory": {
         "difficulty": "basic",
         "dependencies": [],
@@ -54,6 +49,6 @@
         "dependencies": [
             "TestWriteFile"
         ],
-        "test": "agbenchmark/challenges/interface/read_file/read_file_test.py"
+        "test": "agbenchmark/challenges/run_all_test.py"
     }
 }
