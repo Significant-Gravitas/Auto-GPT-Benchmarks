@@ -43,5 +43,17 @@
             "TestRetrieval2"
         ],
         "test": "agbenchmark/challenges/retrieval/r3/r3_test.py"
+    },
+    "TestWriteFile": {
+        "difficulty": "basic",
+        "dependencies": [],
+        "test": "agbenchmark/challenges/interface/write_file/write_file_test.py"
+    },
+    "TestReadFile": {
+        "difficulty": "basic",
+        "dependencies": [
+            "TestWriteFile"
+        ],
+        "test": "agbenchmark/challenges/interface/read_file/read_file_test.py"
     }
 }

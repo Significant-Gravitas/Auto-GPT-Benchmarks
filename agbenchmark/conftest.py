@@ -6,12 +6,12 @@ from typing import Any, Dict, Generator
 
 import pytest
 
+from agbenchmark.RegressionManager import RegressionManager
 from agbenchmark.start_benchmark import (
     CONFIG_PATH,
-    get_regression_data,
     REGRESSION_TESTS_PATH,
+    get_regression_data,
 )
-from agbenchmark.RegressionManager import RegressionManager
 
 
 def resolve_workspace(config: Dict[str, Any]) -> str:
@@ -86,7 +86,7 @@ def pytest_addoption(parser: Any) -> None:
 
 
 @pytest.fixture(autouse=True)
-def check_regression(request):
+def check_regression(request: Any) -> None:
     test_name = request.node.parent.name
     data = get_regression_data()
 
@@ -148,7 +148,7 @@ def pytest_generate_tests(metafunc: Any) -> None:
 
 
 # this is adding the dependency marker and category markers automatically from the json
-def pytest_collection_modifyitems(items, config):
+def pytest_collection_modifyitems(items: Any, config: Any) -> None:
     data = get_regression_data()
 
     for item in items:

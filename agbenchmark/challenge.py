@@ -4,9 +4,8 @@ import os
 import subprocess
 import types
 from abc import ABC, ABCMeta
-from typing import Any, Dict, List, Optional, Tuple, Type, cast
+from typing import Any, Dict, List, Tuple, Type, cast
 
-import pytest
 from dotenv import load_dotenv
 
 from agbenchmark.challenges.define_task_types import ChallengeData, Ground
@@ -137,7 +136,7 @@ class Challenge(ABC, metaclass=ChallengeMeta):
 
         return 1.0
 
-    def get_scores(self, config: Dict[str, Any]):
+    def get_scores(self, config: Dict[str, Any]) -> List[float]:
         files_contents = self.get_artifacts_out(
             config["workspace"], self.data.ground.files
         )
