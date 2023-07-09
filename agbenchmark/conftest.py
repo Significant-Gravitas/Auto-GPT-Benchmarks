@@ -1,9 +1,6 @@
 import json
 import os
 import shutil
-import importlib
-import types
-import glob
 from pathlib import Path  # noqa
 from typing import Any, Dict, Generator
 
@@ -15,7 +12,6 @@ from agbenchmark.start_benchmark import (
     REGRESSION_TESTS_PATH,
 )
 from agbenchmark.RegressionManager import RegressionManager
-from agbenchmark.challenge import Challenge
 
 
 def resolve_workspace(config: Dict[str, Any]) -> str:
@@ -94,13 +90,16 @@ def check_regression(request):
     test_name = request.node.parent.name
     data = get_regression_data()
 
+    # Get the true location of the test
+    challenge_location = getattr(request.node.parent.cls, "CHALLENGE_LOCATION", "")
+
+    skip_string = f"Skipping {test_name} at {challenge_location}"
+
     # Check if the test name exists in the regression tests
     if request.config.getoption("--improve") and data.get(test_name, None):
-        pytest.skip("Skipping test because it's a regression test and --improve is set")
+        pytest.skip(f"{skip_string} because it's a regression test")
     elif request.config.getoption("--maintain") and not data.get(test_name, None):
-        pytest.skip(
-            "Skipping test because it's not a regression test and --maintain is set"
-        )
+        pytest.skip(f"{skip_string} because it's not a regression test")
 
 
 # this is to get the challenge_data from every test
@@ -121,13 +120,13 @@ def pytest_runtest_makereport(item: Any, call: Any) -> None:
         dependencies = dependencies = (
             challenge_data["dependencies"] if challenge_data else []
         )
-        parts = item.nodeid.split("::")[0].split("/")
-        agbenchmark_index = parts.index("agbenchmark")
-        file_path = "/".join(parts[agbenchmark_index:])
+        # Extract the challenge_location from the class
+        challenge_location: str = getattr(item.cls, "CHALLENGE_LOCATION", "")
+
         test_details = {
             "difficulty": difficulty,
             "dependencies": dependencies,
-            "test": file_path,
+            "test": challenge_location,
         }
 
         print("pytest_runtest_makereport", test_details)
@@ -142,94 +141,27 @@ def pytest_sessionfinish() -> None:
     regression_manager.save()
 
 
-# Get a list of all .json files
-json_files = glob.glob("agbenchmark/challenges/**/data.json", recursive=True)
-
-
-def generate_tests():
-    print("generating")
-    print("config exists")
-    # Dynamic class creation
-    for json_file in json_files:
-        with open(json_file, "r") as f:
-            data = json.load(f)
-
-            name = data.get("name", "")
-
-            class_name = "Test" + name
-
-        print("class_name", class_name)
-
-        challenge_location = os.path.dirname(os.path.abspath(json_file))
-
-        print("challenge_location", challenge_location)
-
-        # Define test class dynamically
-        challenge_class = types.new_class(class_name, (Challenge,))
-
-        print("challenge_class", challenge_class)
-        challenge_class.CHALLENGE_LOCATION = challenge_location
-
-        print("challenge_class.CHALLENGE_LOCATION", challenge_class.CHALLENGE_LOCATION)
-
-        # Define test method within the dynamically created class
-        def test_method(self, config: Dict[str, Any]) -> None:
-            self.setup_challenge(config)
-
-            scores = self.get_scores(config)
-            assert 1 in scores
-
-        setattr(challenge_class, "test_method", test_method)
-
-        regression_data = get_regression_data()
-
-        # Here we add the dependencies and category markers dynamically
-        dependencies = data.get("dependencies", [])
-        # Filter dependencies if they exist in regression data
-        dependencies = [
-            dep for dep in dependencies if not regression_data.get(dep, None)
-        ]
-
-        challenge_class.test_method = pytest.mark.depends(on=dependencies, name=name)(
-            challenge_class.test_method
-        )
-
-        categories = data.get("category", [])
-        for category in categories:
-            challenge_class.test_method = getattr(pytest.mark, category)(
-                challenge_class.test_method
-            )
-
-        print("challenge_class.test_method", challenge_class.test_method)
-
-        # Attach the new class to a module so it can be discovered by pytest
-        module = importlib.import_module(__name__)
-        print("module", module)
-        setattr(module, class_name, challenge_class)
-
-
-generate_tests()
-
 # this is adding the dependency marker and category markers automatically from the json
-# def pytest_collection_modifyitems(items):
-#     data = get_regression_data()
+def pytest_collection_modifyitems(items: Any, config: Any) -> None:
+    data = get_regression_data()
 
-#     for item in items:
-#         # Assuming item.cls is your test class
-#         test_class_instance = item.cls()
+    for item in items:
+        # Assuming item.cls is your test class
+        test_class_instance = item.cls()
 
-#         # Then you can access your properties
-#         name = item.parent.cls.__name__
-#         dependencies = test_class_instance.data.dependencies
+        # Then you can access your properties
+        name = item.parent.cls.__name__
+        dependencies = test_class_instance.data.dependencies
 
-#         # Filter dependencies if they exist in regression data
-#         dependencies = [dep for dep in dependencies if not data.get(dep, None)]
+        # Filter dependencies if they exist in regression data if its an improvement test
+        if config.getoption("--improve"):
+            dependencies = [dep for dep in dependencies if not data.get(dep, None)]
 
-#         categories = test_class_instance.data.category
+        categories = test_class_instance.data.category
 
-#         # Add depends marker dynamically
-#         item.add_marker(pytest.mark.depends(on=dependencies, name=name))
+        # Add depends marker dynamically
+        item.add_marker(pytest.mark.depends(on=dependencies, name=name))
 
-#         # Add category marker dynamically
-#         for category in categories:
-#             item.add_marker(getattr(pytest.mark, category))
+        # Add category marker dynamically
+        for category in categories:
+            item.add_marker(getattr(pytest.mark, category))
