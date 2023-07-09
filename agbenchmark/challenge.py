@@ -1,12 +1,8 @@
 import glob
-import inspect
 import os
 import subprocess
-import types
-from abc import ABC, ABCMeta
-from typing import Any, Dict, List, Optional, Tuple, Type, cast
+from typing import Any, Dict, List
 
-import pytest
 from dotenv import load_dotenv
 
 from agbenchmark.challenges.define_task_types import ChallengeData, Ground
@@ -17,24 +13,12 @@ mock_test_str = os.getenv("MOCK_TEST")
 MOCK_TEST = mock_test_str.lower() == "true" if mock_test_str else False
 
 
-class ChallengeMeta(ABCMeta):
-    def __init__(self, name: str, bases: Tuple[Type, ...], dct: Dict[str, Any]) -> None:
-        super().__init__(name, bases, dct)
-        try:
-            frame = cast(types.FrameType, inspect.currentframe())
-            assert frame.f_back is not None
-            self.CHALLENGE_LOCATION = os.path.dirname(inspect.getfile(frame.f_back))
-        except Exception as e:
-            print(f"Unable to get the file from 8 frames back due to: {str(e)}")
-            raise e
-
-
-class Challenge(ABC, metaclass=ChallengeMeta):
+class Challenge:
     """The parent class to all specific challenges classes.
     Defines helper methods for running a challenge"""
 
     _data_cache: Dict[str, ChallengeData] = {}
-    CHALLENGE_LOCATION: str
+    CHALLENGE_LOCATION: str = ""
 
     @property
     def data(self) -> ChallengeData:
@@ -55,16 +39,11 @@ class Challenge(ABC, metaclass=ChallengeMeta):
         from agbenchmark.agent_interface import copy_artifacts_into_workspace, run_agent
 
         copy_artifacts_into_workspace(
-            config["workspace"], "artifacts_in", self.__class__.CHALLENGE_LOCATION
+            config["workspace"], "artifacts_in", self.CHALLENGE_LOCATION
         )
 
-        run_agent(self.task, config, self.__class__.CHALLENGE_LOCATION)
+        run_agent(self.task, config, self.CHALLENGE_LOCATION)
 
-    @pytest.mark.parametrize(
-        "challenge_data",
-        [data],
-        indirect=True,
-    )
     def test_method(self, config: Dict[str, Any]) -> None:
         raise NotImplementedError
 

@@ -1,4 +1,5 @@
 {
+  "name": "ReadFile",
   "category": ["interface"],
   "task": "Write the string 'random string' before any existing text to the file called file_to_check.txt",
   "dependencies": ["TestWriteFile"],
