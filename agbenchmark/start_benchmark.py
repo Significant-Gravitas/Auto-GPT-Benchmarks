@@ -6,16 +6,21 @@ from typing import Any
 
 import click
 import pytest
+import glob
 from dotenv import load_dotenv
 
 load_dotenv()
 
+from agbenchmark.utils import calculate_info_test_path
+
 CURRENT_DIRECTORY = Path(__file__).resolve().parent
 
+benchmarks_folder_path = Path(os.getcwd()) / "benchmarks"
 
-CONFIG_PATH = str(Path(os.getcwd()) / "config.json")
+CONFIG_PATH = str(benchmarks_folder_path / "config.json")
+REGRESSION_TESTS_PATH = str(benchmarks_folder_path / "regression_tests.json")
 
-REGRESSION_TESTS_PATH = str(Path(os.getcwd()) / "regression_tests.json")
+INFO_TESTS_PATH = calculate_info_test_path(benchmarks_folder_path)
 
 
 @click.group()
@@ -37,6 +42,9 @@ def start(category: str, maintain: bool, improve: bool, mock: bool) -> int:
         )
         return 1
 
+    if not benchmarks_folder_path.exists():
+        benchmarks_folder_path.mkdir(exist_ok=True)
+
     if not os.path.exists(CONFIG_PATH) or os.stat(CONFIG_PATH).st_size == 0:
         config = {}
 
@@ -47,7 +55,7 @@ def start(category: str, maintain: bool, improve: bool, mock: bool) -> int:
 
         config["entry_path"] = click.prompt(
             "Please enter a the path to your run_specific_agent function implementation",
-            default="/benchmarks.py",
+            default="/benchmarks/benchmarks.py",
         )
 
         config["cutoff"] = click.prompt(
@@ -65,7 +73,11 @@ def start(category: str, maintain: bool, improve: bool, mock: bool) -> int:
     os.environ["MOCK_TEST"] = "True" if mock else "False"
 
     if not os.path.exists(REGRESSION_TESTS_PATH):
-        with open(REGRESSION_TESTS_PATH, "a"):
+        with open(REGRESSION_TESTS_PATH, "w"):
+            pass
+
+    if not os.path.exists(INFO_TESTS_PATH):
+        with open(INFO_TESTS_PATH, "w"):
             pass
 
     print("Current configuration:")

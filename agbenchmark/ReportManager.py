@@ -1,11 +1,16 @@
 import json
+import time
+from datetime import datetime
+from typing import Any, Dict
+import os
 
 
-class RegressionManager:
+class ReportManager:
     """Abstracts interaction with the regression tests file"""
 
     def __init__(self, filename: str):
         self.filename = filename
+        self.start_time = time.time()
         self.load()
 
     def load(self) -> None:
@@ -36,3 +41,13 @@ class RegressionManager:
         if test_name in self.tests:
             del self.tests[test_name]
             self.save()
+
+    def end_info_report(self, config: Dict[str, Any]) -> None:
+        self.tests = {
+            "tests": self.tests,
+            "current_time": datetime.now().isoformat(),
+            "time_elapsed": time.time() - self.start_time,
+            "config": config,
+        }
+
+        self.save()

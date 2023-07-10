@@ -1,0 +1,31 @@
+{
+    "tests": {
+        "TestDebugSimpleTypoWithGuidance": {
+            "difficulty": "basic",
+            "dependencies": [
+                "TestReadFile",
+                "TestWriteFile"
+            ],
+            "test": "agbenchmark\\challenges\\code\\d1",
+            "success": false,
+            "fail_reason": "assert 1 in [0.0]"
+        },
+        "TestDebugSimpleTypoWithoutGuidance": {
+            "difficulty": "medium",
+            "dependencies": [
+                "TestDebugSimpleTypoWithGuidance"
+            ],
+            "test": "agbenchmark\\challenges\\code\\d2",
+            "success": false,
+            "fail_reason": "agbenchmark/challenges/test_all.py::TestDebugSimpleTypoWithoutGuidance::test_method[challenge_data0] depends on agbenchmark/challenges/test_all.py::TestDebugSimpleTypoWithGuidance::test_method[challenge_data0]"
+        }
+    },
+    "current_time": "2023-07-10T10:38:14.786789",
+    "time_elapsed": 1.1050453186035156,
+    "config": {
+        "workspace": "${os.path.join(Path.home(), 'miniagi')}",
+        "entry_path": "benchmarks.py",
+        "home_path": "agent/mini-agi",
+        "cutoff": 60
+    }
+}
