@@ -1,10 +1,8 @@
 import glob
 import os
 import subprocess
-from typing import Any, Dict, List
 from abc import ABC
-
-import pytest
+from typing import Any, Dict, List
 
 from dotenv import load_dotenv
 
@@ -124,7 +122,7 @@ class Challenge(ABC):
 
         return 1.0
 
-    def get_scores(self, config: Dict[str, Any]):
+    def get_scores(self, config: Dict[str, Any]) -> List[float]:
         files_contents = self.get_artifacts_out(
             config["workspace"], self.data.ground.files
         )

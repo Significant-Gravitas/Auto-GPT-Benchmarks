@@ -2,11 +2,11 @@ import json
 import os
 import sys
 from pathlib import Path
-from typing import List, Any
+from typing import Any
 
 import click
 import pytest
-from dotenv import load_dotenv, set_key
+from dotenv import load_dotenv
 
 load_dotenv()
 
@@ -72,7 +72,6 @@ def start(category: str, maintain: bool, improve: bool, mock: bool) -> int:
     for key, value in config.items():
         print(f"{key}: {value}")
 
-    tests_to_run = []
     pytest_args = ["-vs"]
     if category:
         pytest_args.extend(["-m", category])
@@ -90,6 +89,9 @@ def start(category: str, maintain: bool, improve: bool, mock: bool) -> int:
     if mock:
         pytest_args.append("--mock")
 
+    # when used as a library, the pytest directory to execute is in the CURRENT_DIRECTORY
+    pytest_args.append(str(CURRENT_DIRECTORY))
+
     return sys.exit(pytest.main(pytest_args))
 
 
@@ -102,17 +104,3 @@ def get_regression_data() -> Any:
 
 if __name__ == "__main__":
     start()
-
-# --improve
-# can get skipped for being outside of category
-# or for being a regression test
-
-# if dependency skipped and it's in regression_tests.json continue.
-#   this should be regardless of category
-#   continue
-
-# "TestReadFile": {
-#     "difficulty": "basic",
-#     "dependencies": [],
-#     "test": "agbenchmark/challenges/interface/read_file/read_file_test.py"
-#   },

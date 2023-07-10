@@ -6,12 +6,12 @@ from typing import Any, Dict, Generator
 
 import pytest
 
+from agbenchmark.RegressionManager import RegressionManager
 from agbenchmark.start_benchmark import (
     CONFIG_PATH,
-    get_regression_data,
     REGRESSION_TESTS_PATH,
+    get_regression_data,
 )
-from agbenchmark.RegressionManager import RegressionManager
 
 
 def resolve_workspace(config: Dict[str, Any]) -> str:
@@ -40,9 +40,7 @@ def config(request: Any) -> None:
     with open(CONFIG_PATH, "r") as f:
         config = json.load(f)
 
-    if request.config.getoption("--mock"):
-        config["workspace"] = "agbenchmark/workspace"
-    elif isinstance(config["workspace"], str):
+    if isinstance(config["workspace"], str):
         config["workspace"] = resolve_workspace(config)
     else:  # it's a input output dict
         config["workspace"]["input"] = resolve_workspace(config)
@@ -86,7 +84,7 @@ def pytest_addoption(parser: Any) -> None:
 
 
 @pytest.fixture(autouse=True)
-def check_regression(request):
+def check_regression(request: Any) -> None:
     test_name = request.node.parent.name
     data = get_regression_data()
 
