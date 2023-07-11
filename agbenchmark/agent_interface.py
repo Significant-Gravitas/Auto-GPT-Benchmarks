@@ -29,9 +29,7 @@ def run_agent(
         )
     else:
         timeout = config["cutoff"]
-        print(
-            f"Running Python function '{config['entry_path']}' with timeout {timeout}"
-        )
+        print(f"Running Python function '{config['entry_path']}' with timeout {timeout}")
         command = [sys.executable, "-m", config["entry_path"], str(task)]
         process = subprocess.Popen(
             command,
@@ -42,27 +40,30 @@ def run_agent(
         )
 
         start_time = time.time()
-        timeout = config["cutoff"]
 
         while True:
             if process.stdout is None:
                 continue
 
-            while output := process.stdout.readline():
+            while True:
+                output = process.stdout.readline()
+
+                # Check if process has ended or there's no more output
+                if process.poll() is not None or output == '':
+                    print("The Python function has finished running.")
+                    break
+
                 print(output.strip())
 
-            # Check if process has ended
-            if process.poll() is not None:
-                print("The Python function has finished running.")
-                break
+                # Check if process has exceeded timeout
+                if time.time() - start_time > timeout:
+                    print("The Python function has exceeded the time limit and was terminated.")
+                    # Kill the process
+                    process.kill()
+                    break
 
-            # Check if process has exceeded timeout
-            if time.time() - start_time > timeout:
-                print(
-                    "The Python function has exceeded the time limit and was terminated."
-                )
-                # Terminate the process group
-                process.terminate()
+            # If the process has ended or has been killed, break the outer loop
+            if process.poll() is not None:
                 break
 
             # Optional: sleep for a while
@@ -70,6 +71,18 @@ def run_agent(
 
         # Wait for process to terminate, then get return code
         process.wait()
+
+        if process.returncode != 0:
+            print(f"The function ended with return code {process.returncode}.")
+            exit(1)
+
+
+        # Wait for process to terminate, then get return code
+        process.wait()
+
+        if process.returncode != 0:
+            print(f"The function ended with return code {process.returncode}.")
+            exit(1)
 
 
 def copy_artifacts_into_workspace(
