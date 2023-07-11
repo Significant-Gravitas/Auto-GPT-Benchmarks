@@ -7,6 +7,8 @@ from typing import Any, Dict
 
 from dotenv import load_dotenv
 
+from agbenchmark.start_benchmark import CURRENT_DIRECTORY
+
 load_dotenv()
 
 mock_test_str = os.getenv("MOCK_TEST")
@@ -79,7 +81,9 @@ def run_agent(
 def copy_artifacts_into_workspace(
     workspace: str, artifact_folder_name: str, challenge_dir_path: str
 ) -> None:
-    source_dir = os.path.join(challenge_dir_path, artifact_folder_name)
+    source_dir = os.path.join(
+        CURRENT_DIRECTORY, "..", challenge_dir_path, artifact_folder_name
+    )
 
     # Check if source_dir exists, if not then return immediately.
     if not os.path.exists(source_dir):
