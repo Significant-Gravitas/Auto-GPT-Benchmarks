@@ -159,7 +159,7 @@ jobs:
             export HELICONE_API_KEY=sk-tm2og4a-7msunia-tqbcuxq-bhbkfha
             export HELICONE_CACHE_ENABLED=true
             echo "Starting the proxy..."
-            alias helicone_mitm="curl -s https://raw.githubusercontent.com/Helicone/helicone/main/mitmproxy.sh | sudo bash -s"
+            alias helicone_mitm="curl -s https://raw.githubusercontent.com/Helicone/helicone/main/mitmproxy.sh | bash -s"
             helicone_mitm start
             agbenchmark start --maintain
             
