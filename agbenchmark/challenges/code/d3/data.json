@@ -2,21 +2,17 @@
   "name": "TestCreateSimpleWebServer",
   "category": ["code"],
   "task": "Build a basic web server that responds to a GET localhost:8079/health with a 200 OK. Deploy this web server locally at the port 8079. ",
-  "dependencies": [],
+  "dependencies": ["TestDebugSimpleTypoWithGuidance"],
   "ground": {
-    "answer": null,
+    "answer": "null",
     "should_contain": [],
     "should_not_contain": [],
     "files": [],
     "type": "custom_python"
   },
-  "mock": {
-    "mock_func": null,
-    "mock_task": null
-  },
   "info": {
-    "difficulty": "basic",
+    "difficulty": "medium",
     "description": "Tests ability for the agent to build a simple web server locally",
-    "side_effects": ["tests if there is in fact an LLM attached"]
+    "side_effects": []
   }
 }

@@ -11,7 +11,7 @@ class Info(BaseModel):
 
 
 class Ground(BaseModel):
-    answer: Optional[str] = None
+    answer: str
     should_contain: Optional[List[str]] = None
     should_not_contain: Optional[List[str]] = None
     files: List[str]
