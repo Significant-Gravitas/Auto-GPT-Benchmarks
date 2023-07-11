@@ -9,8 +9,8 @@ import pytest
 from agbenchmark.ReportManager import ReportManager
 from agbenchmark.start_benchmark import (
     CONFIG_PATH,
-    REGRESSION_TESTS_PATH,
     INFO_TESTS_PATH,
+    REGRESSION_TESTS_PATH,
     get_regression_data,
 )
 

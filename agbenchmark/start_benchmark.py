@@ -6,7 +6,6 @@ from typing import Any
 
 import click
 import pytest
-import glob
 from dotenv import load_dotenv
 
 load_dotenv()

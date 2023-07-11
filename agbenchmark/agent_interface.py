@@ -3,8 +3,8 @@ import shutil
 import subprocess
 import sys
 import time
-from typing import Any, Dict
 from pathlib import Path
+from typing import Any, Dict
 
 from dotenv import load_dotenv
 

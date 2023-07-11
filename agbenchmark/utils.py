@@ -1,10 +1,9 @@
 # radio charts, logs, helper functions for tests, anything else relevant.
-import os
-from pathlib import Path
 import glob
+from pathlib import Path
 
 
-def calculate_info_test_path(benchmarks_folder_path):
+def calculate_info_test_path(benchmarks_folder_path: Path) -> str:
     INFO_TESTS_PATH = benchmarks_folder_path / "reports"
 
     if not INFO_TESTS_PATH.exists():

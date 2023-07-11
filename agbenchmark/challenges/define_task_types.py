@@ -1,8 +1,8 @@
 import json
+from pathlib import Path
 from typing import List, Optional
 
 from pydantic import BaseModel
-from pathlib import Path
 
 
 class Info(BaseModel):
