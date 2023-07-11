@@ -75,13 +75,7 @@ jobs:
     name: ${{ matrix.agent-name }}
     runs-on: ubuntu-latest
     timeout-minutes: 10
-    spec:
-      resources:
-        securityContext:
-          allowPrivilegeEscalation: false
-          capabilities:
-            add:
-              - NET_ADMIN
+
     env:
       min-python-version: "3.10"
     strategy:
@@ -228,6 +222,12 @@ jobs:
           PROMPT_USER: false # For mini-agi. TODO: Remove this once mini-agi follows the standards.
           HELICONE_API_KEY: ${{ secrets.HELICONE_API_KEY }}
           REQUESTS_CA_BUNDLE: /etc/ssl/certs/ca-certificates.crt
+         with:
+          securityContext: 
+            allowPrivilegeEscalation: false
+            capabilities:
+              add:
+                - NET_ADMIN
 
       - name: Upload logs as artifact
         if: always()
