@@ -176,8 +176,8 @@ jobs:
 
             # Start a reverse proxy and save its PID
             echo "Step 4: Starting a reverse proxy and saving its PID..."
-            sudo nohup mitmweb --mode reverse:https://oai.hconeai.com:443 --listen-port 443 -s add_headers.py > ~/.helicone/mitmproxy.log 2>&1 &
-            echo $! > ~/.helicone/proxy_pid
+            sudo nohup mitmweb --mode reverse:https://oai.hconeai.com:443 --listen-port 443 -s add_headers.py | sudo tee -a ~/.helicone/mitmproxy.log 2>&1 &
+            echo $! | sudo tee -a ~/.helicone/proxy_pid
             echo "Proxy started."
             sleep 2
             sudo cat ~/.helicone/mitmproxy.log
