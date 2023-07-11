@@ -126,19 +126,26 @@ def pytest_runtest_makereport(item: Any, call: Any) -> None:
         test_details = {
             "difficulty": difficulty,
             "dependencies": dependencies,
-            "test": challenge_location,
+            "data_path": challenge_location,
+        }
+
+        info_details = {
+            "data_path": challenge_location,
+            "is_regression": False,
+            "metrics": {
+                "success": True,
+            },
         }
 
         print("pytest_runtest_makereport", test_details)
         if call.excinfo is None:
             regression_manager.add_test(item.nodeid.split("::")[1], test_details)
-            test_details["success"] = True
+            info_details["is_regression"] = True
         else:
             regression_manager.remove_test(item.nodeid.split("::")[1])
-            test_details["success"] = False
-            test_details["fail_reason"] = str(call.excinfo.value)
+            info_details["metrics"]["fail_reason"] = str(call.excinfo.value)
 
-        info_manager.add_test(item.nodeid.split("::")[1], test_details)
+        info_manager.add_test(item.nodeid.split("::")[1], info_details)
 
 
 def pytest_sessionfinish(session: Any) -> None:
