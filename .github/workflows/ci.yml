@@ -156,7 +156,7 @@ jobs:
             echo "Installing necessary packages..."
             sudo apt update -y
             sudo apt install -y curl ca-certificates mitmproxy
-            sudo echo '127.0.0.1 api.openai.com' >> /etc/hosts
+            echo '127.0.0.1 api.openai.com' | sudo tee -a /etc/hosts
             # Step 2: Create the add_headers.py file
             echo "Creating add_headers.py file..."
             echo 'import os' > add_headers.py
