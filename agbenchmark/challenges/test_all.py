@@ -16,7 +16,10 @@ load_dotenv()
 IMPROVE = os.getenv("IMPROVE", "False")
 
 
-json_files = glob.glob("agbenchmark/challenges/**/data.json", recursive=True)
+script_dir = Path(__file__).resolve().parent
+glob_path = script_dir / "**/data.json"
+# Use the glob path to find the files
+json_files = glob.glob(str(glob_path), recursive=True)
 
 
 def get_test_path(json_file: str) -> str:

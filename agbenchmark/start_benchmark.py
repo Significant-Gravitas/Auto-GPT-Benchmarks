@@ -15,7 +15,7 @@ from agbenchmark.utils import calculate_info_test_path
 
 CURRENT_DIRECTORY = Path(__file__).resolve().parent
 
-benchmarks_folder_path = Path(os.getcwd()) / "benchmarks"
+benchmarks_folder_path = Path(os.getcwd()) / "agbenchmark"
 
 CONFIG_PATH = str(benchmarks_folder_path / "config.json")
 REGRESSION_TESTS_PATH = str(benchmarks_folder_path / "regression_tests.json")
@@ -30,10 +30,11 @@ def cli() -> None:
 
 @cli.command()
 @click.option("--category", default=None, help="Specific category to run")
+@click.option("--test", default=None, help="Specific test to run")
 @click.option("--maintain", is_flag=True, help="Runs only regression tests")
 @click.option("--improve", is_flag=True, help="Run only non-regression tests")
 @click.option("--mock", is_flag=True, help="Run with mock")
-def start(category: str, maintain: bool, improve: bool, mock: bool) -> int:
+def start(category: str, test: str, maintain: bool, improve: bool, mock: bool) -> int:
     """Start the benchmark tests. If a category flag is provided, run the categories with that mark."""
     # Check if configuration file exists and is not empty
     if maintain and improve:
@@ -42,9 +43,16 @@ def start(category: str, maintain: bool, improve: bool, mock: bool) -> int:
         )
         return 1
 
+    if test and (category or maintain or improve):
+        print(
+            "Error: If you're running a specific test make sure no other options are selected. Please just pass the --test."
+        )
+        return 1
+
     if not benchmarks_folder_path.exists():
         benchmarks_folder_path.mkdir(exist_ok=True)
 
+    print(CONFIG_PATH, os.path.exists(CONFIG_PATH), os.stat(CONFIG_PATH).st_size)
     if not os.path.exists(CONFIG_PATH) or os.stat(CONFIG_PATH).st_size == 0:
         config = {}
 
@@ -54,12 +62,12 @@ def start(category: str, maintain: bool, improve: bool, mock: bool) -> int:
         )
 
         config["entry_path"] = click.prompt(
-            "Please enter a the path to your run_specific_agent function implementation",
-            default="/benchmarks/benchmarks.py",
+            "Please enter a the path to your run_specific_agent function implementation within the benchmarks folder",
+            default="benchmarks.py",
         )
 
         config["cutoff"] = click.prompt(
-            "Please enter a hard cutoff runtime for your agent",
+            "Please enter a hard cutoff runtime for your agent per test",
             default="60",
         )
 
@@ -85,18 +93,22 @@ def start(category: str, maintain: bool, improve: bool, mock: bool) -> int:
         print(f"{key}: {value}")
 
     pytest_args = ["-vs"]
-    if category:
-        pytest_args.extend(["-m", category])
-        print("Starting benchmark tests ", category)
+    if test:
+        print("Running specific test:", test)
+        pytest_args.extend(["-k", test])
     else:
-        print("Running all categories")
+        if category:
+            pytest_args.extend(["-m", category])
+            print("Running tests of category:", category)
+        else:
+            print("Running all categories")
 
-    if maintain:
-        print("Running only regression tests")
-        pytest_args.append("--maintain")
-    elif improve:
-        print("Running only non-regression tests")
-        pytest_args.append("--improve")
+        if maintain:
+            print("Running only regression tests")
+            pytest_args.append("--maintain")
+        elif improve:
+            print("Running only non-regression tests")
+            pytest_args.append("--improve")
 
     if mock:
         pytest_args.append("--mock")

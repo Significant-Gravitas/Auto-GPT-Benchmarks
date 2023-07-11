@@ -2,6 +2,7 @@ import json
 import time
 from datetime import datetime
 from typing import Any, Dict
+import sys
 import os
 
 
@@ -43,10 +44,12 @@ class ReportManager:
             self.save()
 
     def end_info_report(self, config: Dict[str, Any]) -> None:
+        command = " ".join(sys.argv)
         self.tests = {
+            "command": command.split(os.sep)[-1],
+            "completion_time": datetime.now().strftime("%Y-%m-%d-%H:%M"),
+            "time_elapsed": str(round(time.time() - self.start_time, 2)) + " seconds",
             "tests": self.tests,
-            "current_time": datetime.now().isoformat(),
-            "time_elapsed": time.time() - self.start_time,
             "config": config,
         }
 
