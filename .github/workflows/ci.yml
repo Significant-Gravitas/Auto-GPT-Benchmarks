@@ -163,6 +163,7 @@ jobs:
             echo "Step 1: Installing necessary packages..."
             sudo apt update
             sudo apt install -y curl ca-certificates mitmproxy
+            sudo apt install iptables
 
             # Add to /etc/hosts
             echo "Step 2: Adding entry to /etc/hosts..."
@@ -174,9 +175,12 @@ jobs:
             echo 'def request(flow):' >> add_headers.py
             echo '    flow.request.headers["Helicone-Auth"] = "Bearer " + os.environ.get("HELICONE_API_KEY")' >> add_headers.py
 
+            echo "Step 3.5: Setting up port forwarding..."
+            sudo iptables -t nat -A PREROUTING -p tcp --dport 443 -j REDIRECT --to-port 8443
+
             # Start a reverse proxy and save its PID
             echo "Step 4: Starting a reverse proxy and saving its PID..."
-            nohup mitmweb --mode reverse:https://oai.hconeai.com:443 --listen-port 443 -s add_headers.py | sudo tee -a ~/.helicone/mitmproxy.log 2>&1 &
+            sudo nohup mitmweb --mode reverse:https://oai.hconeai.com:443 --listen-port 443 -s add_headers.py | sudo tee -a ~/.helicone/mitmproxy.log 2>&1 &
             echo $! | sudo tee -a ~/.helicone/proxy_pid
             echo "Proxy started."
             sleep 2
@@ -184,7 +188,6 @@ jobs:
 
             echo  "FINDING MITMPROXY CERTIFICATE"
             find ~ -name 'mitmproxy-ca-cert.pem'
-            sudo find ~ -name 'mitmproxy-ca-cert.pem'
             echo  "DONE FINDING MITMPROXY CERTIFICATE"
 
 
