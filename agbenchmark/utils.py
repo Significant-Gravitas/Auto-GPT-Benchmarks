@@ -30,3 +30,12 @@ def replace_backslash(value: Any) -> Any:
         return {k: replace_backslash(v) for k, v in value.items()}
     else:
         return value
+
+
+def calculate_success_percentage(results: list[bool]) -> float:
+    success_count = results.count(True)
+    total_count = len(results)
+    if total_count == 0:
+        return 0
+    success_percentage = (success_count / total_count) * 100  # as a percentage
+    return round(success_percentage, 2)

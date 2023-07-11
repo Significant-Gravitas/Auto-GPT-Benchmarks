@@ -35,7 +35,7 @@ class ReportManager:
         with open(self.filename, "w") as f:
             json.dump(self.tests, f, indent=4)
 
-    def add_test(self, test_name: str, test_details: dict) -> None:
+    def add_test(self, test_name: str, test_details: dict | list) -> None:
         self.tests[test_name] = test_details
 
         self.save()
