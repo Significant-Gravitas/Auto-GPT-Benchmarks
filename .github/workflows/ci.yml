@@ -82,9 +82,6 @@ jobs:
       matrix:
         agent-name:
           - "gpt-engineer"
-          - "Auto-GPT"
-          - "mini-agi"
-          - "smol-developer"
 
     steps:
       - name: Checkout repository
