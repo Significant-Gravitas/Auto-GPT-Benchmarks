@@ -183,16 +183,20 @@ jobs:
             sudo cat ~/.helicone/mitmproxy.log
 
             echo  "FINDING MITMPROXY CERTIFICATE"
-            sudo find ~ -name 'mitmproxy-ca-cert.pem'
+            find ~ -name 'mitmproxy-ca-cert.pem'
             echo  "DONE FINDING MITMPROXY CERTIFICATE"
 
 
             # Install the mitmproxy certificate
             echo "Step 5: Installing the mitmproxy certificate..."
             # Note: Run mitmproxy once if the certificate does not exist
-            
-            sudo cp ~/.mitmproxy/mitmproxy-ca-cert.pem /usr/local/share/ca-certificates/mitmproxy-ca-cert.crt
+            USER_HOME=$HOME
+            sudo cp $USER_HOME/.mitmproxy/mitmproxy-ca-cert.pem /usr/local/share/ca-certificates/mitmproxy-ca-cert.crt
             sudo update-ca-certificates
+
+            # Append the mitmproxy certificate to the curl certificate bundle
+            echo "Step 6: Appending the mitmproxy certificate to the curl certificate bundle..."
+            sudo bash -c "cat $USER_HOME/.mitmproxy/mitmproxy-ca-cert.pem >> /etc/ssl/certs/ca-certificates.crt"
 
             # Append the mitmproxy certificate to the curl certificate bundle
             echo "Step 6: Appending the mitmproxy certificate to the curl certificate bundle..."
