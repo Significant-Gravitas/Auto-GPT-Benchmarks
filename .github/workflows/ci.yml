@@ -81,8 +81,6 @@ jobs:
       fail-fast: false
       matrix:
         agent-name:
-          - "gpt-engineer"
-          - "mini-agi"
           - "smol-developer"
 
     steps:
@@ -153,8 +151,8 @@ jobs:
           pip install ../../dist/*.whl
 
           if [ "${GITHUB_EVENT_NAME}" == "schedule" ] || [ "${GITHUB_EVENT_NAME}" == "workflow_dispatch" ]; then
-            sudo export HELICONE_API_KEY=sk-tm2og4a-7msunia-tqbcuxq-bhbkfha
-            sudo export HELICONE_CACHE_ENABLED=true
+            export HELICONE_API_KEY=sk-tm2og4a-7msunia-tqbcuxq-bhbkfha
+            export HELICONE_CACHE_ENABLED=true
             echo "STARTING MITMPROXY"
             curl -s https://raw.githubusercontent.com/Helicone/helicone/main/mitmproxy.sh | sudo bash -s start
             echo "MITMPROXY STARTED"
