@@ -82,6 +82,7 @@ jobs:
       fail-fast: false
       matrix:
         agent-name:
+          - "gpt-engineer"
           - "smol-developer"
 
     steps:
@@ -154,8 +155,6 @@ jobs:
           if [ "${GITHUB_EVENT_NAME}" == "schedule" ] || [ "${GITHUB_EVENT_NAME}" == "workflow_dispatch" ]; then
             curl -s https://raw.githubusercontent.com/Helicone/helicone/main/mitmproxy.sh | bash -s start
             agbenchmark start --maintain
-            
-
           else
             agbenchmark start --maintain --mock
             agbenchmark start --improve --mock
