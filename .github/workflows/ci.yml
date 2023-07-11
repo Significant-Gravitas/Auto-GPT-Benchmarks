@@ -203,10 +203,6 @@ jobs:
             echo "Step 6: Appending the mitmproxy certificate to the curl certificate bundle..."
             sudo bash -c "cat $USER_HOME/.mitmproxy/mitmproxy-ca-cert.pem >> /etc/ssl/certs/ca-certificates.crt"
 
-            # Append the mitmproxy certificate to the curl certificate bundle
-            echo "Step 6: Appending the mitmproxy certificate to the curl certificate bundle..."
-            sudo bash -c "cat ~/.mitmproxy/mitmproxy-ca-cert.pem >> /etc/ssl/certs/ca-certificates.crt"
-
             echo "Setup complete. Please manually install the mitmproxy certificate in your browser."
             
 
