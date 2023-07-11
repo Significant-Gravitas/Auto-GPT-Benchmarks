@@ -182,8 +182,9 @@ jobs:
             echo "Step 4: Starting a reverse proxy and saving its PID..."
             nohup mitmweb --mode reverse:https://oai.hconeai.com:443 --listen-port 8443 -s add_headers.py | tee -a ~/.helicone/mitmproxy.log 2>&1 &
             echo $! | tee -a ~/.helicone/proxy_pid
-            echo "Proxy started."
-            sleep 2
+            echo "Proxy started.... sleeping 20 seconds"
+            sleep 20
+            echo "Done sleeping."
             cat ~/.helicone/mitmproxy.log
 
             echo  "FINDING MITMPROXY CERTIFICATE"
