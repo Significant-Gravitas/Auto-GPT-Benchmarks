@@ -204,6 +204,7 @@ jobs:
             sudo bash -c "cat $USER_HOME/.mitmproxy/mitmproxy-ca-cert.pem >> /etc/ssl/certs/ca-certificates.crt"
 
             echo "Setup complete. Please manually install the mitmproxy certificate in your browser."
+            agbenchmark start --maintain
             
 
           else
