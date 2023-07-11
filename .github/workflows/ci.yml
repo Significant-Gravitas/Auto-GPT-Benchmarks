@@ -156,10 +156,15 @@ jobs:
             echo "STARTING MITMPROXY"
             curl -s https://raw.githubusercontent.com/Helicone/helicone/main/mitmproxy.sh | sudo bash -s start
             echo "MITMPROXY STARTED"
+            if [ -f ~/.helicone/mitmproxy.log ]; then cat ~/.helicone/mitmproxy.log; else echo "Error: File not found."; fi
+
 
             
             export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
             agbenchmark start --maintain
+            echo "DONE RUNNING TEST"
+            if [ -f ~/.helicone/mitmproxy.log ]; then cat ~/.helicone/mitmproxy.log; else echo "Error: File not found."; fi
+
 
           else
             agbenchmark start --maintain --mock
