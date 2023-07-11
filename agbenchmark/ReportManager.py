@@ -3,7 +3,7 @@ import os
 import sys
 import time
 from datetime import datetime
-from typing import Any, Dict
+from typing import Any, Dict, Union
 
 
 class ReportManager:
@@ -21,7 +21,9 @@ class ReportManager:
                     f.read().strip()
                 )  # read the content and remove any leading/trailing whitespace
                 if file_content:  # if file is not empty, load the json
-                    self.tests = json.loads(file_content)
+                    data = json.loads(file_content)
+                    self.tests = {k: data[k] for k in sorted(data)}
+                    data = self.replace_backslash(data)
                 else:  # if file is empty, assign an empty dictionary
                     self.tests = {}
         except FileNotFoundError:
@@ -54,3 +56,13 @@ class ReportManager:
         }
 
         self.save()
+
+    def replace_backslash(self, value: str) -> Union[str, list[str], dict]:
+        if isinstance(value, str):
+            return value.replace("\\\\", "/")  # escape \ with \\
+        elif isinstance(value, list):
+            return [self.replace_backslash(i) for i in value]
+        elif isinstance(value, dict):
+            return {k: self.replace_backslash(v) for k, v in value.items()}
+        else:
+            return value
