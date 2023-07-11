@@ -160,6 +160,8 @@ jobs:
             
             export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
             agbenchmark start --maintain
+            cecho "SHOWING MITMPROXY LOGS"
+            cat ~/.helicone/mitmproxy.log
           else
             exit 0
             agbenchmark start --maintain --mock
