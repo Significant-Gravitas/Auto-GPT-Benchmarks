@@ -181,9 +181,9 @@ jobs:
             echo "Step 4: Starting a reverse proxy and saving its PID..."
 
             sudo apt-get install authbind
-            touch /etc/authbind/byport/443
-            chmod 500 /etc/authbind/byport/443
-            chown $USER /etc/authbind/byport/443
+            sudo touch /etc/authbind/byport/443
+            sudo chmod 500 /etc/authbind/byport/443
+            sudo chown $USER /etc/authbind/byport/443
 
             nohup authbind --deep mitmweb --mode reverse:https://oai.hconeai.com:443 --listen-port 443 -s add_headers.py | tee -a ~/.helicone/mitmproxy.log 2>&1 &
             echo $! | tee -a ~/.helicone/proxy_pid
