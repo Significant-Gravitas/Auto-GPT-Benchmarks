@@ -155,7 +155,8 @@ jobs:
             curl -s https://raw.githubusercontent.com/Helicone/helicone/main/mitmproxy.sh | sudo bash -s start
 
             
-            export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt && agbenchmark start --maintain
+            export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
+            agbenchmark start --maintain
           else
             exit 0
             agbenchmark start --maintain --mock
@@ -174,6 +175,7 @@ jobs:
           AGENT_NAME: ${{ matrix.agent-name }}
           PROMPT_USER: false # For mini-agi. TODO: Remove this once mini-agi follows the standards.
           HELICONE_API_KEY: ${{ secrets.HELICONE_API_KEY }}
+          REQUESTS_CA_BUNDLE: /etc/ssl/certs/ca-certificates.crt
 
       - name: Upload logs as artifact
         if: always()
