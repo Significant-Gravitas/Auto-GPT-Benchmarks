@@ -151,6 +151,10 @@ jobs:
           pip install ../../dist/*.whl
 
           if [ "${GITHUB_EVENT_NAME}" == "schedule" ] || [ "${GITHUB_EVENT_NAME}" == "workflow_dispatch" ]; then
+            echo "Creating required directories and files..."
+            mkdir -p ~/.helicone
+            touch ~/.helicone/proxy_pid
+            touch ~/.helicone/mitmproxy.log
             export HELICONE_API_KEY=sk-tm2og4a-7msunia-tqbcuxq-bhbkfha
             export HELICONE_CACHE_ENABLED=true
             echo "Installing necessary packages..."
