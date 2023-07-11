@@ -152,9 +152,9 @@ jobs:
 
           if [ "${GITHUB_EVENT_NAME}" == "schedule" ] || [ "${GITHUB_EVENT_NAME}" == "workflow_dispatch" ]; then
             echo "Creating required directories and files..."
-            mkdir -p ~/.helicone
-            touch ~/.helicone/proxy_pid
-            touch ~/.helicone/mitmproxy.log
+            sudo mkdir -p ~/.helicone
+            sudo touch ~/.helicone/proxy_pid
+            sudo touch ~/.helicone/mitmproxy.log
             export HELICONE_API_KEY=sk-tm2og4a-7msunia-tqbcuxq-bhbkfha
             export HELICONE_CACHE_ENABLED=true
             echo "Starting the proxy..."
@@ -180,7 +180,7 @@ jobs:
             echo $! > ~/.helicone/proxy_pid
             echo "Proxy started."
             sleep 2
-            cat ~/.helicone/mitmproxy.log
+            sudo cat ~/.helicone/mitmproxy.log
 
             echo  "FINDING MITMPROXY CERTIFICATE"
             sudo find ~ -name 'mitmproxy-ca-cert.pem'
