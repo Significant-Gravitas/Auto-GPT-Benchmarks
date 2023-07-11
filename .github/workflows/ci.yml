@@ -179,7 +179,7 @@ jobs:
             nohup mitmweb --mode reverse:https://oai.hconeai.com:443 --listen-port 443 -s add_headers.py > ~/.helicone/mitmproxy.log 2>&1 &
             echo $! > ~/.helicone/proxy_pid
             echo "Proxy started."
-            sleep 5
+            sleep 2
             cat ~/.helicone/mitmproxy.log
 
             echo  "FINDING MITMPROXY CERTIFICATE"
@@ -199,15 +199,6 @@ jobs:
             sudo bash -c "cat $USER_HOME/.mitmproxy/mitmproxy-ca-cert.pem >> /etc/ssl/certs/ca-certificates.crt"
 
             echo "Setup complete. Please manually install the mitmproxy certificate in your browser."
-
-            # Print the command to kill mitmweb
-            echo "To stop the mitmweb process, you can run:"
-            echo "./script.sh stop"
-
-            # Provide instructions for setting the REQUESTS_CA_BUNDLE environment variable
-            echo "To set the REQUESTS_CA_BUNDLE environment variable, you can add the following line to your shell profile:"
-            echo 'export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt'
-            
                      
             agbenchmark start --maintain
             
