@@ -1,36 +1,36 @@
 {
     "command": "agbenchmark start --mock",
-    "completion_time": "2023-07-11-19:45",
+    "completion_time": "2023-07-11-20:27",
     "metrics": {
-        "time_elapsed": "1.07 seconds",
-        "highest_difficulty": ""
+        "time_elapsed": "1.31 seconds",
+        "highest_difficulty": 5
     },
     "tests": {
         "TestWriteFile": {
             "data_path": "agbenchmark/challenges/interface/write_file",
             "is_regression": true,
             "metrics": {
-                "difficulty": "basic",
+                "difficulty": "interface",
                 "success": true,
-                "success_%": 100.0
+                "success_%": 0
             }
         },
         "TestReadFile": {
             "data_path": "agbenchmark/challenges/interface/read_file",
             "is_regression": true,
             "metrics": {
-                "difficulty": "basic",
+                "difficulty": "interface",
                 "success": true,
-                "success_%": 100.0
+                "success_%": 0
             }
         },
         "TestSearch": {
             "data_path": "agbenchmark/challenges/interface/search",
             "is_regression": true,
             "metrics": {
-                "difficulty": "basic",
+                "difficulty": "interface",
                 "success": true,
-                "success_%": 100.0
+                "success_%": 0
             }
         },
         "TestDebugSimpleTypoWithGuidance": {
@@ -40,7 +40,7 @@
                 "difficulty": "basic",
                 "success": false,
                 "fail_reason": "assert 1 in [0.0]",
-                "success_%": 0.0
+                "success_%": 0
             }
         },
         "TestBasicMemory": {
@@ -49,7 +49,7 @@
             "metrics": {
                 "difficulty": "basic",
                 "success": true,
-                "success_%": 100.0
+                "success_%": 0
             }
         },
         "TestBasicRetrieval": {
@@ -58,72 +58,72 @@
             "metrics": {
                 "difficulty": "basic",
                 "success": true,
-                "success_%": 100.0
+                "success_%": 0
             }
         },
         "TestDebugSimpleTypoWithoutGuidance": {
             "data_path": "agbenchmark/challenges/code/d2",
             "is_regression": false,
             "metrics": {
-                "difficulty": "medium",
+                "difficulty": "novice",
                 "success": false,
                 "fail_reason": "agbenchmark/challenges/test_all.py::TestDebugSimpleTypoWithoutGuidance::test_method[challenge_data0] depends on agbenchmark/challenges/test_all.py::TestDebugSimpleTypoWithGuidance::test_method[challenge_data0]",
-                "success_%": 0.0
+                "success_%": 0
             }
         },
         "TestCreateSimpleWebServer": {
             "data_path": "agbenchmark/challenges/code/d3",
             "is_regression": false,
             "metrics": {
-                "difficulty": "medium",
+                "difficulty": "advanced",
                 "success": false,
                 "fail_reason": "agbenchmark/challenges/test_all.py::TestCreateSimpleWebServer::test_method[challenge_data0] depends on agbenchmark/challenges/test_all.py::TestDebugSimpleTypoWithGuidance::test_method[challenge_data0]",
-                "success_%": 0.0
+                "success_%": 0
             }
         },
         "TestRememberMultipleIds": {
             "data_path": "agbenchmark/challenges/memory/m2",
             "is_regression": true,
             "metrics": {
-                "difficulty": "basic",
+                "difficulty": "novice",
                 "success": true,
-                "success_%": 100.0
+                "success_%": 0
             }
         },
         "TestRetrieval2": {
             "data_path": "agbenchmark/challenges/retrieval/r2",
             "is_regression": true,
             "metrics": {
-                "difficulty": "basic",
+                "difficulty": "novice",
                 "success": true,
-                "success_%": 100.0
+                "success_%": 0
             }
         },
         "TestRememberMultipleIdsWithNoise": {
             "data_path": "agbenchmark/challenges/memory/m3",
             "is_regression": true,
             "metrics": {
-                "difficulty": "medium",
+                "difficulty": "intermediate",
                 "success": true,
-                "success_%": 100.0
+                "success_%": 0
             }
         },
         "TestRetrieval3": {
             "data_path": "agbenchmark/challenges/retrieval/r3",
             "is_regression": true,
             "metrics": {
-                "difficulty": "basic",
+                "difficulty": "intermediate",
                 "success": true,
-                "success_%": 100.0
+                "success_%": 0
             }
         },
         "TestRememberMultiplePhrasesWithNoise": {
             "data_path": "agbenchmark/challenges/memory/m4",
             "is_regression": true,
             "metrics": {
-                "difficulty": "medium",
+                "difficulty": "advanced",
                 "success": true,
-                "success_%": 100.0
+                "success_%": 0
             }
         }
     },

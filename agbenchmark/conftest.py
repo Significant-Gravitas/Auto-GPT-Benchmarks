@@ -153,14 +153,15 @@ def pytest_runtest_makereport(item: Any, call: Any) -> None:
             },
         }
 
+        mock = "--mock" in sys.argv  # Check if --mock is in sys.argv
+
         if call.excinfo is None:
-            info_details["is_regression"] = True
             info_details["metrics"]["success"] = True
         else:
-            regression_manager.remove_test(test_name)
+            if not mock:  # don't remove if it's a mock test
+                regression_manager.remove_test(test_name)
             info_details["metrics"]["fail_reason"] = str(call.excinfo.value)
 
-        mock = "--mock" in sys.argv  # Check if --mock is in sys.argv
         prev_test_results: list[bool] = []
 
         if not mock:
@@ -176,6 +177,7 @@ def pytest_runtest_makereport(item: Any, call: Any) -> None:
 
         if len(prev_test_results) >= 3 and prev_test_results[-3:] == [True, True, True]:
             # if the last 3 tests were successful, add to the regression tests
+            info_details["is_regression"] = True
             regression_manager.add_test(test_name, test_details)
 
         # user facing reporting

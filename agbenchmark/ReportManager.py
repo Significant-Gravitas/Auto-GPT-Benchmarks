@@ -3,7 +3,10 @@ import os
 import sys
 import time
 from datetime import datetime
-from typing import Any, Dict, Union
+from typing import Any, Dict
+
+
+from agbenchmark.utils import get_highest_success_difficulty
 
 
 class ReportManager:
@@ -53,7 +56,7 @@ class ReportManager:
             "metrics": {
                 "time_elapsed": str(round(time.time() - self.start_time, 2))
                 + " seconds",
-                "highest_difficulty": "",
+                "highest_difficulty": get_highest_success_difficulty(self.tests),
             },
             "tests": self.tests,
             "config": config,

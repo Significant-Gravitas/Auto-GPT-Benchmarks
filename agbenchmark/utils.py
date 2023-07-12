@@ -1,8 +1,10 @@
 # radio charts, logs, helper functions for tests, anything else relevant.
 import glob
 from pathlib import Path
-from typing import Any
+from typing import Any, Optional
 import re
+
+from agbenchmark.challenges.define_task_types import DifficultyLevel, DIFFICULTY_MAP
 
 
 def calculate_info_test_path(benchmarks_folder_path: Path) -> str:
@@ -39,3 +41,29 @@ def calculate_success_percentage(results: list[bool]) -> float:
         return 0
     success_percentage = (success_count / total_count) * 100  # as a percentage
     return round(success_percentage, 2)
+
+
+def get_highest_success_difficulty(data: dict) -> Optional[int]:
+    highest_difficulty = None
+    highest_difficulty_level = -1
+
+    for test_name, test_data in data.items():
+        if test_data["metrics"]["success"]:
+            # Replace 'medium' with 'intermediate' for this example
+            difficulty_str = test_data["metrics"]["difficulty"]
+
+            try:
+                difficulty_enum = DifficultyLevel[difficulty_str.lower()]
+                difficulty_level = DIFFICULTY_MAP[difficulty_enum]
+
+                print(f"Test '{test_name}' has difficulty level {difficulty_level}")
+
+                if difficulty_level > highest_difficulty_level:
+                    highest_difficulty = difficulty_enum
+                    highest_difficulty_level = difficulty_level
+            except KeyError:
+                print(
+                    f"Unexpected difficulty level '{difficulty_str}' in test '{test_name}'"
+                )
+
+    return highest_difficulty_level

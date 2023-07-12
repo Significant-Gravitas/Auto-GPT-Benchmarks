@@ -1,23 +1,4 @@
 {
-    "TestWriteFile": {
-        "difficulty": "basic",
-        "dependencies": [],
-        "data_path": "agbenchmark/challenges/interface/write_file"
-    },
-    "TestReadFile": {
-        "difficulty": "basic",
-        "dependencies": [
-            "TestWriteFile"
-        ],
-        "data_path": "agbenchmark/challenges/interface/read_file"
-    },
-    "TestSearch": {
-        "difficulty": "basic",
-        "dependencies": [
-            "TestWriteFile"
-        ],
-        "data_path": "agbenchmark/challenges/interface/search"
-    },
     "TestBasicMemory": {
         "difficulty": "basic",
         "dependencies": [
@@ -34,19 +15,19 @@
         ],
         "data_path": "agbenchmark/challenges/retrieval/r1"
     },
+    "TestReadFile": {
+        "difficulty": "basic",
+        "dependencies": [
+            "TestWriteFile"
+        ],
+        "data_path": "agbenchmark/challenges/interface/read_file"
+    },
     "TestRememberMultipleIds": {
         "difficulty": "basic",
         "dependencies": [
             "TestBasicMemory"
         ],
         "data_path": "agbenchmark/challenges/memory/m2"
-    },
-    "TestRetrieval2": {
-        "difficulty": "basic",
-        "dependencies": [
-            "TestBasicRetrieval"
-        ],
-        "data_path": "agbenchmark/challenges/retrieval/r2"
     },
     "TestRememberMultipleIdsWithNoise": {
         "difficulty": "medium",
@@ -55,6 +36,20 @@
         ],
         "data_path": "agbenchmark/challenges/memory/m3"
     },
+    "TestRememberMultiplePhrasesWithNoise": {
+        "difficulty": "medium",
+        "dependencies": [
+            "TestRememberMultipleIdsWithNoise"
+        ],
+        "data_path": "agbenchmark/challenges/memory/m4"
+    },
+    "TestRetrieval2": {
+        "difficulty": "basic",
+        "dependencies": [
+            "TestBasicRetrieval"
+        ],
+        "data_path": "agbenchmark/challenges/retrieval/r2"
+    },
     "TestRetrieval3": {
         "difficulty": "basic",
         "dependencies": [
@@ -62,11 +57,16 @@
         ],
         "data_path": "agbenchmark/challenges/retrieval/r3"
     },
-    "TestRememberMultiplePhrasesWithNoise": {
-        "difficulty": "medium",
+    "TestSearch": {
+        "difficulty": "basic",
         "dependencies": [
-            "TestRememberMultipleIdsWithNoise"
+            "TestWriteFile"
         ],
-        "data_path": "agbenchmark/challenges/memory/m4"
+        "data_path": "agbenchmark/challenges/interface/search"
+    },
+    "TestWriteFile": {
+        "difficulty": "basic",
+        "dependencies": [],
+        "data_path": "agbenchmark/challenges/interface/write_file"
     }
 }
