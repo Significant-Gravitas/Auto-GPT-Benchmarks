@@ -10,7 +10,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-from agbenchmark.utils import calculate_info_test_path
+from agbenchmark.utils.utils import calculate_info_test_path
 
 CURRENT_DIRECTORY = Path(__file__).resolve().parent
 

@@ -15,7 +15,7 @@ from agbenchmark.start_benchmark import (
     REGRESSION_TESTS_PATH,
     get_regression_data,
 )
-from agbenchmark.utils import calculate_success_percentage
+from agbenchmark.utils.utils import calculate_success_percentage
 
 
 def resolve_workspace(config: Dict[str, Any]) -> str:
