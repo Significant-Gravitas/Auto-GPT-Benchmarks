@@ -1,10 +1,10 @@
 import json
 import os
-import time
 import shutil
+import sys
+import time
 from pathlib import Path  # noqa
 from typing import Any, Dict, Generator
-import sys
 
 import pytest
 
@@ -111,12 +111,12 @@ def challenge_data(request: Any) -> None:
 
 
 @pytest.fixture(autouse=True, scope="session")
-def mock(request):
+def mock(request: Any) -> None:
     return request.config.getoption("--mock")
 
 
 @pytest.fixture(autouse=True, scope="function")
-def timer(request):
+def timer(request: Any) -> Any:
     start_time = time.time()
     yield
     run_time = time.time() - start_time
@@ -166,22 +166,22 @@ def pytest_runtest_makereport(item: Any, call: Any) -> None:
         mock = "--mock" in sys.argv  # Check if --mock is in sys.argv
 
         if call.excinfo is None:
-            info_details["metrics"]["success"] = True
+            info_details["metrics"]["success"] = True  # type: ignore
         else:
             if not mock:  # don't remove if it's a mock test
                 regression_manager.remove_test(test_name)
-            info_details["metrics"]["fail_reason"] = str(call.excinfo.value)
+            info_details["metrics"]["fail_reason"] = str(call.excinfo.value)  # type: ignore
 
         prev_test_results: list[bool] = []
 
         if not mock:
             # only add if it's an actual test
-            prev_test_results: list[bool] = internal_info.tests.get(test_name, [])
-            prev_test_results.append(info_details["metrics"]["success"])
+            prev_test_results = internal_info.tests.get(test_name, [])
+            prev_test_results.append(info_details["metrics"]["success"])  # type: ignore
             internal_info.add_test(test_name, prev_test_results)
 
         # can calculate success rate regardless of mock
-        info_details["metrics"]["success_%"] = calculate_success_percentage(
+        info_details["metrics"]["success_%"] = calculate_success_percentage(  # type: ignore
             prev_test_results
         )
 
@@ -195,11 +195,11 @@ def pytest_runtest_makereport(item: Any, call: Any) -> None:
     if call.when == "teardown":
         run_time = dict(item.user_properties).get("run_time")
 
-        info_details = getattr(item, "info_details", {})
+        info_details = getattr(item, "info_details", {"metrics": {}})
         test_name = getattr(item, "test_name", "")
 
         if run_time:
-            info_details["metrics"]["run_time"] = f"{str(round(run_time, 3))} seconds"
+            info_details["metrics"]["run_time"] = f"{str(round(run_time, 3))} seconds"  # type: ignore
 
         info_manager.add_test(test_name, info_details)
 

@@ -1,9 +1,9 @@
 {
     "command": "agbenchmark start --mock",
-    "completion_time": "2023-07-11-21:02",
+    "completion_time": "2023-07-11-21:09",
     "metrics": {
-        "run_time": "0.93 seconds",
-        "highest_difficulty": 5
+        "run_time": "0.96 seconds",
+        "highest_difficulty": "advanced: 5"
     },
     "tests": {
         "TestWriteFile": {
@@ -13,7 +13,7 @@
                 "difficulty": "interface",
                 "success": true,
                 "success_%": 0,
-                "run_time": "0.01 seconds"
+                "run_time": "0.008 seconds"
             }
         },
         "TestReadFile": {
@@ -23,7 +23,7 @@
                 "difficulty": "interface",
                 "success": true,
                 "success_%": 0,
-                "run_time": "0.006 seconds"
+                "run_time": "0.005 seconds"
             }
         },
         "TestSearch": {
@@ -44,7 +44,7 @@
                 "success": false,
                 "fail_reason": "assert 1 in [0.0]",
                 "success_%": 0,
-                "run_time": "0.465 seconds"
+                "run_time": "0.489 seconds"
             }
         },
         "TestBasicMemory": {
@@ -54,7 +54,7 @@
                 "difficulty": "basic",
                 "success": true,
                 "success_%": 0,
-                "run_time": "0.015 seconds"
+                "run_time": "0.02 seconds"
             }
         },
         "TestBasicRetrieval": {
@@ -96,7 +96,7 @@
                 "difficulty": "novice",
                 "success": true,
                 "success_%": 0,
-                "run_time": "0.02 seconds"
+                "run_time": "0.018 seconds"
             }
         },
         "TestRetrieval2": {
@@ -106,7 +106,7 @@
                 "difficulty": "novice",
                 "success": true,
                 "success_%": 0,
-                "run_time": "0.006 seconds"
+                "run_time": "0.009 seconds"
             }
         },
         "TestRememberMultipleIdsWithNoise": {
@@ -116,7 +116,7 @@
                 "difficulty": "intermediate",
                 "success": true,
                 "success_%": 0,
-                "run_time": "0.025 seconds"
+                "run_time": "0.022 seconds"
             }
         },
         "TestRetrieval3": {
@@ -126,7 +126,7 @@
                 "difficulty": "intermediate",
                 "success": true,
                 "success_%": 0,
-                "run_time": "0.009 seconds"
+                "run_time": "0.01 seconds"
             }
         },
         "TestRememberMultiplePhrasesWithNoise": {
@@ -136,7 +136,7 @@
                 "difficulty": "advanced",
                 "success": true,
                 "success_%": 0,
-                "run_time": "0.024 seconds"
+                "run_time": "0.021 seconds"
             }
         }
     },

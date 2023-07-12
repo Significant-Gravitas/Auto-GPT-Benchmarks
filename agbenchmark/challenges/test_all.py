@@ -14,7 +14,6 @@ from agbenchmark.challenge import Challenge
 from agbenchmark.start_benchmark import CURRENT_DIRECTORY
 from agbenchmark.utils import replace_backslash
 
-
 json_files = glob.glob(f"{CURRENT_DIRECTORY}/**/data.json", recursive=True)
 
 

@@ -1,7 +1,7 @@
 import json
+from enum import Enum
 from pathlib import Path
 from typing import List, Optional
-from enum import Enum
 
 from pydantic import BaseModel, validator
 
@@ -34,7 +34,7 @@ class Info(BaseModel):
     side_effects: List[str]
 
     @validator("difficulty", pre=True)
-    def difficulty_to_enum(cls, v):
+    def difficulty_to_enum(cls: "Info", v: str | DifficultyLevel) -> DifficultyLevel:
         """Convert a string to an instance of DifficultyLevel."""
         if isinstance(v, DifficultyLevel):
             return v
