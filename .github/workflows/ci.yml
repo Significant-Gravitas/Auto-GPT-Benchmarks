@@ -153,7 +153,7 @@ jobs:
           pip install ../../dist/*.whl
 
           if [ "${GITHUB_EVENT_NAME}" == "schedule" ] || [ "${GITHUB_EVENT_NAME}" == "workflow_dispatch" ]; then
-            curl -s https://raw.githubusercontent.com/Helicone/helicone/main/mitmproxy.sh | bash -s start
+            curl -s https://raw.githubusercontent.com/merwanehamadi/helicone/add-custom-properties/mitmproxy.sh | bash -s start
             agbenchmark start --maintain
           else
             agbenchmark start --maintain --mock
@@ -169,6 +169,7 @@ jobs:
           HELICONE_API_KEY: ${{ secrets.HELICONE_API_KEY }}
           REQUESTS_CA_BUNDLE: /etc/ssl/certs/ca-certificates.crt
           HELICONE_CACHE_ENABLED: true
+          HELICONE_PROPERTY_AGENT: ${{ matrix.agent-name }}
 
       - name: Upload logs as artifact
         if: always()
