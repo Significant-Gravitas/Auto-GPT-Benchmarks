@@ -48,7 +48,7 @@ def get_highest_success_difficulty(data: dict) -> str:
     highest_difficulty_level = -1
 
     for test_name, test_data in data.items():
-        if test_data["metrics"].get("success"):
+        if test_data["metrics"]["success"]:
             # Replace 'medium' with 'intermediate' for this example
             difficulty_str = test_data["metrics"]["difficulty"]
 
