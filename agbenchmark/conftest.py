@@ -1,5 +1,6 @@
 import json
 import os
+import time
 import shutil
 from pathlib import Path  # noqa
 from typing import Any, Dict, Generator
@@ -114,6 +115,14 @@ def mock(request):
     return request.config.getoption("--mock")
 
 
+@pytest.fixture(autouse=True, scope="function")
+def timer(request):
+    start_time = time.time()
+    yield
+    run_time = time.time() - start_time
+    request.node.user_properties.append(("run_time", run_time))
+
+
 # tests that consistently pass are considered regression tests
 regression_manager = ReportManager(REGRESSION_TESTS_PATH)
 
@@ -137,6 +146,7 @@ def pytest_runtest_makereport(item: Any, call: Any) -> None:
         # Extract the challenge_location from the class
         challenge_location: str = getattr(item.cls, "CHALLENGE_LOCATION", "")
         test_name = item.nodeid.split("::")[1]
+        item.test_name = test_name
 
         test_details = {
             "difficulty": difficulty,
@@ -181,6 +191,16 @@ def pytest_runtest_makereport(item: Any, call: Any) -> None:
             regression_manager.add_test(test_name, test_details)
 
         # user facing reporting
+        item.info_details = info_details
+    if call.when == "teardown":
+        run_time = dict(item.user_properties).get("run_time")
+
+        info_details = getattr(item, "info_details", {})
+        test_name = getattr(item, "test_name", "")
+
+        if run_time:
+            info_details["metrics"]["run_time"] = f"{str(round(run_time, 3))} seconds"
+
         info_manager.add_test(test_name, info_details)
 
 

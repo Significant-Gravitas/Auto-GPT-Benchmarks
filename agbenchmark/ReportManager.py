@@ -54,8 +54,7 @@ class ReportManager:
             "command": command.split(os.sep)[-1],
             "completion_time": datetime.now().strftime("%Y-%m-%d-%H:%M"),
             "metrics": {
-                "time_elapsed": str(round(time.time() - self.start_time, 2))
-                + " seconds",
+                "run_time": str(round(time.time() - self.start_time, 2)) + " seconds",
                 "highest_difficulty": get_highest_success_difficulty(self.tests),
             },
             "tests": self.tests,

@@ -56,8 +56,6 @@ def get_highest_success_difficulty(data: dict) -> Optional[int]:
                 difficulty_enum = DifficultyLevel[difficulty_str.lower()]
                 difficulty_level = DIFFICULTY_MAP[difficulty_enum]
 
-                print(f"Test '{test_name}' has difficulty level {difficulty_level}")
-
                 if difficulty_level > highest_difficulty_level:
                     highest_difficulty = difficulty_enum
                     highest_difficulty_level = difficulty_level
