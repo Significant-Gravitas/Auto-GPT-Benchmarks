@@ -154,7 +154,7 @@ def pytest_runtest_makereport(item: Any, call: Any) -> None:
             "data_path": challenge_location,
         }
 
-        info_details = {
+        info_details: Any = {
             "data_path": challenge_location,
             "is_regression": False,
             "metrics": {
@@ -166,22 +166,22 @@ def pytest_runtest_makereport(item: Any, call: Any) -> None:
         mock = "--mock" in sys.argv  # Check if --mock is in sys.argv
 
         if call.excinfo is None:
-            info_details["metrics"]["success"] = True  # type: ignore
+            info_details["metrics"]["success"] = True
         else:
             if not mock:  # don't remove if it's a mock test
                 regression_manager.remove_test(test_name)
-            info_details["metrics"]["fail_reason"] = str(call.excinfo.value)  # type: ignore
+            info_details["metrics"]["fail_reason"] = str(call.excinfo.value)
 
         prev_test_results: list[bool] = []
 
         if not mock:
             # only add if it's an actual test
             prev_test_results = internal_info.tests.get(test_name, [])
-            prev_test_results.append(info_details["metrics"]["success"])  # type: ignore
+            prev_test_results.append(info_details["metrics"]["success"])
             internal_info.add_test(test_name, prev_test_results)
 
         # can calculate success rate regardless of mock
-        info_details["metrics"]["success_%"] = calculate_success_percentage(  # type: ignore
+        info_details["metrics"]["success_%"] = calculate_success_percentage(
             prev_test_results
         )
 
@@ -195,11 +195,11 @@ def pytest_runtest_makereport(item: Any, call: Any) -> None:
     if call.when == "teardown":
         run_time = dict(item.user_properties).get("run_time")
 
-        info_details = getattr(item, "info_details", {"metrics": {}})
+        info_details = getattr(item, "info_details", {})
         test_name = getattr(item, "test_name", "")
 
         if run_time:
-            info_details["metrics"]["run_time"] = f"{str(round(run_time, 3))} seconds"  # type: ignore
+            info_details["metrics"]["run_time"] = f"{str(round(run_time, 3))} seconds"
 
         info_manager.add_test(test_name, info_details)
 
