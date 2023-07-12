@@ -198,10 +198,13 @@ def pytest_runtest_makereport(item: Any, call: Any) -> None:
         info_details = getattr(item, "info_details", {})
         test_name = getattr(item, "test_name", "")
 
-        if run_time:
-            info_details["metrics"]["run_time"] = f"{str(round(run_time, 3))} seconds"
+        if info_details and test_name:
+            if run_time:
+                info_details["metrics"][
+                    "run_time"
+                ] = f"{str(round(run_time, 3))} seconds"
 
-        info_manager.add_test(test_name, info_details)
+            info_manager.add_test(test_name, info_details)
 
 
 def pytest_sessionfinish(session: Any) -> None:
