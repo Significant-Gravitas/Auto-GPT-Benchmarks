@@ -5,7 +5,6 @@ import sys
 import time
 from typing import Any, Dict
 import threading
-from agbenchmark.utils.sniffer import Sniffer
 
 from dotenv import load_dotenv
 
@@ -33,11 +32,8 @@ def run_agent(
             f"Running Python function '{config['entry_path']}' with timeout {config['cutoff']}"
         )
 
-        sniffer = Sniffer()
-
-        # start packet sniffing subprocess
-        sniffer_thread = threading.Thread(target=sniffer.start_sniffing)
-        sniffer_thread.start()
+        os.environ["http_proxy"] = "http://localhost:8080"
+        os.environ["https_proxy"] = "http://localhost:8080"
 
         command = [sys.executable, "-m", config["entry_path"], str(task)]
         process = subprocess.Popen(
@@ -70,10 +66,6 @@ def run_agent(
             print("The Python function has finished running.")
 
         process.wait()
-
-        # Stop the sniffer thread after the process has ended
-        sniffer.stop_sniffing = True
-        sniffer_thread.join()
 
         if process.returncode != 0:
             print(f"The agent timed out")
