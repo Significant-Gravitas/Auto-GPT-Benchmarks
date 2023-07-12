@@ -12,7 +12,7 @@ class Sniffer:
             return self.POST_print(packet)
 
     def POST_print(self, packet):
-        print("POST PRINT FOUND", packet[TCP].payload)
+        print("POST PRINT FOUND", packet[TCP])
 
         # Check if this is an HTTP packet with a "chat" field in the body
         if b"messages" in packet[TCP].payload:
