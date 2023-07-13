@@ -173,18 +173,21 @@ def pytest_runtest_makereport(item: Any, call: Any) -> None:
                 regression_manager.remove_test(test_name)
             info_details["metrics"]["fail_reason"] = str(call.excinfo.value)
 
-        prev_test_results: list[bool] = []
-
+        prev_test_results: list[bool] = internal_info.tests.get(test_name, [])
         if not mock:
             # only add if it's an actual test
-            prev_test_results = internal_info.tests.get(test_name, [])
             prev_test_results.append(info_details["metrics"]["success"])
             internal_info.add_test(test_name, prev_test_results)
 
-        # can calculate success rate regardless of mock
-        info_details["metrics"]["success_%"] = calculate_success_percentage(
-            prev_test_results
-        )
+            # can calculate success rate regardless of mock
+            info_details["metrics"]["success_%"] = calculate_success_percentage(
+                prev_test_results
+            )
+        else:
+            # can calculate success rate regardless of mock
+            info_details["metrics"][
+                "non_mock_success_%"
+            ] = calculate_success_percentage(prev_test_results)
 
         if len(prev_test_results) >= 3 and prev_test_results[-3:] == [True, True, True]:
             # if the last 3 tests were successful, add to the regression tests
