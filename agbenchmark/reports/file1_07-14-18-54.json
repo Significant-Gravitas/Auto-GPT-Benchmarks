@@ -1,19 +1,19 @@
 {
     "command": "agbenchmark start --mock",
-    "completion_time": "2023-07-13-08:12",
+    "completion_time": "2023-07-14-18:54",
     "metrics": {
-        "run_time": "1.03 seconds",
+        "run_time": "0.97 seconds",
         "highest_difficulty": "advanced: 5"
     },
     "tests": {
         "TestWriteFile": {
             "data_path": "agbenchmark/challenges/interface/write_file",
-            "is_regression": true,
+            "is_regression": false,
             "metrics": {
                 "difficulty": "interface",
                 "success": true,
-                "non_mock_success_%": 100.0,
-                "run_time": "0.008 seconds"
+                "non_mock_success_%": 75.0,
+                "run_time": "0.007 seconds"
             }
         },
         "TestReadFile": {
@@ -23,7 +23,7 @@
                 "difficulty": "interface",
                 "success": true,
                 "non_mock_success_%": 100.0,
-                "run_time": "0.013 seconds"
+                "run_time": "0.008 seconds"
             }
         },
         "TestSearch": {
@@ -44,7 +44,7 @@
                 "success": false,
                 "fail_reason": "assert 1 in [0.0]",
                 "non_mock_success_%": 0.0,
-                "run_time": "0.446 seconds"
+                "run_time": "0.448 seconds"
             }
         },
         "TestBasicMemory": {
@@ -54,7 +54,7 @@
                 "difficulty": "basic",
                 "success": true,
                 "non_mock_success_%": 100.0,
-                "run_time": "0.02 seconds"
+                "run_time": "0.028 seconds"
             }
         },
         "TestBasicRetrieval": {
@@ -64,7 +64,7 @@
                 "difficulty": "basic",
                 "success": true,
                 "non_mock_success_%": 100.0,
-                "run_time": "0.009 seconds"
+                "run_time": "0.014 seconds"
             }
         },
         "TestDebugSimpleTypoWithoutGuidance": {
@@ -86,7 +86,7 @@
                 "success": false,
                 "fail_reason": "agbenchmark/challenges/test_all.py::TestCreateSimpleWebServer::test_method[challenge_data0] depends on agbenchmark/challenges/test_all.py::TestDebugSimpleTypoWithGuidance::test_method[challenge_data0]",
                 "non_mock_success_%": 0.0,
-                "run_time": "0.001 seconds"
+                "run_time": "0.002 seconds"
             }
         },
         "TestRememberMultipleIds": {
@@ -96,7 +96,7 @@
                 "difficulty": "novice",
                 "success": true,
                 "non_mock_success_%": 100.0,
-                "run_time": "0.02 seconds"
+                "run_time": "0.023 seconds"
             }
         },
         "TestRetrieval2": {
@@ -106,7 +106,7 @@
                 "difficulty": "novice",
                 "success": true,
                 "non_mock_success_%": 100.0,
-                "run_time": "0.018 seconds"
+                "run_time": "0.013 seconds"
             }
         },
         "TestRememberMultipleIdsWithNoise": {
@@ -116,7 +116,7 @@
                 "difficulty": "intermediate",
                 "success": true,
                 "non_mock_success_%": 100.0,
-                "run_time": "0.024 seconds"
+                "run_time": "0.03 seconds"
             }
         },
         "TestRetrieval3": {
@@ -126,7 +126,7 @@
                 "difficulty": "intermediate",
                 "success": true,
                 "non_mock_success_%": 100.0,
-                "run_time": "0.014 seconds"
+                "run_time": "0.016 seconds"
             }
         },
         "TestRememberMultiplePhrasesWithNoise": {
@@ -136,13 +136,12 @@
                 "difficulty": "advanced",
                 "success": true,
                 "non_mock_success_%": 100.0,
-                "run_time": "0.025 seconds"
+                "run_time": "0.034 seconds"
             }
         }
     },
     "config": {
         "workspace": "${os.path.join(Path.home(), 'miniagi')}",
-        "entry_path": "agbenchmark.benchmarks",
-        "cutoff": 60
+        "entry_path": "agbenchmark.benchmarks"
     }
 }

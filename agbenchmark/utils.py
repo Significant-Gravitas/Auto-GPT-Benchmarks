@@ -3,6 +3,7 @@ import glob
 import re
 from pathlib import Path
 from typing import Any
+from datetime import datetime
 
 from agbenchmark.challenges.define_task_types import DIFFICULTY_MAP, DifficultyLevel
 
@@ -12,11 +13,13 @@ def calculate_info_test_path(benchmarks_folder_path: Path) -> str:
 
     if not INFO_TESTS_PATH.exists():
         INFO_TESTS_PATH.mkdir(parents=True, exist_ok=True)
-        return str(INFO_TESTS_PATH / "1.json")
+        return str(
+            INFO_TESTS_PATH / f"file1_{datetime.now().strftime('%m-%d-%H-%M')}.json"
+        )
     else:
         json_files = glob.glob(str(INFO_TESTS_PATH / "*.json"))
         file_count = len(json_files)
-        run_name = f"{file_count + 1}.json"
+        run_name = f"file{file_count + 1}_{datetime.now().strftime('%m-%d-%H-%M')}.json"
         new_file_path = INFO_TESTS_PATH / run_name
         return str(new_file_path)
 
@@ -45,7 +48,7 @@ def calculate_success_percentage(results: list[bool]) -> float:
 
 def get_highest_success_difficulty(data: dict) -> str:
     highest_difficulty = None
-    highest_difficulty_level = -1
+    highest_difficulty_level = 0
 
     for test_name, test_data in data.items():
         if test_data["metrics"]["success"]:

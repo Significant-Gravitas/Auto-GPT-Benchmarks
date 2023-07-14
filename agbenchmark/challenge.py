@@ -4,15 +4,8 @@ import subprocess
 from abc import ABC
 from typing import Any, Dict, List
 
-from dotenv import load_dotenv
-
 from agbenchmark.challenges.define_task_types import ChallengeData, Ground
 from agbenchmark.start_benchmark import CURRENT_DIRECTORY
-
-load_dotenv()
-
-mock_test_str = os.getenv("MOCK_TEST")
-MOCK_TEST = mock_test_str.lower() == "true" if mock_test_str else False
 
 
 class Challenge(ABC):
@@ -37,14 +30,14 @@ class Challenge(ABC):
     def dependencies(self) -> list:
         return self.data.dependencies
 
-    def setup_challenge(self, config: Dict[str, Any]) -> None:
+    def setup_challenge(self, config: Dict[str, Any], cutoff: int) -> None:
         from agbenchmark.agent_interface import copy_artifacts_into_workspace, run_agent
 
         copy_artifacts_into_workspace(
             config["workspace"], "artifacts_in", self.CHALLENGE_LOCATION
         )
 
-        run_agent(self.task, config, self.CHALLENGE_LOCATION)
+        run_agent(self.task, config, self.CHALLENGE_LOCATION, cutoff)
 
     def test_method(self, config: Dict[str, Any]) -> None:
         raise NotImplementedError

@@ -11,7 +11,7 @@ from typing import Any, Dict
 import pytest
 
 from agbenchmark.challenge import Challenge
-from agbenchmark.start_benchmark import CURRENT_DIRECTORY
+from agbenchmark.start_benchmark import CURRENT_DIRECTORY, CONFIG_PATH
 from agbenchmark.utils import replace_backslash
 
 json_files = glob.glob(f"{CURRENT_DIRECTORY}/**/data.json", recursive=True)
@@ -56,7 +56,8 @@ def generate_tests() -> None:
 
         # Define test method within the dynamically created class
         def test_method(self, config: Dict[str, Any]) -> None:  # type: ignore
-            self.setup_challenge(config)
+            cutoff = self.data.cutoff or 60
+            self.setup_challenge(config, cutoff)
 
             scores = self.get_scores(config)
 
