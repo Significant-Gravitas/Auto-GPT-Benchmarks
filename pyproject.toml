@@ -41,7 +41,8 @@ markers = [
     "regression",
     "interface",
     "code",
-    "memory"
+    "memory",
+    "iterate"
 ]
 
 [tool.poetry.scripts]
