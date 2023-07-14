@@ -1,9 +1,9 @@
 # radio charts, logs, helper functions for tests, anything else relevant.
 import glob
 import re
+from datetime import datetime
 from pathlib import Path
 from typing import Any
-from datetime import datetime
 
 from agbenchmark.challenges.define_task_types import DIFFICULTY_MAP, DifficultyLevel
 
