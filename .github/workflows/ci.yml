@@ -80,6 +80,10 @@ jobs:
         cache-enabled: [ true, false ]
 
     steps:
+      - name: Get the date
+        id: date
+        run: echo "::set-output name=date::$(date +'%Y%m%d%H%M%S')"
+
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
@@ -138,19 +142,16 @@ jobs:
 
           pip install ../../dist/*.whl
           
-          if [ "${GITHUB_EVENT_NAME}" == "pull_request" ]; then
-            agbenchmark start --maintain --mock
-            agbenchmark start --improve --mock
-            agbenchmark start --mock
-            agbenchmark start --mock --category=retrieval
-            agbenchmark start --mock --category=interface
-            agbenchmark start --mock --category=code
-            agbenchmark start --mock --category=memory
-            agbenchmark start --mock --category=iterate
-          else
-            curl -s https://raw.githubusercontent.com/Helicone/helicone/main/mitmproxy.sh | bash -s start
-            agbenchmark start || echo "This command will always return a non zero exit code unless all the challenges are solved."
-          fi
+          agbenchmark start --maintain --mock
+          agbenchmark start --improve --mock
+          agbenchmark start --mock
+          agbenchmark start --mock --category=retrieval
+          agbenchmark start --mock --category=interface
+          agbenchmark start --mock --category=code
+          agbenchmark start --mock --category=memory
+          agbenchmark start --mock --category=iterate
+          cd ../..
+          git add benchmark_runs || echo "no reports to commit"
         env:
           GITHUB_EVENT_NAME: ${{ github.event_name }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
@@ -169,3 +170,15 @@ jobs:
         with:
           name: ${{ matrix.agent-name }}
           path: benchmark_runs/${{ matrix.agent-name }}
+
+      - name: Create Pull Request
+        if: always()
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.PAT }}
+          branch: "${{ matrix.agent-name }}-${{ steps.date.outputs.date }}"
+          commit-message: "${{ matrix.agent-name }}-${{ steps.date.outputs.date }}"
+          title: "${{ matrix.agent.name }}-${{ steps.date.outputs.date }}"
+          body: >
+            This pull request was created automatically.
+          add-paths: "benchmark_runs/*"
