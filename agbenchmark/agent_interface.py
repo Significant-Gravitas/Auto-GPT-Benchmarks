@@ -3,7 +3,7 @@ import shutil
 import subprocess
 import sys
 import time
-from typing import Any, Dict
+from typing import Any, Dict, Optional
 
 from dotenv import load_dotenv
 
@@ -13,6 +13,34 @@ load_dotenv()
 
 mock_test_str = os.getenv("MOCK_TEST")
 MOCK_FLAG = mock_test_str.lower() == "true" if mock_test_str else False
+
+
+class TestSubprocess:
+    """A convenience class to allow creating a subprocess with a timeout while capturing its output"""
+
+    cmd: list[str]
+    process: Optional[subprocess.Popen[str]]
+
+    def __init__(self, cmd: list[str]) -> None:
+        self.cmd = cmd
+        self.process = None
+
+    def run(self, timeout: int) -> None:
+        self.process = subprocess.Popen(
+            self.cmd, stdout=sys.stdout, stderr=sys.stderr, universal_newlines=True
+        )
+
+        start_time = time.time()
+        while self.process.poll() is None:  # None means the process hasn't finished
+            if time.time() - start_time > timeout:
+                print("The agent timed out")
+                self.process.terminate()  # Kill the process
+                break
+
+            time.sleep(1)
+
+        if self.process.returncode is not None and self.process.returncode != 0:
+            print(f"The agent exited with return code {self.process.returncode}")
 
 
 def run_agent(
@@ -27,39 +55,13 @@ def run_agent(
     else:
         print(f"Running Python function '{config['entry_path']}' with timeout {cutoff}")
         command = [sys.executable, "-m", config["entry_path"], str(task)]
-        process = subprocess.Popen(
-            command,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.STDOUT,
-            universal_newlines=True,
-        )
+        test_subprocess = TestSubprocess(command)
+        test_subprocess.run(timeout=cutoff)
 
-        start_time = time.time()
-
-        while True:
-            output = ""
-            if process.stdout is not None:
-                output = process.stdout.readline()
-                print(output.strip())
-
-            # Check if process has ended, has no more output, or exceeded timeout
-            if (
-                process.poll() is not None
-                or output == ""
-                or (time.time() - start_time > cutoff)
-            ):
-                break
-
-        if time.time() - start_time > cutoff:
-            print("The Python function has exceeded the time limit and was terminated.")
-            process.kill()
-        else:
+        if test_subprocess.process and not test_subprocess.process.returncode:
             print("The Python function has finished running.")
-
-        process.wait()
-
-        if process.returncode != 0:
-            print(f"The agent timed out")
+        else:
+            print("The Python function exited with an error.")
 
 
 def copy_artifacts_into_workspace(

@@ -54,7 +54,7 @@ def generate_tests() -> None:
 
         # Define test method within the dynamically created class
         def test_method(self, config: Dict[str, Any]) -> None:  # type: ignore
-            cutoff = self.data.cutoff or 60
+            cutoff = self.data.cutoff or int(config.get("cutoff", 60))
             self.setup_challenge(config, cutoff)
 
             scores = self.get_scores(config)
