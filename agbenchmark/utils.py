@@ -38,8 +38,10 @@ def replace_backslash(value: Any) -> Any:
 
 
 def calculate_success_percentage(results: list[bool]) -> float:
-    success_count = results.count(True)
-    total_count = len(results)
+    # Take the last 10 results or all if less than 10
+    last_results = results[-10:] if len(results) > 10 else results
+    success_count = last_results.count(True)
+    total_count = len(last_results)
     if total_count == 0:
         return 0
     success_percentage = (success_count / total_count) * 100  # as a percentage
