@@ -1,0 +1,47 @@
+{
+    "command": "agbenchmark start --mock --category=iterate",
+    "completion_time": "2023-07-16-18:45",
+    "metrics": {
+        "run_time": "0.13 seconds",
+        "highest_difficulty": ": 0"
+    },
+    "tests": {
+        "TestDebugSimpleTypoWithGuidance": {
+            "data_path": "agbenchmark/challenges/code/d1",
+            "is_regression": false,
+            "metrics": {
+                "difficulty": "basic",
+                "success": false,
+                "fail_reason": "agent/gpt-engineer/venv/lib/python3.10/site-packages/agbenchmark/challenges/test_all.py::TestDebugSimpleTypoWithGuidance::test_method[challenge_data0] depends on TestWriteFile, TestReadFile, which was not found",
+                "non_mock_success_%": 0.0,
+                "run_time": "0.001 seconds"
+            }
+        },
+        "TestThreeSum": {
+            "data_path": "agbenchmark/challenges/code/d5",
+            "is_regression": false,
+            "metrics": {
+                "difficulty": "intermediate",
+                "success": false,
+                "fail_reason": "agent/gpt-engineer/venv/lib/python3.10/site-packages/agbenchmark/challenges/test_all.py::TestThreeSum::test_method[challenge_data0] depends on TestBasicCodeGeneration, TestWriteFile, which was not found",
+                "non_mock_success_%": 0,
+                "run_time": "0.001 seconds"
+            }
+        },
+        "TestDebugSimpleTypoWithoutGuidance": {
+            "data_path": "agbenchmark/challenges/code/d2",
+            "is_regression": false,
+            "metrics": {
+                "difficulty": "novice",
+                "success": false,
+                "fail_reason": "agent/gpt-engineer/venv/lib/python3.10/site-packages/agbenchmark/challenges/test_all.py::TestDebugSimpleTypoWithoutGuidance::test_method[challenge_data0] depends on agent/gpt-engineer/venv/lib/python3.10/site-packages/agbenchmark/challenges/test_all.py::TestDebugSimpleTypoWithGuidance::test_method[challenge_data0]",
+                "non_mock_success_%": 0.0,
+                "run_time": "0.001 seconds"
+            }
+        }
+    },
+    "config": {
+        "workspace": "projects/my-new-project/workspace",
+        "entry_path": "agbenchmark.benchmarks"
+    }
+}
