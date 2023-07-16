@@ -1,0 +1,134 @@
+{
+    "command": "agbenchmark start --improve --mock",
+    "completion_time": "2023-07-16-18:35",
+    "metrics": {
+        "run_time": "0.37 seconds",
+        "highest_difficulty": "advanced: 5"
+    },
+    "tests": {
+        "TestDebugSimpleTypoWithGuidance": {
+            "data_path": "agbenchmark/challenges/code/d1",
+            "is_regression": false,
+            "metrics": {
+                "difficulty": "basic",
+                "success": true,
+                "non_mock_success_%": 0.0,
+                "run_time": "0.041 seconds"
+            }
+        },
+        "TestBasicCodeGeneration": {
+            "data_path": "agbenchmark/challenges/code/d4",
+            "is_regression": false,
+            "metrics": {
+                "difficulty": "novice",
+                "success": true,
+                "non_mock_success_%": 0,
+                "run_time": "0.037 seconds"
+            }
+        },
+        "TestBasicMemory": {
+            "data_path": "agbenchmark/challenges/memory/m1",
+            "is_regression": true,
+            "metrics": {
+                "difficulty": "basic",
+                "success": true,
+                "non_mock_success_%": 100.0,
+                "run_time": "0.004 seconds"
+            }
+        },
+        "TestBasicRetrieval": {
+            "data_path": "agbenchmark/challenges/retrieval/r1",
+            "is_regression": true,
+            "metrics": {
+                "difficulty": "basic",
+                "success": true,
+                "non_mock_success_%": 100.0,
+                "run_time": "0.001 seconds"
+            }
+        },
+        "TestCreateSimpleWebServer": {
+            "data_path": "agbenchmark/challenges/code/d3",
+            "is_regression": false,
+            "metrics": {
+                "difficulty": "advanced",
+                "success": true,
+                "non_mock_success_%": 0.0,
+                "run_time": "0.029 seconds"
+            }
+        },
+        "TestDebugSimpleTypoWithoutGuidance": {
+            "data_path": "agbenchmark/challenges/code/d2",
+            "is_regression": false,
+            "metrics": {
+                "difficulty": "novice",
+                "success": true,
+                "non_mock_success_%": 0.0,
+                "run_time": "0.038 seconds"
+            }
+        },
+        "TestThreeSum": {
+            "data_path": "agbenchmark/challenges/code/d5",
+            "is_regression": false,
+            "metrics": {
+                "difficulty": "intermediate",
+                "success": true,
+                "non_mock_success_%": 0,
+                "run_time": "0.038 seconds"
+            }
+        },
+        "TestRememberMultipleIds": {
+            "data_path": "agbenchmark/challenges/memory/m2",
+            "is_regression": true,
+            "metrics": {
+                "difficulty": "novice",
+                "success": true,
+                "non_mock_success_%": 100.0,
+                "run_time": "0.004 seconds"
+            }
+        },
+        "TestRetrieval2": {
+            "data_path": "agbenchmark/challenges/retrieval/r2",
+            "is_regression": true,
+            "metrics": {
+                "difficulty": "novice",
+                "success": true,
+                "non_mock_success_%": 100.0,
+                "run_time": "0.002 seconds"
+            }
+        },
+        "TestRememberMultipleIdsWithNoise": {
+            "data_path": "agbenchmark/challenges/memory/m3",
+            "is_regression": true,
+            "metrics": {
+                "difficulty": "intermediate",
+                "success": true,
+                "non_mock_success_%": 100.0,
+                "run_time": "0.002 seconds"
+            }
+        },
+        "TestRetrieval3": {
+            "data_path": "agbenchmark/challenges/retrieval/r3",
+            "is_regression": true,
+            "metrics": {
+                "difficulty": "intermediate",
+                "success": true,
+                "non_mock_success_%": 100.0,
+                "run_time": "0.001 seconds"
+            }
+        },
+        "TestRememberMultiplePhrasesWithNoise": {
+            "data_path": "agbenchmark/challenges/memory/m4",
+            "is_regression": true,
+            "metrics": {
+                "difficulty": "advanced",
+                "success": true,
+                "non_mock_success_%": 100.0,
+                "run_time": "0.002 seconds"
+            }
+        }
+    },
+    "config": {
+        "workspace": "${os.path.join(Path.home(), 'miniagi')}",
+        "entry_path": "agbenchmark.benchmarks"
+    }
+}
