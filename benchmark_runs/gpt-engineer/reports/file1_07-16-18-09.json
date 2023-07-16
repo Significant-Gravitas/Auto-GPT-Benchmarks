@@ -1,0 +1,34 @@
+{
+    "command": "agbenchmark start --maintain --mock",
+    "completion_time": "2023-07-16-18:09",
+    "metrics": {
+        "run_time": "0.2 seconds",
+        "highest_difficulty": "novice: 3"
+    },
+    "tests": {
+        "TestWriteFile": {
+            "data_path": "agbenchmark/challenges/interface/write_file",
+            "is_regression": false,
+            "metrics": {
+                "difficulty": "interface",
+                "success": true,
+                "non_mock_success_%": 44.44,
+                "run_time": "0.002 seconds"
+            }
+        },
+        "TestBasicCodeGeneration": {
+            "data_path": "agbenchmark/challenges/code/d4",
+            "is_regression": false,
+            "metrics": {
+                "difficulty": "novice",
+                "success": true,
+                "non_mock_success_%": 0,
+                "run_time": "0.038 seconds"
+            }
+        }
+    },
+    "config": {
+        "workspace": "projects/my-new-project/workspace",
+        "entry_path": "agbenchmark.benchmarks"
+    }
+}
