@@ -168,4 +168,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: All reports
-          path: benchmark_runs/${{ matrix.agent-name }}/agbenchmark
+          path: benchmark_runs/${{ matrix.agent-name }}
