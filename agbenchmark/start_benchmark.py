@@ -12,14 +12,29 @@ load_dotenv()
 
 from agbenchmark.utils import calculate_info_test_path
 
-CURRENT_DIRECTORY = Path(__file__).resolve().parent
+AGENT_NAME = os.getenv("AGENT_NAME")
+ENV = os.getenv("ENVIRONMENT")
 
-benchmarks_folder_path = Path(os.getcwd()) / "agbenchmark"
+CURRENT_DIRECTORY = Path(__file__).resolve().parent
+HOME_DIRECTORY = Path(os.getcwd())
+
+benchmarks_folder_path = HOME_DIRECTORY / "agbenchmark"
 
 CONFIG_PATH = str(benchmarks_folder_path / "config.json")
 REGRESSION_TESTS_PATH = str(benchmarks_folder_path / "regression_tests.json")
+INFO_TESTS_PATH = ""
 
-INFO_TESTS_PATH = calculate_info_test_path(benchmarks_folder_path)
+if AGENT_NAME and ENV == "local":
+    local_benchmarks_folder_path = HOME_DIRECTORY / "agent" / AGENT_NAME / "agbenchmark"
+    # report location when run from root of benchmark repo
+    INFO_TESTS_PATH = calculate_info_test_path(
+        benchmarks_folder_path / "reports" / AGENT_NAME
+    )
+    REGRESSION_TESTS_PATH = str(local_benchmarks_folder_path / "regression_tests.json")
+    CONFIG_PATH = str(local_benchmarks_folder_path / "config.json")
+else:
+    # /reports is when home is an agent (agent/agent_repo)
+    INFO_TESTS_PATH = calculate_info_test_path(benchmarks_folder_path / "reports")
 
 
 @click.group()

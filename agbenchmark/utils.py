@@ -9,22 +9,17 @@ from typing import Any
 from agbenchmark.challenges.define_task_types import DIFFICULTY_MAP, DifficultyLevel
 
 
-def calculate_info_test_path(benchmarks_folder_path: Path) -> str:
-
-    INFO_TESTS_PATH = (
-        benchmarks_folder_path / os.getenv("REPORT_LOCATION", ".") / "reports"
-    )
-
-    if not INFO_TESTS_PATH.exists():
-        INFO_TESTS_PATH.mkdir(parents=True, exist_ok=True)
+def calculate_info_test_path(reports_path: Path) -> str:
+    if not reports_path.exists():
+        reports_path.mkdir(parents=True, exist_ok=True)
         return str(
-            INFO_TESTS_PATH / f"file1_{datetime.now().strftime('%m-%d-%H-%M')}.json"
+            reports_path / f"file1_{datetime.now().strftime('%m-%d-%H-%M')}.json"
         )
     else:
-        json_files = glob.glob(str(INFO_TESTS_PATH / "*.json"))
+        json_files = glob.glob(str(reports_path / "*.json"))
         file_count = len(json_files)
         run_name = f"file{file_count + 1}_{datetime.now().strftime('%m-%d-%H-%M')}.json"
-        new_file_path = INFO_TESTS_PATH / run_name
+        new_file_path = reports_path / run_name
         return str(new_file_path)
 
 
