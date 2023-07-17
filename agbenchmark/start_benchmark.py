@@ -6,35 +6,19 @@ from typing import Any
 
 import click
 import pytest
-from dotenv import load_dotenv
 
-load_dotenv()
 
-from agbenchmark.utils import calculate_info_test_path
+from agbenchmark.utils import calculate_dynamic_paths
 
-AGENT_NAME = os.getenv("AGENT_NAME")
-ENV = os.getenv("ENVIRONMENT")
 
 CURRENT_DIRECTORY = Path(__file__).resolve().parent
-HOME_DIRECTORY = Path(os.getcwd())
 
-benchmarks_folder_path = HOME_DIRECTORY / "agbenchmark"
-
-CONFIG_PATH = str(benchmarks_folder_path / "config.json")
-REGRESSION_TESTS_PATH = str(benchmarks_folder_path / "regression_tests.json")
-INFO_TESTS_PATH = ""
-
-if AGENT_NAME and ENV == "local":
-    local_benchmarks_folder_path = HOME_DIRECTORY / "agent" / AGENT_NAME / "agbenchmark"
-    # report location when run from root of benchmark repo
-    INFO_TESTS_PATH = calculate_info_test_path(
-        benchmarks_folder_path / "reports" / AGENT_NAME
-    )
-    REGRESSION_TESTS_PATH = str(local_benchmarks_folder_path / "regression_tests.json")
-    CONFIG_PATH = str(local_benchmarks_folder_path / "config.json")
-else:
-    # /reports is when home is an agent (agent/agent_repo)
-    INFO_TESTS_PATH = calculate_info_test_path(benchmarks_folder_path / "reports")
+(
+    HOME_DIRECTORY,
+    CONFIG_PATH,
+    REGRESSION_TESTS_PATH,
+    INFO_TESTS_PATH,
+) = calculate_dynamic_paths()
 
 
 @click.group()
@@ -62,9 +46,6 @@ def start(category: str, test: str, maintain: bool, improve: bool, mock: bool) -
             "Error: If you're running a specific test make sure no other options are selected. Please just pass the --test."
         )
         return 1
-
-    if not benchmarks_folder_path.exists():
-        benchmarks_folder_path.mkdir(exist_ok=True)
 
     print(CONFIG_PATH, os.path.exists(CONFIG_PATH), os.stat(CONFIG_PATH).st_size)
     if not os.path.exists(CONFIG_PATH) or os.stat(CONFIG_PATH).st_size == 0:

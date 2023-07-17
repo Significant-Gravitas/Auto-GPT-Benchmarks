@@ -9,8 +9,6 @@ from dotenv import load_dotenv
 
 from agbenchmark.start_benchmark import (
     CURRENT_DIRECTORY,
-    ENV,
-    AGENT_NAME,
     HOME_DIRECTORY,
 )
 
@@ -32,10 +30,6 @@ def run_agent(
     else:
         entry_path = "agbenchmark.benchmarks"
 
-        home_path = HOME_DIRECTORY
-        if ENV and AGENT_NAME:
-            home_path = HOME_DIRECTORY / "agent" / AGENT_NAME
-
         print(f"Running Python function '{entry_path}' with timeout {cutoff}")
         command = [sys.executable, "-m", entry_path, str(task)]
         process = subprocess.Popen(
@@ -43,7 +37,7 @@ def run_agent(
             stdout=subprocess.PIPE,
             stderr=subprocess.STDOUT,
             universal_newlines=True,
-            cwd=home_path,
+            cwd=HOME_DIRECTORY,
         )
 
         start_time = time.time()
