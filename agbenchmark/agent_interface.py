@@ -7,10 +7,7 @@ from typing import Any, Dict
 
 from dotenv import load_dotenv
 
-from agbenchmark.start_benchmark import (
-    CURRENT_DIRECTORY,
-    HOME_DIRECTORY,
-)
+from agbenchmark.start_benchmark import CURRENT_DIRECTORY, HOME_DIRECTORY
 
 load_dotenv()
 

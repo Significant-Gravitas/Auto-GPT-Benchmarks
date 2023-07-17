@@ -5,6 +5,7 @@ import re
 from datetime import datetime
 from pathlib import Path
 from typing import Any
+
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -83,7 +84,7 @@ def get_highest_success_difficulty(data: dict) -> str:
     return f"{highest_difficulty_str}: {highest_difficulty_level}"
 
 
-def assign_paths(folder_path) -> tuple[str, str, str]:
+def assign_paths(folder_path: Path) -> tuple[str, str, str]:
     CONFIG_PATH = str(folder_path / "config.json")
     REGRESSION_TESTS_PATH = str(folder_path / "regression_tests.json")
 
