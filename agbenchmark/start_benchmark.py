@@ -7,7 +7,7 @@ from typing import Any
 import click
 import pytest
 
-from agbenchmark.utils import calculate_dynamic_paths
+from agbenchmark.utils import AGENT_NAME, HOME_ENV, calculate_dynamic_paths
 
 CURRENT_DIRECTORY = Path(__file__).resolve().parent
 
@@ -30,9 +30,31 @@ def cli() -> None:
 @click.option("--maintain", is_flag=True, help="Runs only regression tests")
 @click.option("--improve", is_flag=True, help="Run only non-regression tests")
 @click.option("--mock", is_flag=True, help="Run with mock")
-def start(category: str, test: str, maintain: bool, improve: bool, mock: bool) -> int:
+@click.option("--nc", is_flag=True, help="Run without cutoff")
+def start(
+    category: str, test: str, maintain: bool, improve: bool, mock: bool, nc: bool
+) -> int:
     """Start the benchmark tests. If a category flag is provided, run the categories with that mark."""
     # Check if configuration file exists and is not empty
+    if AGENT_NAME and os.path.join("Auto-GPT-Benchmarks", "agent") in str(
+        Path(os.getcwd())
+    ):
+        print(
+            "Error: AGENT_NAME should not be defined in the .env if you are running agbenchmark from an agent repo"
+        )
+        return 1
+    elif not AGENT_NAME and not os.path.join("Auto-GPT-Benchmarks", "agent") not in str(
+        Path(os.getcwd())
+    ):
+        print(
+            "Error: AGENT_NAME should be defined in the .env if you are running agbenchmark from the Auto-GPT-Benchmarks repo"
+        )
+        return 1
+    elif HOME_ENV:
+        print(
+            "Warning: HOME_ENV should only be defined in the .env if you are developing the benchmark or are the ci"
+        )
+
     if maintain and improve:
         print(
             "Error: You can't use both --maintain and --improve at the same time. Please choose one."
@@ -104,6 +126,9 @@ def start(category: str, test: str, maintain: bool, improve: bool, mock: bool) -
 
     if mock:
         pytest_args.append("--mock")
+
+    if nc:
+        pytest_args.append("--nc")
 
     # when used as a library, the pytest directory to execute is in the CURRENT_DIRECTORY
     pytest_args.append(str(CURRENT_DIRECTORY))
