@@ -1,0 +1,19 @@
+{
+  "name": "TestBasicAdaptability",
+  "category": ["code", "iterate"],
+  "task": "Add a return statement to the function multiply_int in test.py. You can make sure you have correctly done this by running test.py",
+  "dependencies": ["TestBasicCode"],
+  "cutoff": 30,
+  "ground": {
+    "answer": "Just a simple multiple by 2 function. Num is 4 so answer is 8",
+    "should_contain": ["8"],
+    "should_not_contain": [],
+    "files": ["test.py"],
+    "type": "execute_python_code"
+  },
+  "info": {
+    "difficulty": "basic",
+    "description": "Not specifying what to return, and test.py is the wrong file, it should actually be code.py",
+    "side_effects": []
+  }
+}
