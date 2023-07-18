@@ -45,7 +45,6 @@ def start(category: str, test: str, maintain: bool, improve: bool, mock: bool) -
         )
         return 1
 
-    print(CONFIG_PATH, os.path.exists(CONFIG_PATH), os.stat(CONFIG_PATH).st_size)
     if not os.path.exists(CONFIG_PATH) or os.stat(CONFIG_PATH).st_size == 0:
         config = {}
 

@@ -12,7 +12,7 @@
     "type": "execute_python_code"
   },
   "info": {
-    "difficulty": "basic",
+    "difficulty": "novice",
     "description": "Tests ability for the agent to debug python code with a simple typo in it.",
     "side_effects": []
   }
