@@ -1,9 +1,9 @@
 {
     "command": "agbenchmark start",
-    "completion_time": "2023-07-19-20:41",
+    "completion_time": "2023-07-19-21:56",
     "metrics": {
-        "run_time": "46.24 seconds",
-        "highest_difficulty": "No successful tests"
+        "run_time": "35.04 seconds",
+        "highest_difficulty": "advanced: 5"
     },
     "tests": {
         "TestWriteFile": {
@@ -14,10 +14,9 @@
             "description": "Tests the writing to file",
             "metrics": {
                 "difficulty": "interface",
-                "success": false,
-                "fail_reason": "assert 1 in [0.0]",
-                "success_%": 0.0,
-                "run_time": "46.006 seconds"
+                "success": true,
+                "success_%": 100.0,
+                "run_time": "4.839 seconds"
             },
             "reached_cutoff": false
         },
@@ -29,10 +28,9 @@
             "description": "Tests ability for the agent to create the two_sum function.",
             "metrics": {
                 "difficulty": "advanced",
-                "success": false,
-                "fail_reason": "challenges/test_all.py::TestBasicCodeGeneration::test_method[challenge_data0] depends on challenges/test_all.py::TestWriteFile::test_method[challenge_data0]",
-                "success_%": 0.0,
-                "run_time": "0.003 seconds"
+                "success": true,
+                "success_%": 100.0,
+                "run_time": "7.157 seconds"
             },
             "reached_cutoff": false
         },
@@ -45,9 +43,9 @@
             "metrics": {
                 "difficulty": "interface",
                 "success": false,
-                "fail_reason": "challenges/test_all.py::TestSearch::test_method[challenge_data0] depends on challenges/test_all.py::TestWriteFile::test_method[challenge_data0]",
+                "fail_reason": "assert 1 in [0.0]",
                 "success_%": 0.0,
-                "run_time": "0.001 seconds"
+                "run_time": "15.171 seconds"
             },
             "reached_cutoff": false
         },
@@ -60,9 +58,9 @@
             "metrics": {
                 "difficulty": "interface",
                 "success": false,
-                "fail_reason": "challenges/test_all.py::TestReadFile::test_method[challenge_data0] depends on challenges/test_all.py::TestWriteFile::test_method[challenge_data0]",
+                "fail_reason": "assert 1 in [0.0]",
                 "success_%": 0.0,
-                "run_time": "0.001 seconds"
+                "run_time": "6.181 seconds"
             },
             "reached_cutoff": false
         },
@@ -75,9 +73,9 @@
             "metrics": {
                 "difficulty": "advanced",
                 "success": false,
-                "fail_reason": "challenges/test_all.py::TestThreeSum::test_method[challenge_data0] depends on challenges/test_all.py::TestBasicCodeGeneration::test_method[challenge_data0], challenges/test_all.py::TestWriteFile::test_method[challenge_data0]",
+                "fail_reason": "assert 1 in [0.0]",
                 "success_%": 0.0,
-                "run_time": "0.002 seconds"
+                "run_time": "1.503 seconds"
             },
             "reached_cutoff": false
         },
@@ -90,9 +88,9 @@
             "metrics": {
                 "difficulty": "basic",
                 "success": false,
-                "fail_reason": "challenges/test_all.py::TestBasicRetrieval::test_method[challenge_data0] depends on challenges/test_all.py::TestSearch::test_method[challenge_data0], challenges/test_all.py::TestWriteFile::test_method[challenge_data0]",
+                "fail_reason": "agent/smol-developer/venv/lib/python3.10/site-packages/agbenchmark/challenges/test_all.py::TestBasicRetrieval::test_method[challenge_data0] depends on agent/smol-developer/venv/lib/python3.10/site-packages/agbenchmark/challenges/test_all.py::TestSearch::test_method[challenge_data0]",
                 "success_%": 0.0,
-                "run_time": "0.002 seconds"
+                "run_time": "0.001 seconds"
             },
             "reached_cutoff": false
         },
@@ -105,9 +103,9 @@
             "metrics": {
                 "difficulty": "basic",
                 "success": false,
-                "fail_reason": "challenges/test_all.py::TestDebugSimpleTypoWithGuidance::test_method[challenge_data0] depends on challenges/test_all.py::TestReadFile::test_method[challenge_data0], challenges/test_all.py::TestWriteFile::test_method[challenge_data0]",
+                "fail_reason": "agent/smol-developer/venv/lib/python3.10/site-packages/agbenchmark/challenges/test_all.py::TestDebugSimpleTypoWithGuidance::test_method[challenge_data0] depends on agent/smol-developer/venv/lib/python3.10/site-packages/agbenchmark/challenges/test_all.py::TestReadFile::test_method[challenge_data0]",
                 "success_%": 0.0,
-                "run_time": "0.002 seconds"
+                "run_time": "0.001 seconds"
             },
             "reached_cutoff": false
         },
@@ -120,9 +118,9 @@
             "metrics": {
                 "difficulty": "basic",
                 "success": false,
-                "fail_reason": "challenges/test_all.py::TestBasicMemory::test_method[challenge_data0] depends on challenges/test_all.py::TestReadFile::test_method[challenge_data0], challenges/test_all.py::TestWriteFile::test_method[challenge_data0]",
+                "fail_reason": "agent/smol-developer/venv/lib/python3.10/site-packages/agbenchmark/challenges/test_all.py::TestBasicMemory::test_method[challenge_data0] depends on agent/smol-developer/venv/lib/python3.10/site-packages/agbenchmark/challenges/test_all.py::TestReadFile::test_method[challenge_data0]",
                 "success_%": 0.0,
-                "run_time": "0.002 seconds"
+                "run_time": "0.001 seconds"
             },
             "reached_cutoff": false
         },
@@ -135,9 +133,9 @@
             "metrics": {
                 "difficulty": "novice",
                 "success": false,
-                "fail_reason": "challenges/test_all.py::TestRetrieval2.0::test_method[challenge_data0] depends on challenges/test_all.py::TestBasicRetrieval::test_method[challenge_data0]",
+                "fail_reason": "agent/smol-developer/venv/lib/python3.10/site-packages/agbenchmark/challenges/test_all.py::TestRetrieval2.0::test_method[challenge_data0] depends on agent/smol-developer/venv/lib/python3.10/site-packages/agbenchmark/challenges/test_all.py::TestBasicRetrieval::test_method[challenge_data0]",
                 "success_%": 0.0,
-                "run_time": "0.002 seconds"
+                "run_time": "0.001 seconds"
             },
             "reached_cutoff": false
         },
@@ -150,9 +148,9 @@
             "metrics": {
                 "difficulty": "novice",
                 "success": false,
-                "fail_reason": "challenges/test_all.py::TestDebugSimpleTypoWithoutGuidance::test_method[challenge_data0] depends on challenges/test_all.py::TestDebugSimpleTypoWithGuidance::test_method[challenge_data0]",
+                "fail_reason": "agent/smol-developer/venv/lib/python3.10/site-packages/agbenchmark/challenges/test_all.py::TestDebugSimpleTypoWithoutGuidance::test_method[challenge_data0] depends on agent/smol-developer/venv/lib/python3.10/site-packages/agbenchmark/challenges/test_all.py::TestDebugSimpleTypoWithGuidance::test_method[challenge_data0]",
                 "success_%": 0.0,
-                "run_time": "0.002 seconds"
+                "run_time": "0.001 seconds"
             },
             "reached_cutoff": false
         },
@@ -165,7 +163,7 @@
             "metrics": {
                 "difficulty": "advanced",
                 "success": false,
-                "fail_reason": "challenges/test_all.py::TestCreateSimpleWebServer::test_method[challenge_data0] depends on challenges/test_all.py::TestDebugSimpleTypoWithGuidance::test_method[challenge_data0]",
+                "fail_reason": "agent/smol-developer/venv/lib/python3.10/site-packages/agbenchmark/challenges/test_all.py::TestCreateSimpleWebServer::test_method[challenge_data0] depends on agent/smol-developer/venv/lib/python3.10/site-packages/agbenchmark/challenges/test_all.py::TestDebugSimpleTypoWithGuidance::test_method[challenge_data0]",
                 "success_%": 0.0,
                 "run_time": "0.001 seconds"
             },
@@ -180,7 +178,7 @@
             "metrics": {
                 "difficulty": "novice",
                 "success": false,
-                "fail_reason": "challenges/test_all.py::TestRememberMultipleIds::test_method[challenge_data0] depends on challenges/test_all.py::TestBasicMemory::test_method[challenge_data0]",
+                "fail_reason": "agent/smol-developer/venv/lib/python3.10/site-packages/agbenchmark/challenges/test_all.py::TestRememberMultipleIds::test_method[challenge_data0] depends on agent/smol-developer/venv/lib/python3.10/site-packages/agbenchmark/challenges/test_all.py::TestBasicMemory::test_method[challenge_data0]",
                 "success_%": 0.0,
                 "run_time": "0.001 seconds"
             },
@@ -195,7 +193,7 @@
             "metrics": {
                 "difficulty": "novice",
                 "success": false,
-                "fail_reason": "challenges/test_all.py::TestRetrieval2.1::test_method[challenge_data0] depends on challenges/test_all.py::TestRetrieval2.0::test_method[challenge_data0]",
+                "fail_reason": "agent/smol-developer/venv/lib/python3.10/site-packages/agbenchmark/challenges/test_all.py::TestRetrieval2.1::test_method[challenge_data0] depends on agent/smol-developer/venv/lib/python3.10/site-packages/agbenchmark/challenges/test_all.py::TestRetrieval2.0::test_method[challenge_data0]",
                 "success_%": 0.0,
                 "run_time": "0.001 seconds"
             },
@@ -210,9 +208,9 @@
             "metrics": {
                 "difficulty": "intermediate",
                 "success": false,
-                "fail_reason": "challenges/test_all.py::TestRememberMultipleWithNoise::test_method[challenge_data0] depends on challenges/test_all.py::TestRememberMultipleIds::test_method[challenge_data0]",
+                "fail_reason": "agent/smol-developer/venv/lib/python3.10/site-packages/agbenchmark/challenges/test_all.py::TestRememberMultipleWithNoise::test_method[challenge_data0] depends on agent/smol-developer/venv/lib/python3.10/site-packages/agbenchmark/challenges/test_all.py::TestRememberMultipleIds::test_method[challenge_data0]",
                 "success_%": 0.0,
-                "run_time": "0.002 seconds"
+                "run_time": "0.001 seconds"
             },
             "reached_cutoff": false
         },
@@ -225,9 +223,9 @@
             "metrics": {
                 "difficulty": "intermediate",
                 "success": false,
-                "fail_reason": "challenges/test_all.py::TestRetrieval3::test_method[challenge_data0] depends on challenges/test_all.py::TestRetrieval2.1::test_method[challenge_data0]",
+                "fail_reason": "agent/smol-developer/venv/lib/python3.10/site-packages/agbenchmark/challenges/test_all.py::TestRetrieval3::test_method[challenge_data0] depends on agent/smol-developer/venv/lib/python3.10/site-packages/agbenchmark/challenges/test_all.py::TestRetrieval2.1::test_method[challenge_data0]",
                 "success_%": 0.0,
-                "run_time": "0.002 seconds"
+                "run_time": "0.001 seconds"
             },
             "reached_cutoff": false
         },
@@ -240,9 +238,9 @@
             "metrics": {
                 "difficulty": "intermediate",
                 "success": false,
-                "fail_reason": "challenges/test_all.py::TestRetrieval2.2::test_method[challenge_data0] depends on challenges/test_all.py::TestRetrieval2.1::test_method[challenge_data0]",
+                "fail_reason": "agent/smol-developer/venv/lib/python3.10/site-packages/agbenchmark/challenges/test_all.py::TestRetrieval2.2::test_method[challenge_data0] depends on agent/smol-developer/venv/lib/python3.10/site-packages/agbenchmark/challenges/test_all.py::TestRetrieval2.1::test_method[challenge_data0]",
                 "success_%": 0.0,
-                "run_time": "0.002 seconds"
+                "run_time": "0.001 seconds"
             },
             "reached_cutoff": false
         },
@@ -255,7 +253,7 @@
             "metrics": {
                 "difficulty": "advanced",
                 "success": false,
-                "fail_reason": "challenges/test_all.py::TestRememberMultiplePhrasesWithNoise::test_method[challenge_data0] depends on challenges/test_all.py::TestRememberMultipleWithNoise::test_method[challenge_data0]",
+                "fail_reason": "agent/smol-developer/venv/lib/python3.10/site-packages/agbenchmark/challenges/test_all.py::TestRememberMultiplePhrasesWithNoise::test_method[challenge_data0] depends on agent/smol-developer/venv/lib/python3.10/site-packages/agbenchmark/challenges/test_all.py::TestRememberMultipleWithNoise::test_method[challenge_data0]",
                 "success_%": 0.0,
                 "run_time": "0.001 seconds"
             },
@@ -263,6 +261,6 @@
         }
     },
     "config": {
-        "workspace": "workspace"
+        "workspace": "generated"
     }
 }
