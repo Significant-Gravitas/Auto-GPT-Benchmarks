@@ -1,11 +1,13 @@
 import json
 import os
 import shutil
+import signal
 import sys
 import time
 from pathlib import Path  # noqa
 from typing import Any, Dict, Generator
 
+import psutil
 import pytest
 
 from agbenchmark.ReportManager import ReportManager
@@ -112,6 +114,22 @@ def challenge_data(request: Any) -> None:
 @pytest.fixture(autouse=True, scope="session")
 def mock(request: Any) -> None:
     return request.config.getoption("--mock")
+
+
+def kill_child_processes(parent_pid: int, sig=signal.SIGKILL):
+    try:
+        parent = psutil.Process(parent_pid)
+    except psutil.NoSuchProcess:
+        return
+    children = parent.children(recursive=True)
+    for child in children:
+        child.send_signal(sig)
+
+
+@pytest.fixture(autouse=True)
+def cleanup_processes():
+    yield
+    kill_child_processes(os.getpid())
 
 
 @pytest.fixture(autouse=True, scope="function")
