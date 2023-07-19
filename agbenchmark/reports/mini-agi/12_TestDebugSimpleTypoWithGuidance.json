@@ -1,24 +1,25 @@
 {
   "command": "agbenchmark start --test TestDebugSimpleTypoWithGuidance",
-  "completion_time": "2023-07-18-08:36",
+  "completion_time": "2023-07-17-21:44",
   "metrics": {
-    "run_time": "63.23 seconds",
-    "highest_difficulty": "novice: 3"
+    "run_time": "63.37 seconds",
+    "highest_difficulty": "No successful tests"
   },
   "tests": {
     "TestDebugSimpleTypoWithGuidance": {
-      "data_path": "agbenchmark/challenges/code/d2_debug",
-      "is_regression": true,
+      "data_path": "agbenchmark/challenges/code/d1",
+      "is_regression": false,
       "task": "1- Run test.py.\n2- Read code.py.\n3- Modify code.py.\nRepeat step 1, 2 and 3 until test.py runs without errors.\n",
       "answer": "[0, 1] [2, 5] [0, 3]",
       "description": "Tests ability for the agent to debug python code with a simple typo in it.",
       "metrics": {
-        "difficulty": "novice",
-        "success": true,
-        "success_%": 100.0,
-        "run_time": "62.866 seconds"
+        "difficulty": "basic",
+        "success": false,
+        "fail_reason": "assert 1 in [0.0]",
+        "success_%": 0.0,
+        "run_time": "63.125 seconds"
       },
-      "reached_cutoff": false
+      "reached_cutoff": true
     }
   },
   "config": {

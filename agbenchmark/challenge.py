@@ -1,6 +1,5 @@
 import glob
 import os
-import sys
 import subprocess
 from abc import ABC
 from typing import Any, Dict, List
@@ -73,7 +72,7 @@ class Challenge(ABC):
             for file_path in matching_files:
                 if self.data.ground.type == "execute_python_code":
                     result = subprocess.run(
-                        [sys.executable, file_path],
+                        ["python3", file_path],
                         cwd=os.path.abspath(workspace),
                         capture_output=True,
                         text=True,
