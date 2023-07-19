@@ -143,19 +143,18 @@ def calculate_dynamic_paths() -> tuple[Path, str, str, str]:
     benchmarks_folder_path = HOME_DIRECTORY / "agbenchmark"
 
     if AGENT_NAME and HOME_ENV == "ci":
-        if "/Auto-GPT-Benchmarks/agent" in str(HOME_DIRECTORY):
-            raise Exception("Must run from root of benchmark repo if HOME_ENV is ci")
-
         # however if the env is local and the agent name is defined, we want to run that agent from the repo and then get the data in the internal agbenchmark directory
         # this is for the ci/cd pipeline
-        benchmarks_folder_path = HOME_DIRECTORY / "agent" / AGENT_NAME / "agbenchmark"
+        if os.path.join("Auto-GPT-Benchmarks", "agent") not in str(Path(os.getcwd())):
+            # if it's not in the submodule, make it run from the submodule
+            HOME_DIRECTORY = Path(os.getcwd()) / "agent" / AGENT_NAME
+            benchmarks_folder_path = (
+                HOME_DIRECTORY / "agent" / AGENT_NAME / "agbenchmark"
+            )
 
         CONFIG_PATH, REGRESSION_TESTS_PATH, INFO_TESTS_PATH = assign_paths(
             benchmarks_folder_path
         )
-
-        # we want to run the agent from the submodule
-        HOME_DIRECTORY = Path(os.getcwd()) / "agent" / AGENT_NAME
 
     elif AGENT_NAME and not os.path.join("Auto-GPT-Benchmarks", "agent") in str(
         HOME_DIRECTORY
