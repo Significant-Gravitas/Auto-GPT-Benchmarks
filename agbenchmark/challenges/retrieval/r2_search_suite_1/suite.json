@@ -1,0 +1,7 @@
+{
+  "same_task": true,
+  "reverse_order": false,
+  "prefix": "TestRevenueRetrieval",
+  "dependencies": ["TestBasicRetrieval"],
+  "shared_category": ["retrieval"]
+}

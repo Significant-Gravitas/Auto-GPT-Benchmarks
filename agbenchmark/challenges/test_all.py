@@ -2,6 +2,7 @@ import glob
 import importlib
 import json
 import os
+import sys
 import types
 from pathlib import Path
 from typing import Any, Dict
@@ -9,8 +10,9 @@ from typing import Any, Dict
 import pytest
 
 from agbenchmark.challenge import Challenge
-from agbenchmark.start_benchmark import CURRENT_DIRECTORY
+from agbenchmark.start_benchmark import CURRENT_DIRECTORY, get_regression_data
 from agbenchmark.utils import replace_backslash
+from agbenchmark.challenges.data_types import SuiteConfig
 
 json_files = glob.glob(f"{CURRENT_DIRECTORY}/**/data.json", recursive=True)
 
@@ -36,14 +38,42 @@ def get_test_path(json_file: str) -> str:
         return str(challenge_location)
 
 
-def generate_tests() -> None:
+# if there's any suite.json files with that prefix
+
+
+def generate_tests() -> None:  # sourcery skip: invert-any-all
     print("Generating tests...")
+
+    regression_tests = get_regression_data()
     # Dynamic class creation
     for json_file in json_files:
         with open(json_file, "r") as f:
             data = json.load(f)
 
             class_name = data.get("name", "")
+
+        commands = sys.argv
+        # --category flag
+        if "--category" in commands and data.get("category", "") not in commands:
+            print('data.get("category", "")', data.get("category", ""))
+            suite_config = SuiteConfig.suite_data_if_suite(Path(json_file))
+            print("suite_config", data.get("category", ""), suite_config)
+            if not suite_config or not set(suite_config.shared_category).intersection(
+                commands
+            ):
+                continue
+
+        # --test flag
+        if "--test" in commands and not any(
+            command in data["name"] for command in commands
+        ):
+            continue
+
+        # --maintain flag
+        if "--maintain" in commands and not regression_tests.get(data["name"], None):
+            continue
+        elif "--improve" in commands and regression_tests.get(data["name"], None):
+            continue
 
         challenge_location = get_test_path(json_file)
 

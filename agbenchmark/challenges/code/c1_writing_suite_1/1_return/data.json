@@ -1,5 +1,5 @@
 {
-  "name": "TestBasicCode",
+  "name": "TestReturnCode_1.0",
   "category": ["code", "iterate"],
   "task": "Return the multiplied number in the function multiply_int in code.py. You can make sure you have correctly done this by running test.py",
   "dependencies": ["TestReadFile", "TestWriteFile"],

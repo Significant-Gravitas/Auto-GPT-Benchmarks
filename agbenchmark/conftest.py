@@ -137,11 +137,10 @@ internal_info = ReportManager(str(INTERNAL_LOGS_PATH / "internal_info.json"))
 def pytest_runtest_makereport(item: Any, call: Any) -> None:
     challenge_data = item.funcargs.get("challenge_data", None)
     if call.when == "call":
-        difficulty = (
-            challenge_data["info"]["difficulty"] if challenge_data else "unknown"
-        )
+        difficulty = challenge_data["info"]["difficulty"]
+
         dependencies = dependencies = (
-            challenge_data["dependencies"] if challenge_data else []
+            challenge_data.get("dependencies") if challenge_data else []
         )
         # Extract the challenge_location from the class
         challenge_location: str = getattr(item.cls, "CHALLENGE_LOCATION", "")

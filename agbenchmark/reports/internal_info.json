@@ -87,6 +87,9 @@
             true,
             false,
             false
+        ],
+        "TestRevenueRetrieval_1.0": [
+            true
         ]
     }
 }

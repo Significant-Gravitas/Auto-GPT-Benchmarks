@@ -5,7 +5,7 @@ import subprocess
 from abc import ABC
 from typing import Any, Dict, List
 
-from agbenchmark.challenges.define_task_types import ChallengeData, Ground
+from agbenchmark.challenges.data_types import ChallengeData, Ground
 from agbenchmark.start_benchmark import CURRENT_DIRECTORY
 
 
