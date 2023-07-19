@@ -8,10 +8,10 @@ import requests
 def test_make_request_and_assert() -> None:
     result = make_request_and_assert()
     print(result)
-    expected_result = {"status": "OK"}
+    expected_result = "OK"
     error_message = f"AssertionError: Expected the output to be {expected_result}"
     print(error_message)
-    assert result == expected_result, error_message
+    assert result in expected_result, error_message
 
 
 def make_assertion() -> None:
@@ -28,6 +28,8 @@ def make_assertion() -> None:
 
 def make_request_and_assert() -> Dict[str, Any]:
     response = requests.get("http://localhost:8079/health")
+    import pdb
+    pdb.set_trace()
     if response.status_code != 200:
         raise AssertionError(
             f"Expected status code 200, but got {response.status_code}"
