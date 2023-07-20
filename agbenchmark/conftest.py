@@ -222,7 +222,7 @@ def pytest_runtest_makereport(item: Any, call: Any) -> None:
                 ] = f"{str(round(run_time, 3))} seconds"
 
                 info_details["reached_cutoff"] = (
-                        float(run_time) > challenge_data["cutoff"]
+                    float(run_time) > challenge_data["cutoff"]
                 )
 
             info_manager.add_test(test_name, info_details)

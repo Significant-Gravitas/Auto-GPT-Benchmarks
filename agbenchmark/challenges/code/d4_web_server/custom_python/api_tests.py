@@ -28,8 +28,6 @@ def make_assertion() -> None:
 
 def make_request_and_assert() -> Dict[str, Any]:
     response = requests.get("http://localhost:8079/health")
-    import pdb
-    pdb.set_trace()
     if response.status_code != 200:
         raise AssertionError(
             f"Expected status code 200, but got {response.status_code}"
