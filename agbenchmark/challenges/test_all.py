@@ -42,7 +42,9 @@ def create_single_test(
 
     setattr(challenge_class, "CHALLENGE_LOCATION", challenge_location)
     setattr(
-        challenge_class, "ARTIFACTS_LOCATION", artifacts_location or challenge_location
+        challenge_class,
+        "ARTIFACTS_LOCATION",
+        artifacts_location or str(Path(challenge_location).resolve().parent),
     )
 
     # Define test method within the dynamically created class
@@ -77,11 +79,12 @@ def create_challenge(
     challenge_location = get_test_path(json_file)
 
     if suite_config is not None:
-        grandparent_dir = Path(challenge_location).resolve().parent.parent
+        path = Path(challenge_location).resolve()
+        grandparent_dir = path.parent.parent
 
         # if its a single test running we dont care about the suite
         if "--test" in sys.argv:
-            artifacts_location = challenge_location
+            artifacts_location = path.parent
             if suite_config.same_task:
                 print("same tasks bro, same tasks bro")
                 # same task have their artifacts in and out in the suite file
