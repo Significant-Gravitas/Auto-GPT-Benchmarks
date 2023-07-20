@@ -36,7 +36,7 @@ def calculate_info_test_path(reports_path: Path) -> str:
 
     # Default naming scheme
     file_count = len(json_files)
-    run_name = f"file{file_count + 1}_{datetime.now().strftime('%m-%d-%H-%M')}.json"
+    run_name = f"{file_count + 1}_{datetime.now().strftime('%m-%d-%H-%M')}.json"
 
     # # If "--test" is in command
     if "--test" in command:
@@ -55,6 +55,7 @@ def calculate_info_test_path(reports_path: Path) -> str:
             # Try to find the highest prefix number among all files, then increment it
             all_prefix_numbers = []
             for f in json_files:
+                print(f"Found {f}")
                 number = float(Path(f).stem.split("_")[0])
                 all_prefix_numbers.append(math.floor(number))
 

@@ -2,11 +2,12 @@ import glob
 import os
 import sys
 import subprocess
+from pathlib import Path
+
 from abc import ABC
 from typing import Any, Dict, List
 
 from agbenchmark.challenges.data_types import ChallengeData, Ground
-from agbenchmark.start_benchmark import CURRENT_DIRECTORY
 
 
 class Challenge(ABC):
@@ -15,10 +16,11 @@ class Challenge(ABC):
 
     _data_cache: Dict[str, ChallengeData] = {}
     CHALLENGE_LOCATION: str = ""
+    ARTIFACTS_LOCATION: str = ""
 
     @property
     def data(self) -> ChallengeData:
-        file_path = f"{CURRENT_DIRECTORY}/../{self.CHALLENGE_LOCATION}/data.json"
+        file_path = f"{Path(__file__).resolve().parent}/../{self.CHALLENGE_LOCATION}"
         if file_path not in Challenge._data_cache:
             Challenge._data_cache[file_path] = ChallengeData.deserialize(file_path)
         return Challenge._data_cache[file_path]
@@ -35,16 +37,16 @@ class Challenge(ABC):
         from agbenchmark.agent_interface import copy_artifacts_into_workspace, run_agent
 
         copy_artifacts_into_workspace(
-            config["workspace"], "artifacts_in", self.CHALLENGE_LOCATION
+            config["workspace"], "artifacts_in", self.ARTIFACTS_LOCATION
         )
 
-        run_agent(self.task, config, self.CHALLENGE_LOCATION, cutoff)
+        run_agent(self.task, config, self.ARTIFACTS_LOCATION, cutoff)
 
         # hidden files are added after the agent runs. Hidden files can be python test files.
         # We copy them in the workspace to make it easy to import the code produced by the agent
 
         copy_artifacts_into_workspace(
-            config["workspace"], "custom_python", self.CHALLENGE_LOCATION
+            config["workspace"], "custom_python", self.ARTIFACTS_LOCATION
         )
 
     def test_method(self, config: Dict[str, Any]) -> None:

@@ -16,13 +16,13 @@ MOCK_FLAG = mock_test_str.lower() == "true" if mock_test_str else False
 
 
 def run_agent(
-    task: str, config: Dict[str, Any], challenge_location: str, cutoff: int
+    task: str, config: Dict[str, Any], artifacts_location: str, cutoff: int
 ) -> None:
     """Calling to get a response"""
 
     if MOCK_FLAG:
         copy_artifacts_into_workspace(
-            config["workspace"], "artifacts_out", challenge_location
+            config["workspace"], "artifacts_out", artifacts_location
         )
     else:
         entry_path = "agbenchmark.benchmarks"

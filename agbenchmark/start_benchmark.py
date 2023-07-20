@@ -30,7 +30,10 @@ def cli() -> None:
 @click.option("--maintain", is_flag=True, help="Runs only regression tests")
 @click.option("--improve", is_flag=True, help="Run only non-regression tests")
 @click.option("--mock", is_flag=True, help="Run with mock")
-def start(category: str, test: str, maintain: bool, improve: bool, mock: bool) -> int:
+@click.option("--suite", default=None, help="Run a suite of related tests")
+def start(
+    category: str, test: str, maintain: bool, improve: bool, mock: bool, suite: str
+) -> int:
     """Start the benchmark tests. If a category flag is provided, run the categories with that mark."""
     # Check if configuration file exists and is not empty
     if maintain and improve:
@@ -39,7 +42,7 @@ def start(category: str, test: str, maintain: bool, improve: bool, mock: bool) -
         )
         return 1
 
-    if test and (category or maintain or improve):
+    if test and (category or maintain or improve or suite):
         print(
             "Error: If you're running a specific test make sure no other options are selected. Please just pass the --test."
         )

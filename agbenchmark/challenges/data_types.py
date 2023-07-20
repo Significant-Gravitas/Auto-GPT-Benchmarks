@@ -69,13 +69,21 @@ class ChallengeData(BaseModel):
         with open(path, "w") as file:
             file.write(self.json())
 
+    def get_data(self) -> dict:
+        return self.dict()
+
+    @staticmethod
+    def get_json_from_path(json_path: Path | str) -> dict:
+        path = Path(json_path).resolve()
+        with open(path, "r") as file:
+            data = json.load(file)
+        return data
+
     @staticmethod
     def deserialize(path: str) -> "ChallengeData":
         # this script is in root/agbenchmark/challenges/define_task_types.py
         script_dir = Path(__file__).resolve().parent.parent.parent
         json_path = script_dir / Path(path)
-
-        print("Deserializing", path)
 
         with open(json_path, "r") as file:
             data = json.load(file)
