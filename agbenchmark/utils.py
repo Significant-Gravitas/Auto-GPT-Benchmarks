@@ -15,7 +15,6 @@ load_dotenv()
 from agbenchmark.challenges.data_types import (
     DIFFICULTY_MAP,
     DifficultyLevel,
-    SuiteConfig,
 )
 
 AGENT_NAME = os.getenv("AGENT_NAME")
@@ -101,21 +100,26 @@ def get_highest_success_difficulty(data: dict) -> str:
     highest_difficulty_level = 0
 
     for test_name, test_data in data.items():
-        if test_data["metrics"]["success"]:
-            # Replace 'medium' with 'intermediate' for this example
-            difficulty_str = test_data["metrics"]["difficulty"]
+        if test_data.get("tests", None):
+            highest_difficulty_str = test_data["metrics"]["highest_difficulty"]
+            highest_difficulty = DifficultyLevel[highest_difficulty_str]
+            highest_difficulty_level = DIFFICULTY_MAP[highest_difficulty]
+        else:
+            if test_data["metrics"]["success"]:
+                # Replace 'medium' with 'intermediate' for this example
+                difficulty_str = test_data["metrics"]["difficulty"]
 
-            try:
-                difficulty_enum = DifficultyLevel[difficulty_str.lower()]
-                difficulty_level = DIFFICULTY_MAP[difficulty_enum]
+                try:
+                    difficulty_enum = DifficultyLevel[difficulty_str.lower()]
+                    difficulty_level = DIFFICULTY_MAP[difficulty_enum]
 
-                if difficulty_level > highest_difficulty_level:
-                    highest_difficulty = difficulty_enum
-                    highest_difficulty_level = difficulty_level
-            except KeyError:
-                print(
-                    f"Unexpected difficulty level '{difficulty_str}' in test '{test_name}'"
-                )
+                    if difficulty_level > highest_difficulty_level:
+                        highest_difficulty = difficulty_enum
+                        highest_difficulty_level = difficulty_level
+                except KeyError:
+                    print(
+                        f"Unexpected difficulty level '{difficulty_str}' in test '{test_name}'"
+                    )
 
     if highest_difficulty is not None:
         highest_difficulty_str = highest_difficulty.name  # convert enum to string

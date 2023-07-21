@@ -20,10 +20,12 @@ class Challenge(ABC):
 
     @property
     def data(self) -> ChallengeData:
-        file_path = f"{Path(__file__).resolve().parent}/../{self.CHALLENGE_LOCATION}"
-        if file_path not in Challenge._data_cache:
-            Challenge._data_cache[file_path] = ChallengeData.deserialize(file_path)
-        return Challenge._data_cache[file_path]
+        file_path = str(Path(self.CHALLENGE_LOCATION).resolve())
+        if self.CHALLENGE_LOCATION not in self._data_cache:
+            self._data_cache[self.CHALLENGE_LOCATION] = ChallengeData.deserialize(
+                file_path
+            )
+        return self._data_cache[self.CHALLENGE_LOCATION]
 
     @property
     def task(self) -> str:
@@ -59,11 +61,11 @@ class Challenge(ABC):
         with open(workspace_dir, "r") as f:
             return f.read()
 
-    def get_artifacts_out(self, workspace: str, file_patterns: list) -> List[str]:
+    def get_artifacts_out(self, workspace: str, ground: Ground) -> List[str]:
         script_dir = workspace
         files_contents = []
 
-        for file_pattern in file_patterns:
+        for file_pattern in ground.files:
             # Check if it is a file extension
             if file_pattern.startswith("."):
                 # Find all files with the given extension in the workspace
@@ -73,7 +75,7 @@ class Challenge(ABC):
                 matching_files = [os.path.join(script_dir, file_pattern)]
 
             for file_path in matching_files:
-                if self.data.ground.type == "execute_python_code":
+                if ground.type == "execute_python_code":
                     result = subprocess.run(
                         [sys.executable, file_path],
                         cwd=os.path.abspath(workspace),
@@ -129,15 +131,54 @@ class Challenge(ABC):
 
         return 1.0
 
-    def get_scores(self, config: Dict[str, Any]) -> List[float]:
-        files_contents = self.get_artifacts_out(
-            config["workspace"], self.data.ground.files
-        )
-
+    def get_scores(self, config: Dict[str, Any]) -> dict[str, float | object]:
         scores = []
-        for file_content in files_contents:
-            score = self.scoring(file_content, self.data.ground)
-            print("Your score is:", score)
-            scores.append(score)
+        scores_dict = {}
+        percentage = None
 
-        return scores
+        if isinstance(self.data.ground, Ground):
+            files_contents = self.get_artifacts_out(
+                config["workspace"], self.data.ground
+            )
+
+            print("files_contents", files_contents)
+
+            for file_content in files_contents:
+                score = self.scoring(file_content, self.data.ground)
+                print("Your score is:", score)
+                scores.append(score)
+        elif isinstance(self.data.ground, dict):
+            # if it's a dict then we know its a combined suite
+            for ground_key in self.data.ground:
+                ground = self.data.ground[ground_key]
+                files_contents = self.get_artifacts_out(config["workspace"], ground)
+
+                for file_content in files_contents:
+                    score = self.scoring(file_content, ground)
+                    scores_dict[ground_key] = score
+                    print(
+                        f"\033[1;35mScore for {ground_key}:\033[0m",
+                        scores_dict[ground_key],
+                    )
+
+            # Count the number of times the value 1.0 appears in the dictionary
+            num_ones = sum(1 for score in scores_dict.values() if score == 1.0)
+
+            # Calculate the percentage
+            percentage = round((num_ones / len(scores_dict)) * 100, 2)
+
+            # Print the result in green
+            print(f"\033[1;92mPercentage of 1.0 scores:\033[0m {percentage}%")
+
+            if percentage > 0:
+                if not percentage == 100:
+                    print(
+                        "\033[1;93mWARNING:\033[0m Your agent did not pass all the tests in the suite."
+                    )
+                scores.append(1.0)
+
+        return {
+            "values": scores,
+            "scores_obj": scores_dict,
+            "percentage": percentage,
+        }

@@ -3,6 +3,7 @@ import importlib
 import sys
 import types
 from pathlib import Path
+from collections import deque
 from typing import Any, Dict, Optional
 
 import pytest
@@ -33,14 +34,33 @@ def get_test_path(json_file: str) -> str:
 
 
 def create_single_test(
-    data: Dict[str, Any],
+    data: Dict[str, Any] | ChallengeData,
     challenge_location: str,
-    artifacts_location: Optional[str] = None,
+    suite_config: Optional[SuiteConfig] = None,
 ) -> None:
+    challenge_data = None
+    artifacts_location = None
+    if isinstance(data, ChallengeData):
+        challenge_data = data
+        data = data.get_data()
+
     # Define test class dynamically
     challenge_class = types.new_class(data["name"], (Challenge,))
 
-    setattr(challenge_class, "CHALLENGE_LOCATION", challenge_location)
+    clean_challenge_location = get_test_path(challenge_location)
+    setattr(challenge_class, "CHALLENGE_LOCATION", clean_challenge_location)
+
+    # if its a parallel run suite we just give it the data
+    if suite_config and suite_config.same_task:
+        artifacts_location = str(Path(challenge_location).resolve())
+        if "--test" in sys.argv:
+            artifacts_location = str(Path(challenge_location).resolve().parent)
+        setattr(
+            challenge_class,
+            "_data_cache",
+            {clean_challenge_location: challenge_data},
+        )
+
     setattr(
         challenge_class,
         "ARTIFACTS_LOCATION",
@@ -48,13 +68,14 @@ def create_single_test(
     )
 
     # Define test method within the dynamically created class
-    def test_method(self, config: Dict[str, Any]) -> None:  # type: ignore
+    def test_method(self, config: Dict[str, Any], request) -> None:  # type: ignore
         cutoff = self.data.cutoff or 60
         self.setup_challenge(config, cutoff)
 
         scores = self.get_scores(config)
+        request.node.scores = scores  # store scores in request.node
 
-        assert 1 in scores
+        assert 1 in scores["values"]
 
     # Parametrize the method here
     test_method = pytest.mark.parametrize(
@@ -74,52 +95,50 @@ def create_challenge(
     data: Dict[str, Any],
     json_file: str,
     suite_config: SuiteConfig | None,
-    json_files: list[str],
-) -> list[str]:
-    challenge_location = get_test_path(json_file)
-
+    json_files: deque,
+) -> deque:
+    path = Path(json_file).resolve()
     if suite_config is not None:
-        path = Path(challenge_location).resolve()
         grandparent_dir = path.parent.parent
 
         # if its a single test running we dont care about the suite
         if "--test" in sys.argv:
-            artifacts_location = path.parent
-            if suite_config.same_task:
-                print("same tasks bro, same tasks bro")
-                # same task have their artifacts in and out in the suite file
-                artifacts_location = grandparent_dir
-
             create_single_test(
-                data, str(challenge_location), str(artifacts_location) or None
+                data,
+                str(path),
             )
 
             return json_files
 
         # Get all data.json files within the grandparent directory
-        suite_files = glob.glob(f"{grandparent_dir}/**/data.json", recursive=True)
+        suite_files = suite_config.get_data_paths(grandparent_dir)
 
         # Remove all data.json files from json_files list, except for current_file
-        json_files = [
-            file for file in json_files if file not in suite_files or file == json_file
-        ]
+        json_files = deque(
+            file for file in json_files if file not in suite_files and file != json_file
+        )
 
-        # get all the file data
         suite_file_datum = [
             ChallengeData.get_json_from_path(suite_file)
             for suite_file in suite_files
             if suite_file != json_file
         ]
-        file_datum = [data].extend(suite_file_datum)
 
-        print("YESSIR_______________", file_datum)
-        # CONSTRUCT THE NEW TEST HERE
+        file_datum = [data, *suite_file_datum]
 
         if suite_config.same_task:
-            # modify the data here to make it a single test
-            data["name"] = suite_config.prefix
+            challenge_data = suite_config.challenge_from_datum(file_datum)
 
-    create_single_test(data, str(challenge_location))
+            create_single_test(
+                challenge_data, str(grandparent_dir), suite_config=suite_config
+            )
+        else:
+            # create the individual tests
+            for file_data in file_datum:
+                create_single_test(file_data, str(path))
+
+    else:
+        create_single_test(data, str(path))
 
     return json_files
 
@@ -130,12 +149,15 @@ def create_challenge(
 def generate_tests() -> None:  # sourcery skip: invert-any-all
     print("Generating tests...")
 
-    json_files = glob.glob(f"{CURRENT_DIRECTORY}/**/data.json", recursive=True)
+    json_files = deque(glob.glob(f"{CURRENT_DIRECTORY}/**/data.json", recursive=True))
     regression_tests = get_regression_data()
 
     # for suites to know if the file has already been used to generate the tests
     # Dynamic class creation
-    for json_file in json_files:
+    while json_files:
+        json_file = (
+            json_files.popleft()
+        )  # Take and remove the first element from json_files
         data = ChallengeData.get_json_from_path(json_file)
         suite_config = SuiteConfig.suite_data_if_suite(Path(json_file))
 

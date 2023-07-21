@@ -1,21 +1,22 @@
 import json
 import os
 import shutil
-import sys
 import time
 from pathlib import Path  # noqa
 from typing import Any, Dict, Generator
 
 import pytest
 
-from agbenchmark.ReportManager import ReportManager
 from agbenchmark.start_benchmark import (
     CONFIG_PATH,
-    INFO_TESTS_PATH,
-    REGRESSION_TESTS_PATH,
     get_regression_data,
 )
-from agbenchmark.utils import AGENT_NAME, calculate_success_percentage
+from agbenchmark.reports.utils import (
+    generate_single_call_report,
+    generate_suite_report,
+    finalize_reports,
+    session_finish,
+)
 
 
 def resolve_workspace(workspace: str) -> str:
@@ -84,6 +85,7 @@ def pytest_addoption(parser: Any) -> None:
     parser.addoption("--improve", action="store_true", default=False)
     parser.addoption("--maintain", action="store_true", default=False)
     parser.addoption("--test", action="store_true", default=None)
+    parser.addoption("--no_dep", action="store_true", default=False)
 
 
 @pytest.fixture(autouse=True)
@@ -122,119 +124,22 @@ def timer(request: Any) -> Any:
     request.node.user_properties.append(("run_time", run_time))
 
 
-# tests that consistently pass are considered regression tests
-regression_manager = ReportManager(REGRESSION_TESTS_PATH)
-
-# user facing reporting information
-info_manager = ReportManager(INFO_TESTS_PATH)
-
-INTERNAL_LOGS_PATH = Path(__file__).resolve().parent / "reports"
-
-# internal db step in replacement track pass/fail rate
-internal_info = ReportManager(str(INTERNAL_LOGS_PATH / "internal_info.json"))
-
-
 def pytest_runtest_makereport(item: Any, call: Any) -> None:
     challenge_data = item.funcargs.get("challenge_data", None)
+    is_suite = challenge_data["info"].get("difficulty", False)
+
     if call.when == "call":
-        difficulty = challenge_data["info"]["difficulty"]
-
-        dependencies = dependencies = (
-            challenge_data.get("dependencies") if challenge_data else []
-        )
-        # Extract the challenge_location from the class
-        challenge_location: str = getattr(item.cls, "CHALLENGE_LOCATION", "")
-        test_name = item.nodeid.split("::")[1]
-        item.test_name = test_name
-
-        test_details = {
-            "difficulty": difficulty,
-            "dependencies": dependencies,
-            "data_path": challenge_location,
-        }
-
-        info_details: Any = {
-            "data_path": challenge_location,
-            "is_regression": False,
-            "task": challenge_data["task"],
-            "answer": challenge_data["ground"]["answer"],
-            "description": challenge_data["info"]["description"],
-            "metrics": {
-                "difficulty": difficulty,
-                "success": False,
-            },
-        }
-
-        mock = "--mock" in sys.argv  # Check if --mock is in sys.argv
-
-        if call.excinfo is None:
-            info_details["metrics"]["success"] = True
+        if is_suite:
+            generate_single_call_report(item, call, challenge_data)
         else:
-            if not mock:  # don't remove if it's a mock test
-                regression_manager.remove_test(test_name)
-            info_details["metrics"]["fail_reason"] = str(call.excinfo.value)
-
-        prev_test_results: list[bool]
-        agent_tests: dict[str, list[bool]] = {}
-
-        # if the structure is nested inside of the agent name
-        if AGENT_NAME:
-            agent_tests = internal_info.tests.get(AGENT_NAME, {})
-
-        if agent_tests:
-            prev_test_results = agent_tests.get(test_name, [])
-        else:
-            prev_test_results = internal_info.tests.get(test_name, [])
-
-        if not mock:
-            # only add if it's an actual test
-            prev_test_results.append(info_details["metrics"]["success"])
-            internal_info.add_test(test_name, prev_test_results, AGENT_NAME)
-
-            # can calculate success rate regardless of mock
-            info_details["metrics"]["success_%"] = calculate_success_percentage(
-                prev_test_results
-            )
-        else:
-            # can calculate success rate regardless of mock
-            info_details["metrics"][
-                "non_mock_success_%"
-            ] = calculate_success_percentage(prev_test_results)
-
-        if len(prev_test_results) >= 3 and prev_test_results[-3:] == [True, True, True]:
-            # if the last 3 tests were successful, add to the regression tests
-            info_details["is_regression"] = True
-            regression_manager.add_test(test_name, test_details)
-
-        # user facing reporting
-        item.info_details = info_details
+            generate_suite_report(item, challenge_data)
     if call.when == "teardown":
-        run_time = dict(item.user_properties).get("run_time")
-
-        info_details = getattr(item, "info_details", {})
-        test_name = getattr(item, "test_name", "")
-
-        if info_details and test_name:
-            if run_time:
-                info_details["metrics"][
-                    "run_time"
-                ] = f"{str(round(run_time, 3))} seconds"
-
-                info_details["reached_cutoff"] = (
-                    float(run_time) > challenge_data["cutoff"]
-                )
-
-            info_manager.add_test(test_name, info_details)
+        finalize_reports(item, challenge_data)
 
 
 def pytest_sessionfinish(session: Any) -> None:
     """Called at the end of the session to save regression tests and info"""
-    with open(CONFIG_PATH, "r") as f:
-        config = json.load(f)
-
-    internal_info.save()
-    info_manager.end_info_report(config)
-    regression_manager.save()
+    session_finish()
 
 
 # this is adding the dependency marker and category markers automatically from the json
@@ -253,6 +158,9 @@ def pytest_collection_modifyitems(items: Any, config: Any) -> None:
         if config.getoption("--improve"):
             dependencies = [dep for dep in dependencies if not data.get(dep, None)]
         elif config.getoption("--test"):
+            dependencies = []
+
+        if config.getoption("--no_dep"):
             dependencies = []
 
         categories = test_class_instance.data.category

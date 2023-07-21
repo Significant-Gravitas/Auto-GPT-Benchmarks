@@ -31,8 +31,19 @@ def cli() -> None:
 @click.option("--improve", is_flag=True, help="Run only non-regression tests")
 @click.option("--mock", is_flag=True, help="Run with mock")
 @click.option("--suite", default=None, help="Run a suite of related tests")
+@click.option(
+    "--no_dep",
+    is_flag=True,
+    help="Run without dependencies (can be useful for a suite run)",
+)
 def start(
-    category: str, test: str, maintain: bool, improve: bool, mock: bool, suite: str
+    category: str,
+    test: str,
+    maintain: bool,
+    improve: bool,
+    mock: bool,
+    suite: str,
+    no_dep: bool,
 ) -> int:
     """Start the benchmark tests. If a category flag is provided, run the categories with that mark."""
     # Check if configuration file exists and is not empty
@@ -107,6 +118,9 @@ def start(
 
     if mock:
         pytest_args.append("--mock")
+
+    if no_dep:
+        pytest_args.append("--no_dep")
 
     # when used as a library, the pytest directory to execute is in the CURRENT_DIRECTORY
     pytest_args.append(str(CURRENT_DIRECTORY))

@@ -1,7 +1,8 @@
 import json
+import glob
 from enum import Enum
 from pathlib import Path
-from typing import List, Optional
+from typing import List, Optional, Dict
 
 from pydantic import BaseModel, validator
 
@@ -62,8 +63,8 @@ class ChallengeData(BaseModel):
     task: str
     dependencies: List[str]
     cutoff: int
-    ground: Ground
-    info: Info
+    ground: Ground | Dict[str, Ground]
+    info: Info | Dict[str, Info]
 
     def serialize(self, path: str) -> None:
         with open(path, "w") as file:
@@ -88,23 +89,6 @@ class ChallengeData(BaseModel):
         with open(json_path, "r") as file:
             data = json.load(file)
 
-        # validation and loading data from suite.json
-        if suite_config := SuiteConfig.suite_data_if_suite(json_path):
-            if data.get("category") is None:
-                data["category"] = suite_config.shared_category
-            else:
-                data["category"] = suite_config.shared_category + data["category"]
-
-            if data.get("dependencies") is None:
-                data["dependencies"] = suite_config.dependencies
-            else:
-                data["dependencies"] = suite_config.dependencies + data["dependencies"]
-
-            assert suite_config.prefix in data["name"]
-
-        if data.get("category") is None:
-            raise ValueError(f"Category not found in {path}")
-
         return ChallengeData(**data)
 
 
@@ -112,9 +96,12 @@ class SuiteConfig(BaseModel):
     same_task: bool
     reverse_order: bool
     prefix: str
+    task: str
+    cutoff: int
     dependencies: List[str]
     shared_category: List[str]
-    children: Optional[List[ChallengeData]] = None
+    info: Optional[Dict[str, Info]] = None
+    ground: Optional[Dict[str, Ground]] = None
 
     @staticmethod
     def suite_data_if_suite(json_path: Path) -> Optional["SuiteConfig"]:
@@ -141,20 +128,39 @@ class SuiteConfig(BaseModel):
         """Deserialize from a children path when children and order of children does not matter."""
         print("Deserializing suite", data_path)
 
+        return SuiteConfig.deserialize(suite_path)
+
+    @staticmethod
+    def deserialize(suite_path: Path) -> "SuiteConfig":
         with open(suite_path, "r") as file:
             data = json.load(file)
         return SuiteConfig(**data)
 
     @staticmethod
-    def deserialize(path: str) -> "SuiteConfig":
-        """Used to generate tests when children and order of children matters."""
+    def get_data_paths(suite_path: Path | str) -> List[str]:
+        return glob.glob(f"{suite_path}/**/data.json", recursive=True)
 
-        # this script is in root/agbenchmark/challenges/data_types.py
-        script_dir = Path(__file__).resolve().parent.parent.parent
-        path = str(script_dir / path)
+    def challenge_from_datum(self, file_datum: list[dict]) -> "ChallengeData":
+        same_task_data = {
+            "name": self.prefix,
+            "dependencies": self.dependencies,
+            "category": self.shared_category,
+            "task": self.task,
+            "cutoff": self.cutoff,
+        }
 
-        print("Deserializing suite", path)
+        if not self.info:
+            same_task_data["info"] = {
+                datum["name"]: datum["info"] for datum in file_datum
+            }
+        else:
+            same_task_data["info"] = self.info
 
-        with open(path, "r") as file:
-            data = json.load(file)
-        return SuiteConfig(**data)
+        if not self.ground:
+            same_task_data["ground"] = {
+                datum["name"]: datum["ground"] for datum in file_datum
+            }
+        else:
+            same_task_data["ground"] = self.ground
+
+        return ChallengeData(**same_task_data)
