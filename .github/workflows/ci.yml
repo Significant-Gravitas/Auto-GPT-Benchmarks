@@ -80,8 +80,8 @@ jobs:
           - "smol-developer"
           - "Auto-GPT"
           - "mini-agi"
-          - "BabyAGI"
           - "beebot"
+          - "BabyAGI"
 
     steps:
       - name: Checkout repository
@@ -172,7 +172,6 @@ jobs:
           GITHUB_EVENT_NAME: ${{ github.event_name }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           AGENT_NAME: ${{ matrix.agent-name }}
-          HOME_ENV: ci
           PROMPT_USER: false # For mini-agi. TODO: Remove this once mini-agi follows the standards.
           HELICONE_API_KEY: ${{ secrets.HELICONE_API_KEY }}
           REQUESTS_CA_BUNDLE: /etc/ssl/certs/ca-certificates.crt

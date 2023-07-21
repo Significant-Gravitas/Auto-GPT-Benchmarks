@@ -33,10 +33,7 @@ def resolve_workspace(workspace: str) -> str:
         else:
             raise ValueError("Invalid workspace path expression.")
     else:
-        if AGENT_NAME:
-            return os.path.abspath(Path(os.getcwd()) / "agent" / AGENT_NAME / workspace)
-        else:
-            return os.path.abspath(Path(os.getcwd()) / workspace)
+        return os.path.abspath(Path(os.getcwd()) / workspace)
 
 
 @pytest.fixture(scope="module")

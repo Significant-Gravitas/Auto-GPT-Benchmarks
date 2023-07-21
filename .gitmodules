@@ -21,6 +21,7 @@
 [submodule "agent/BabyAGI"]
 	path = agent/BabyAGI
 	url = https://github.com/SilenNaihin/babyagi.git
+	branch = benchmark-integration
 [submodule "agent/beebot"]
 	path = agent/beebot
 	url = https://github.com/merwanehamadi/beebot.git

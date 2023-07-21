@@ -7,7 +7,7 @@ from typing import Any
 import click
 import pytest
 
-from agbenchmark.utils import AGENT_NAME, HOME_ENV, calculate_dynamic_paths
+from agbenchmark.utils import calculate_dynamic_paths
 
 CURRENT_DIRECTORY = Path(__file__).resolve().parent
 
@@ -36,18 +36,6 @@ def start(
 ) -> int:
     """Start the benchmark tests. If a category flag is provided, run the categories with that mark."""
     # Check if configuration file exists and is not empty
-
-    if not AGENT_NAME and not os.path.join("Auto-GPT-Benchmarks", "agent") not in str(
-        Path(os.getcwd())
-    ):
-        print(
-            "Error: AGENT_NAME should be defined in the .env if you are running agbenchmark from the Auto-GPT-Benchmarks repo"
-        )
-        return 1
-    elif HOME_ENV:
-        print(
-            "Warning: HOME_ENV should only be defined in the .env if you are developing the benchmark or are the ci"
-        )
 
     if maintain and improve:
         print(
