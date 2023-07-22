@@ -45,6 +45,10 @@ class Challenge(ABC):
             config["workspace"], "artifacts_in", self.ARTIFACTS_LOCATION
         )
 
+        print(
+            "\033[1;35m============Starting {self.data.name} challenge============\033[0m"
+        )
+
         run_agent(self.task, config, self.ARTIFACTS_LOCATION, cutoff)
 
         # hidden files are added after the agent runs. Hidden files can be python test files.
@@ -111,26 +115,26 @@ class Challenge(ABC):
         ]
 
     def scoring(self, content: str, ground: Ground) -> float:
-        print("Scoring content: ", content)
+        print("\033[1;34mScoring content:\033[0m", content)
         if ground.should_contain:
             for should_contain_word in ground.should_contain:
+                print_content = (
+                    f"\033[1;34mWord that should exist\033[0m - {should_contain_word}:"
+                )
                 if should_contain_word not in content:
-                    print(f"Word that should exist - {should_contain_word}: False")
+                    print(print_content, "False")
                     return 0.0
                 else:
-                    print(f"Word that should exist - {should_contain_word}: True")
+                    print(print_content, "True")
 
         if ground.should_not_contain:
             for should_not_contain_word in ground.should_not_contain:
+                print_content = f"\033[1;34mWord that should not exist\033[0m - {should_not_contain_word}:"
                 if should_not_contain_word in content:
-                    print(
-                        f"Word that should not exist - {should_not_contain_word}: False"
-                    )
+                    print(print_content, "False")
                     return 0.0
                 else:
-                    print(
-                        f"Word that should not exist - {should_not_contain_word}: True"
-                    )
+                    print(print_content, "True")
 
         return 1.0
 
@@ -144,11 +148,9 @@ class Challenge(ABC):
                 config["workspace"], self.data.ground
             )
 
-            print("files_contents", files_contents)
-
             for file_content in files_contents:
                 score = self.scoring(file_content, self.data.ground)
-                print("Your score is:", score)
+                print("\033[1;32mYour score is:\033[0m", score)
                 scores.append(score)
         elif isinstance(self.data.ground, dict):
             # if it's a dict then we know its a combined suite

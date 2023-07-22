@@ -32,7 +32,7 @@ def run_agent(
         if "--nc" in sys.argv:
             timeout = 100000
 
-        print(f"Running Python function '{entry_path}' with timeout {timeout}")
+        print(f"Running '{entry_path}' with timeout {timeout}")
         command = [sys.executable, "-m", entry_path, str(task)]
         process = subprocess.Popen(
             command,
