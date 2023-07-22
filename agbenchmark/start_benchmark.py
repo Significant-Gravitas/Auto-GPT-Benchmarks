@@ -36,6 +36,7 @@ def cli() -> None:
     is_flag=True,
     help="Run without dependencies (can be useful for a suite run)",
 )
+@click.option("--nc", is_flag=True, help="Run without cutoff")
 def start(
     category: str,
     test: str,
@@ -44,9 +45,11 @@ def start(
     mock: bool,
     suite: str,
     no_dep: bool,
+    nc: bool,
 ) -> int:
     """Start the benchmark tests. If a category flag is provided, run the categories with that mark."""
     # Check if configuration file exists and is not empty
+
     if maintain and improve:
         print(
             "Error: You can't use both --maintain and --improve at the same time. Please choose one."
@@ -121,6 +124,8 @@ def start(
 
     if no_dep:
         pytest_args.append("--no_dep")
+    if nc:
+        pytest_args.append("--nc")
 
     # when used as a library, the pytest directory to execute is in the CURRENT_DIRECTORY
     pytest_args.append(str(CURRENT_DIRECTORY))
