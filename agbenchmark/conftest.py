@@ -83,6 +83,7 @@ def workspace(config: Dict[str, Any]) -> Generator[str, None, None]:
 
 def pytest_addoption(parser: Any) -> None:
     parser.addoption("--mock", action="store_true", default=False)
+    parser.addoption("--category", action="store_true", default=False)
     parser.addoption("--nc", action="store_true", default=False)
     parser.addoption("--improve", action="store_true", default=False)
     parser.addoption("--maintain", action="store_true", default=False)
@@ -170,8 +171,6 @@ def pytest_collection_modifyitems(items: Any, config: Any) -> None:
     # A dictionary to store the test methods, grouped by their parent class name
     items_by_class = {}
 
-    print("items", items)
-
     for item in items:
         # Group the items by their parent class name
         class_name = item.parent.cls.__name__
@@ -190,10 +189,12 @@ def pytest_collection_modifyitems(items: Any, config: Any) -> None:
         dependencies = test_class_instance.data.dependencies
 
         # Filter dependencies if they exist in regression data if its an improvement test
-        if config.getoption("--improve"):
+        if config.getoption("--improve") or config.getoption("--category"):
             dependencies = [dep for dep in dependencies if not data.get(dep, None)]
-        elif config.getoption("--test"):
+        if config.getoption("--test"):
             dependencies = []
+        else:
+            dependencies = [dep for dep in dependencies if not data.get(dep, None)]
 
         if config.getoption("--no_dep"):
             dependencies = []
@@ -215,5 +216,3 @@ def pytest_collection_modifyitems(items: Any, config: Any) -> None:
     items[:] = [
         item for items_in_class in items_by_class.values() for item in items_in_class
     ]
-
-    print("items", items)

@@ -101,6 +101,7 @@ def create_challenge(
     suite_config: SuiteConfig | None,
     json_files: deque,
 ) -> deque:
+    print(f"Creating test for {data['name']}...", suite_config)
     path = Path(json_file).resolve()
     if suite_config is not None:
         grandparent_dir = path.parent.parent
@@ -167,11 +168,19 @@ def generate_tests() -> None:  # sourcery skip: invert-any-all
 
         commands = sys.argv
         # --category flag
-        if "--category" in commands and data.get("category", "") not in commands:
-            # checking if the category is retrieved from the suite
-            if not suite_config or not set(suite_config.shared_category).intersection(
-                commands
-            ):
+        if "--category" in commands:
+            categories = data.get("category", [])
+            commands_set = set(commands)
+
+            # Add the shared category if the conditions are met
+            if suite_config and suite_config.same_task:
+                categories += suite_config.shared_category  # type: ignore = handled by if same_task is false
+
+            # Convert the combined list to a set
+            categories_set = set(categories)
+
+            # If there's no overlap with commands
+            if not categories_set.intersection(commands_set):
                 continue
 
         # --test flag, only run the test if it's the exact one specified
@@ -189,12 +198,15 @@ def generate_tests() -> None:  # sourcery skip: invert-any-all
             if not suite_config:
                 # not a test from a suite
                 continue
-            elif (
-                not any(command in data["name"] for command in commands)
-                and suite_config.prefix not in data["name"]
-            ):
-                # a part of the suite but not the one specified
+            elif not any(command in data["name"] for command in commands):
                 continue
+
+            # elif (
+            #     not any(command in data["name"] for command in commands)
+            #     and suite_config.prefix not in data["name"]
+            # ):
+            #     # a part of the suite but not the one specified
+            #     continue
 
         json_files = create_challenge(data, json_file, suite_config, json_files)
 

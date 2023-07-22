@@ -215,6 +215,11 @@ def setup_dummy_dependencies(test_class_instance, test_class):
             [None],
             indirect=True,
         )(test_func)
+
+        # Add category markers
+        for category in test_class_instance.data.category:
+            test_func = getattr(pytest.mark, category)(test_func)
+
         test_func = pytest.mark.usefixtures("scores")(test_func)
         setattr(test_class, f"test_{test_name}", test_func)
 

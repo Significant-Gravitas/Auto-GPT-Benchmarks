@@ -4,7 +4,7 @@ from enum import Enum
 from pathlib import Path
 from typing import List, Optional, Dict
 
-from pydantic import BaseModel, validator
+from pydantic import BaseModel, validator, root_validator, Field
 
 
 class DifficultyLevel(Enum):
@@ -94,14 +94,35 @@ class ChallengeData(BaseModel):
 
 class SuiteConfig(BaseModel):
     same_task: bool
-    reverse_order: bool
+    reverse_order: Optional[bool] = None
     prefix: str
-    task: str
-    cutoff: int
-    dependencies: List[str]
-    shared_category: List[str]
+    task: Optional[str] = None
+    cutoff: Optional[int] = None
+    dependencies: Optional[List[str]] = None
+    shared_category: Optional[List[str]] = None
     info: Optional[Dict[str, Info]] = None
     ground: Optional[Dict[str, Ground]] = None
+
+    @root_validator
+    def check_attributes(cls, values):
+        same_task = values.get("same_task")
+        if same_task:
+            if (
+                values.get("task") is None
+                or values.get("cutoff") is None
+                or values.get("dependencies") is None
+                or values.get("shared_category") is None
+            ):
+                raise ValueError(
+                    f"task, cutoff, dependencies, and shared_category must be provided when same_task is True for test {cls.prefix}."
+                )
+        else:
+            if values.get("reverse_order") is None:
+                raise ValueError(
+                    f"reverse_order must be provided when same_task is False for test {cls.prefix}."
+                )
+
+        return values
 
     @staticmethod
     def suite_data_if_suite(json_path: Path) -> Optional["SuiteConfig"]:

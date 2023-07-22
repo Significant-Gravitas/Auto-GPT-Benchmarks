@@ -62,6 +62,13 @@ def start(
         )
         return 1
 
+    # TODO: test and ensure that this functionality works before removing
+    if suite and (category or maintain or improve):
+        print(
+            "Error: If you're running a specific suite make sure no other options are selected. Please just pass the --suite."
+        )
+        return 1
+
     if not os.path.exists(CONFIG_PATH) or os.stat(CONFIG_PATH).st_size == 0:
         config = {}
 
@@ -108,6 +115,7 @@ def start(
     else:
         if category:
             pytest_args.extend(["-m", category])
+            pytest_args.append("--category")
             print("Running tests of category:", category)
         else:
             print("Running all categories")
