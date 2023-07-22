@@ -2,16 +2,16 @@ import glob
 import importlib
 import sys
 import types
-from pathlib import Path
 from collections import deque
+from pathlib import Path
 from typing import Any, Dict, Optional
 
 import pytest
 
 from agbenchmark.challenge import Challenge
+from agbenchmark.challenges.data_types import ChallengeData, SuiteConfig
 from agbenchmark.start_benchmark import CURRENT_DIRECTORY, get_regression_data
 from agbenchmark.utils import get_test_path
-from agbenchmark.challenges.data_types import SuiteConfig, ChallengeData
 
 
 def create_single_test(
@@ -167,7 +167,8 @@ def generate_tests() -> None:  # sourcery skip: invert-any-all
 
             # Add the shared category if the conditions are met
             if suite_config and suite_config.same_task:
-                categories += suite_config.shared_category  # type: ignore = handled by if same_task is false
+                # handled by if same_task is false in types
+                categories += suite_config.shared_category  # type: ignore
 
             # Convert the combined list to a set
             categories_set = set(categories)

@@ -1,10 +1,10 @@
-import json
 import glob
+import json
 from enum import Enum
 from pathlib import Path
-from typing import List, Optional, Dict
+from typing import Dict, List, Optional, Any
 
-from pydantic import BaseModel, validator, root_validator, Field
+from pydantic import BaseModel, root_validator, validator
 
 
 class DifficultyLevel(Enum):
@@ -104,7 +104,7 @@ class SuiteConfig(BaseModel):
     ground: Optional[Dict[str, Ground]] = None
 
     @root_validator
-    def check_attributes(cls, values):
+    def check_attributes(cls: Any, values: Dict[str, Any]) -> Dict[str, Any]:
         same_task = values.get("same_task")
         if same_task:
             if (
@@ -161,7 +161,7 @@ class SuiteConfig(BaseModel):
     def get_data_paths(suite_path: Path | str) -> List[str]:
         return glob.glob(f"{suite_path}/**/data.json", recursive=True)
 
-    def challenge_from_datum(self, file_datum: list[dict]) -> "ChallengeData":
+    def challenge_from_datum(self, file_datum: list[dict[str, Any]]) -> "ChallengeData":
         same_task_data = {
             "name": self.prefix,
             "dependencies": self.dependencies,

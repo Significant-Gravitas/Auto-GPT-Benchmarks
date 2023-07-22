@@ -7,18 +7,15 @@ from typing import Any, Dict, Generator
 
 import pytest
 
-from agbenchmark.start_benchmark import (
-    CONFIG_PATH,
-    get_regression_data,
-)
+from agbenchmark.challenges.data_types import SuiteConfig
 from agbenchmark.reports.utils import (
-    generate_single_call_report,
-    generate_combined_suite_report,
     finalize_reports,
+    generate_combined_suite_report,
+    generate_single_call_report,
     session_finish,
     setup_dummy_dependencies,
 )
-from agbenchmark.challenges.data_types import SuiteConfig
+from agbenchmark.start_benchmark import CONFIG_PATH, get_regression_data
 
 
 def resolve_workspace(workspace: str) -> str:
@@ -129,7 +126,7 @@ def timer(request: Any) -> Any:
     request.node.user_properties.append(("run_time", run_time))
 
 
-suite_reports = {}
+suite_reports: dict[str, list] = {}
 
 
 def pytest_runtest_makereport(item: Any, call: Any) -> None:
@@ -162,7 +159,7 @@ def pytest_sessionfinish(session: Any) -> None:
 
 
 @pytest.fixture
-def scores(request):
+def scores(request: Any) -> None:
     test_class_name = request.node.cls.__name__
     return request.node.cls.scores.get(test_class_name)
 

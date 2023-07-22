@@ -12,10 +12,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-from agbenchmark.challenges.data_types import (
-    DIFFICULTY_MAP,
-    DifficultyLevel,
-)
+from agbenchmark.challenges.data_types import DIFFICULTY_MAP, DifficultyLevel
 
 AGENT_NAME = os.getenv("AGENT_NAME")
 HOME_ENV = os.getenv("HOME_ENV")

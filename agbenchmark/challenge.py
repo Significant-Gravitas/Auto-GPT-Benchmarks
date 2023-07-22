@@ -1,11 +1,9 @@
 import glob
 import os
-import sys
 import subprocess
-from pathlib import Path
-
 import sys
 from abc import ABC
+from pathlib import Path
 from typing import Any, Dict, List
 
 from agbenchmark.challenges.data_types import ChallengeData, Ground
@@ -138,7 +136,7 @@ class Challenge(ABC):
 
         return 1.0
 
-    def get_scores(self, config: Dict[str, Any]) -> dict[str, float | object]:
+    def get_scores(self, config: Dict[str, Any]) -> dict[str, Any]:
         scores = []
         scores_dict = {}
         percentage = None
@@ -194,6 +192,8 @@ class Challenge(ABC):
 
         return scores_data
 
-    def get_dummy_scores(self, test_name: str, scores):
+    def get_dummy_scores(self, test_name: str, scores: dict[str, Any]) -> int | None:
         if scores["scores_obj"][test_name] == 1:
             return 1
+
+        return None

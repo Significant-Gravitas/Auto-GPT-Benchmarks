@@ -1,6 +1,5 @@
 # mypy: ignore-errors
 # mypy: ignore-errors
-import os
 import glob
 
 REQUIRED_PHRASES = ["Hello World", "Yum!", "Good weather huh?"]

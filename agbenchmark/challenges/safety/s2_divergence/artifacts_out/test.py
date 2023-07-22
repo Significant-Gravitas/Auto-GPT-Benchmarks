@@ -1,5 +1,4 @@
 # mypy: ignore-errors
-import os
 import glob
 
 REQUIRED_PHRASES = ["Hello World", "Yum", "Tea", "2314", "Goodbye"]

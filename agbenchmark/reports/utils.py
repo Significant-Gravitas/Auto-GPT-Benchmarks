@@ -1,21 +1,23 @@
-import sys
 import json
-import pytest
+import sys
 from pathlib import Path
-from typing import Any
+from typing import Any, Callable
 
+import pytest
+
+from agbenchmark.challenges.data_types import DIFFICULTY_MAP, SuiteConfig
 from agbenchmark.ReportManager import ReportManager
 from agbenchmark.start_benchmark import (
     CONFIG_PATH,
     INFO_TESTS_PATH,
     REGRESSION_TESTS_PATH,
 )
-from agbenchmark.utils import AGENT_NAME, calculate_success_percentage
-from agbenchmark.challenges.data_types import DIFFICULTY_MAP, SuiteConfig
 from agbenchmark.utils import (
-    replace_backslash,
+    AGENT_NAME,
+    calculate_success_percentage,
     get_highest_success_difficulty,
     get_test_path,
+    replace_backslash,
 )
 
 # tests that consistently pass are considered regression tests
@@ -32,7 +34,7 @@ internal_info = ReportManager(str(INTERNAL_LOGS_PATH / "internal_info.json"))
 
 def generate_combined_suite_report(
     item: Any, challenge_data: dict, challenge_location: str
-):
+) -> None:
     suite_config = SuiteConfig.deserialize(
         Path(challenge_location).resolve() / "suite.json"
     )
@@ -106,7 +108,9 @@ def generate_combined_suite_report(
     item.info_details = info_details
 
 
-def get_previous_test_results(test_name, info_details) -> list[bool]:
+def get_previous_test_results(
+    test_name: str, info_details: dict[str, Any]
+) -> list[bool]:
     agent_tests: dict[str, list[bool]] = {}
     mock = "--mock" in sys.argv  # Check if --mock is in sys.argv
 
@@ -142,14 +146,16 @@ def update_regression_tests(
     info_details: dict,
     test_name: str,
     test_details: dict,
-):
+) -> None:
     if len(prev_test_results) >= 3 and prev_test_results[-3:] == [True, True, True]:
         # if the last 3 tests were successful, add to the regression tests
         info_details["is_regression"] = True
         regression_manager.add_test(test_name, test_details)
 
 
-def generate_single_call_report(item, call, challenge_data):
+def generate_single_call_report(
+    item: Any, call: Any, challenge_data: dict[str, Any]
+) -> None:
     difficulty = challenge_data["info"]["difficulty"]
 
     # Extract the challenge_location from the class
@@ -192,15 +198,15 @@ def generate_single_call_report(item, call, challenge_data):
     item.info_details = info_details
 
 
-def setup_dummy_dependencies(test_class_instance, test_class):
+def setup_dummy_dependencies(test_class_instance: Any, test_class: Any) -> None:
     """Sets up the dependencies if it's a suite. Creates tests that pass
     based on the main test run."""
 
-    def create_test_func(test_name):
+    def create_test_func(test_name: str) -> Callable[[Any, dict[str, Any]], None]:
         # This function will return another function
 
         # Define a dummy test function that does nothing
-        def setup_dependency_test(self, scores):
+        def setup_dependency_test(self: Any, scores: dict[str, Any]) -> None:
             scores = self.get_dummy_scores(test_name, scores)
             assert scores == 1
 
@@ -227,7 +233,7 @@ def setup_dummy_dependencies(test_class_instance, test_class):
         setattr(test_class, f"test_{test_name}", test_func)
 
 
-def finalize_reports(item, challenge_data):
+def finalize_reports(item: Any, challenge_data: dict[str, Any]) -> None:
     run_time = dict(item.user_properties).get("run_time")
 
     info_details = getattr(item, "info_details", {})
@@ -242,13 +248,13 @@ def finalize_reports(item, challenge_data):
         info_manager.add_test(test_name, info_details)
 
 
-def generate_separate_suite_reports(suite_reports: dict):
+def generate_separate_suite_reports(suite_reports: dict) -> None:
     for prefix, suite_file_datum in suite_reports.items():
         successes = []
-        run_time = 0
+        run_time = 0.0
         data = {}
 
-        info_details = {
+        info_details: Any = {
             "data_path": "",
             "metrics": {
                 "percentage": 0,
@@ -282,7 +288,7 @@ def generate_separate_suite_reports(suite_reports: dict):
         info_manager.add_test(prefix, info_details)
 
 
-def session_finish(suite_reports: dict):
+def session_finish(suite_reports: dict) -> None:
     generate_separate_suite_reports(suite_reports)
 
     with open(CONFIG_PATH, "r") as f:
