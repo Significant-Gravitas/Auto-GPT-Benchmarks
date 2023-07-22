@@ -12,7 +12,7 @@
     "type": "execute_python_code"
   },
   "info": {
-    "difficulty": "novice",
+    "difficulty": "intermediate",
     "description": "Tests ability for the agent to debug python code with a simple typo in it, using a very broad prompt without guidance",
     "side_effects": []
   }

@@ -89,6 +89,7 @@ def pytest_addoption(parser: Any) -> None:
     parser.addoption("--maintain", action="store_true", default=False)
     parser.addoption("--test", action="store_true", default=None)
     parser.addoption("--no_dep", action="store_true", default=False)
+    parser.addoption("--suite", action="store_true", default=False)
 
 
 @pytest.fixture(autouse=True)
@@ -182,12 +183,14 @@ def pytest_collection_modifyitems(items: Any, config: Any) -> None:
         dependencies = test_class_instance.data.dependencies
 
         # Filter dependencies if they exist in regression data if its an improvement test
-        if config.getoption("--improve") or config.getoption("--category"):
+        if (
+            config.getoption("--improve")
+            or config.getoption("--category")
+            or config.getoption("--suite")
+        ):
             dependencies = [dep for dep in dependencies if not data.get(dep, None)]
         if config.getoption("--test"):
             dependencies = []
-        else:
-            dependencies = [dep for dep in dependencies if not data.get(dep, None)]
 
         if config.getoption("--no_dep"):
             dependencies = []

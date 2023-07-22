@@ -1,5 +1,5 @@
 # mypy: ignore-errors
-from code import two_sum
+from import
 from typing import List
 
 

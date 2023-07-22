@@ -63,6 +63,7 @@ def start(
         return 1
 
     # TODO: test and ensure that this functionality works before removing
+    # change elif suite below if removing
     if suite and (category or maintain or improve):
         print(
             "Error: If you're running a specific suite make sure no other options are selected. Please just pass the --suite."
@@ -112,10 +113,12 @@ def start(
     if test:
         print("Running specific test:", test)
         pytest_args.extend(["-k", test, "--test"])
+    elif suite:
+        print("Running specific suite:", suite)
+        pytest_args.extend(["--suite"])
     else:
         if category:
-            pytest_args.extend(["-m", category])
-            pytest_args.append("--category")
+            pytest_args.extend(["-m", category, "--category"])
             print("Running tests of category:", category)
         else:
             print("Running all categories")

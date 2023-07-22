@@ -103,7 +103,6 @@ def create_challenge(
     suite_config: SuiteConfig | None,
     json_files: deque,
 ) -> deque:
-    print(f"Creating test for {data['name']}...", suite_config)
     path = Path(json_file).resolve()
     if suite_config is not None:
         grandparent_dir = path.parent.parent

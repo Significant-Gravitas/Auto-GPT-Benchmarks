@@ -42,13 +42,19 @@ def calculate_info_test_path(reports_path: Path) -> str:
         test_index = command.index("--test")
     elif "--suite" in command:
         test_index = command.index("--suite")
+    elif "--category" in command:
+        test_index = command.index("--category")
+    elif "--maintain" in command:
+        test_index = command.index("--maintain")
+    elif "--improve" in command:
+        test_index = command.index("--improve")
 
     # # If "--test" is in command
     if test_index:
         try:
-            test_arg = command[test_index + 1]  # Argument after --test
-        except IndexError:
-            raise ValueError("Expected an argument after --test")
+            test_arg = command[test_index + 1]  # Argument after --
+        except:
+            test_arg = command[test_index]  # for --maintain or --improve
 
         # Get all files that include the string that is the argument after --test
         related_files = [f for f in json_files if test_arg in f]
