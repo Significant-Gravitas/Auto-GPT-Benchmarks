@@ -1,5 +1,6 @@
 import sys
 import json
+import pytest
 from pathlib import Path
 from typing import Any
 
@@ -62,6 +63,8 @@ def generate_suite_report(item, challenge_data):
         }
 
         if scores["scores_obj"][test_name] == 1:
+            # add dependency successful here
+
             test_info_details["metrics"]["success"] = True
 
             # replace the highest difficulty if needed
@@ -69,6 +72,8 @@ def generate_suite_report(item, challenge_data):
                 num_highest_difficulty = DIFFICULTY_MAP[raw_difficulty]
                 str_highest_difficulty = raw_difficulty.value
         else:
+            # add dependency fail here
+
             if not mock:  # don't remove if it's a mock test
                 regression_manager.remove_test(test_name)
 
@@ -181,6 +186,37 @@ def generate_single_call_report(item, call, challenge_data):
 
     # user facing reporting
     item.info_details = info_details
+
+
+def setup_dummy_dependencies(test_class_instance, test_class):
+    """Sets up the dependencies if it's a suite. Creates tests that pass
+    based on the main test run."""
+
+    def create_test_func(test_name):
+        # This function will return another function
+
+        # Define a dummy test function that does nothing
+        def setup_dependency_test(self, scores):
+            scores = self.get_dummy_scores(test_name, scores)
+            assert scores == 1
+
+        return setup_dependency_test
+
+    for test_name in test_class_instance.setup_dependencies:
+        setup_dependency_test = create_test_func(test_name)
+        # Add the dummy test function to the class that the current test is part of
+        # TODO: remove on=[test_class.__name__] and fix the actual dependencies problem
+        test_func = pytest.mark.depends(on=[test_class.__name__], name=test_name)(
+            setup_dependency_test
+        )
+        # Parametrize to tell makereport to skip it
+        test_func = pytest.mark.parametrize(
+            "challenge_data",
+            [None],
+            indirect=True,
+        )(test_func)
+        test_func = pytest.mark.usefixtures("scores")(test_func)
+        setattr(test_class, f"test_{test_name}", test_func)
 
 
 def finalize_reports(item, challenge_data):

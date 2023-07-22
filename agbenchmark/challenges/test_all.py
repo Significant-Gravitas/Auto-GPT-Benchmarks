@@ -60,6 +60,11 @@ def create_single_test(
             "_data_cache",
             {clean_challenge_location: challenge_data},
         )
+        setattr(
+            challenge_class,
+            "setup_dependencies",
+            [test_name for test_name in data["info"].keys()],
+        )
 
     setattr(
         challenge_class,
@@ -74,7 +79,6 @@ def create_single_test(
 
         scores = self.get_scores(config)
         request.node.scores = scores  # store scores in request.node
-
         assert 1 in scores["values"]
 
     # Parametrize the method here
@@ -194,7 +198,10 @@ def generate_tests() -> None:  # sourcery skip: invert-any-all
 
         json_files = create_challenge(data, json_file, suite_config, json_files)
 
-        print(f"Generated test for {data['name']}.")
+        if suite_config:
+            print(f"Generated suite for {suite_config.prefix}.")
+        else:
+            print(f"Generated test for {data['name']}.")
 
 
 generate_tests()

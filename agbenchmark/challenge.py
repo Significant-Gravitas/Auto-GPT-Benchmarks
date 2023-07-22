@@ -16,7 +16,9 @@ class Challenge(ABC):
 
     _data_cache: Dict[str, ChallengeData] = {}
     CHALLENGE_LOCATION: str = ""
-    ARTIFACTS_LOCATION: str = ""
+    ARTIFACTS_LOCATION: str = ""  # this is for suites
+    setup_dependencies: List[str] = []  # this is for suites
+    scores: dict[str, Any] = {}  # this is for suites
 
     @property
     def data(self) -> ChallengeData:
@@ -170,15 +172,23 @@ class Challenge(ABC):
             # Print the result in green
             print(f"\033[1;92mPercentage of 1.0 scores:\033[0m {percentage}%")
 
-            if percentage > 0:
-                if not percentage == 100:
-                    print(
-                        "\033[1;93mWARNING:\033[0m Your agent did not pass all the tests in the suite."
-                    )
+            if percentage == 100:
                 scores.append(1.0)
+            else:
+                print(
+                    "\033[1;93mWARNING:\033[0m Your agent did not pass all the tests in the suite."
+                )
 
-        return {
+        scores_data = {
             "values": scores,
             "scores_obj": scores_dict,
             "percentage": percentage,
         }
+
+        self.scores[self.__class__.__name__] = scores_data
+
+        return scores_data
+
+    def get_dummy_scores(self, test_name: str, scores):
+        if scores["scores_obj"][test_name] == 1:
+            return 1

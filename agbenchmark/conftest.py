@@ -16,6 +16,7 @@ from agbenchmark.reports.utils import (
     generate_suite_report,
     finalize_reports,
     session_finish,
+    setup_dummy_dependencies,
 )
 
 
@@ -126,10 +127,14 @@ def timer(request: Any) -> Any:
 
 def pytest_runtest_makereport(item: Any, call: Any) -> None:
     challenge_data = item.funcargs.get("challenge_data", None)
-    is_suite = challenge_data["info"].get("difficulty", False)
+    if not challenge_data:
+        # this will only happen for dummy dependency setup tests
+        return
+
+    is_not_suite = challenge_data["info"].get("difficulty", False)
 
     if call.when == "call":
-        if is_suite:
+        if is_not_suite:
             generate_single_call_report(item, call, challenge_data)
         else:
             generate_suite_report(item, challenge_data)
@@ -142,11 +147,40 @@ def pytest_sessionfinish(session: Any) -> None:
     session_finish()
 
 
+@pytest.fixture
+def scores(request):
+    test_class_name = request.node.cls.__name__
+    return request.node.cls.scores.get(test_class_name)
+
+
+def pytest_generate_tests(metafunc: Any) -> None:
+    """This is to generate the dummy dependencies each test class"""
+    test_class_instance = metafunc.cls()
+
+    if test_class_instance.setup_dependencies:
+        test_class = metafunc.cls
+        setup_dummy_dependencies(test_class_instance, test_class)
+        setattr(test_class, "setup_dependencies", [])
+
+
 # this is adding the dependency marker and category markers automatically from the json
 def pytest_collection_modifyitems(items: Any, config: Any) -> None:
     data = get_regression_data()
+    # A dictionary to store the test methods, grouped by their parent class name
+    items_by_class = {}
+
+    print("items", items)
 
     for item in items:
+        # Group the items by their parent class name
+        class_name = item.parent.cls.__name__
+        if class_name not in items_by_class:
+            items_by_class[class_name] = []
+        items_by_class[class_name].append(item)
+        # if it's a setup dependency test we skip
+        if "test_method" not in item.name:
+            continue
+
         # Assuming item.cls is your test class
         test_class_instance = item.cls()
 
@@ -171,3 +205,14 @@ def pytest_collection_modifyitems(items: Any, config: Any) -> None:
         # Add category marker dynamically
         for category in categories:
             item.add_marker(getattr(pytest.mark, category))
+
+    # Sort the items within each class so that 'test_method' is the first
+    for items_in_class in items_by_class.values():
+        items_in_class.sort(key=lambda item: item.name != "test_method")
+
+    # Flatten the sorted items into the original list
+    items[:] = [
+        item for items_in_class in items_by_class.values() for item in items_in_class
+    ]
+
+    print("items", items)
