@@ -5,6 +5,9 @@ import sys
 from abc import ABC
 from typing import Any, Dict, List
 
+import openai
+
+from agbenchmark.agent_interface import MOCK_FLAG
 from agbenchmark.challenges.define_task_types import ChallengeData, Ground
 from agbenchmark.start_benchmark import CURRENT_DIRECTORY
 
@@ -107,7 +110,9 @@ class Challenge(ABC):
         print("Scoring content: ", content)
         if ground.should_contain:
             for should_contain_word in ground.should_contain:
-                if should_contain_word not in content:
+                if self.data.ground.type == "file_llm_evaluation":
+                    return self.llm_eval(content, should_contain_word)
+                elif should_contain_word not in content:
                     print(f"Word that should exist - {should_contain_word}: False")
                     return 0.0
                 else:
@@ -126,6 +131,26 @@ class Challenge(ABC):
                     )
 
         return 1.0
+
+    def llm_eval(self, content: str, should_contain_word: str) -> float:
+        openai.api_key = os.getenv("OPENAI_API_KEY")
+        if MOCK_FLAG:
+            return 1.0
+        evaluation_question = f"""
+QUESTION:
+{should_contain_word} Answer with 0 for no, 1 for yes.
+CONTENT:
+{content}
+ANSWER:
+
+"""
+        answer = openai.ChatCompletion.create(
+            model="gpt-4",
+            messages=[
+                {"role": "system", "content": evaluation_question},
+            ],
+        )
+        return float(answer["choices"][0]["message"]["content"])
 
     def get_scores(self, config: Dict[str, Any]) -> List[float]:
         files_contents = self.get_artifacts_out(
