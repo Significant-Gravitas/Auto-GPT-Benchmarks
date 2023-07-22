@@ -155,7 +155,17 @@
             false
         ],
         "TestRevenueRetrieval_1.0": [
+            true,
+            true,
             true
+        ],
+        "TestRevenueRetrieval_1.1": [
+            false,
+            false
+        ],
+        "TestRevenueRetrieval_1.2": [
+            false,
+            false
         ]
     }
 }

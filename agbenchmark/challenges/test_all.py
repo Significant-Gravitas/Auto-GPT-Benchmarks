@@ -88,6 +88,8 @@ def create_single_test(
         indirect=True,
     )(test_method)
 
+    test_method = pytest.mark.first(test_method)
+
     setattr(challenge_class, "test_method", test_method)
 
     # Attach the new class to a module so it can be discovered by pytest

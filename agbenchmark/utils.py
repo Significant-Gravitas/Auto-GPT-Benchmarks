@@ -37,9 +37,14 @@ def calculate_info_test_path(reports_path: Path) -> str:
     file_count = len(json_files)
     run_name = f"{file_count + 1}_{datetime.now().strftime('%m-%d-%H-%M')}.json"
 
-    # # If "--test" is in command
+    test_index = None
     if "--test" in command:
         test_index = command.index("--test")
+    elif "--suite" in command:
+        test_index = command.index("--suite")
+
+    # # If "--test" is in command
+    if test_index:
         try:
             test_arg = command[test_index + 1]  # Argument after --test
         except IndexError:

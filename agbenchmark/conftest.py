@@ -168,15 +168,8 @@ def pytest_generate_tests(metafunc: Any) -> None:
 # this is adding the dependency marker and category markers automatically from the json
 def pytest_collection_modifyitems(items: Any, config: Any) -> None:
     data = get_regression_data()
-    # A dictionary to store the test methods, grouped by their parent class name
-    items_by_class = {}
 
     for item in items:
-        # Group the items by their parent class name
-        class_name = item.parent.cls.__name__
-        if class_name not in items_by_class:
-            items_by_class[class_name] = []
-        items_by_class[class_name].append(item)
         # if it's a setup dependency test we skip
         if "test_method" not in item.name:
             continue
@@ -207,12 +200,3 @@ def pytest_collection_modifyitems(items: Any, config: Any) -> None:
         # Add category marker dynamically
         for category in categories:
             item.add_marker(getattr(pytest.mark, category))
-
-    # Sort the items within each class so that 'test_method' is the first
-    for items_in_class in items_by_class.values():
-        items_in_class.sort(key=lambda item: item.name != "test_method")
-
-    # Flatten the sorted items into the original list
-    items[:] = [
-        item for items_in_class in items_by_class.values() for item in items_in_class
-    ]
