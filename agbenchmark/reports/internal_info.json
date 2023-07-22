@@ -166,6 +166,18 @@
         "TestRevenueRetrieval_1.2": [
             false,
             false
+        ],
+        "TestReturnCode_Simple": [
+            false
+        ],
+        "TestReturnCode_Write": [
+            false
+        ],
+        "TestReturnCode_Modify": [
+            false
+        ],
+        "TestReturnCode_Tests": [
+            false
         ]
     }
 }

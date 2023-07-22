@@ -13,11 +13,12 @@ from agbenchmark.start_benchmark import (
 )
 from agbenchmark.reports.utils import (
     generate_single_call_report,
-    generate_suite_report,
+    generate_combined_suite_report,
     finalize_reports,
     session_finish,
     setup_dummy_dependencies,
 )
+from agbenchmark.challenges.data_types import SuiteConfig
 
 
 def resolve_workspace(workspace: str) -> str:
@@ -128,26 +129,36 @@ def timer(request: Any) -> Any:
     request.node.user_properties.append(("run_time", run_time))
 
 
+suite_reports = {}
+
+
 def pytest_runtest_makereport(item: Any, call: Any) -> None:
     challenge_data = item.funcargs.get("challenge_data", None)
     if not challenge_data:
         # this will only happen for dummy dependency setup tests
         return
 
-    is_not_suite = challenge_data["info"].get("difficulty", False)
+    challenge_location: str = getattr(item.cls, "CHALLENGE_LOCATION", "")
+    is_suite = SuiteConfig.suite_data_if_suite(Path(challenge_location))
 
     if call.when == "call":
-        if is_not_suite:
-            generate_single_call_report(item, call, challenge_data)
+        if is_suite and is_suite.same_task:
+            generate_combined_suite_report(item, challenge_data, challenge_location)
         else:
-            generate_suite_report(item, challenge_data)
+            generate_single_call_report(item, call, challenge_data)
+
     if call.when == "teardown":
         finalize_reports(item, challenge_data)
+
+        # for separate task suites, their data is the same as a regular suite, but we combined the report at the end
+        if is_suite and not is_suite.same_task:
+            suite_reports.setdefault(is_suite.prefix, []).append(challenge_data["name"])
 
 
 def pytest_sessionfinish(session: Any) -> None:
     """Called at the end of the session to save regression tests and info"""
-    session_finish()
+
+    session_finish(suite_reports)
 
 
 @pytest.fixture

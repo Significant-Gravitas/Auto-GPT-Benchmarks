@@ -12,7 +12,7 @@
     "type": "execute_python_code"
   },
   "info": {
-    "difficulty": "novice",
+    "difficulty": "intermediate",
     "description": "Builds on the previous function also take a multiplier .",
     "side_effects": []
   }

@@ -12,7 +12,11 @@ from agbenchmark.start_benchmark import (
 )
 from agbenchmark.utils import AGENT_NAME, calculate_success_percentage
 from agbenchmark.challenges.data_types import DIFFICULTY_MAP, SuiteConfig
-from agbenchmark.utils import replace_backslash
+from agbenchmark.utils import (
+    replace_backslash,
+    get_highest_success_difficulty,
+    get_test_path,
+)
 
 # tests that consistently pass are considered regression tests
 regression_manager = ReportManager(REGRESSION_TESTS_PATH)
@@ -26,9 +30,9 @@ INTERNAL_LOGS_PATH = Path(__file__).resolve().parent
 internal_info = ReportManager(str(INTERNAL_LOGS_PATH / "internal_info.json"))
 
 
-def generate_suite_report(item, challenge_data):
-    challenge_location: str = getattr(item.cls, "CHALLENGE_LOCATION", "")
-
+def generate_combined_suite_report(
+    item: Any, challenge_data: dict, challenge_location: str
+):
     suite_config = SuiteConfig.deserialize(
         Path(challenge_location).resolve() / "suite.json"
     )
@@ -238,7 +242,49 @@ def finalize_reports(item, challenge_data):
         info_manager.add_test(test_name, info_details)
 
 
-def session_finish():
+def generate_separate_suite_reports(suite_reports: dict):
+    for prefix, suite_file_datum in suite_reports.items():
+        successes = []
+        run_time = 0
+        data = {}
+
+        info_details = {
+            "data_path": "",
+            "metrics": {
+                "percentage": 0,
+                "highest_difficulty": "",
+                "run_time": "0 seconds",
+            },
+            "tests": {},
+        }
+
+        for name in suite_file_datum:
+            test_data = info_manager.tests[name]  # get the individual test reports
+            data[name] = test_data  # this is for calculating highest difficulty
+            info_manager.remove_test(name)
+
+            successes.append(test_data["metrics"]["success"])
+            run_time += float(test_data["metrics"]["run_time"].split(" ")[0])
+
+            info_details["tests"][name] = test_data
+
+        info_details["metrics"]["percentage"] = round(
+            (sum(successes) / len(successes)) * 100, 2
+        )
+        info_details["metrics"]["run_time"] = f"{str(round(run_time, 3))} seconds"
+        info_details["metrics"]["highest_difficulty"] = get_highest_success_difficulty(
+            data, just_string=True
+        )
+        suite_path = (
+            Path(next(iter(data.values()))["data_path"]).resolve().parent.parent
+        )
+        info_details["data_path"] = get_test_path(suite_path)
+        info_manager.add_test(prefix, info_details)
+
+
+def session_finish(suite_reports: dict):
+    generate_separate_suite_reports(suite_reports)
+
     with open(CONFIG_PATH, "r") as f:
         config = json.load(f)
 

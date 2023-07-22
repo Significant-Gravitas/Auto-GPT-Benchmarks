@@ -10,27 +10,8 @@ import pytest
 
 from agbenchmark.challenge import Challenge
 from agbenchmark.start_benchmark import CURRENT_DIRECTORY, get_regression_data
-from agbenchmark.utils import replace_backslash
+from agbenchmark.utils import get_test_path
 from agbenchmark.challenges.data_types import SuiteConfig, ChallengeData
-
-
-def get_test_path(json_file: str) -> str:
-    path = Path(json_file)
-
-    # Find the index of "agbenchmark" in the path parts
-    try:
-        agbenchmark_index = path.parts.index("agbenchmark")
-    except ValueError:
-        raise ValueError("Invalid challenge location.")
-
-    # Create the path from "agbenchmark" onwards
-    challenge_location = Path(*path.parts[agbenchmark_index:])
-
-    formatted_location = replace_backslash(str(challenge_location))
-    if isinstance(formatted_location, str):
-        return formatted_location
-    else:
-        return str(challenge_location)
 
 
 def create_single_test(
@@ -119,7 +100,10 @@ def create_challenge(
 
         # Remove all data.json files from json_files list, except for current_file
         json_files = deque(
-            file for file in json_files if file not in suite_files and file != json_file
+            file
+            for file in json_files
+            if file not in suite_files
+            and Path(file).resolve() != Path(json_file).resolve()
         )
 
         suite_file_datum = [
@@ -137,9 +121,19 @@ def create_challenge(
                 challenge_data, str(grandparent_dir), suite_config=suite_config
             )
         else:
-            # create the individual tests
-            for file_data in file_datum:
-                create_single_test(file_data, str(path))
+            reverse = suite_config.reverse_order
+
+            # TODO: reversing doesn't work, for the same reason why the ordering of dummy tests doesn't work
+            if reverse:
+                paired_data = list(reversed(list(zip(file_datum, suite_files))))
+            else:
+                paired_data = list(zip(file_datum, suite_files))
+
+            for file_data, file_path in paired_data:
+                # if we're running in reverse we don't want dependencies to get in the way
+                if reverse:
+                    file_data["dependencies"] = []
+                create_single_test(file_data, file_path)
 
     else:
         create_single_test(data, str(path))

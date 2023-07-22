@@ -6,7 +6,7 @@ import re
 import sys
 from datetime import datetime
 from pathlib import Path
-from typing import Any
+from typing import Any, Optional
 
 from dotenv import load_dotenv
 
@@ -111,18 +111,45 @@ def calculate_success_percentage(results: list[bool]) -> float:
     return round(success_percentage, 2)
 
 
-def get_highest_success_difficulty(data: dict) -> str:
+def get_test_path(json_file: str | Path) -> str:
+    if isinstance(json_file, str):
+        json_file = Path(json_file)
+
+    # Find the index of "agbenchmark" in the path parts
+    try:
+        agbenchmark_index = json_file.parts.index("agbenchmark")
+    except ValueError:
+        raise ValueError("Invalid challenge location.")
+
+    # Create the path from "agbenchmark" onwards
+    challenge_location = Path(*json_file.parts[agbenchmark_index:])
+
+    formatted_location = replace_backslash(str(challenge_location))
+    if isinstance(formatted_location, str):
+        return formatted_location
+    else:
+        return str(challenge_location)
+
+
+def get_highest_success_difficulty(
+    data: dict, just_string: Optional[bool] = None
+) -> str:
     highest_difficulty = None
     highest_difficulty_level = 0
 
     for test_name, test_data in data.items():
         if test_data.get("tests", None):
             highest_difficulty_str = test_data["metrics"]["highest_difficulty"]
-            highest_difficulty = DifficultyLevel[highest_difficulty_str]
-            highest_difficulty_level = DIFFICULTY_MAP[highest_difficulty]
+            try:
+                highest_difficulty = DifficultyLevel[highest_difficulty_str]
+                highest_difficulty_level = DIFFICULTY_MAP[highest_difficulty]
+            except KeyError:
+                print(
+                    f"Unexpected difficulty level '{highest_difficulty_str}' in test '{test_name}'"
+                )
+                continue
         else:
             if test_data["metrics"]["success"]:
-                # Replace 'medium' with 'intermediate' for this example
                 difficulty_str = test_data["metrics"]["difficulty"]
 
                 try:
@@ -136,14 +163,17 @@ def get_highest_success_difficulty(data: dict) -> str:
                     print(
                         f"Unexpected difficulty level '{difficulty_str}' in test '{test_name}'"
                     )
+                    continue
 
     if highest_difficulty is not None:
         highest_difficulty_str = highest_difficulty.name  # convert enum to string
     else:
         highest_difficulty_str = ""
 
-    if highest_difficulty_level:
+    if highest_difficulty_level and not just_string:
         return f"{highest_difficulty_str}: {highest_difficulty_level}"
+    elif highest_difficulty_str:
+        return highest_difficulty_str
     return "No successful tests"
 
 
