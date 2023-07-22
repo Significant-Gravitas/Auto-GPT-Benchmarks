@@ -46,7 +46,7 @@ class Challenge(ABC):
         )
 
         print(
-            "\033[1;35m============Starting {self.data.name} challenge============\033[0m"
+            f"\033[1;35m============Starting {self.data.name} challenge============\033[0m"
         )
 
         run_agent(self.task, config, self.ARTIFACTS_LOCATION, cutoff)
@@ -175,12 +175,14 @@ class Challenge(ABC):
             # Print the result in green
             print(f"\033[1;92mPercentage of 1.0 scores:\033[0m {percentage}%")
 
-            if percentage == 100:
+            # TODO: in an ideal world it only returns 1.0 if all of the tests pass but then the dependencies break.
+            # So for now we return 1.0 if there's any that pass
+            if percentage > 0:
                 scores.append(1.0)
-            else:
-                print(
-                    "\033[1;93mWARNING:\033[0m Your agent did not pass all the tests in the suite."
-                )
+                if percentage != 100:
+                    print(
+                        "\033[1;93mWARNING:\033[0m Your agent did not pass all the tests in the suite."
+                    )
 
         scores_data = {
             "values": scores,

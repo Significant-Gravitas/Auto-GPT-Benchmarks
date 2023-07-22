@@ -21,7 +21,7 @@ def run_agent(
     """Calling to get a response"""
 
     if MOCK_FLAG:
-        print("Running mock agent", artifacts_location)
+        print("Running mock agent")
         copy_artifacts_into_workspace(
             config["workspace"], "artifacts_out", artifacts_location
         )

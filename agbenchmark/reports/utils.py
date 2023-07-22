@@ -206,14 +206,15 @@ def setup_dummy_dependencies(test_class_instance, test_class):
         setup_dependency_test = create_test_func(test_name)
         # Add the dummy test function to the class that the current test is part of
         # TODO: remove on=[test_class.__name__] and fix the actual dependencies problem
-        test_func = pytest.mark.depends(name=test_name)(setup_dependency_test)
+        test_func = pytest.mark.depends(on=[test_class.__name__], name=test_name)(
+            setup_dependency_test
+        )
         # Parametrize to tell makereport to skip it
         test_func = pytest.mark.parametrize(
             "challenge_data",
             [None],
             indirect=True,
         )(test_func)
-        test_func = pytest.mark.second(test_func)
         # Add category markers
         for category in test_class_instance.data.category:
             test_func = getattr(pytest.mark, category)(test_func)
