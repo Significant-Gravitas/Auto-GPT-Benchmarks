@@ -3,7 +3,6 @@ import os
 import subprocess
 import sys
 from abc import ABC
-from pathlib import Path
 from typing import Any, Dict, List
 
 from agbenchmark.challenges.data_types import ChallengeData, Ground
