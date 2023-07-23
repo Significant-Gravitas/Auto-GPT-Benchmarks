@@ -69,8 +69,9 @@ jobs:
     env:
       GH_TOKEN: ${{ github.event_name == 'pull_request' && github.token || secrets.PAT }}
       min-python-version: "3.10"
-    name: "${{ matrix.agent-name }} (Cache: ${{ matrix.cache-enabled }})"
+    name: "${{ matrix.agent-name }}"
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     strategy:
       fail-fast: false
       matrix:
@@ -80,7 +81,7 @@ jobs:
           - "Auto-GPT"
           - "mini-agi"
           - "beebot"
-        cache-enabled: [ true, false ]
+          - "BabyAGI"
 
     steps:
       - name: Checkout repository
@@ -132,6 +133,10 @@ jobs:
             python -m venv venv
             source venv/bin/activate
             pip install -r requirements.txt
+          elif [ "$AGENT_NAME" == "BabyAGI" ]; then
+            python -m venv venv
+            source venv/bin/activate
+            pip install -r requirements.txt
           elif [ "$AGENT_NAME" == "SuperAGI" ]; then
             cp config_template.yaml config.yaml
             sed -i 's/OPENAI_API_KEY:.*/OPENAI_API_KEY: "'"${{ secrets.OPENAI_API_KEY }}"'"/' config.yaml
@@ -170,7 +175,7 @@ jobs:
           PROMPT_USER: false # For mini-agi. TODO: Remove this once mini-agi follows the standards.
           HELICONE_API_KEY: ${{ secrets.HELICONE_API_KEY }}
           REQUESTS_CA_BUNDLE: /etc/ssl/certs/ca-certificates.crt
-          HELICONE_CACHE_ENABLED: ${{ matrix.cache-enabled }}
+          HELICONE_CACHE_ENABLED: false
           HELICONE_PROPERTY_AGENT: ${{ matrix.agent-name }}
           REPORT_LOCATION: ${{ format('../../reports/{0}', matrix.agent-name) }}
 
@@ -183,7 +188,7 @@ jobs:
           path: reports/${{ matrix.agent-name }}
 
       - name: Authenticate and Push to Branch
-        if: (success() || failure()) && (github.event_name != 'pull_request' && matrix.cache-enabled == false)
+        if: (success() || failure()) && (github.event_name != 'pull_request')
         run: |
           git config --global user.email "github-bot@agpt.co"
           git config --global user.name "Auto-GPT-Bot"
@@ -191,7 +196,7 @@ jobs:
           git add reports/* || echo "nothing to commit"
           commit_message="${{ matrix.agent-name }}-$(date +'%Y%m%d%H%M%S')"
           git commit -m "${commit_message}"
-            
+          git stash
           current_branch=${{ github.ref_name }}
           git fetch origin $current_branch
           git rebase origin/$current_branch
@@ -201,3 +206,4 @@ jobs:
           fi
         env:
           GDRIVE_BASE64: ${{ secrets.GDRIVE_BASE64 }}
+          GITHUB_REF_NAME: ${{ github.ref_name }}

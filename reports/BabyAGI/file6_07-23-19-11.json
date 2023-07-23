@@ -1,9 +1,9 @@
 {
     "command": "agbenchmark start",
-    "completion_time": "2023-07-19-22:04",
+    "completion_time": "2023-07-23-19:12",
     "metrics": {
-        "run_time": "494.94 seconds",
-        "highest_difficulty": "advanced: 5"
+        "run_time": "85.95 seconds",
+        "highest_difficulty": "No successful tests"
     },
     "tests": {
         "TestWriteFile": {
@@ -14,11 +14,12 @@
             "description": "Tests the writing to file",
             "metrics": {
                 "difficulty": "interface",
-                "success": true,
-                "success_%": 100.0,
-                "run_time": "15.637 seconds"
+                "success": false,
+                "fail_reason": "assert 1 in []",
+                "success_%": 0.0,
+                "run_time": "85.729 seconds"
             },
-            "reached_cutoff": false
+            "reached_cutoff": true
         },
         "TestBasicCodeGeneration": {
             "data_path": "agbenchmark/challenges/code/d3_two_sum",
@@ -28,11 +29,12 @@
             "description": "Tests ability for the agent to create the two_sum function.",
             "metrics": {
                 "difficulty": "advanced",
-                "success": true,
-                "success_%": 100.0,
-                "run_time": "94.174 seconds"
+                "success": false,
+                "fail_reason": "agent/BabyAGI/venv/lib/python3.10/site-packages/agbenchmark/challenges/test_all.py::TestBasicCodeGeneration::test_method[challenge_data0] depends on agent/BabyAGI/venv/lib/python3.10/site-packages/agbenchmark/challenges/test_all.py::TestWriteFile::test_method[challenge_data0]",
+                "success_%": 0.0,
+                "run_time": "0.001 seconds"
             },
-            "reached_cutoff": true
+            "reached_cutoff": false
         },
         "TestSearch": {
             "data_path": "agbenchmark/challenges/interface/search",
@@ -43,9 +45,9 @@
             "metrics": {
                 "difficulty": "interface",
                 "success": false,
-                "fail_reason": "assert 1 in []",
+                "fail_reason": "agent/BabyAGI/venv/lib/python3.10/site-packages/agbenchmark/challenges/test_all.py::TestSearch::test_method[challenge_data0] depends on agent/BabyAGI/venv/lib/python3.10/site-packages/agbenchmark/challenges/test_all.py::TestWriteFile::test_method[challenge_data0]",
                 "success_%": 0.0,
-                "run_time": "20.195 seconds"
+                "run_time": "0.001 seconds"
             },
             "reached_cutoff": false
         },
@@ -57,9 +59,10 @@
             "description": "This reads the file quickly",
             "metrics": {
                 "difficulty": "interface",
-                "success": true,
-                "success_%": 100.0,
-                "run_time": "25.044 seconds"
+                "success": false,
+                "fail_reason": "agent/BabyAGI/venv/lib/python3.10/site-packages/agbenchmark/challenges/test_all.py::TestReadFile::test_method[challenge_data0] depends on agent/BabyAGI/venv/lib/python3.10/site-packages/agbenchmark/challenges/test_all.py::TestWriteFile::test_method[challenge_data0]",
+                "success_%": 0.0,
+                "run_time": "0.001 seconds"
             },
             "reached_cutoff": false
         },
@@ -72,11 +75,11 @@
             "metrics": {
                 "difficulty": "advanced",
                 "success": false,
-                "fail_reason": "assert 1 in [0.0]",
+                "fail_reason": "agent/BabyAGI/venv/lib/python3.10/site-packages/agbenchmark/challenges/test_all.py::TestThreeSum::test_method[challenge_data0] depends on agent/BabyAGI/venv/lib/python3.10/site-packages/agbenchmark/challenges/test_all.py::TestWriteFile::test_method[challenge_data0], agent/BabyAGI/venv/lib/python3.10/site-packages/agbenchmark/challenges/test_all.py::TestBasicCodeGeneration::test_method[challenge_data0]",
                 "success_%": 0.0,
-                "run_time": "64.425 seconds"
+                "run_time": "0.001 seconds"
             },
-            "reached_cutoff": true
+            "reached_cutoff": false
         },
         "TestBasicRetrieval": {
             "data_path": "agbenchmark/challenges/retrieval/r1_book_price",
@@ -87,7 +90,7 @@
             "metrics": {
                 "difficulty": "basic",
                 "success": false,
-                "fail_reason": "challenges/test_all.py::TestBasicRetrieval::test_method[challenge_data0] depends on challenges/test_all.py::TestSearch::test_method[challenge_data0]",
+                "fail_reason": "agent/BabyAGI/venv/lib/python3.10/site-packages/agbenchmark/challenges/test_all.py::TestBasicRetrieval::test_method[challenge_data0] depends on agent/BabyAGI/venv/lib/python3.10/site-packages/agbenchmark/challenges/test_all.py::TestWriteFile::test_method[challenge_data0], agent/BabyAGI/venv/lib/python3.10/site-packages/agbenchmark/challenges/test_all.py::TestSearch::test_method[challenge_data0]",
                 "success_%": 0.0,
                 "run_time": "0.001 seconds"
             },
@@ -102,11 +105,11 @@
             "metrics": {
                 "difficulty": "basic",
                 "success": false,
-                "fail_reason": "assert 1 in [0.0]",
+                "fail_reason": "agent/BabyAGI/venv/lib/python3.10/site-packages/agbenchmark/challenges/test_all.py::TestDebugSimpleTypoWithGuidance::test_method[challenge_data0] depends on agent/BabyAGI/venv/lib/python3.10/site-packages/agbenchmark/challenges/test_all.py::TestWriteFile::test_method[challenge_data0], agent/BabyAGI/venv/lib/python3.10/site-packages/agbenchmark/challenges/test_all.py::TestReadFile::test_method[challenge_data0]",
                 "success_%": 0.0,
-                "run_time": "75.682 seconds"
+                "run_time": "0.001 seconds"
             },
-            "reached_cutoff": true
+            "reached_cutoff": false
         },
         "TestBasicMemory": {
             "data_path": "agbenchmark/challenges/memory/m1_id",
@@ -116,11 +119,12 @@
             "description": "Tests ability for the agent to remember information between each action. An id is presented initially and the agent has to remember it after reading 4 other files",
             "metrics": {
                 "difficulty": "basic",
-                "success": true,
-                "success_%": 100.0,
-                "run_time": "60.342 seconds"
+                "success": false,
+                "fail_reason": "agent/BabyAGI/venv/lib/python3.10/site-packages/agbenchmark/challenges/test_all.py::TestBasicMemory::test_method[challenge_data0] depends on agent/BabyAGI/venv/lib/python3.10/site-packages/agbenchmark/challenges/test_all.py::TestWriteFile::test_method[challenge_data0], agent/BabyAGI/venv/lib/python3.10/site-packages/agbenchmark/challenges/test_all.py::TestReadFile::test_method[challenge_data0]",
+                "success_%": 0.0,
+                "run_time": "0.001 seconds"
             },
-            "reached_cutoff": true
+            "reached_cutoff": false
         },
         "TestRetrieval2.0": {
             "data_path": "agbenchmark/challenges/retrieval/r2_tesla_revenue",
@@ -131,7 +135,7 @@
             "metrics": {
                 "difficulty": "novice",
                 "success": false,
-                "fail_reason": "challenges/test_all.py::TestRetrieval2.0::test_method[challenge_data0] depends on challenges/test_all.py::TestBasicRetrieval::test_method[challenge_data0]",
+                "fail_reason": "agent/BabyAGI/venv/lib/python3.10/site-packages/agbenchmark/challenges/test_all.py::TestRetrieval2.0::test_method[challenge_data0] depends on agent/BabyAGI/venv/lib/python3.10/site-packages/agbenchmark/challenges/test_all.py::TestBasicRetrieval::test_method[challenge_data0]",
                 "success_%": 0.0,
                 "run_time": "0.001 seconds"
             },
@@ -146,22 +150,22 @@
             "metrics": {
                 "difficulty": "novice",
                 "success": false,
-                "fail_reason": "challenges/test_all.py::TestDebugSimpleTypoWithoutGuidance::test_method[challenge_data0] depends on challenges/test_all.py::TestDebugSimpleTypoWithGuidance::test_method[challenge_data0]",
+                "fail_reason": "agent/BabyAGI/venv/lib/python3.10/site-packages/agbenchmark/challenges/test_all.py::TestDebugSimpleTypoWithoutGuidance::test_method[challenge_data0] depends on agent/BabyAGI/venv/lib/python3.10/site-packages/agbenchmark/challenges/test_all.py::TestDebugSimpleTypoWithGuidance::test_method[challenge_data0]",
                 "success_%": 0.0,
-                "run_time": "0.007 seconds"
+                "run_time": "0.001 seconds"
             },
             "reached_cutoff": false
         },
         "TestCreateSimpleWebServer": {
             "data_path": "agbenchmark/challenges/code/d4_web_server",
             "is_regression": false,
-            "task": "Build a basic web server that responds to a GET localhost:8079/health with a 200 OK. Deploy this web server locally at the port 8079. ",
+            "task": "Create a basic flask web server that responds to a GET localhost:8079/health with a 200 OK. Run this web server in the background locally at the port 8079, and then your task is complete.",
             "answer": "GET localhost:8079/health responds with a 200 OK",
             "description": "Tests ability for the agent to build a simple web server locally",
             "metrics": {
                 "difficulty": "advanced",
                 "success": false,
-                "fail_reason": "challenges/test_all.py::TestCreateSimpleWebServer::test_method[challenge_data0] depends on challenges/test_all.py::TestDebugSimpleTypoWithGuidance::test_method[challenge_data0]",
+                "fail_reason": "agent/BabyAGI/venv/lib/python3.10/site-packages/agbenchmark/challenges/test_all.py::TestCreateSimpleWebServer::test_method[challenge_data0] depends on agent/BabyAGI/venv/lib/python3.10/site-packages/agbenchmark/challenges/test_all.py::TestDebugSimpleTypoWithGuidance::test_method[challenge_data0]",
                 "success_%": 0.0,
                 "run_time": "0.001 seconds"
             },
@@ -175,11 +179,12 @@
             "description": "Tests ability for the agent to remember information between each action. Multiple ids are presented in different files and the last file instructs the agent to write these ids into another file.",
             "metrics": {
                 "difficulty": "novice",
-                "success": true,
-                "success_%": 100.0,
-                "run_time": "61.089 seconds"
+                "success": false,
+                "fail_reason": "agent/BabyAGI/venv/lib/python3.10/site-packages/agbenchmark/challenges/test_all.py::TestRememberMultipleIds::test_method[challenge_data0] depends on agent/BabyAGI/venv/lib/python3.10/site-packages/agbenchmark/challenges/test_all.py::TestBasicMemory::test_method[challenge_data0]",
+                "success_%": 0.0,
+                "run_time": "0.001 seconds"
             },
-            "reached_cutoff": true
+            "reached_cutoff": false
         },
         "TestRetrieval2.1": {
             "data_path": "agbenchmark/challenges/retrieval/r2.1_specific",
@@ -190,9 +195,9 @@
             "metrics": {
                 "difficulty": "novice",
                 "success": false,
-                "fail_reason": "challenges/test_all.py::TestRetrieval2.1::test_method[challenge_data0] depends on challenges/test_all.py::TestRetrieval2.0::test_method[challenge_data0]",
+                "fail_reason": "agent/BabyAGI/venv/lib/python3.10/site-packages/agbenchmark/challenges/test_all.py::TestRetrieval2.1::test_method[challenge_data0] depends on agent/BabyAGI/venv/lib/python3.10/site-packages/agbenchmark/challenges/test_all.py::TestRetrieval2.0::test_method[challenge_data0]",
                 "success_%": 0.0,
-                "run_time": "0.002 seconds"
+                "run_time": "0.001 seconds"
             },
             "reached_cutoff": false
         },
@@ -205,11 +210,11 @@
             "metrics": {
                 "difficulty": "intermediate",
                 "success": false,
-                "fail_reason": "[Errno 2] No such file or directory: '/home/runner/work/Auto-GPT-Benchmarks/Auto-GPT-Benchmarks/agent/beebot/workspace/result.txt'",
+                "fail_reason": "agent/BabyAGI/venv/lib/python3.10/site-packages/agbenchmark/challenges/test_all.py::TestRememberMultipleWithNoise::test_method[challenge_data0] depends on agent/BabyAGI/venv/lib/python3.10/site-packages/agbenchmark/challenges/test_all.py::TestRememberMultipleIds::test_method[challenge_data0]",
                 "success_%": 0.0,
-                "run_time": "78.158 seconds"
+                "run_time": "0.001 seconds"
             },
-            "reached_cutoff": true
+            "reached_cutoff": false
         },
         "TestRetrieval3": {
             "data_path": "agbenchmark/challenges/retrieval/r3",
@@ -220,7 +225,7 @@
             "metrics": {
                 "difficulty": "intermediate",
                 "success": false,
-                "fail_reason": "challenges/test_all.py::TestRetrieval3::test_method[challenge_data0] depends on challenges/test_all.py::TestRetrieval2.1::test_method[challenge_data0]",
+                "fail_reason": "agent/BabyAGI/venv/lib/python3.10/site-packages/agbenchmark/challenges/test_all.py::TestRetrieval3::test_method[challenge_data0] depends on agent/BabyAGI/venv/lib/python3.10/site-packages/agbenchmark/challenges/test_all.py::TestRetrieval2.1::test_method[challenge_data0]",
                 "success_%": 0.0,
                 "run_time": "0.001 seconds"
             },
@@ -235,7 +240,7 @@
             "metrics": {
                 "difficulty": "intermediate",
                 "success": false,
-                "fail_reason": "challenges/test_all.py::TestRetrieval2.2::test_method[challenge_data0] depends on challenges/test_all.py::TestRetrieval2.1::test_method[challenge_data0]",
+                "fail_reason": "agent/BabyAGI/venv/lib/python3.10/site-packages/agbenchmark/challenges/test_all.py::TestRetrieval2.2::test_method[challenge_data0] depends on agent/BabyAGI/venv/lib/python3.10/site-packages/agbenchmark/challenges/test_all.py::TestRetrieval2.1::test_method[challenge_data0]",
                 "success_%": 0.0,
                 "run_time": "0.001 seconds"
             },
@@ -250,7 +255,7 @@
             "metrics": {
                 "difficulty": "advanced",
                 "success": false,
-                "fail_reason": "challenges/test_all.py::TestRememberMultiplePhrasesWithNoise::test_method[challenge_data0] depends on challenges/test_all.py::TestRememberMultipleWithNoise::test_method[challenge_data0]",
+                "fail_reason": "agent/BabyAGI/venv/lib/python3.10/site-packages/agbenchmark/challenges/test_all.py::TestRememberMultiplePhrasesWithNoise::test_method[challenge_data0] depends on agent/BabyAGI/venv/lib/python3.10/site-packages/agbenchmark/challenges/test_all.py::TestRememberMultipleWithNoise::test_method[challenge_data0]",
                 "success_%": 0.0,
                 "run_time": "0.001 seconds"
             },
@@ -258,6 +263,6 @@
         }
     },
     "config": {
-        "workspace": "workspace"
+        "workspace": "babycoder/playground"
     }
 }
