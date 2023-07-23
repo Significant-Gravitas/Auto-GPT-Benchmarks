@@ -140,7 +140,7 @@ def pytest_runtest_makereport(item: Any, call: Any) -> None:
 
     try:
         is_suite = SuiteConfig.deserialize(
-            Path(challenge_location).resolve() / "suite.json"
+            Path(__file__).parent.parent / Path(challenge_location) / "suite.json"
         )
     except:
         pass

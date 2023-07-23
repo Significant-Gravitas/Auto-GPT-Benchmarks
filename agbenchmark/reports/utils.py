@@ -35,15 +35,13 @@ internal_info = ReportManager(str(INTERNAL_LOGS_PATH / "internal_info.json"))
 def generate_combined_suite_report(
     item: Any, challenge_data: dict, challenge_location: str
 ) -> None:
+    root_path = Path(__file__).parent.parent.parent
     suite_config = SuiteConfig.deserialize(
-        Path(challenge_location).resolve() / "suite.json"
+        root_path / Path(challenge_location) / "suite.json"
     )
     item.test_name = suite_config.prefix
 
-    # if suite_config.same_task:
-    #     print("YEP SUITE TEST SAME TASK", suite_config)
-
-    data_paths = suite_config.get_data_paths(challenge_location)
+    data_paths = suite_config.get_data_paths(root_path / Path(challenge_location))
     scores = getattr(item, "scores", {})
     mock = "--mock" in sys.argv  # Check if --mock is in sys.argv
 
