@@ -32,7 +32,7 @@ def calculate_info_test_path(reports_path: Path) -> str:
 
     # Default naming scheme
     file_count = len(json_files)
-    run_name = f"{file_count + 1}|{datetime.now().strftime('%m-%d-%H-%M')}.json"
+    run_name = f"{file_count + 1}_{datetime.now().strftime('%m-%d-%H-%M')}.json"
 
     test_index = None
     test_arg = None
