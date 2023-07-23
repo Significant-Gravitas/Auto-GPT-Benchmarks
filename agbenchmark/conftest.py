@@ -136,7 +136,14 @@ def pytest_runtest_makereport(item: Any, call: Any) -> None:
         return
 
     challenge_location: str = getattr(item.cls, "CHALLENGE_LOCATION", "")
-    is_suite = SuiteConfig.suite_data_if_suite(Path(challenge_location))
+    is_suite = None
+
+    try:
+        is_suite = SuiteConfig.deserialize(
+            Path(challenge_location).resolve() / "suite.json"
+        )
+    except:
+        pass
 
     if call.when == "call":
         if is_suite and is_suite.same_task:
@@ -179,12 +186,12 @@ def pytest_collection_modifyitems(items: Any, config: Any) -> None:
     data = get_regression_data()
 
     for item in items:
-        # if it's a setup dependency test we skip
-        if "test_method" not in item.name:
-            continue
-
         # Assuming item.cls is your test class
         test_class_instance = item.cls()
+
+        # if it's a dummy dependency setup test, we also skip
+        if "test_method" not in item.name:
+            continue
 
         # Then you can access your properties
         name = item.parent.cls.__name__

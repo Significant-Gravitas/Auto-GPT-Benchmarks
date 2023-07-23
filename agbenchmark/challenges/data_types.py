@@ -2,7 +2,7 @@ import glob
 import json
 from enum import Enum
 from pathlib import Path
-from typing import Dict, List, Optional, Any
+from typing import Any, Dict, List, Optional
 
 from pydantic import BaseModel, root_validator, validator
 
@@ -144,10 +144,9 @@ class SuiteConfig(BaseModel):
 
     @staticmethod
     def deserialize_from_test_data(data_path: Path) -> "SuiteConfig":
-        suite_path = data_path.parent.parent / "suite.json"
-
         """Deserialize from a children path when children and order of children does not matter."""
-        print("Deserializing suite", data_path)
+
+        suite_path = data_path.parent.parent / "suite.json"
 
         return SuiteConfig.deserialize(suite_path)
 
@@ -161,7 +160,9 @@ class SuiteConfig(BaseModel):
     def get_data_paths(suite_path: Path | str) -> List[str]:
         return glob.glob(f"{suite_path}/**/data.json", recursive=True)
 
-    def challenge_from_datum(self, file_datum: list[dict[str, Any]]) -> "ChallengeData":
+    def challenge_from_datum(
+        self, file_datum: list[dict[str, Any]] | dict[str, Any]
+    ) -> "ChallengeData":
         same_task_data = {
             "name": self.prefix,
             "dependencies": self.dependencies,
@@ -170,18 +171,29 @@ class SuiteConfig(BaseModel):
             "cutoff": self.cutoff,
         }
 
-        if not self.info:
-            same_task_data["info"] = {
-                datum["name"]: datum["info"] for datum in file_datum
-            }
-        else:
-            same_task_data["info"] = self.info
+        if isinstance(file_datum, list):
+            if not self.info:
+                same_task_data["info"] = {
+                    datum["name"]: datum["info"] for datum in file_datum
+                }
+            else:
+                same_task_data["info"] = self.info
 
-        if not self.ground:
-            same_task_data["ground"] = {
-                datum["name"]: datum["ground"] for datum in file_datum
-            }
+            if not self.ground:
+                same_task_data["ground"] = {
+                    datum["name"]: datum["ground"] for datum in file_datum
+                }
+            else:
+                same_task_data["ground"] = self.ground
         else:
-            same_task_data["ground"] = self.ground
+            if not self.info:
+                same_task_data["info"] = file_datum["info"]
+            else:
+                same_task_data["info"] = self.info
+
+            if not self.ground:
+                same_task_data["ground"] = file_datum["ground"]
+            else:
+                same_task_data["ground"] = self.ground
 
         return ChallengeData(**same_task_data)

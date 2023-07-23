@@ -36,15 +36,16 @@ def create_single_test(
         artifacts_location = str(Path(challenge_location).resolve())
         if "--test" in sys.argv:
             artifacts_location = str(Path(challenge_location).resolve().parent)
+        else:
+            setattr(
+                challenge_class,
+                "setup_dependencies",
+                [test_name for test_name in data["info"].keys()],
+            )
         setattr(
             challenge_class,
             "_data_cache",
             {clean_challenge_location: challenge_data},
-        )
-        setattr(
-            challenge_class,
-            "setup_dependencies",
-            [test_name for test_name in data["info"].keys()],
         )
 
     setattr(
@@ -74,6 +75,7 @@ def create_single_test(
     # Attach the new class to a module so it can be discovered by pytest
     module = importlib.import_module(__name__)
     setattr(module, data["name"], challenge_class)
+    print(f"Generated test for {data['name']}.", challenge_class.__name__)
 
 
 def create_challenge(
@@ -88,9 +90,13 @@ def create_challenge(
 
         # if its a single test running we dont care about the suite
         if "--test" in sys.argv:
+            test_data = data
+            if suite_config.same_task:
+                test_data = suite_config.challenge_from_datum(data)
             create_single_test(
-                data,
+                test_data,
                 str(path),
+                suite_config=suite_config,
             )
 
             return json_files
@@ -178,7 +184,8 @@ def generate_tests() -> None:  # sourcery skip: invert-any-all
                 continue
 
         # --test flag, only run the test if it's the exact one specified
-        if "--test" in commands and data["name"] not in commands:
+        test_flag = "--test" in commands
+        if test_flag and data["name"] not in commands:
             continue
 
         # --maintain flag
@@ -204,7 +211,7 @@ def generate_tests() -> None:  # sourcery skip: invert-any-all
 
         json_files = create_challenge(data, json_file, suite_config, json_files)
 
-        if suite_config:
+        if suite_config and not test_flag:
             print(f"Generated suite for {suite_config.prefix}.")
         else:
             print(f"Generated test for {data['name']}.")

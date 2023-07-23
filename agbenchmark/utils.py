@@ -35,6 +35,7 @@ def calculate_info_test_path(reports_path: Path) -> str:
     run_name = f"{file_count + 1}_{datetime.now().strftime('%m-%d-%H-%M')}.json"
 
     test_index = None
+    test_arg = None
     if "--test" in command:
         test_index = command.index("--test")
     elif "--suite" in command:
@@ -43,15 +44,15 @@ def calculate_info_test_path(reports_path: Path) -> str:
         test_index = command.index("--category")
     elif "--maintain" in command:
         test_index = command.index("--maintain")
+        test_arg = "maintain"
     elif "--improve" in command:
         test_index = command.index("--improve")
+        test_arg = "improve"
 
     # # If "--test" is in command
     if test_index:
-        try:
+        if not test_arg:
             test_arg = command[test_index + 1]  # Argument after --
-        except:
-            test_arg = command[test_index]  # for --maintain or --improve
 
         # Get all files that include the string that is the argument after --test
         related_files = [f for f in json_files if test_arg in f]
