@@ -21,10 +21,9 @@ class Challenge(ABC):
 
     @property
     def data(self) -> ChallengeData:
-        file_path = str(Path(self.CHALLENGE_LOCATION).resolve())
         if self.CHALLENGE_LOCATION not in self._data_cache:
             self._data_cache[self.CHALLENGE_LOCATION] = ChallengeData.deserialize(
-                file_path
+                self.CHALLENGE_LOCATION
             )
         return self._data_cache[self.CHALLENGE_LOCATION]
 
