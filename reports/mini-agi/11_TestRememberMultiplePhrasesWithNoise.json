@@ -6,7 +6,7 @@
     "highest_difficulty": "No successful tests"
   },
   "tests": {
-    "TestRememberMultiplePhrasesWithNoise": {
+    "TestRememberMultipleWithNoise": {
       "data_path": "agbenchmark/challenges/memory/m4_phrases",
       "is_regression": false,
       "task": "Follow the instructions in the instructions_1.txt file",
