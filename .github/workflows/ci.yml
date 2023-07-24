@@ -154,9 +154,10 @@ jobs:
 
           if [ "${GITHUB_EVENT_NAME}" == "pull_request" ]; then
 
-
+            set +e # Ignore non-zero exit codes and continue execution
             ${prefix}agbenchmark start --maintain --mock
             EXIT_CODE=$?
+            set -e  # Stop ignoring non-zero exit codes
 
             # Check if the exit code was 5, and if so, exit with 0 instead
             if [ $EXIT_CODE -eq 5 ]
@@ -167,8 +168,10 @@ jobs:
               exit $EXIT_CODE
             fi
 
+            set +e # Ignore non-zero exit codes and continue execution
             improve_cmd = ${prefix}agbenchmark start --improve --mock
             EXIT_CODE=$?
+            set -e  # Stop ignoring non-zero exit codes
 
             # Check if the exit code was 5, and if so, exit with 0 instead
             if [ $EXIT_CODE -eq 5 ]
