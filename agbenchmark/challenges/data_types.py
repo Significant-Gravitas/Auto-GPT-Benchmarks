@@ -160,9 +160,7 @@ class SuiteConfig(BaseModel):
     def get_data_paths(suite_path: Path | str) -> List[str]:
         return glob.glob(f"{suite_path}/**/data.json", recursive=True)
 
-    def challenge_from_datum(
-        self, file_datum: list[dict[str, Any]] | dict[str, Any]
-    ) -> "ChallengeData":
+    def challenge_from_datum(self, file_datum: list[dict[str, Any]]) -> "ChallengeData":
         same_task_data = {
             "name": self.prefix,
             "dependencies": self.dependencies,
@@ -171,29 +169,38 @@ class SuiteConfig(BaseModel):
             "cutoff": self.cutoff,
         }
 
-        if isinstance(file_datum, list):
-            if not self.info:
-                same_task_data["info"] = {
-                    datum["name"]: datum["info"] for datum in file_datum
-                }
-            else:
-                same_task_data["info"] = self.info
-
-            if not self.ground:
-                same_task_data["ground"] = {
-                    datum["name"]: datum["ground"] for datum in file_datum
-                }
-            else:
-                same_task_data["ground"] = self.ground
+        # if the SuiteConfig does not yet have info or ground, we use the info and ground from the data.json
+        if not self.info:
+            same_task_data["info"] = {
+                datum["name"]: datum["info"] for datum in file_datum
+            }
         else:
-            if not self.info:
-                same_task_data["info"] = file_datum["info"]
-            else:
-                same_task_data["info"] = self.info
+            same_task_data["info"] = self.info
 
-            if not self.ground:
-                same_task_data["ground"] = file_datum["ground"]
-            else:
-                same_task_data["ground"] = self.ground
+        if not self.ground:
+            same_task_data["ground"] = {
+                datum["name"]: datum["ground"] for datum in file_datum
+            }
+        else:
+            same_task_data["ground"] = self.ground
+
+        return ChallengeData(**same_task_data)
+
+    def challenge_from_test_data(self, data: dict[str, Any]) -> "ChallengeData":
+        same_task_data = {
+            "name": data["name"],
+            "dependencies": data["dependencies"],
+            "category": data["category"],
+            "info": data["info"],
+            "ground": data["ground"],
+        }
+
+        if self.same_task:
+            same_task_data["category"].extend(self.shared_category)
+            same_task_data["task"] = self.task
+            same_task_data["cutoff"] = self.cutoff
+        else:
+            same_task_data["task"] = data["task"]
+            same_task_data["cutoff"] = data["cutoff"]
 
         return ChallengeData(**same_task_data)

@@ -54,31 +54,34 @@ def calculate_info_test_path(reports_path: Path) -> str:
         if not test_arg:
             test_arg = command[test_index + 1]  # Argument after --
 
+        # Try to find the highest prefix number among all files, then increment it
+        all_prefix_numbers = []
+        # count related files and assign the correct file number
+        related_files = []
+        prefix_number = 0.0
+
         # Get all files that include the string that is the argument after --test
-        related_files = [f for f in json_files if test_arg in f]
+        for file in json_files:
+            file_name = Path(file).name.rsplit(".", 1)[0]
+            file_parts = file_name.split("_")
+            number = float(file_parts[0])
+            test_name = "_".join(file_parts[1:])
+            all_prefix_numbers.append(math.floor(number))
+            if test_arg == test_name:
+                prefix_number = number
+                related_files.append(test_name)
+
         related_file_count = len(related_files)
 
         # Determine the prefix based on the existing files
         if related_file_count == 0:
-            # Try to find the highest prefix number among all files, then increment it
-            all_prefix_numbers = []
-            for f in json_files:
-                try:
-                    number = float(Path(f).stem.split("_")[0])
-                except ValueError:
-                    print(f"File {f} is invalid.")
-                    continue
-
-                all_prefix_numbers.append(math.floor(number))
-
             max_prefix = max(all_prefix_numbers, default=0)
             run_name = f"{max_prefix + 1}_{test_arg}.json"
         else:
             print(f"Found {related_file_count} files with '{test_arg}' in the name")
             # Take the number from before the _ and add the .{number}
 
-            prefix_str = Path(related_files[0]).stem.rsplit("_")[0].split(".")[0]
-            prefix = math.floor(float(prefix_str))
+            prefix = math.floor(prefix_number)
             run_name = f"{prefix}.{related_file_count}_{test_arg}.json"
 
     new_file_path = reports_path / run_name

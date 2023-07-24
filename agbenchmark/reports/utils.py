@@ -5,7 +5,11 @@ from typing import Any, Callable
 
 import pytest
 
-from agbenchmark.challenges.data_types import DIFFICULTY_MAP, SuiteConfig
+from agbenchmark.challenges.data_types import (
+    DIFFICULTY_MAP,
+    DifficultyLevel,
+    SuiteConfig,
+)
 from agbenchmark.ReportManager import ReportManager
 from agbenchmark.start_benchmark import (
     CONFIG_PATH,
@@ -40,6 +44,8 @@ def generate_combined_suite_report(
         root_path / Path(challenge_location) / "suite.json"
     )
     item.test_name = suite_config.prefix
+
+    print("Generating combined suite report...", challenge_data, challenge_location)
 
     data_paths = suite_config.get_data_paths(root_path / Path(challenge_location))
     scores = getattr(item, "scores", {})
@@ -155,6 +161,9 @@ def generate_single_call_report(
     item: Any, call: Any, challenge_data: dict[str, Any]
 ) -> None:
     difficulty = challenge_data["info"]["difficulty"]
+
+    if isinstance(difficulty, DifficultyLevel):
+        difficulty = difficulty.value
 
     # Extract the challenge_location from the class
     challenge_location: str = getattr(item.cls, "CHALLENGE_LOCATION", "")

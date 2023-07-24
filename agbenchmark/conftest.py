@@ -1,6 +1,7 @@
 import json
 import os
 import shutil
+import sys
 import time
 from pathlib import Path  # noqa
 from typing import Any, Dict, Generator
@@ -146,15 +147,18 @@ def pytest_runtest_makereport(item: Any, call: Any) -> None:
         pass
 
     if call.when == "call":
-        if is_suite and is_suite.same_task:
+        # if it's a same task suite, we combine the report.
+        # but not if it's a single --test
+        if is_suite and is_suite.same_task and "--test" not in sys.argv:
             generate_combined_suite_report(item, challenge_data, challenge_location)
         else:
+            # single non suite test
             generate_single_call_report(item, call, challenge_data)
-
+        # else: it's a same_task=false suite (tests aren't combined)
     if call.when == "teardown":
         finalize_reports(item, challenge_data)
 
-        # for separate task suites, their data is the same as a regular suite, but we combined the report at the end
+        # for separate task suites (same_task=false), their data is the same as a regular suite, but we combined the report at the end
         if is_suite and not is_suite.same_task:
             suite_reports.setdefault(is_suite.prefix, []).append(challenge_data["name"])
 

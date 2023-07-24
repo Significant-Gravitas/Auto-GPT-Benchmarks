@@ -34,8 +34,8 @@ def create_single_test(
     # if its a parallel run suite we just give it the data
     if suite_config and suite_config.same_task:
         artifacts_location = str(Path(challenge_location).resolve())
-        if "--test" in sys.argv:
-            artifacts_location = str(Path(challenge_location).resolve().parent)
+        if "--test" or "--maintain" or "--improve" in sys.argv:
+            artifacts_location = str(Path(challenge_location).resolve().parent.parent)
         else:
             setattr(
                 challenge_class,
@@ -75,7 +75,17 @@ def create_single_test(
     # Attach the new class to a module so it can be discovered by pytest
     module = importlib.import_module(__name__)
     setattr(module, data["name"], challenge_class)
-    print(f"Generated test for {data['name']}.", challenge_class.__name__)
+
+
+def create_single_suite_challenge(
+    suite_config: SuiteConfig, data: Dict[str, Any], path: Path
+) -> None:
+    test_data = suite_config.challenge_from_test_data(data)
+    create_single_test(
+        test_data,
+        str(path),
+        suite_config=suite_config,
+    )
 
 
 def create_challenge(
@@ -89,16 +99,8 @@ def create_challenge(
         grandparent_dir = path.parent.parent
 
         # if its a single test running we dont care about the suite
-        if "--test" in sys.argv:
-            test_data = data
-            if suite_config.same_task:
-                test_data = suite_config.challenge_from_datum(data)
-            create_single_test(
-                test_data,
-                str(path),
-                suite_config=suite_config,
-            )
-
+        if "--test" or "--maintain" or "--improve" in sys.argv:
+            create_single_suite_challenge(suite_config, data, path)
             return json_files
 
         # Get all data.json files within the grandparent directory
@@ -188,10 +190,12 @@ def generate_tests() -> None:  # sourcery skip: invert-any-all
         if test_flag and data["name"] not in commands:
             continue
 
-        # --maintain flag
-        if "--maintain" in commands and not regression_tests.get(data["name"], None):
+        # --maintain and --improve flag
+        improve_flag = regression_tests.get(data["name"], None)
+        maintain_flag = not improve_flag
+        if "--maintain" in commands and maintain_flag:
             continue
-        elif "--improve" in commands and regression_tests.get(data["name"], None):
+        elif "--improve" in commands and improve_flag:
             continue
 
         # "--suite flag
@@ -211,7 +215,7 @@ def generate_tests() -> None:  # sourcery skip: invert-any-all
 
         json_files = create_challenge(data, json_file, suite_config, json_files)
 
-        if suite_config and not test_flag:
+        if suite_config and not (test_flag or maintain_flag or improve_flag):
             print(f"Generated suite for {suite_config.prefix}.")
         else:
             print(f"Generated test for {data['name']}.")
