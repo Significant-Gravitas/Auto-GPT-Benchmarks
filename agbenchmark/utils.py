@@ -64,7 +64,11 @@ def calculate_info_test_path(reports_path: Path) -> str:
         for file in json_files:
             file_name = Path(file).name.rsplit(".", 1)[0]
             file_parts = file_name.split("_")
-            number = float(file_parts[0])
+            try:
+                number = float(file_parts[0])
+            except:
+                # previous files were called file{num}
+                number = float(file_parts[0][4:])
             test_name = "_".join(file_parts[1:])
             all_prefix_numbers.append(math.floor(number))
             if test_arg == test_name:
@@ -82,10 +86,8 @@ def calculate_info_test_path(reports_path: Path) -> str:
             # Take the number from before the _ and add the .{number}
 
             prefix = ""
-            try:
-                math.floor(prefix_number)
-            except:
-                prefix = file_count + 1
+            math.floor(prefix_number)
+
             run_name = f"{prefix}.{related_file_count}_{test_arg}.json"
 
     new_file_path = reports_path / run_name
