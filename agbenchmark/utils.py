@@ -32,7 +32,7 @@ def calculate_info_test_path(reports_path: Path) -> str:
 
     # Default naming scheme
     file_count = len(json_files)
-    run_name = f"{file_count + 1}_{datetime.now().strftime('%m-%d-%H-%M')}.json"
+    run_name = f"file{file_count + 1}_{datetime.now().strftime('%m-%d-%H-%M')}.json"
 
     test_index = None
     test_arg = None
@@ -65,10 +65,13 @@ def calculate_info_test_path(reports_path: Path) -> str:
             file_name = Path(file).name.rsplit(".", 1)[0]
             file_parts = file_name.split("_")
             try:
-                number = float(file_parts[0])
+                if "file" in file_parts[0]:
+                    # default files are called file{num}
+                    number = float(file_parts[0][4:])
+                else:
+                    number = float(file_parts[0])
             except:
-                # previous files were called file{num}
-                number = float(file_parts[0][4:])
+                number = file_count + 1
             test_name = "_".join(file_parts[1:])
             all_prefix_numbers.append(math.floor(number))
             if test_arg == test_name:
