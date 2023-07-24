@@ -153,8 +153,32 @@ jobs:
           pip install ../../dist/*.whl
 
           if [ "${GITHUB_EVENT_NAME}" == "pull_request" ]; then
+
+
             ${prefix}agbenchmark start --maintain --mock
-            ${prefix}agbenchmark start --improve --mock
+            EXIT_CODE=$?
+
+            # Check if the exit code was 5, and if so, exit with 0 instead
+            if [ $EXIT_CODE -eq 5 ]
+            then
+              echo "regression_tests.json is empty."
+              exit 0
+            else
+              exit $EXIT_CODE
+            fi
+
+            improve_cmd = ${prefix}agbenchmark start --improve --mock
+            EXIT_CODE=$?
+
+            # Check if the exit code was 5, and if so, exit with 0 instead
+            if [ $EXIT_CODE -eq 5 ]
+            then
+              echo "regression_tests.json is empty."
+              exit 0
+            else
+              exit $EXIT_CODE
+            fi
+
             ${prefix}agbenchmark start --mock
             ${prefix}agbenchmark start --mock --category=retrieval
             ${prefix}agbenchmark start --mock --category=interface
