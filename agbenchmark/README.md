@@ -65,6 +65,6 @@ https://github.com/Significant-Gravitas/Auto-GPT-Benchmarks/pull/48/files
 **To just use as the benchmark for your agent**. `pip install` the package and run `agbenchmark start`
 
 **For internal Auto-GPT ci runs**, specify the `AGENT_NAME` you want you use and set the `HOME_ENV`.
-Ex. `HOME_ENV=ci AGENT_NAME=mini-agi`
+Ex. `AGENT_NAME=mini-agi`
 
 **To develop agent alongside benchmark**, you can specify the `AGENT_NAME` you want you use and add as a submodule to the repo

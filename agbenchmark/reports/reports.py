@@ -5,18 +5,18 @@ from typing import Any, Callable
 
 import pytest
 
-from agbenchmark.challenges.data_types import (
+from agbenchmark.utils.data_types import (
     DIFFICULTY_MAP,
     DifficultyLevel,
     SuiteConfig,
 )
-from agbenchmark.ReportManager import ReportManager
+from agbenchmark.reports.ReportManager import ReportManager
 from agbenchmark.start_benchmark import (
     CONFIG_PATH,
     INFO_TESTS_PATH,
     REGRESSION_TESTS_PATH,
 )
-from agbenchmark.utils import (
+from agbenchmark.utils.utils import (
     AGENT_NAME,
     calculate_success_percentage,
     get_highest_success_difficulty,

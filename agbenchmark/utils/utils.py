@@ -12,7 +12,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-from agbenchmark.challenges.data_types import DIFFICULTY_MAP, DifficultyLevel
+from agbenchmark.utils.data_types import DIFFICULTY_MAP, DifficultyLevel
 
 AGENT_NAME = os.getenv("AGENT_NAME")
 HOME_ENV = os.getenv("HOME_ENV")
@@ -67,9 +67,9 @@ def calculate_info_test_path(reports_path: Path) -> str:
             try:
                 if "file" in file_parts[0]:
                     # default files are called file{num}
-                    number = float(file_parts[0][4:])
+                    number = float(file_parts[0][4:]) + 1
                 else:
-                    number = float(file_parts[0])
+                    number = float(file_parts[0]) + 1
             except:
                 number = file_count + 1
             test_name = "_".join(file_parts[1:])
@@ -195,12 +195,7 @@ def assign_paths(folder_path: Path) -> tuple[str, str, str]:
     CONFIG_PATH = str(folder_path / "config.json")
     REGRESSION_TESTS_PATH = str(folder_path / "regression_tests.json")
 
-    if HOME_ENV == "ci" and AGENT_NAME:
-        INFO_TESTS_PATH = calculate_info_test_path(
-            Path(os.getcwd()) / "agbenchmark" / "reports" / AGENT_NAME
-        )
-    else:
-        INFO_TESTS_PATH = calculate_info_test_path(folder_path / "reports")
+    INFO_TESTS_PATH = calculate_info_test_path(folder_path / "reports")
 
     return CONFIG_PATH, REGRESSION_TESTS_PATH, INFO_TESTS_PATH
 

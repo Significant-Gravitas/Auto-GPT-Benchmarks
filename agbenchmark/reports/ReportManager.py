@@ -5,7 +5,7 @@ import time
 from datetime import datetime
 from typing import Any, Dict, Optional
 
-from agbenchmark.utils import get_highest_success_difficulty
+from agbenchmark.utils.utils import get_highest_success_difficulty
 
 
 class ReportManager:

@@ -8,8 +8,8 @@ from typing import Any, Dict, Generator
 
 import pytest
 
-from agbenchmark.challenges.data_types import SuiteConfig
-from agbenchmark.reports.utils import (
+from agbenchmark.utils.data_types import SuiteConfig
+from agbenchmark.reports.reports import (
     finalize_reports,
     generate_combined_suite_report,
     generate_single_call_report,

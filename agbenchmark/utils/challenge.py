@@ -5,7 +5,7 @@ import sys
 from abc import ABC
 from typing import Any, Dict, List
 
-from agbenchmark.challenges.data_types import ChallengeData, Ground
+from agbenchmark.utils.data_types import ChallengeData, Ground
 
 
 class Challenge(ABC):

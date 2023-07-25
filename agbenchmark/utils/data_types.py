@@ -82,7 +82,7 @@ class ChallengeData(BaseModel):
 
     @staticmethod
     def deserialize(path: str) -> "ChallengeData":
-        # this script is in root/agbenchmark/challenges/define_task_types.py
+        # this script is in root/agbenchmark/utils/define_task_types.py
         script_dir = Path(__file__).resolve().parent.parent.parent
         json_path = script_dir / Path(path)
 
