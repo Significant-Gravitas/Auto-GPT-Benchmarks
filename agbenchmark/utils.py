@@ -88,7 +88,7 @@ def calculate_info_test_path(reports_path: Path) -> str:
             print(f"Found {related_file_count} files with '{test_arg}' in the name")
             # Take the number from before the _ and add the .{number}
 
-            prefix = ""
+            prefix = 0
             prefix = math.floor(prefix_number)
 
             run_name = f"{prefix}.{related_file_count}_{test_arg}.json"
