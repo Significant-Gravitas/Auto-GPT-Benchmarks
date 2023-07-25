@@ -68,9 +68,8 @@ for sub_dir in os.listdir(base_dir):
                             "difficulty", ""
                         ),
                         "Success": test_info.get("metrics", {}).get("success", ""),
-                        "Success %": test_info.get("metrics", {}).get("success_%", ""),
-                        "Non mock success %": test_info.get("metrics", {}).get(
-                            "non_mock_success_%", ""
+                        "Success %": test_info.get("metrics", {}).get(
+                            "success_percent", ""
                         ),
                         "Run Time": test_info.get("metrics", {}).get("run_time", ""),
                     }

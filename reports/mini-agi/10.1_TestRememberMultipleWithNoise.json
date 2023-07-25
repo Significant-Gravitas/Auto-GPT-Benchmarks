@@ -15,7 +15,7 @@
       "metrics": {
         "difficulty": "intermediate",
         "success": true,
-        "success_%": 50.0,
+        "success_percent": 50.0,
         "run_time": "77.397 seconds"
       },
       "reached_cutoff": true

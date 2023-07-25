@@ -15,7 +15,7 @@
       "metrics": {
         "difficulty": "basic",
         "success": true,
-        "success_%": 100.0,
+        "success_percent": 100.0,
         "run_time": "59.757 seconds"
       },
       "reached_cutoff": false

@@ -16,7 +16,7 @@
         "difficulty": "novice",
         "success": false,
         "fail_reason": "[Errno 2] No such file or directory: 'C:\\\\Users\\\\silen\\\\miniagi\\\\result.txt'",
-        "success_%": 0.0,
+        "success_percent": 0.0,
         "run_time": "61.089 seconds"
       },
       "reached_cutoff": true

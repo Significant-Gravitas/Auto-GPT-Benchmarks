@@ -16,7 +16,7 @@
         "difficulty": "novice",
         "success": false,
         "fail_reason": "assert 1 in []",
-        "success_%": 0.0,
+        "success_percent": 0.0,
         "run_time": "68.15 seconds"
       }
     }

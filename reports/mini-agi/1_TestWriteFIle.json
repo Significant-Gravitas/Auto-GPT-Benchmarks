@@ -13,7 +13,7 @@
       "metrics": {
         "difficulty": "interface",
         "success": true,
-        "success_%": 50.0,
+        "success_percent": 50.0,
         "run_time": "12.127 seconds"
       }
     }

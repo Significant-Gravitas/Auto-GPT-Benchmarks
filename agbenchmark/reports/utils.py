@@ -131,14 +131,9 @@ def get_previous_test_results(
         internal_info.add_test(test_name, prev_test_results, AGENT_NAME)
 
         # can calculate success rate regardless of mock
-        info_details["metrics"]["success_%"] = calculate_success_percentage(
-            prev_test_results
-        )
-    else:
-        # can calculate success rate regardless of mock
-        info_details["metrics"]["non_mock_success_%"] = calculate_success_percentage(
-            prev_test_results
-        )
+    info_details["metrics"]["success_percent"] = calculate_success_percentage(
+        prev_test_results
+    )
 
     return prev_test_results
 

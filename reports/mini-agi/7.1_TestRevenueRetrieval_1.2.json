@@ -16,7 +16,7 @@
         "difficulty": "intermediate",
         "success": false,
         "fail_reason": "assert 1 in [0.0]",
-        "success_%": 0.0,
+        "success_percent": 0.0,
         "run_time": "30.888 seconds"
       },
       "reached_cutoff": false

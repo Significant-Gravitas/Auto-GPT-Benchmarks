@@ -6,32 +6,38 @@ from typing import Optional, Dict, List
 class Metrics:
     difficulty: str
     success: bool
-    success_percentage: float
-    run_time: str
+    success_percent: float
+    run_time: Optional[str] = None
     fail_reason: Optional[str] = None
-
-
-@dataclass
-class Test:
-    data_path: str
-    is_regression: bool
-    category: List[str]
-    task: str
-    answer: str
-    description: str
-    metrics: Metrics
-    reached_cutoff: bool
-
-
-@dataclass
-class Tests:
-    tests: Dict[str, Test]
 
 
 @dataclass
 class MetricsOverall:
     run_time: str
     highest_difficulty: str
+    percentage: Optional[float] = None
+
+
+@dataclass
+class Test:
+    data_path: str
+    is_regression: bool
+    answer: str
+    description: str
+    metrics: Metrics
+    category: Optional[List[str]] = None
+    task: Optional[str] = None
+    reached_cutoff: Optional[bool] = None
+
+
+@dataclass
+class SuiteTest:
+    data_path: str
+    category: Optional[List[str]]
+    metrics: MetricsOverall
+    tests: Dict[str, Test]
+    task: Optional[str] = None
+    reached_cutoff: Optional[bool] = None
 
 
 @dataclass
@@ -39,5 +45,5 @@ class Report:
     command: str
     completion_time: str
     metrics: MetricsOverall
-    tests: Tests
+    tests: Dict[str, Test]
     config: Dict[str, str]
