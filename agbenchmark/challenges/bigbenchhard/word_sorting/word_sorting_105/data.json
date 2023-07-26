@@ -1,0 +1,25 @@
+{
+  "name": "word_sorting_105",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Sort the following words alphabetically: List: roadster earl metaphoric hollandaise supranational psyche pedro gloss granola quarantine inauspicious penis baccarat arenaceous mackenzie blare bowman",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "arenaceous baccarat blare bowman earl gloss granola hollandaise inauspicious mackenzie metaphoric pedro penis psyche quarantine roadster supranational",
+    "should_contain": [
+      "arenaceous baccarat blare bowman earl gloss granola hollandaise inauspicious mackenzie metaphoric pedro penis psyche quarantine roadster supranational"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a list of words, sort them lexicographically.",
+    "side_effects": []
+  }
+}

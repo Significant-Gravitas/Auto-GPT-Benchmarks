@@ -1,0 +1,25 @@
+{
+  "name": "word_sorting_10",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Sort the following words alphabetically: List: burley bela arapaho bacteria bock",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "arapaho bacteria bela bock burley",
+    "should_contain": [
+      "arapaho bacteria bela bock burley"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a list of words, sort them lexicographically.",
+    "side_effects": []
+  }
+}

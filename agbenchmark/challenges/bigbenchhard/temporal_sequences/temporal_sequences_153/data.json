@@ -1,0 +1,25 @@
+{
+  "name": "temporal_sequences_153",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Today, Hannah went to the art show. Between what times could they have gone?\nWe know that:\nHannah woke up at 7am.\nMichael saw Hannah walking towards the Statue of Liberty from 7am to 8am.\nLeslie saw Hannah reading at the library from 8am to 9am.\nJason saw Hannah sitting on a rooftop from 9am to 1pm.\nLisa saw Hannah fixing their computer at the electronic store from 7pm to 9pm.\nHannah saw Hannah watching a movie at the theater from 9pm to 10pm.\nThe art show was closed after 10pm.\nBetween what times could Hannah have gone to the art show?\nOptions:\n(A) 7pm to 9pm\n(B) 7am to 8am\n(C) 1pm to 7pm\n(D) 9pm to 10pm",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "(C)",
+    "should_contain": [
+      "(C)"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a series of events and activities a person has completed in the course of a day, determine what time, during the day, they might have been free to perform another activity.",
+    "side_effects": []
+  }
+}

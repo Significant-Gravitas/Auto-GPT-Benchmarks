@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_11",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"Here comes a perfectly valid argument: First, being a rare consumer of Nubian Heritage soap is necessary for being an owner of a Lever soap. Second, being an infrequent user of American Crew shampoo is sufficient for being a rare consumer of Nubian Heritage soap. In consequence, every infrequent user of American Crew shampoo is an owner of a Lever soap.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "invalid",
+    "should_contain": [
+      "invalid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

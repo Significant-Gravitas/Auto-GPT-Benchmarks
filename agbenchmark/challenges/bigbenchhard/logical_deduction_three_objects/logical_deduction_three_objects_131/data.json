@@ -1,0 +1,25 @@
+{
+  "name": "logical_deduction_three_objects_131",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: The following paragraphs each describe a set of three objects arranged in a fixed order. The statements are logically consistent within each paragraph. On a shelf, there are three books: a purple book, a red book, and a yellow book. The purple book is to the right of the yellow book. The yellow book is to the right of the red book.\nOptions:\n(A) The purple book is the second from the left\n(B) The red book is the second from the left\n(C) The yellow book is the second from the left",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "(C)",
+    "should_contain": [
+      "(C)"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

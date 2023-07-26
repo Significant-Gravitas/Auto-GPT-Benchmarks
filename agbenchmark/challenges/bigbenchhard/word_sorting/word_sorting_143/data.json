@@ -1,0 +1,25 @@
+{
+  "name": "word_sorting_143",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Sort the following words alphabetically: List: crossbill bushland capacitive meager ricochet battery enigma wysiwyg wallet lipton jane wacke contingent",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "battery bushland capacitive contingent crossbill enigma jane lipton meager ricochet wacke wallet wysiwyg",
+    "should_contain": [
+      "battery bushland capacitive contingent crossbill enigma jane lipton meager ricochet wacke wallet wysiwyg"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a list of words, sort them lexicographically.",
+    "side_effects": []
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "sports_understanding_147",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Is the following sentence plausible? \"Tyler Glasnow scored a penalty kick.\"",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "no",
+    "should_contain": [
+      "no"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Determine whether a factitious sentence related to sports is plausible.",
+    "side_effects": []
+  }
+}

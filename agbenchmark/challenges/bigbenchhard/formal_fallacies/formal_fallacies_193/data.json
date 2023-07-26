@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_193",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"Is Fred a fan of Liverpool? Are supporters of Real Madrid devotees of PSG? In European football, it is sometimes difficult to keep track of the mutual admiration and dislike. The following argument seeks to clarify some such relations: To begin with, no admirer of Racing Club de Strasbourg Alsace is a devotee of CS Mar\u00edtimo or a fan of SK Rapid Wien. Moreover, Byron is a devotee of CS Mar\u00edtimo. We may conclude: Byron is not an admirer of Racing Club de Strasbourg Alsace.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "valid",
+    "should_contain": [
+      "valid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

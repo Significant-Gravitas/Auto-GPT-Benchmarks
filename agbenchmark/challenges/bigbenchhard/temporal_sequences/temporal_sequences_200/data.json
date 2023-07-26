@@ -1,0 +1,25 @@
+{
+  "name": "temporal_sequences_200",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Today, Thomas went to the market. Between what times could they have gone?\nWe know that:\nThomas woke up at 6am.\nAndrew saw Thomas sitting on a rooftop from 6am to 7am.\nElizabeth saw Thomas taking photos near the Leaning Tower of Pisa from 9am to 10am.\nSamantha saw Thomas waiting at the airport from 10am to 12pm.\nMichael saw Thomas buying clothes at the mall from 12pm to 6pm.\nSarah saw Thomas walking towards the Statue of Liberty from 6pm to 7pm.\nThe market was closed after 7pm.\nBetween what times could Thomas have gone to the market?\nOptions:\n(A) 12pm to 6pm\n(B) 7am to 9am\n(C) 6pm to 7pm\n(D) 10am to 12pm",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "(B)",
+    "should_contain": [
+      "(B)"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a series of events and activities a person has completed in the course of a day, determine what time, during the day, they might have been free to perform another activity.",
+    "side_effects": []
+  }
+}

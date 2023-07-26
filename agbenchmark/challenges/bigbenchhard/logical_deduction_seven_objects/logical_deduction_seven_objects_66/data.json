@@ -1,0 +1,25 @@
+{
+  "name": "logical_deduction_seven_objects_66",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: The following paragraphs each describe a set of seven objects arranged in a fixed order. The statements are logically consistent within each paragraph. In a golf tournament, there were seven golfers: Eve, Rob, Dan, Mel, Ana, Eli, and Ada. Ada finished above Rob. Eve finished below Rob. Mel finished above Eli. Ada finished below Dan. Ana finished third. Eli finished second.\nOptions:\n(A) Eve finished third\n(B) Rob finished third\n(C) Dan finished third\n(D) Mel finished third\n(E) Ana finished third\n(F) Eli finished third\n(G) Ada finished third",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "(E)",
+    "should_contain": [
+      "(E)"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

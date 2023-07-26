@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_158",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"Here comes a perfectly valid argument: To begin with, every close friend of Francine is a cousin of Samantha or an ancestor of Janice or a close friend of Shanika. Moreover, every close friend of Francine is a cousin of Samantha. Finally, being a close friend of Shanika is necessary for being a close friend of Francine. We may conclude: Being an ancestor of Janice is necessary for being a close friend of Francine.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "invalid",
+    "should_contain": [
+      "invalid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "word_sorting_144",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Sort the following words alphabetically: List: corpulent diagnose code scalp bombproof fluorine blythe swipe honeybee damn pore maharaja cytolysis solicit",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "blythe bombproof code corpulent cytolysis damn diagnose fluorine honeybee maharaja pore scalp solicit swipe",
+    "should_contain": [
+      "blythe bombproof code corpulent cytolysis damn diagnose fluorine honeybee maharaja pore scalp solicit swipe"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a list of words, sort them lexicographically.",
+    "side_effects": []
+  }
+}

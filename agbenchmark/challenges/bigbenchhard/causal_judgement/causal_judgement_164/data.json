@@ -1,0 +1,25 @@
+{
+  "name": "causal_judgement_164",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: How would a typical person answer each of the following questions about causation?\nSuzy and Billy are working on a project that is very important for our nation's security. The boss tells Suzy: \"Be sure that you are here at exactly 9 am. It is absolutely essential that you arrive at that time.\" Then he tells Billy: \"Be sure that you do not come in at all tomorrow morning. It is absolutely essential that you not appear at that time.\" Both Billy and Suzy arrive at 9 am. Did Billy cause the motion detector to go off?\nOptions:\n- Yes\n- No",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "No",
+    "should_contain": [
+      "No"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a short story (involving moral, intentional, or counterfactual analysis), determine how a typical person would answer a causal question about the story.",
+    "side_effects": []
+  }
+}

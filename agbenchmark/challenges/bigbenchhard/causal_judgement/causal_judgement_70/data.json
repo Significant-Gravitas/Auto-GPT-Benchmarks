@@ -1,0 +1,25 @@
+{
+  "name": "causal_judgement_70",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: How would a typical person answer each of the following questions about causation?\nBilly and Suzy work for the same company. They work in different rooms, and both of them sometimes need to access the central computer of the company. Nobody at the company is aware that if two people are logged into the central computer at the same time, some spam emails containing dangerous viruses are immediately deleted from the central computer. In order to make sure that one person is always available to answer incoming phone calls, the company issued the following official policy: Suzy is the only one permitted to log into the central computer in the mornings, whereas Billy is the only one permitted to log into the central computer in the afternoons. Billy is not permitted to log into the central computer in the morning. Today at 9 am, Billy and Suzy both log into the central computer at the same time. Immediately, some work emails containing dangerous viruses are deleted from the central computer. Did Suzy cause the central computer to delete some work emails containing dangerous viruses?\nOptions:\n- Yes\n- No",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "No",
+    "should_contain": [
+      "No"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a short story (involving moral, intentional, or counterfactual analysis), determine how a typical person would answer a causal question about the story.",
+    "side_effects": []
+  }
+}

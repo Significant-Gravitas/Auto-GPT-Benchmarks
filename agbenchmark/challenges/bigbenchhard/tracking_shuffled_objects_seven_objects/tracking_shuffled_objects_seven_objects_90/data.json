@@ -1,0 +1,25 @@
+{
+  "name": "tracking_shuffled_objects_seven_objects_90",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Alice, Bob, Claire, Dave, Eve, Fred, and Gertrude are friends and avid readers who occasionally trade books. At the start of the semester, they each buy one new book: Alice gets The Pearl, Bob gets The Fellowship of the Ring, Claire gets Catch-22, Dave gets The Great Gatsby, Eve gets Frankenstein, Fred gets Ulysses, and Gertrude gets The Odyssey.\nAs the semester proceeds, they start trading around the new books. First, Gertrude and Bob swap books. Then, Alice and Fred swap books. Then, Gertrude and Claire swap books. Then, Fred and Eve swap books. Then, Claire and Dave swap books. Then, Eve and Bob swap books. Finally, Fred and Gertrude swap books. At the end of the semester, Fred has\nOptions:\n(A) The Pearl\n(B) The Fellowship of the Ring\n(C) Catch-22\n(D) The Great Gatsby\n(E) Frankenstein\n(F) Ulysses\n(G) The Odyssey",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "(C)",
+    "should_contain": [
+      "(C)"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

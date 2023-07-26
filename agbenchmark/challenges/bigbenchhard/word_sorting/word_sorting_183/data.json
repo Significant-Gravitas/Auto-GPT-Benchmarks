@@ -1,0 +1,25 @@
+{
+  "name": "word_sorting_183",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Sort the following words alphabetically: List: multiplet catsup hypothalamus scherzo bridesmaid average therewith invocable coddle charm inequity region abbas trumpery memorandum shutout integral dogfish phloem inconvertible",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "abbas average bridesmaid catsup charm coddle dogfish hypothalamus inconvertible inequity integral invocable memorandum multiplet phloem region scherzo shutout therewith trumpery",
+    "should_contain": [
+      "abbas average bridesmaid catsup charm coddle dogfish hypothalamus inconvertible inequity integral invocable memorandum multiplet phloem region scherzo shutout therewith trumpery"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a list of words, sort them lexicographically.",
+    "side_effects": []
+  }
+}

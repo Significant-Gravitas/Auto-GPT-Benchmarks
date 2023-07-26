@@ -1,0 +1,25 @@
+{
+  "name": "logical_deduction_five_objects_232",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: The following paragraphs each describe a set of five objects arranged in a fixed order. The statements are logically consistent within each paragraph. In a golf tournament, there were five golfers: Dan, Mel, Ana, Eli, and Rob. Rob finished above Mel. Mel finished second. Ana finished above Eli. Dan finished last.\nOptions:\n(A) Dan finished second\n(B) Mel finished second\n(C) Ana finished second\n(D) Eli finished second\n(E) Rob finished second",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "(B)",
+    "should_contain": [
+      "(B)"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

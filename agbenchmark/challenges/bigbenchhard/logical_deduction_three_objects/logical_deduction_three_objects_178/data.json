@@ -1,0 +1,25 @@
+{
+  "name": "logical_deduction_three_objects_178",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: The following paragraphs each describe a set of three objects arranged in a fixed order. The statements are logically consistent within each paragraph. On a branch, there are three birds: a hawk, a cardinal, and a falcon. The hawk is to the left of the cardinal. The hawk is the second from the left.\nOptions:\n(A) The hawk is the rightmost\n(B) The cardinal is the rightmost\n(C) The falcon is the rightmost",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "(B)",
+    "should_contain": [
+      "(B)"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

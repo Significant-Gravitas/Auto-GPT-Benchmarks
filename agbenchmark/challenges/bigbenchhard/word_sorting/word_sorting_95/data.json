@@ -1,0 +1,25 @@
+{
+  "name": "word_sorting_95",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Sort the following words alphabetically: List: gazpacho indiscreet ballast erosible agglomerate ogle dollop spaniard oilcloth expiry manuel extensor",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "agglomerate ballast dollop erosible expiry extensor gazpacho indiscreet manuel ogle oilcloth spaniard",
+    "should_contain": [
+      "agglomerate ballast dollop erosible expiry extensor gazpacho indiscreet manuel ogle oilcloth spaniard"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a list of words, sort them lexicographically.",
+    "side_effects": []
+  }
+}

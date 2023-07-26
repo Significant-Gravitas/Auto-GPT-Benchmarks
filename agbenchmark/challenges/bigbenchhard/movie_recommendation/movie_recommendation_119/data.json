@@ -1,0 +1,25 @@
+{
+  "name": "movie_recommendation_119",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Find a movie similar to Aladdin, Toy Story, The Lion King, Pulp Fiction:\nOptions:\n(A) Being Elmo A Puppeteer's Journey\n(B) Far From Home The Adventures of Yellow Dog\n(C) Terminator 2 Judgment Day\n(D) RoboGeisha",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "(C)",
+    "should_contain": [
+      "(C)"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a list of movies a user might have watched and liked, recommend a new, relevant movie to the user out of the four potential choices user might have.",
+    "side_effects": []
+  }
+}

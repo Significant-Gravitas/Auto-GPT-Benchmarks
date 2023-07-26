@@ -1,0 +1,25 @@
+{
+  "name": "temporal_sequences_223",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Today, Samantha went to the amusement park. Between what times could they have gone?\nWe know that:\nSamantha woke up at 5am.\nHannah saw Samantha buying a phone at the electronics store from 5am to 7am.\nJames saw Samantha working out at the gym from 7am to 8am.\nRichard saw Samantha working at the office from 8am to 11am.\nMark saw Samantha buying lunch at the deli from 11am to 2pm.\nWilliam saw Samantha buying a bike at the bike shop from 7pm to 8pm.\nThe amusement park was closed after 8pm.\nBetween what times could Samantha have gone to the amusement park?\nOptions:\n(A) 2pm to 7pm\n(B) 11am to 2pm\n(C) 5am to 7am\n(D) 7am to 8am",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "(A)",
+    "should_contain": [
+      "(A)"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a series of events and activities a person has completed in the course of a day, determine what time, during the day, they might have been free to perform another activity.",
+    "side_effects": []
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_173",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"Here comes a perfectly valid argument: First of all, being an ingredient of Hair and Body Wash is sufficient for being an ingredient of Fungus Treatment. Next, every ingredient of Lip Gloss (BCMK) that is an ingredient of Fungus Treatment is also an ingredient of Eye Shadow (Bronze). Plus,everything that is an ingredient of Hair and Body Wash is an ingredient of Lip Gloss (BCMK), too. We may conclude that being an ingredient of Hair and Body Wash is sufficient for being an ingredient of Eye Shadow (Bronze).\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "valid",
+    "should_contain": [
+      "valid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

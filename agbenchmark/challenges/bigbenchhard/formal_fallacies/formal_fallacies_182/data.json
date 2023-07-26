@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_182",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"It is not always easy to see who is related to whom -- and in which ways. The following argument pertains to this question: First premise: Everyone who is not a great-grandmother of Lily is not both a sister of Tamara and an ancestor of Beverly. Second premise: Nobody is neither a workmate of Nellie nor an ancestor of Beverly. Third premise: Nobody is neither a workmate of Nellie nor a sister of Tamara. From this follows: Nobody is neither a workmate of Nellie nor a great-grandmother of Lily.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "valid",
+    "should_contain": [
+      "valid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

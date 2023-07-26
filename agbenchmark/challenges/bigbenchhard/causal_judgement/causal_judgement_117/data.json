@@ -1,0 +1,25 @@
+{
+  "name": "causal_judgement_117",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: How would a typical person answer each of the following questions about causation?\nIn a particular building there are two businesses, a travel agency and a graphic design studio. The building's climate control system is a new design that saves energy by keeping track of the number of people in the building, and only turning on when enough people have entered the building. The climate control system will turn on when the people who work at the travel agency or the people who work in the design studio arrive for work. Each office has enough employees to turn on the climate control system on their own. The travel agency employees almost always arrive at 8:45 am, and the design studio employees almost always arrive at 8:45 am. Today, the travel agency employees arrived at 8:45 am. The design studio employees also arrived at 8:45 am, as usual. So, today, the climate control system turned on at 8:45 am. Did the design studio agents cause the climate control system to turn on at 8:45 am?\nOptions:\n- Yes\n- No",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "Yes",
+    "should_contain": [
+      "Yes"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a short story (involving moral, intentional, or counterfactual analysis), determine how a typical person would answer a causal question about the story.",
+    "side_effects": []
+  }
+}

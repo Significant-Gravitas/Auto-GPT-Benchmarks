@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_19",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"It is not always easy to see who is related to whom -- and in which ways. The following argument pertains to this question: First of all, everyone who is a close friend of Glenna is a close friend of Tamara, too. Next, whoever is neither a half-sister of Deborah nor a workmate of Nila is a close friend of Glenna. Hence, whoever is none of this: a half-sister of Deborah or workmate of Nila, is a close friend of Tamara.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "valid",
+    "should_contain": [
+      "valid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

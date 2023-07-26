@@ -1,0 +1,25 @@
+{
+  "name": "causal_judgement_162",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: How would a typical person answer each of the following questions about causation?\nA sniper has been ordered to kill an enemy commander. So, after getting himself into position, he finally has the enemy commander in his sights. Before he pulls the trigger, however, the sniper realizes that when the bullet travels through the air it will definitely disturb the air molecules around it. But the sniper doesn't care at all about disturbing air molecules, he just wants to shoot his target. So, he pulls the trigger. As the sniper expected, as the bullet travels from his gun into the enemy commander, it disturbed some air molecules. Did the sniper intentionally disturb some air molecules?\nOptions:\n- Yes\n- No",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "No",
+    "should_contain": [
+      "No"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a short story (involving moral, intentional, or counterfactual analysis), determine how a typical person would answer a causal question about the story.",
+    "side_effects": []
+  }
+}

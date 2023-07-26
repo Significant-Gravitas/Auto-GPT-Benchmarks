@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_36",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"It is not always easy to grasp who is consuming which products. The following argument pertains to this question: First, whoever is not a rare consumer of Lever soap is an infrequent user of TRESemm\u00e9 shampoo. Second, there exists an infrequent user of TRESemm\u00e9 shampoo who is not an occasional purchaser of Paul Mitchell soap or not an occasional purchaser of Zest soap. In consequence, some rare consumer of Lever soap is not both an occasional purchaser of Paul Mitchell soap and an occasional purchaser of Zest soap.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "invalid",
+    "should_contain": [
+      "invalid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "movie_recommendation_130",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Find a movie similar to The Fifth Element, Gladiator, Gattaca, The Matrix:\nOptions:\n(A) Birdman of Alcatraz\n(B) Raiders of the Lost Ark\n(C) Le Samoura\u00ef\n(D) Imagine That",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "(B)",
+    "should_contain": [
+      "(B)"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a list of movies a user might have watched and liked, recommend a new, relevant movie to the user out of the four potential choices user might have.",
+    "side_effects": []
+  }
+}

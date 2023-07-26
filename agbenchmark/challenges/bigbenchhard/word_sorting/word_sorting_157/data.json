@@ -1,0 +1,25 @@
+{
+  "name": "word_sorting_157",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Sort the following words alphabetically: List: mckinley pesticide school radiometer marque prig relish trianon inspiration artful cancelled castrate glaucous ear croon tioga rothschild excite endpoint citadel",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "artful cancelled castrate citadel croon ear endpoint excite glaucous inspiration marque mckinley pesticide prig radiometer relish rothschild school tioga trianon",
+    "should_contain": [
+      "artful cancelled castrate citadel croon ear endpoint excite glaucous inspiration marque mckinley pesticide prig radiometer relish rothschild school tioga trianon"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a list of words, sort them lexicographically.",
+    "side_effects": []
+  }
+}

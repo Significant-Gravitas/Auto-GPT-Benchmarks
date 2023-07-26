@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_23",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"It is not always easy to see which chemicals are contained in our consumer products. The following argument pertains to this question: First premise: Whatever is not an ingredient of Shimmer Veil is an ingredient of Snowcastle. Second premise: Every ingredient of Liquid Eye liner is not an ingredient of Love Boat or not an ingredient of Shimmer Veil. Third premise: Being an ingredient of Snowcastle is necessary for not being an ingredient of Love Boat. We may conclude that everything that is an ingredient of Liquid Eye liner is an ingredient of Snowcastle, too.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "valid",
+    "should_contain": [
+      "valid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

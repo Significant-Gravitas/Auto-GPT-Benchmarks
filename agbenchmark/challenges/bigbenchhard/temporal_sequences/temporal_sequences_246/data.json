@@ -1,0 +1,25 @@
+{
+  "name": "temporal_sequences_246",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Today, Lisa went to the art show. Between what times could they have gone?\nWe know that:\nLisa woke up at 10am.\nLisa saw Lisa driving to the water park from 12pm to 2pm.\nHannah saw Lisa waiting at the airport from 2pm to 3pm.\nThomas saw Lisa buying a phone at the electronics store from 3pm to 4pm.\nThe art show was closed after 4pm.\nBetween what times could Lisa have gone to the art show?\nOptions:\n(A) 3pm to 4pm\n(B) 12pm to 2pm\n(C) 10am to 12pm\n(D) 2pm to 3pm",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "(C)",
+    "should_contain": [
+      "(C)"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a series of events and activities a person has completed in the course of a day, determine what time, during the day, they might have been free to perform another activity.",
+    "side_effects": []
+  }
+}

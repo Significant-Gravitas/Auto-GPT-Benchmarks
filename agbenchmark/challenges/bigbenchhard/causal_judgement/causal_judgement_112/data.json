@@ -1,0 +1,25 @@
+{
+  "name": "causal_judgement_112",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: How would a typical person answer each of the following questions about causation?\nJanet is an employee in a factory. Since she works in the maintenance department, she knows how to grease and oil all of the machines in the factory. It is her responsibility to put oil into the machines. Kate is also an employee at the factory. While she works in the human resources department, she knows how to grease and oil all of the machines in the factory. If Janet does not put oil in the machines, it is not Kate's responsibility to do so. One day, Janet forgets to put oil in an important machine. Janet noticed that she did not put oil in the machine. Kate did not notice that Janet did not put oil in the machine, and Kate also did not put oil in the machine. The machine broke down a few days later. Did Kate not putting oil in the machine cause it to break down?\nOptions:\n- Yes\n- No",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "No",
+    "should_contain": [
+      "No"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a short story (involving moral, intentional, or counterfactual analysis), determine how a typical person would answer a causal question about the story.",
+    "side_effects": []
+  }
+}

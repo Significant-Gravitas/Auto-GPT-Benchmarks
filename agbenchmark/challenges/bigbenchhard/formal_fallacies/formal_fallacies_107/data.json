@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_107",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"Here comes a perfectly valid argument: First, every son of Hugh is not a great-grandfather of Vernon and not a nephew of Forrest. Therefore, no nephew of Forrest and no great-grandfather of Vernon is a son of Hugh.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "valid",
+    "should_contain": [
+      "valid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

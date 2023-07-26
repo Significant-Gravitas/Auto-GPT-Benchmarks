@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_114",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"Some football fans admire various clubs, others love only a single team. But who is a fan of whom precisely? The following argument pertains to this question: To start with, somebody is an ex-supporter of FC Basel 1893 and a devotee of AS Tren\u010d\u00edn. Now, no ex-supporter of Paris Saint-Germain is a devotee of AS Tren\u010d\u00edn. In consequence, not every ex-supporter of FC Basel 1893 is an ex-supporter of Paris Saint-Germain.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "valid",
+    "should_contain": [
+      "valid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

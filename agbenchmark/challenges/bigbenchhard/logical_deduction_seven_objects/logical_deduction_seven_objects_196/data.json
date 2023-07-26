@@ -1,0 +1,25 @@
+{
+  "name": "logical_deduction_seven_objects_196",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: The following paragraphs each describe a set of seven objects arranged in a fixed order. The statements are logically consistent within each paragraph. On a branch, there are seven birds: a hawk, a raven, a hummingbird, a falcon, an owl, a quail, and a cardinal. The quail is to the left of the hummingbird. The raven is to the right of the hummingbird. The cardinal is the second from the left. The owl is to the left of the cardinal. The raven is the third from the right. The falcon is the rightmost.\nOptions:\n(A) The hawk is the rightmost\n(B) The raven is the rightmost\n(C) The hummingbird is the rightmost\n(D) The falcon is the rightmost\n(E) The owl is the rightmost\n(F) The quail is the rightmost\n(G) The cardinal is the rightmost",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "(D)",
+    "should_contain": [
+      "(D)"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

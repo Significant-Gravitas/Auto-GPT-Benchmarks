@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_148",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"It is not always easy to grasp who is consuming which products. The following argument pertains to this question: First, being an infrequent user of Aveda shampoo is necessary for not being an owner of a Bio Ionic shampoo. Second, every loyal buyer of American Crew shampoo is a frequent consumer of Celtic Sea Salt soap and an owner of a Bio Ionic shampoo. Third, nobody is neither a frequent consumer of Celtic Sea Salt soap nor an infrequent user of Aveda shampoo. From this follows: Every loyal buyer of American Crew shampoo is an infrequent user of Aveda shampoo.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "invalid",
+    "should_contain": [
+      "invalid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

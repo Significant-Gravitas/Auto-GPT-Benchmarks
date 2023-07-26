@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_145",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"Here comes a perfectly valid argument: First, every follower of Inverness Caledonian Thistle FC is neither an admirer of SCR Altach nor a supporter of Qaraba\u011f FK. We may conclude: No admirer of SCR Altach and no supporter of Qaraba\u011f FK is a follower of Inverness Caledonian Thistle FC.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "valid",
+    "should_contain": [
+      "valid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

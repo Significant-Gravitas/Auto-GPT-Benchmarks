@@ -1,0 +1,25 @@
+{
+  "name": "word_sorting_146",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Sort the following words alphabetically: List: sideboard procrustean seepage buxton olympic tty typescript marque callus unitary cameron contribute precise verify shelf extensible methanol",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "buxton callus cameron contribute extensible marque methanol olympic precise procrustean seepage shelf sideboard tty typescript unitary verify",
+    "should_contain": [
+      "buxton callus cameron contribute extensible marque methanol olympic precise procrustean seepage shelf sideboard tty typescript unitary verify"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a list of words, sort them lexicographically.",
+    "side_effects": []
+  }
+}

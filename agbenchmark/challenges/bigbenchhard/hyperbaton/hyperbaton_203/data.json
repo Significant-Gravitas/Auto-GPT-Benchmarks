@@ -1,0 +1,25 @@
+{
+  "name": "hyperbaton_203",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Which sentence has the correct adjective order:\nOptions:\n(A) lovely tiny old-fashioned pyramidal Pakistani glass eating cat\n(B) pyramidal lovely old-fashioned Pakistani tiny eating glass cat",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "(A)",
+    "should_contain": [
+      "(A)"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

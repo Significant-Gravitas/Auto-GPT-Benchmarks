@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_73",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"Here comes a perfectly valid argument: First of all, being an ex-fan of Villarreal CF is necessary for being a member of SK Rapid Wien. Next, some supporter of \u00d6stersunds FK is not an ex-fan of Villarreal CF. It follows that somebody is a supporter of \u00d6stersunds FK and not a member of SK Rapid Wien.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "valid",
+    "should_contain": [
+      "valid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

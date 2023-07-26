@@ -1,0 +1,25 @@
+{
+  "name": "temporal_sequences_141",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Today, Leslie went to the movies. Between what times could they have gone?\nWe know that:\nLeslie woke up at 6am.\nSusan saw Leslie sitting on a rooftop from 6am to 7am.\nMary saw Leslie working at the office from 12pm to 2pm.\nSteven saw Leslie getting a coffee at the cafe from 2pm to 7pm.\nThe movies was closed after 7pm.\nBetween what times could Leslie have gone to the movies?\nOptions:\n(A) 7am to 12pm\n(B) 2pm to 7pm\n(C) 12pm to 2pm\n(D) 6am to 7am",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "(A)",
+    "should_contain": [
+      "(A)"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a series of events and activities a person has completed in the course of a day, determine what time, during the day, they might have been free to perform another activity.",
+    "side_effects": []
+  }
+}

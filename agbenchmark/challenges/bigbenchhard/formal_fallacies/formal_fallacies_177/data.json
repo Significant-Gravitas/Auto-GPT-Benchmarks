@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_177",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"It is not always easy to see who is related to whom -- and in which ways. The following argument pertains to this question: Every cousin of Nichole is not an aunt of Susan or not an aunt of Zenaida. Every daughter of Wanda is a cousin of Nichole. We may conclude that no daughter of Wanda is an aunt of Susan or an aunt of Zenaida.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "invalid",
+    "should_contain": [
+      "invalid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

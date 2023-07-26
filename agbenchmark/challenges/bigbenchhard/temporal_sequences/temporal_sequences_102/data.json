@@ -1,0 +1,25 @@
+{
+  "name": "temporal_sequences_102",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Today, Jessica went to the restaurant. Between what times could they have gone?\nWe know that:\nJessica woke up at 6am.\nLisa saw Jessica waiting at the train station from 6am to 12pm.\nLinda saw Jessica getting a coffee at the cafe from 12pm to 2pm.\nSarah saw Jessica walking towards the Statue of Liberty from 2pm to 6pm.\nThe restaurant was closed after 7pm.\nBetween what times could Jessica have gone to the restaurant?\nOptions:\n(A) 6pm to 7pm\n(B) 6am to 12pm\n(C) 12pm to 2pm\n(D) 2pm to 6pm",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "(A)",
+    "should_contain": [
+      "(A)"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a series of events and activities a person has completed in the course of a day, determine what time, during the day, they might have been free to perform another activity.",
+    "side_effects": []
+  }
+}

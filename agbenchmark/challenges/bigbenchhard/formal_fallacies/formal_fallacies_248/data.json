@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_248",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"It is not always easy to grasp who is consuming which products. The following argument pertains to this question: First, being a frequent consumer of Bed Head shampoo is necessary for being an owner of a TRESemm\u00e9 shampoo. Second, no occasional purchaser of Burt's Bees shampoo is a frequent consumer of Bed Head shampoo. In consequence, no owner of a TRESemm\u00e9 shampoo is an occasional purchaser of Burt's Bees shampoo.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "valid",
+    "should_contain": [
+      "valid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

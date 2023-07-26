@@ -1,0 +1,25 @@
+{
+  "name": "logical_deduction_seven_objects_211",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: The following paragraphs each describe a set of seven objects arranged in a fixed order. The statements are logically consistent within each paragraph. A fruit stand sells seven fruits: oranges, plums, loquats, apples, kiwis, cantaloupes, and peaches. The loquats are less expensive than the kiwis. The plums are the cheapest. The loquats are the fourth-most expensive. The peaches are less expensive than the oranges. The peaches are more expensive than the kiwis. The apples are the second-cheapest.\nOptions:\n(A) The oranges are the fourth-most expensive\n(B) The plums are the fourth-most expensive\n(C) The loquats are the fourth-most expensive\n(D) The apples are the fourth-most expensive\n(E) The kiwis are the fourth-most expensive\n(F) The cantaloupes are the fourth-most expensive\n(G) The peaches are the fourth-most expensive",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "(C)",
+    "should_contain": [
+      "(C)"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

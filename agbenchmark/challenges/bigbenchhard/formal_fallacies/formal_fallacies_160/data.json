@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_160",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"Here comes a perfectly valid argument: First of all, being a classmate of Williams is necessary for not being a workmate of Leslie. Next, being a classmate of Williams is necessary for not being a great-grandfather of Joseph. Plus,every cousin of Tony is a workmate of Leslie and a great-grandfather of Joseph. Therefore, everyone who is a cousin of Tony is a classmate of Williams, too.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "invalid",
+    "should_contain": [
+      "invalid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

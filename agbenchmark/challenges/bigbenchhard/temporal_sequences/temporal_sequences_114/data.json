@@ -1,0 +1,25 @@
+{
+  "name": "temporal_sequences_114",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Today, Mary went to the restaurant. Between what times could they have gone?\nWe know that:\nMary woke up at 9am.\nDavid saw Mary walking in the garden from 9am to 11am.\nSamantha saw Mary getting a coffee at the cafe from 2pm to 3pm.\nSarah saw Mary driving to the water park from 3pm to 7pm.\nThe restaurant was closed after 7pm.\nBetween what times could Mary have gone to the restaurant?\nOptions:\n(A) 3pm to 7pm\n(B) 9am to 11am\n(C) 2pm to 3pm\n(D) 11am to 2pm",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "(D)",
+    "should_contain": [
+      "(D)"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a series of events and activities a person has completed in the course of a day, determine what time, during the day, they might have been free to perform another activity.",
+    "side_effects": []
+  }
+}

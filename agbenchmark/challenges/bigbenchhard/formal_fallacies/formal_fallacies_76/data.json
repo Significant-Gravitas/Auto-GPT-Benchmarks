@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_76",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"It is not always easy to grasp who is consuming which products. The following argument pertains to this question: First premise: Whoever is not a regular consumer of Pantene shampoo is not a rare consumer of South of France soap or not a rare consumer of Kiss My Face soap. Second premise: Being a rare consumer of South of France soap is necessary for not being a frequent consumer of Proactiv soap. Third premise: Nobody is neither a frequent consumer of Proactiv soap nor a rare consumer of Kiss My Face soap. So, necessarily, whoever is not a frequent consumer of Proactiv soap is a regular consumer of Pantene shampoo.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "valid",
+    "should_contain": [
+      "valid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

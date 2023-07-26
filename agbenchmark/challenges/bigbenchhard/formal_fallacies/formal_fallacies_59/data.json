@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_59",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"Here comes a perfectly valid argument: First of all, every loyal buyer of Tocca soap is an occasional purchaser of Bentley Organic soap. Next, being a loyal buyer of Tocca soap is sufficient for being a frequent consumer of L'Oreal shampoo. Plus,some regular user of Lever soap is not an occasional purchaser of Bentley Organic soap or not a frequent consumer of L'Oreal shampoo. We may conclude that not every regular user of Lever soap is a loyal buyer of Tocca soap.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "valid",
+    "should_contain": [
+      "valid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

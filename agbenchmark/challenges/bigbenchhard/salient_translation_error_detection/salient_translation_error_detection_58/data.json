@@ -1,0 +1,25 @@
+{
+  "name": "salient_translation_error_detection_58",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: The following translations from German to English contain a particular error. That error will be one of the following types: Named Entities: An entity (names, places, locations, etc.) is changed to a different entity. Numerical Values: Numerical values (ordinals or cardinals), dates, and/or units are changed. Modifiers or Adjectives: The modifiers and adjectives pertaining to a noun are changed. Negation or Antonyms: Introduce or remove a negation or change comparatives to their antonyms. Facts: Trivial factual errors not pertaining to the above classes are introduced in the translations. Dropped Content: A significant clause in the translation is removed. Please identify that error.  Source: Als Aussichtstriebwagen oder Panoramatriebwagen werden Triebwagen bezeichnet, die touristischen Zwecken dienen und zur besseren Rundumsicht der Fahrg\u00e4ste viele Glasfl\u00e4chen aufweisen.\nTranslation: A van or panoramic railcar is a railcar that serves military purposes and has many glass surfaces for a better all-round view of passengers.\nThe translation contains an error pertaining to\nOptions:\n(A) Modifiers or Adjectives\n(B) Numerical Values\n(C) Negation or Antonyms\n(D) Named Entities\n(E) Dropped Content\n(F) Facts",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "(F)",
+    "should_contain": [
+      "(F)"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a source sentence written in German and its translation in English, determine the type of translation error that the translated sentence contains.",
+    "side_effects": []
+  }
+}

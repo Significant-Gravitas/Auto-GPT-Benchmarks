@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_79",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"Consumer research aims at understanding whether users of some products also tend to consume other ones, or not. The following argument seeks to clarify some such relations: First premise: Oliver is not a regular user of Organix Hair shampoo. Second premise: Everyone who is not both a regular user of Organix Hair shampoo and a rare consumer of Purpose soap is however a loyal buyer of Kiss My Face soap. We may conclude that Oliver is a loyal buyer of Kiss My Face soap.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "valid",
+    "should_contain": [
+      "valid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "word_sorting_12",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Sort the following words alphabetically: List: lucrative you've tunnel archery bride coquette polytypy barbudo radix arlen lockwood teem officious",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "archery arlen barbudo bride coquette lockwood lucrative officious polytypy radix teem tunnel you've",
+    "should_contain": [
+      "archery arlen barbudo bride coquette lockwood lucrative officious polytypy radix teem tunnel you've"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a list of words, sort them lexicographically.",
+    "side_effects": []
+  }
+}

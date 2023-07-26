@@ -1,0 +1,25 @@
+{
+  "name": "multistep_arithmetic_two_86",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: ((-1 * -6 - -1 - -8) - (8 + -7 * 8 * -4)) =",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "-217",
+    "should_contain": [
+      "-217"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

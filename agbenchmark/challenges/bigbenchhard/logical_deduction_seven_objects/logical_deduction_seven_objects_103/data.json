@@ -1,0 +1,25 @@
+{
+  "name": "logical_deduction_seven_objects_103",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: The following paragraphs each describe a set of seven objects arranged in a fixed order. The statements are logically consistent within each paragraph. On a shelf, there are seven books: an orange book, a green book, a red book, a gray book, a purple book, a blue book, and a brown book. The purple book is the fourth from the left. The brown book is the third from the left. The green book is to the left of the blue book. The red book is the leftmost. The gray book is the third from the right. The orange book is the rightmost.\nOptions:\n(A) The orange book is the second from the left\n(B) The green book is the second from the left\n(C) The red book is the second from the left\n(D) The gray book is the second from the left\n(E) The purple book is the second from the left\n(F) The blue book is the second from the left\n(G) The brown book is the second from the left",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "(B)",
+    "should_contain": [
+      "(B)"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

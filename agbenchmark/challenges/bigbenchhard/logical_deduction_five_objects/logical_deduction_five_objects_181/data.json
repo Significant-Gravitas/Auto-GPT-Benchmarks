@@ -1,0 +1,25 @@
+{
+  "name": "logical_deduction_five_objects_181",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: The following paragraphs each describe a set of five objects arranged in a fixed order. The statements are logically consistent within each paragraph. On a branch, there are five birds: an owl, a crow, a raven, a robin, and a cardinal. The raven is to the right of the owl. The raven is the second from the left. The robin is to the left of the crow. The robin is the second from the right.\nOptions:\n(A) The owl is the second from the right\n(B) The crow is the second from the right\n(C) The raven is the second from the right\n(D) The robin is the second from the right\n(E) The cardinal is the second from the right",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "(D)",
+    "should_contain": [
+      "(D)"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

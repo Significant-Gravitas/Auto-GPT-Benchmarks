@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_78",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"Here comes a perfectly valid argument: Whoever is not a cousin of Andres is a workmate of Isaac. Nobody is neither a grandson of Reyes nor a workmate of Isaac. No stepbrother of Phillip is both a grandson of Reyes and a cousin of Andres. Therefore, being a workmate of Isaac is necessary for being a stepbrother of Phillip.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "valid",
+    "should_contain": [
+      "valid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "word_sorting_21",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Sort the following words alphabetically: List: chlorate glidden incentive manatee spurt lavoisier judicatory",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "chlorate glidden incentive judicatory lavoisier manatee spurt",
+    "should_contain": [
+      "chlorate glidden incentive judicatory lavoisier manatee spurt"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a list of words, sort them lexicographically.",
+    "side_effects": []
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "word_sorting_136",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Sort the following words alphabetically: List: cast palazzi inhibit arragon tabletop danbury abbe adposition emplace gavin income falsetto onerous",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "abbe adposition arragon cast danbury emplace falsetto gavin income inhibit onerous palazzi tabletop",
+    "should_contain": [
+      "abbe adposition arragon cast danbury emplace falsetto gavin income inhibit onerous palazzi tabletop"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a list of words, sort them lexicographically.",
+    "side_effects": []
+  }
+}

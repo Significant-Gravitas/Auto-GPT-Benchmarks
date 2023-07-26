@@ -1,0 +1,25 @@
+{
+  "name": "word_sorting_235",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Sort the following words alphabetically: List: inhabitation bona cicero purport gaussian silver responsible rastus zig exonerate portfolio coastal asset ruanda dusky handlebar",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "asset bona cicero coastal dusky exonerate gaussian handlebar inhabitation portfolio purport rastus responsible ruanda silver zig",
+    "should_contain": [
+      "asset bona cicero coastal dusky exonerate gaussian handlebar inhabitation portfolio purport rastus responsible ruanda silver zig"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a list of words, sort them lexicographically.",
+    "side_effects": []
+  }
+}

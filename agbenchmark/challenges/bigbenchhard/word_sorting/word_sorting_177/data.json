@@ -1,0 +1,25 @@
+{
+  "name": "word_sorting_177",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Sort the following words alphabetically: List: thereupon wireman crag scrawny electrolytic wife cutover dickson clytemnestra took diocletian lipton inhuman stalk workplace marginal",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "clytemnestra crag cutover dickson diocletian electrolytic inhuman lipton marginal scrawny stalk thereupon took wife wireman workplace",
+    "should_contain": [
+      "clytemnestra crag cutover dickson diocletian electrolytic inhuman lipton marginal scrawny stalk thereupon took wife wireman workplace"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a list of words, sort them lexicographically.",
+    "side_effects": []
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_27",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"It is not always easy to see who is related to whom -- and in which ways. The following argument pertains to this question: Every schoolmate of Jeffery is a grandson of Todd. Whoever is schoolmate of Jeffery is at least one of these: a grandson of Todd, a brother of Kenneth or an uncle of Lavern. Every schoolmate of Jeffery is an uncle of Lavern. We may conclude: Everyone who is a schoolmate of Jeffery is a brother of Kenneth, too.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "invalid",
+    "should_contain": [
+      "invalid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

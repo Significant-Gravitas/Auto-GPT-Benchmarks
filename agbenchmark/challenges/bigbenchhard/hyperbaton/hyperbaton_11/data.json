@@ -1,0 +1,25 @@
+{
+  "name": "hyperbaton_11",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Which sentence has the correct adjective order:\nOptions:\n(A) terrible tiny new square Egyptian typing sock\n(B) new typing square Egyptian tiny terrible sock",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "(A)",
+    "should_contain": [
+      "(A)"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

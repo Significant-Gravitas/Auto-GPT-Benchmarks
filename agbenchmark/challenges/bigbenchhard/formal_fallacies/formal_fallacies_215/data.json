@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_215",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"Here comes a perfectly valid argument: First, every ingredient of Polar Attraction is an ingredient of Reel Him In. Second, every ingredient of Polar Attraction is not an ingredient of Reel Him In or an ingredient of The Dark Side. It follows that being an ingredient of Polar Attraction is sufficient for being an ingredient of The Dark Side.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "valid",
+    "should_contain": [
+      "valid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

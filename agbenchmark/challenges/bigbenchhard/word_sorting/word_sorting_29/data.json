@@ -1,0 +1,25 @@
+{
+  "name": "word_sorting_29",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Sort the following words alphabetically: List: heterostructure bertrand careful wherewith libra eyelid feign southeastern paste snip",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "bertrand careful eyelid feign heterostructure libra paste snip southeastern wherewith",
+    "should_contain": [
+      "bertrand careful eyelid feign heterostructure libra paste snip southeastern wherewith"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a list of words, sort them lexicographically.",
+    "side_effects": []
+  }
+}

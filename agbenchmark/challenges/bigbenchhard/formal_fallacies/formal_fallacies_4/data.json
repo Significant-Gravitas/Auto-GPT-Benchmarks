@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_4",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"Some football fans admire various clubs, others love only a single team. But who is a fan of whom precisely? The following argument pertains to this question: First premise: Being an expert of Aberdeen FC is sufficient for not being a follower of Club Atl\u00e9tico de Madrid. Second premise: Every expert of Aberdeen FC is not a fan of AZ Alkmaar or not a follower of Club Atl\u00e9tico de Madrid. Therefore, whoever is an expert of Aberdeen FC is not a fan of AZ Alkmaar.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "invalid",
+    "should_contain": [
+      "invalid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

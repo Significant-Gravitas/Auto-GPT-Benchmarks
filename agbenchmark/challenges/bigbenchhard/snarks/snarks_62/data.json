@@ -1,0 +1,25 @@
+{
+  "name": "snarks_62",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Which statement is sarcastic?\nOptions:\n(A) Isn't it just the best? This has been me for the past several days as well. It's been less than enough sleep for the past week\n(B) Isn't it just the best? This has been me for the past several days as well. It's been more than enough sleep for the past week",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "(A)",
+    "should_contain": [
+      "(A)"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given two nearly-identical sentences, determine which one is sarcastic.",
+    "side_effects": []
+  }
+}

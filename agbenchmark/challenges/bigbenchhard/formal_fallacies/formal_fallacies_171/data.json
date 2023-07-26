@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_171",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"Here comes a perfectly valid argument: To be an ingredient of Plumeria Milk Bath or an ingredient of Hot Rod Red is necessary for being an ingredient of Trugel Vivid. Every ingredient of Bioglitz Color 6G is not an ingredient of Plumeria Milk Bath or not an ingredient of Hot Rod Red. All this entails that being an ingredient of Trugel Vivid is sufficient for not being an ingredient of Bioglitz Color 6G.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "invalid",
+    "should_contain": [
+      "invalid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "causal_judgement_67",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: How would a typical person answer each of the following questions about causation?\nBilly and Suzy are freight train conductors. One day, they happen to approach an old two-way rail bridge from opposite directions at the same time. There are signals on either side of the bridge. Billy's signal is green, so he is supposed to drive across the bridge immediately. Suzy's signal is green, so she is also supposed to drive across immediately. Neither of them realizes that the bridge is on the verge of collapse. If either of them drives their train onto the bridge, it will collapse. Either train is heavy enough on its own to break the bridge. Billy follows his signal and drives his train onto the bridge immediately at the same time that Suzy follows her signal and drives her train onto the bridge. Both trains move onto the bridge at the same time, and at that moment the bridge collapses. Did Billy cause the bridge to collapse?\nOptions:\n- Yes\n- No",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "Yes",
+    "should_contain": [
+      "Yes"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a short story (involving moral, intentional, or counterfactual analysis), determine how a typical person would answer a causal question about the story.",
+    "side_effects": []
+  }
+}

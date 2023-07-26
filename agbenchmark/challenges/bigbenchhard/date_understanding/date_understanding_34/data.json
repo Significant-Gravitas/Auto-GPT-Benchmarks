@@ -1,0 +1,25 @@
+{
+  "name": "date_understanding_34",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: The first day of 2019 is a Tuesday, and today is the first Monday of 2019. What is the date 24 hours later in MM/DD/YYYY?\nOptions:\n(A) 01/08/1960\n(B) 01/01/2019\n(C) 02/08/2018\n(D) 01/08/2019\n(E) 10/22/2018\n(F) 01/08/2043",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "(D)",
+    "should_contain": [
+      "(D)"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a small set of sentences about a particular date, answer the provided question.",
+    "side_effects": []
+  }
+}

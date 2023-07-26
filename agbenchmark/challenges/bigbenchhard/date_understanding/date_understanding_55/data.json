@@ -1,0 +1,25 @@
+{
+  "name": "date_understanding_55",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: The first day of 2019 is a Tuesday, and today is the first Monday of 2019. What is the date yesterday in MM/DD/YYYY?\nOptions:\n(A) 01/06/1960\n(B) 12/27/2018\n(C) 01/06/2019\n(D) 01/07/2019\n(E) 01/06/2058\n(F) 10/06/2019",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "(C)",
+    "should_contain": [
+      "(C)"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a small set of sentences about a particular date, answer the provided question.",
+    "side_effects": []
+  }
+}

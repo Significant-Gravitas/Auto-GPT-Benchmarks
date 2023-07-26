@@ -1,0 +1,25 @@
+{
+  "name": "word_sorting_188",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Sort the following words alphabetically: List: anarchic liven shortcut total diatom guelph usage acoustic yarmulke phenomenology neo bureaucracy trammel leftward immovable fabricate syndrome suggestive provide",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "acoustic anarchic bureaucracy diatom fabricate guelph immovable leftward liven neo phenomenology provide shortcut suggestive syndrome total trammel usage yarmulke",
+    "should_contain": [
+      "acoustic anarchic bureaucracy diatom fabricate guelph immovable leftward liven neo phenomenology provide shortcut suggestive syndrome total trammel usage yarmulke"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a list of words, sort them lexicographically.",
+    "side_effects": []
+  }
+}

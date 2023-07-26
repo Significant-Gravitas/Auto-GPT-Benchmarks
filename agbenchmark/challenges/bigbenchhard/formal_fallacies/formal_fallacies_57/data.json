@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_57",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"Here comes a perfectly valid argument: To start with, being an ingredient of Eye Definer Twig is necessary for being an ingredient of FACIAL SCRUB. Now, not being an ingredient of NARS Pressed Powder is sufficient for not being an ingredient of Eye Definer Twig. Therefore, being an ingredient of NARS Pressed Powder is necessary for being an ingredient of FACIAL SCRUB.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "valid",
+    "should_contain": [
+      "valid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

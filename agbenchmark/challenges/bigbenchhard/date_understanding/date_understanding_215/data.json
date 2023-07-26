@@ -1,0 +1,25 @@
+{
+  "name": "date_understanding_215",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: May 6, 1992 is like yesterday to Jane, but that is actually ten years ago. What is the date 24 hours later in MM/DD/YYYY?\nOptions:\n(A) 05/15/2002\n(B) 05/04/2002\n(C) 05/17/2002\n(D) 05/07/1982\n(E) 09/07/2001\n(F) 05/07/2002",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "(F)",
+    "should_contain": [
+      "(F)"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a small set of sentences about a particular date, answer the provided question.",
+    "side_effects": []
+  }
+}

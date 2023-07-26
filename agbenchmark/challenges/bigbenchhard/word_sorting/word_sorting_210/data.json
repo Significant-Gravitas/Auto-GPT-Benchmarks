@@ -1,0 +1,25 @@
+{
+  "name": "word_sorting_210",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Sort the following words alphabetically: List: jacob sleight globule consonant musician",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "consonant globule jacob musician sleight",
+    "should_contain": [
+      "consonant globule jacob musician sleight"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a list of words, sort them lexicographically.",
+    "side_effects": []
+  }
+}

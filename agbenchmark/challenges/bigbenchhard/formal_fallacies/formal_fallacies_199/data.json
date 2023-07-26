@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_199",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"Here comes a perfectly valid argument: To begin with, being a backer of Olympique de Marseille is sufficient for not being a devotee of SS Lazio. Moreover, every devotee of SS Lazio is a backer of Olympique de Marseille or, otherwise, neither a backer of Olympique de Marseille nor an admirer of AS Saint-\u00c9tienne. So, necessarily, being an admirer of AS Saint-\u00c9tienne is necessary for being a devotee of SS Lazio.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "invalid",
+    "should_contain": [
+      "invalid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

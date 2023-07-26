@@ -1,0 +1,25 @@
+{
+  "name": "word_sorting_239",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Sort the following words alphabetically: List: behold oxalic maybe hew steel termcap pray stiffen dissipate misogyny format dew",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "behold dew dissipate format hew maybe misogyny oxalic pray steel stiffen termcap",
+    "should_contain": [
+      "behold dew dissipate format hew maybe misogyny oxalic pray steel stiffen termcap"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a list of words, sort them lexicographically.",
+    "side_effects": []
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "temporal_sequences_16",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Today, Jessica went to the basketball court. Between what times could they have gone?\nWe know that:\nJessica woke up at 5am.\nMichael saw Jessica buying clothes at the mall from 5am to 6am.\nSteven saw Jessica buying a bike at the bike shop from 6am to 7am.\nSean saw Jessica waiting at the train station from 7am to 2pm.\nElizabeth saw Jessica taking photos near the Eiffel Tower from 2pm to 6pm.\nSarah saw Jessica walking towards the Statue of Liberty from 6pm to 9pm.\nThe basketball court was closed after 10pm.\nBetween what times could Jessica have gone to the basketball court?\nOptions:\n(A) 6pm to 9pm\n(B) 5am to 6am\n(C) 9pm to 10pm\n(D) 2pm to 6pm",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "(C)",
+    "should_contain": [
+      "(C)"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a series of events and activities a person has completed in the course of a day, determine what time, during the day, they might have been free to perform another activity.",
+    "side_effects": []
+  }
+}

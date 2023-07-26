@@ -1,0 +1,25 @@
+{
+  "name": "temporal_sequences_215",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Today, Sarah went to the gas station. Between what times could they have gone?\nWe know that:\nSarah woke up at 6am.\nSamantha saw Sarah reading at the library from 6am to 9am.\nMary saw Sarah taking photos near the Eiffel Tower from 9am to 11am.\nSteven saw Sarah buying cookies at a bakery from 11am to 2pm.\nThe gas station was closed after 9pm.\nBetween what times could Sarah have gone to the gas station?\nOptions:\n(A) 11am to 2pm\n(B) 2pm to 9pm\n(C) 9am to 11am\n(D) 6am to 9am",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "(B)",
+    "should_contain": [
+      "(B)"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a series of events and activities a person has completed in the course of a day, determine what time, during the day, they might have been free to perform another activity.",
+    "side_effects": []
+  }
+}

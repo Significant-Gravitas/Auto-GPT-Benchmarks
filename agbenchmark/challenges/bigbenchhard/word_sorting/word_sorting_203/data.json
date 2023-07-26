@@ -1,0 +1,25 @@
+{
+  "name": "word_sorting_203",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Sort the following words alphabetically: List: paginate amicable they've histology extreme indoeuropean sonority tramway turvy coo deerstalker browne henchman pelvis calumny",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "amicable browne calumny coo deerstalker extreme henchman histology indoeuropean paginate pelvis sonority they've tramway turvy",
+    "should_contain": [
+      "amicable browne calumny coo deerstalker extreme henchman histology indoeuropean paginate pelvis sonority they've tramway turvy"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a list of words, sort them lexicographically.",
+    "side_effects": []
+  }
+}

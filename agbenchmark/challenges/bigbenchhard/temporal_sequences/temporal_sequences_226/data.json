@@ -1,0 +1,25 @@
+{
+  "name": "temporal_sequences_226",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Today, David went to the art studio. Between what times could they have gone?\nWe know that:\nDavid woke up at 5am.\nLinda saw David watching a movie at the theater from 5am to 7am.\nJames saw David buying lunch at the deli from 9am to 10am.\nMary saw David buying a phone at the electronics store from 10am to 11am.\nLeslie saw David driving to the water park from 11am to 2pm.\nJessica saw David buying a bike at the bike shop from 2pm to 7pm.\nThe art studio was closed after 7pm.\nBetween what times could David have gone to the art studio?\nOptions:\n(A) 7am to 9am\n(B) 2pm to 7pm\n(C) 5am to 7am\n(D) 11am to 2pm",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "(A)",
+    "should_contain": [
+      "(A)"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a series of events and activities a person has completed in the course of a day, determine what time, during the day, they might have been free to perform another activity.",
+    "side_effects": []
+  }
+}

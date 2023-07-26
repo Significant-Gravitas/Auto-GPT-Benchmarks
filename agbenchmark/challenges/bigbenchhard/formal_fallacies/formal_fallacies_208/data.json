@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_208",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"Here comes a perfectly valid argument: First premise: Julie is a member of SL Benfica or a follower of FC Ufa. Second premise: Everyone who is not an ex-fan of FC Astana is however a member of SL Benfica and a follower of FC Ufa. We may conclude that Julie is not an ex-fan of FC Astana.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "invalid",
+    "should_contain": [
+      "invalid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

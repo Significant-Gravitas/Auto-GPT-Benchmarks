@@ -1,0 +1,25 @@
+{
+  "name": "word_sorting_238",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Sort the following words alphabetically: List: spongy separate gabriel jackson quail hendrickson washy backslide shelter calvert anastomosis variety commando pizzicato sticktight syndicate hollister",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "anastomosis backslide calvert commando gabriel hendrickson hollister jackson pizzicato quail separate shelter spongy sticktight syndicate variety washy",
+    "should_contain": [
+      "anastomosis backslide calvert commando gabriel hendrickson hollister jackson pizzicato quail separate shelter spongy sticktight syndicate variety washy"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a list of words, sort them lexicographically.",
+    "side_effects": []
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_161",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"Here comes a perfectly valid argument: First of all, every expert of SV Zulte Waregem is a supporter of Real Betis Balompi\u00e9 or a backer of FC Zenit. Next, every critic of Manchester City FC is neither a supporter of Real Betis Balompi\u00e9 nor a backer of FC Zenit. So, necessarily, no expert of SV Zulte Waregem is a critic of Manchester City FC.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "valid",
+    "should_contain": [
+      "valid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

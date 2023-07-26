@@ -1,0 +1,25 @@
+{
+  "name": "word_sorting_8",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Sort the following words alphabetically: List: thunderclap swab built poland",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "built poland swab thunderclap",
+    "should_contain": [
+      "built poland swab thunderclap"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a list of words, sort them lexicographically.",
+    "side_effects": []
+  }
+}

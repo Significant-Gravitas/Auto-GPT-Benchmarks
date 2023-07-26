@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_90",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"Here comes a perfectly valid argument: To begin with, being an ingredient of Lacquer Aquadelic is necessary for being an ingredient of Fashion Week Chic. Moreover, no ingredient of Most Wanted that is an ingredient of Juicy Kitten is an ingredient of Lacquer Aquadelic. From this follows: Whatever is neither an ingredient of Juicy Kitten nor an ingredient of Most Wanted is an ingredient of Fashion Week Chic.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "invalid",
+    "should_contain": [
+      "invalid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

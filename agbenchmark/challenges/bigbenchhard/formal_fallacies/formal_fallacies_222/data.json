@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_222",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"It is not always easy to see who is related to whom -- and in which ways. The following argument pertains to this question: First of all, everyone who is an uncle of Dennis is a half-brother of Troy, too. Next, whoever is uncle of Dennis is at least one of these: a half-brother of Troy, a brother of Mathew or a classmate of Henry. Hence, every uncle of Dennis is either a brother of Mathew or a classmate of Henry, or both.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "invalid",
+    "should_contain": [
+      "invalid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

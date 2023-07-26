@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_166",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"Here comes a perfectly valid argument: First premise: Whatever is ingredient of Concealer is at least one of these: an ingredient of HEART SHAPED BALM, an ingredient of Goth Fairy or an ingredient of Love Me Like A Wimp. Second premise: Being an ingredient of Clarifying Mask is necessary for being an ingredient of Goth Fairy. Third premise: Being an ingredient of HEART SHAPED BALM is sufficient for being an ingredient of Clarifying Mask. Fourth premise: Every ingredient of Love Me Like A Wimp is an ingredient of Clarifying Mask. So, necessarily, being an ingredient of Concealer is sufficient for being an ingredient of Clarifying Mask.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "valid",
+    "should_contain": [
+      "valid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "multistep_arithmetic_two_202",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: ((6 - 5 + 5 + -9) - (9 + 8 * -6 * -1)) =",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "-60",
+    "should_contain": [
+      "-60"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

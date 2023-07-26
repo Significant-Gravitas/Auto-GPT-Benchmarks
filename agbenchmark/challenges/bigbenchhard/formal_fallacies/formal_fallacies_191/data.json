@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_191",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"Here comes a perfectly valid argument: First premise: Everybody who is neither an ancestor of Andy nor a nephew of Donald is however a cousin of Ralph. Second premise: Dale is neither a nephew of Donald nor an ancestor of Andy. We may conclude: Dale is a cousin of Ralph.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "valid",
+    "should_contain": [
+      "valid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "web_of_lies_208",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Question: Inga tells the truth. Shalonda says Inga tells the truth. Phoebe says Shalonda tells the truth. Crista says Phoebe lies. Alejandro says Crista lies. Does Alejandro tell the truth?",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "Yes",
+    "should_contain": [
+      "Yes"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Evaluate the truth value of a random Boolean function expressed as a natural-language word problem.",
+    "side_effects": []
+  }
+}

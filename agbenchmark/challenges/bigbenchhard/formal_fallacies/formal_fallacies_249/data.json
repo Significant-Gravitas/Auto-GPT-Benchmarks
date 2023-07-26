@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_249",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"Here comes a perfectly valid argument: First, it is not the case that Alma is a fan of Burnley FC. Second, whoever is not both a backer of FC Zenit and a fan of Burnley FC is a supporter of FC Lokomotiv Moskva. So, necessarily, Alma is a supporter of FC Lokomotiv Moskva.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "valid",
+    "should_contain": [
+      "valid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

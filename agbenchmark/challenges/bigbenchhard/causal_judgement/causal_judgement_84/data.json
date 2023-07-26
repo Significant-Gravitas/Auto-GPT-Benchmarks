@@ -1,0 +1,25 @@
+{
+  "name": "causal_judgement_84",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: How would a typical person answer each of the following questions about causation?\nRepresentatives from the research and development department of a company reported to the board and said, \"We are thinking of starting a new program. It will help us increase profits, but it will also harm the environment.\" For various reasons, each individual member of the board personally opposed the program and tried to prevent it from being implemented. Nevertheless, the interests of the company and the shareholders prevailed and the board decided to implement the new program. Sure enough, the program harmed the environment. Did the board intentionally harm the environment?\nOptions:\n- Yes\n- No",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "Yes",
+    "should_contain": [
+      "Yes"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a short story (involving moral, intentional, or counterfactual analysis), determine how a typical person would answer a causal question about the story.",
+    "side_effects": []
+  }
+}

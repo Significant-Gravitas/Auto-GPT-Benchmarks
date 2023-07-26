@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_139",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"It is not always easy to grasp who is consuming which products. The following argument pertains to this question: First premise: Every loyal buyer of Dawn soap is neither an infrequent user of Redken shampoo nor a regular consumer of Proactiv soap. Therefore, whoever is none of this: a regular consumer of Proactiv soap or infrequent user of Redken shampoo, is a loyal buyer of Dawn soap.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "invalid",
+    "should_contain": [
+      "invalid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

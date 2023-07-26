@@ -1,0 +1,25 @@
+{
+  "name": "word_sorting_57",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Sort the following words alphabetically: List: plebiscite colombo inviolate quagmire garry satanic magnanimity aeneas notoriety nevada foothold glycerine lucre tennyson type scription pompey softball spleenwort fox",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "aeneas colombo foothold fox garry glycerine inviolate lucre magnanimity nevada notoriety plebiscite pompey quagmire satanic scription softball spleenwort tennyson type",
+    "should_contain": [
+      "aeneas colombo foothold fox garry glycerine inviolate lucre magnanimity nevada notoriety plebiscite pompey quagmire satanic scription softball spleenwort tennyson type"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a list of words, sort them lexicographically.",
+    "side_effects": []
+  }
+}

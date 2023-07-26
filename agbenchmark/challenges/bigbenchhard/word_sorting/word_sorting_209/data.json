@@ -1,0 +1,25 @@
+{
+  "name": "word_sorting_209",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Sort the following words alphabetically: List: promulgate altercate foraminifera sophocles raft wrongdoer syllabus jive cornerstone gossamer courtroom insist dusenberg sal",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "altercate cornerstone courtroom dusenberg foraminifera gossamer insist jive promulgate raft sal sophocles syllabus wrongdoer",
+    "should_contain": [
+      "altercate cornerstone courtroom dusenberg foraminifera gossamer insist jive promulgate raft sal sophocles syllabus wrongdoer"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a list of words, sort them lexicographically.",
+    "side_effects": []
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "word_sorting_200",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Sort the following words alphabetically: List: hangout drafty supposable sushi proscenium anticonvulsant you'd magnificent scrub embolden hasty pewee carrageen disseminate glamour discovery registrar acuity",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "acuity anticonvulsant carrageen discovery disseminate drafty embolden glamour hangout hasty magnificent pewee proscenium registrar scrub supposable sushi you'd",
+    "should_contain": [
+      "acuity anticonvulsant carrageen discovery disseminate drafty embolden glamour hangout hasty magnificent pewee proscenium registrar scrub supposable sushi you'd"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a list of words, sort them lexicographically.",
+    "side_effects": []
+  }
+}

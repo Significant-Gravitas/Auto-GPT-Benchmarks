@@ -1,0 +1,25 @@
+{
+  "name": "temporal_sequences_157",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Today, Emily went to the orchestra hall. Between what times could they have gone?\nWe know that:\nEmily woke up at 5am.\nLinda saw Emily waiting at the airport from 5am to 6am.\nDavid saw Emily buying cookies at a bakery from 2pm to 7pm.\nMichael saw Emily buying clothes at the mall from 7pm to 8pm.\nThomas saw Emily working out at the gym from 8pm to 10pm.\nThe orchestra hall was closed after 10pm.\nBetween what times could Emily have gone to the orchestra hall?\nOptions:\n(A) 5am to 6am\n(B) 2pm to 7pm\n(C) 8pm to 10pm\n(D) 6am to 2pm",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "(D)",
+    "should_contain": [
+      "(D)"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a series of events and activities a person has completed in the course of a day, determine what time, during the day, they might have been free to perform another activity.",
+    "side_effects": []
+  }
+}

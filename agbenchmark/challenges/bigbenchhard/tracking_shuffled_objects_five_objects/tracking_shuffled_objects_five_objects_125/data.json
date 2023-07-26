@@ -1,0 +1,25 @@
+{
+  "name": "tracking_shuffled_objects_five_objects_125",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Alice, Bob, Claire, Dave, and Eve are holding a white elephant gift exchange. At the start of the event, they are each holding a present of a different color: Alice has a green present, Bob has a white present, Claire has a black ball, Dave has a orange ball, and Eve has a yellow present.\nAs the event progresses, pairs of people swap gifts. First, Bob and Alice swap their gifts. Then, Alice and Eve swap their gifts. Then, Claire and Eve swap their gifts. Then, Alice and Dave swap their gifts. Finally, Bob and Eve swap their gifts. At the end of the event, Eve has the\nOptions:\n(A) green present\n(B) white present\n(C) black ball\n(D) orange ball\n(E) yellow present",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "(A)",
+    "should_contain": [
+      "(A)"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

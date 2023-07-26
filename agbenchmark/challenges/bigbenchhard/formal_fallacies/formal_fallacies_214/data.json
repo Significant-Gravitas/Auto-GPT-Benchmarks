@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_214",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"Here comes a perfectly valid argument: There exists a workmate of Guadalupe who is an ancestor of Jewel while not a niece of Nelda. Nobody is neither a stepsister of Christine nor a niece of Nelda. So, necessarily, there exists a workmate of Guadalupe who is an ancestor of Jewel and a stepsister of Christine.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "valid",
+    "should_contain": [
+      "valid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

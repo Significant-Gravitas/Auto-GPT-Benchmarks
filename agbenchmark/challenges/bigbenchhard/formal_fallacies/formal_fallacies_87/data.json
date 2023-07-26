@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_87",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"Here comes a perfectly valid argument: First of all, every owner of a Finesse shampoo is either a regular consumer of TIGI shampoo or a loyal buyer of Paul Mitchell soap, or both. Next, every rare consumer of Alterna Haircare shampoo is not a regular consumer of TIGI shampoo or not a loyal buyer of Paul Mitchell soap. We may conclude: Whoever is an owner of a Finesse shampoo is not a rare consumer of Alterna Haircare shampoo.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "invalid",
+    "should_contain": [
+      "invalid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "temporal_sequences_79",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Today, Susan went to the art studio. Between what times could they have gone?\nWe know that:\nSusan woke up at 5am.\nKimberly saw Susan waiting at the train station from 5am to 6am.\nLisa saw Susan working out at the gym from 6am to 11am.\nBetty saw Susan reading at the library from 11am to 12pm.\nThe art studio was closed after 1pm.\nBetween what times could Susan have gone to the art studio?\nOptions:\n(A) 12pm to 1pm\n(B) 11am to 12pm\n(C) 6am to 11am\n(D) 5am to 6am",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "(A)",
+    "should_contain": [
+      "(A)"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a series of events and activities a person has completed in the course of a day, determine what time, during the day, they might have been free to perform another activity.",
+    "side_effects": []
+  }
+}

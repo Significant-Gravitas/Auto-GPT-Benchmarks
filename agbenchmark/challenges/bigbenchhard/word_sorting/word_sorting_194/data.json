@@ -1,0 +1,25 @@
+{
+  "name": "word_sorting_194",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Sort the following words alphabetically: List: alleviate duopoly mattress gland benelux townsmen buoyant klaxon hardbound tomography felice gunk",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "alleviate benelux buoyant duopoly felice gland gunk hardbound klaxon mattress tomography townsmen",
+    "should_contain": [
+      "alleviate benelux buoyant duopoly felice gland gunk hardbound klaxon mattress tomography townsmen"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a list of words, sort them lexicographically.",
+    "side_effects": []
+  }
+}

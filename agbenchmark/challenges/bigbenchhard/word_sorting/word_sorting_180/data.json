@@ -1,0 +1,25 @@
+{
+  "name": "word_sorting_180",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Sort the following words alphabetically: List: hyperboloid buckle liquidate alkali nagasaki breach falsetto parmesan mirth",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "alkali breach buckle falsetto hyperboloid liquidate mirth nagasaki parmesan",
+    "should_contain": [
+      "alkali breach buckle falsetto hyperboloid liquidate mirth nagasaki parmesan"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a list of words, sort them lexicographically.",
+    "side_effects": []
+  }
+}

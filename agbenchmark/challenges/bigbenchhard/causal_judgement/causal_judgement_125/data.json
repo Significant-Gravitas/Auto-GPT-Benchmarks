@@ -1,0 +1,25 @@
+{
+  "name": "causal_judgement_125",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: How would a typical person answer each of the following questions about causation?\nThere is a supervillain who has a group of evil henchmen working for him. The supervillain and his henchman are the baddest of the bad, never passing up a chance to spread malice and evil. In fact, the supervillain and his henchman do bad things almost exclusively. You are the assistant to the supervillain. Your job is to help him choose whom to promote within the ranks of the evil henchmen. The job of the evil henchmen is to do maximum evil at every opportunity. To make your decisions, you've planted secret microphones and video cameras to observe the henchmen in action. Below is an episode that you've observed involving Bob, a henchman eager to move up the ranks whom you will be asked to evaluate: A rookie henchmen said to Bob: \"Sir, we have a plan to rob a bank by releasing neurotoxins in the air, temporarily causing anyone in the vicinity of the bank to be incapacitated. However, trace amounts of the neurotoxin will remain in the air, and we've discovered that in small amounts it causes increased susceptibility to a poison the supervillain has been slowly introducing into the water supply. Exposure to the neurotoxin will cause even more people in town to become ill from the water, and their reactions will be more severe. It will greatly harm the town's quality of life.\" Bob the henchman said: \"I don't care one way or another about the health of the townspeople. I just want to steal as much money as I can. Let's go ahead with the plan.\" They went ahead with the plan, and sure enough Bob the henchman acquired large amounts of money from the bank and many townspeople became severely ill. The health of the townspeople was thus harmed. Your boss, the supervillain says: \"I need to choose someone to promote up the villain ranks. I have a lot of henchmen to choose from. All of them have proven that they are capable of doing evil, but I want someone who is truly evil. What about Bob? I heard he robbed a bank, acquired a large amount of money, and made a bunch of townspeople ill.\" Did Bob intentionally harm the health of the townspeople?\nOptions:\n- Yes\n- No",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "No",
+    "should_contain": [
+      "No"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a short story (involving moral, intentional, or counterfactual analysis), determine how a typical person would answer a causal question about the story.",
+    "side_effects": []
+  }
+}

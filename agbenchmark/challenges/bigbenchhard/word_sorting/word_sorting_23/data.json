@@ -1,0 +1,25 @@
+{
+  "name": "word_sorting_23",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Sort the following words alphabetically: List: shreveport gamut berg multiplexor bluish puerto subliminal",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "berg bluish gamut multiplexor puerto shreveport subliminal",
+    "should_contain": [
+      "berg bluish gamut multiplexor puerto shreveport subliminal"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a list of words, sort them lexicographically.",
+    "side_effects": []
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "snarks_92",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Which statement is sarcastic?\nOptions:\n(A) Bought the stock at $10.50 and sold at $100. Such profits being made\n(B) Bought the stock at $1050 and sold at $100. Such profits being made",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "(B)",
+    "should_contain": [
+      "(B)"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given two nearly-identical sentences, determine which one is sarcastic.",
+    "side_effects": []
+  }
+}

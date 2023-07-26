@@ -1,0 +1,25 @@
+{
+  "name": "temporal_sequences_103",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Today, Emily went to the dance studio. Between what times could they have gone?\nWe know that:\nEmily woke up at 5am.\nThomas saw Emily reading at the library from 5am to 7am.\nTiffany saw Emily walking towards the Statue of Liberty from 7am to 11am.\nJohn saw Emily playing tennis at the tennis court from 11am to 12pm.\nSean saw Emily taking photos near the Eiffel Tower from 12pm to 8pm.\nJason saw Emily waiting at the train station from 9pm to 10pm.\nThe dance studio was closed after 10pm.\nBetween what times could Emily have gone to the dance studio?\nOptions:\n(A) 5am to 7am\n(B) 8pm to 9pm\n(C) 9pm to 10pm\n(D) 11am to 12pm",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "(B)",
+    "should_contain": [
+      "(B)"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a series of events and activities a person has completed in the course of a day, determine what time, during the day, they might have been free to perform another activity.",
+    "side_effects": []
+  }
+}

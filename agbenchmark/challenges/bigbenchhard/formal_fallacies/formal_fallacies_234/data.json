@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_234",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"It is not always easy to see who is related to whom -- and in which ways. The following argument pertains to this question: Whoever is not a classmate of Alvin is a schoolmate of Wilburn. Whoever is not a son of Charles is however a stepbrother of Ivan or a schoolmate of Wilburn. Nobody is neither a classmate of Alvin nor a stepbrother of Ivan. It follows that whoever is not a classmate of Alvin is a son of Charles.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "invalid",
+    "should_contain": [
+      "invalid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

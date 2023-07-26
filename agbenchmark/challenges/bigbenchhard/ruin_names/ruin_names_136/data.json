@@ -1,0 +1,25 @@
+{
+  "name": "ruin_names_136",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Which of the following is a humorous edit of this artist or movie name: 'schindler's list'?\nOptions:\n(A) schindler's lift\n(B) schindler's list\n(C) schindlerm's list\n(D) schindler's liit",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "(A)",
+    "should_contain": [
+      "(A)"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given an artist, band, or movie name, identify a one-character edit to the name that changes the meaning of the input and makes it humorous.",
+    "side_effects": []
+  }
+}

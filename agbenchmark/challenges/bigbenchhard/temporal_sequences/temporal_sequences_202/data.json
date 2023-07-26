@@ -1,0 +1,25 @@
+{
+  "name": "temporal_sequences_202",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Today, Kimberly went to the construction site. Between what times could they have gone?\nWe know that:\nKimberly woke up at 6am.\nHannah saw Kimberly buying cookies at a bakery from 7am to 8am.\nThomas saw Kimberly fixing their computer at the electronic store from 8am to 10am.\nJohn saw Kimberly buying a phone at the electronics store from 10am to 11am.\nDavid saw Kimberly playing tennis at the tennis court from 11am to 2pm.\nMark saw Kimberly watching a movie at the theater from 2pm to 3pm.\nThe construction site was closed after 3pm.\nBetween what times could Kimberly have gone to the construction site?\nOptions:\n(A) 6am to 7am\n(B) 8am to 10am\n(C) 10am to 11am\n(D) 11am to 2pm",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "(A)",
+    "should_contain": [
+      "(A)"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a series of events and activities a person has completed in the course of a day, determine what time, during the day, they might have been free to perform another activity.",
+    "side_effects": []
+  }
+}

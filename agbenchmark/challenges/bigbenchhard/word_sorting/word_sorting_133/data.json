@@ -1,0 +1,25 @@
+{
+  "name": "word_sorting_133",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Sort the following words alphabetically: List: confrontation quantitative proserpine proofread daddy hirsute",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "confrontation daddy hirsute proofread proserpine quantitative",
+    "should_contain": [
+      "confrontation daddy hirsute proofread proserpine quantitative"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a list of words, sort them lexicographically.",
+    "side_effects": []
+  }
+}

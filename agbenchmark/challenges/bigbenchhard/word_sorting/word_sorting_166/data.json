@@ -1,0 +1,25 @@
+{
+  "name": "word_sorting_166",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Sort the following words alphabetically: List: catawba almagest transfusable milt photolysis limpid gnome archenemy sagging councilwomen decrement jungian",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "almagest archenemy catawba councilwomen decrement gnome jungian limpid milt photolysis sagging transfusable",
+    "should_contain": [
+      "almagest archenemy catawba councilwomen decrement gnome jungian limpid milt photolysis sagging transfusable"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a list of words, sort them lexicographically.",
+    "side_effects": []
+  }
+}

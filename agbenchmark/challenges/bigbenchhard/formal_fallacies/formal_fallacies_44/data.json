@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_44",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"Here comes a perfectly valid argument: To begin with, whatever is both an ingredient of Immense Mascara and an ingredient of I Adore You is an ingredient of Crawford's Wine or an ingredient of Bioglitz Color 9N.moreover, being an ingredient of lip2cheek is necessary for being an ingredient of Bioglitz Color 9N. Finally, everything that is an ingredient of Crawford's Wine is an ingredient of lip2cheek, too. Therefore, whatever is an ingredient of Immense Mascara and an ingredient of I Adore You is also an ingredient of lip2cheek.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "valid",
+    "should_contain": [
+      "valid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

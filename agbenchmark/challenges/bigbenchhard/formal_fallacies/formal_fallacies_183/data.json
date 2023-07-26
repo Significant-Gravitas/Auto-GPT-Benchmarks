@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_183",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"Consumer research aims at understanding whether users of some products also tend to consume other ones, or not. The following argument seeks to clarify some such relations: To begin with, it is false that Loren is an infrequent user of Olay soap. Moreover, Loren is not a frequent consumer of Garnier shampoo. Finally, every regular consumer of Tom's of Maine soap is a frequent consumer of Garnier shampoo or an infrequent user of Olay soap. It follows that Loren is not a regular consumer of Tom's of Maine soap.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "valid",
+    "should_contain": [
+      "valid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

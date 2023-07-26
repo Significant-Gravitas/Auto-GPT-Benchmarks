@@ -1,0 +1,25 @@
+{
+  "name": "word_sorting_74",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Sort the following words alphabetically: List: murk pvc singlet yeats muslim coachmen clergymen companion gazpacho embark pristine granular hobble fatten allot too niggle chauncey threefold coddington",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "allot chauncey clergymen coachmen coddington companion embark fatten gazpacho granular hobble murk muslim niggle pristine pvc singlet threefold too yeats",
+    "should_contain": [
+      "allot chauncey clergymen coachmen coddington companion embark fatten gazpacho granular hobble murk muslim niggle pristine pvc singlet threefold too yeats"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a list of words, sort them lexicographically.",
+    "side_effects": []
+  }
+}

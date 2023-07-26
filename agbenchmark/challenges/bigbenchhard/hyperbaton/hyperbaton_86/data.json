@@ -1,0 +1,25 @@
+{
+  "name": "hyperbaton_86",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Which sentence has the correct adjective order:\nOptions:\n(A) enormous pyramidal white Indonesian glass smoking cat\n(B) pyramidal Indonesian enormous smoking white glass cat",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "(A)",
+    "should_contain": [
+      "(A)"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

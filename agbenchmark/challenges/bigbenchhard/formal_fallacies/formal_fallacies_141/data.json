@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_141",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"Here comes a perfectly valid argument: First, everything that is both an ingredient of DAGGER TATTOO LINER and an ingredient of AMANDE MILK VEIL is not an ingredient of All Wrapped Up. Second, being an ingredient of All Wrapped Up is necessary for being an ingredient of Gloss cuivre nacre. Hence, whatever is not an ingredient of DAGGER TATTOO LINER and not an ingredient of AMANDE MILK VEIL is however an ingredient of Gloss cuivre nacre.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "invalid",
+    "should_contain": [
+      "invalid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

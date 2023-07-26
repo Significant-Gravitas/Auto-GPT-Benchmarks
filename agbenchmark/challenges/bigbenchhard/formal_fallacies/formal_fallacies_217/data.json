@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_217",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"Here comes a perfectly valid argument: First premise: Every schoolmate of Barton is a son of Melvin. Second premise: Every half-brother of Todd is a son of Melvin. Third premise: Whoever is neither a half-brother of Darrin nor a schoolmate of Phillip is a half-brother of Todd or a schoolmate of Barton.so, necessarily, whoever is not a son of Melvin is however a half-brother of Darrin or a schoolmate of Phillip.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "valid",
+    "should_contain": [
+      "valid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

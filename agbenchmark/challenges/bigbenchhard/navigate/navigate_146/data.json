@@ -1,0 +1,25 @@
+{
+  "name": "navigate_146",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: If you follow these instructions, do you return to the starting point? Turn right. Turn around. Take 2 steps. Take 6 steps. Take 4 steps.\nOptions:\n- Yes\n- No",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "No",
+    "should_contain": [
+      "No"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a series of navigation steps to an agent, determine whether the agent would end up back at its initial starting point.",
+    "side_effects": []
+  }
+}

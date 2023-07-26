@@ -1,0 +1,25 @@
+{
+  "name": "logical_deduction_three_objects_109",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: The following paragraphs each describe a set of three objects arranged in a fixed order. The statements are logically consistent within each paragraph. On a branch, there are three birds: a robin, a raven, and a quail. The quail is to the left of the robin. The robin is the second from the left.\nOptions:\n(A) The robin is the leftmost\n(B) The raven is the leftmost\n(C) The quail is the leftmost",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "(C)",
+    "should_contain": [
+      "(C)"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

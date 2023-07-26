@@ -1,0 +1,25 @@
+{
+  "name": "causal_judgement_116",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: How would a typical person answer each of the following questions about causation?\nAlex is playing a board game. Every turn in the game, you simultaneously roll two six-sided dice and spin a spinner. Alex will either win or lose the game on his next turn. Alex will only win the game if the total of dice roll is greater than 2 or the spinner lands on green. It is very likely that he will roll higher than 2. Normally, the spinner does land on green. Alex rolls his dice and spins the spinner at exactly the same time. He rolls a 12, so just as expected, he rolled greater than 2, and the spinner lands on green. Alex wins the game. Did Alex spinning result cause him to win the game?\nOptions:\n- Yes\n- No",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "Yes",
+    "should_contain": [
+      "Yes"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a short story (involving moral, intentional, or counterfactual analysis), determine how a typical person would answer a causal question about the story.",
+    "side_effects": []
+  }
+}

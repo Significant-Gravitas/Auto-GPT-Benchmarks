@@ -1,0 +1,25 @@
+{
+  "name": "word_sorting_195",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Sort the following words alphabetically: List: solvate nat usable kajar downey vision detest aitken barycentric",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "aitken barycentric detest downey kajar nat solvate usable vision",
+    "should_contain": [
+      "aitken barycentric detest downey kajar nat solvate usable vision"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a list of words, sort them lexicographically.",
+    "side_effects": []
+  }
+}

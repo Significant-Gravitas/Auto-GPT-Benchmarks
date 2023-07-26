@@ -1,0 +1,25 @@
+{
+  "name": "salient_translation_error_detection_29",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: The following translations from German to English contain a particular error. That error will be one of the following types: Named Entities: An entity (names, places, locations, etc.) is changed to a different entity. Numerical Values: Numerical values (ordinals or cardinals), dates, and/or units are changed. Modifiers or Adjectives: The modifiers and adjectives pertaining to a noun are changed. Negation or Antonyms: Introduce or remove a negation or change comparatives to their antonyms. Facts: Trivial factual errors not pertaining to the above classes are introduced in the translations. Dropped Content: A significant clause in the translation is removed. Please identify that error.  Source: Die Liste der Kulturg\u00fcter in Roggwil TG enth\u00e4lt alle Objekte in der Gemeinde Roggwil im Kanton Thurgau, die gem\u00e4ss der Haager Konvention zum Schutz von Kulturgut bei bewaffneten Konflikten, dem Bundesgesetz vom 20.\nTranslation: The list of cultural assets in Roggwil TG contains all objects in the municipality of Roggwil in the canton of Thurgau, which, in accordance with the Prague Convention for the Protection of Cultural Property in the event of armed conflict, are protected by the Federal Act of 20 May 1898.\nThe translation contains an error pertaining to\nOptions:\n(A) Modifiers or Adjectives\n(B) Numerical Values\n(C) Negation or Antonyms\n(D) Named Entities\n(E) Dropped Content\n(F) Facts",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "(D)",
+    "should_contain": [
+      "(D)"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a source sentence written in German and its translation in English, determine the type of translation error that the translated sentence contains.",
+    "side_effects": []
+  }
+}

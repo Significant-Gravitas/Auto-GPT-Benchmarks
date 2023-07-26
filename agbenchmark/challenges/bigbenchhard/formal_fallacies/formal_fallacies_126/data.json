@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_126",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"Here comes a perfectly valid argument: First, every close friend of Krista is not a niece of Gwendolyn or not an ancestor of Terrie. Second, everyone who is a cousin of Laurie is a close friend of Krista, too. We may conclude that no cousin of Laurie is both an ancestor of Terrie and a niece of Gwendolyn.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "valid",
+    "should_contain": [
+      "valid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

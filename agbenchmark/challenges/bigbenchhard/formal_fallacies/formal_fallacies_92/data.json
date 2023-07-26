@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_92",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"Here comes a perfectly valid argument: First premise: Nobody is neither an occasional purchaser of Yardley London soap nor an occasional purchaser of Paul Mitchell soap. Second premise: No owner of a Aveeno shampoo who is an infrequent user of Zest soap is an occasional purchaser of Paul Mitchell soap. So, necessarily, whoever is an owner of a Aveeno shampoo and an infrequent user of Zest soap is also an occasional purchaser of Yardley London soap.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "valid",
+    "should_contain": [
+      "valid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

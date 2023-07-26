@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_168",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"Here comes a perfectly valid argument: No occasional purchaser of Purpose soap is a rare consumer of Bumble and bumble shampoo or an occasional purchaser of Organic Fiji soap. Hence, no occasional purchaser of Organic Fiji soap and no rare consumer of Bumble and bumble shampoo is an occasional purchaser of Purpose soap.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "valid",
+    "should_contain": [
+      "valid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

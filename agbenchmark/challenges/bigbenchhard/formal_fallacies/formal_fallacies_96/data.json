@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_96",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"Here comes a perfectly valid argument: First of all, being an ingredient of Gorgeous is necessary for not being an ingredient of Baked Eyeshadow. Next, something is not an ingredient of Gorgeous and, in addition, not an ingredient of Coverage Duo or not an ingredient of Deternined. Hence, there is something that is an ingredient of Baked Eyeshadow and not both an ingredient of Coverage Duo and an ingredient of Deternined.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "valid",
+    "should_contain": [
+      "valid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

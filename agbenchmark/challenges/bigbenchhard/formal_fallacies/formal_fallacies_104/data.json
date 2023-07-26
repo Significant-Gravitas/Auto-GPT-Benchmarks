@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_104",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"It is not always easy to see who is related to whom -- and in which ways. The following argument pertains to this question: First of all, every stepbrother of Mathew is an ancestor of Derrick. Next, there exists an ancestor of Martin who is not an ancestor of Derrick or not an ancestor of Jose. Plus,being an ancestor of Jose is necessary for being a stepbrother of Mathew. Therefore, somebody is an ancestor of Martin and not a stepbrother of Mathew.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "valid",
+    "should_contain": [
+      "valid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

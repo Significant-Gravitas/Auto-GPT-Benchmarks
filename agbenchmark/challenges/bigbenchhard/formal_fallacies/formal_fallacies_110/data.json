@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_110",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"Here comes a perfectly valid argument: First, no occasional purchaser of Alterna Haircare shampoo and no frequent consumer of Neutrogena soap is a frequent consumer of Natural Bar soap. Second, it is not the case that Krista is a frequent consumer of Natural Bar soap. So, necessarily, Krista is a frequent consumer of Neutrogena soap or an occasional purchaser of Alterna Haircare shampoo.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "invalid",
+    "should_contain": [
+      "invalid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

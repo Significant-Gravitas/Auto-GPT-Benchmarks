@@ -1,0 +1,25 @@
+{
+  "name": "word_sorting_11",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Sort the following words alphabetically: List: scrumptious sidereal thermal yakima siena gorky saxon scottish figural hydroxyl seventeen neapolitan rampage nerve grapple fate plainfield stooge knives allotted",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "allotted fate figural gorky grapple hydroxyl knives neapolitan nerve plainfield rampage saxon scottish scrumptious seventeen sidereal siena stooge thermal yakima",
+    "should_contain": [
+      "allotted fate figural gorky grapple hydroxyl knives neapolitan nerve plainfield rampage saxon scottish scrumptious seventeen sidereal siena stooge thermal yakima"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a list of words, sort them lexicographically.",
+    "side_effects": []
+  }
+}

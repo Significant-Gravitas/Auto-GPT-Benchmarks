@@ -1,0 +1,25 @@
+{
+  "name": "word_sorting_65",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Sort the following words alphabetically: List: voluntary yucca limnology fabulous seventh cube willow kitakyushu sequel senescent bauble length",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "bauble cube fabulous kitakyushu length limnology senescent sequel seventh voluntary willow yucca",
+    "should_contain": [
+      "bauble cube fabulous kitakyushu length limnology senescent sequel seventh voluntary willow yucca"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a list of words, sort them lexicographically.",
+    "side_effects": []
+  }
+}

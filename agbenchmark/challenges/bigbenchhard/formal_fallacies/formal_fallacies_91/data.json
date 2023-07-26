@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_91",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"Some football fans admire various clubs, others love only a single team. But who is a fan of whom precisely? The following argument pertains to this question: First premise: Oliver is not an opponent to FC Vaduz. Second premise: Oliver is not a supporter of FC Viitorul. Third premise: Every supporter of SK Rapid Wien is neither a supporter of FC Viitorul nor an opponent to FC Vaduz. All this entails that it is false that Oliver is a supporter of SK Rapid Wien.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "invalid",
+    "should_contain": [
+      "invalid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "temporal_sequences_131",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Today, Ashley went to the beach. Between what times could they have gone?\nWe know that:\nAshley woke up at 5am.\nMark saw Ashley buying cookies at a bakery from 5am to 7am.\nRichard saw Ashley sitting on a rooftop from 9am to 1pm.\nWilliam saw Ashley walking in the garden from 1pm to 3pm.\nHannah saw Ashley taking photos near the Leaning Tower of Pisa from 3pm to 8pm.\nSarah saw Ashley getting a coffee at the cafe from 8pm to 9pm.\nThe beach was closed after 9pm.\nBetween what times could Ashley have gone to the beach?\nOptions:\n(A) 5am to 7am\n(B) 3pm to 8pm\n(C) 9am to 1pm\n(D) 7am to 9am",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "(D)",
+    "should_contain": [
+      "(D)"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a series of events and activities a person has completed in the course of a day, determine what time, during the day, they might have been free to perform another activity.",
+    "side_effects": []
+  }
+}

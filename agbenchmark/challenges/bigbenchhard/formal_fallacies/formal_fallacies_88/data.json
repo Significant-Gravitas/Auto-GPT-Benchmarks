@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_88",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"It is not always easy to see who is related to whom -- and in which ways. The following argument pertains to this question: First, some classmate of Sherry is not both a half-sister of Peggy and a great-grandmother of Sophie. Second, being a schoolmate of Leonor is sufficient for being a half-sister of Peggy. Third, everyone who is a schoolmate of Leonor is a great-grandmother of Sophie, too. We may conclude that there is somebody who is a classmate of Sherry and not a schoolmate of Leonor.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "valid",
+    "should_contain": [
+      "valid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

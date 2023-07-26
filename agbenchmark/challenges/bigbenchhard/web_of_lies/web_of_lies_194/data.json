@@ -1,0 +1,25 @@
+{
+  "name": "web_of_lies_194",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Question: Raymond lies. Fletcher says Raymond lies. Amberly says Fletcher lies. Shenna says Amberly tells the truth. Dallas says Shenna tells the truth. Does Dallas tell the truth?",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "No",
+    "should_contain": [
+      "No"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Evaluate the truth value of a random Boolean function expressed as a natural-language word problem.",
+    "side_effects": []
+  }
+}

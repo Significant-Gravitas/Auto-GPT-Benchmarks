@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_98",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"Here comes a perfectly valid argument: First, Andres is a member of Paris Saint-Germain. Second, it is false that Andres is a follower of FC Mariupol. Third, whoever is a follower of FC Mariupol and a member of Paris Saint-Germain is also a devotee of FC Arouca.therefore, Andres is not a devotee of FC Arouca.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "invalid",
+    "should_contain": [
+      "invalid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

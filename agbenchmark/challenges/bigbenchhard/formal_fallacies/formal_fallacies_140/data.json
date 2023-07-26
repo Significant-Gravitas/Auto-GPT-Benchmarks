@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_140",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"It is not always easy to see who is related to whom -- and in which ways. The following argument pertains to this question: To start with, no uncle of Arturo is a stepbrother of Edwin or a close friend of Jonathan. Now, every schoolmate of Jason is either a stepbrother of Edwin or a close friend of Jonathan, or both. In consequence, being a schoolmate of Jason is sufficient for not being an uncle of Arturo.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "valid",
+    "should_contain": [
+      "valid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "sports_understanding_10",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Is the following sentence plausible? \"Carson Wentz took to the ice.\"",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "no",
+    "should_contain": [
+      "no"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Determine whether a factitious sentence related to sports is plausible.",
+    "side_effects": []
+  }
+}

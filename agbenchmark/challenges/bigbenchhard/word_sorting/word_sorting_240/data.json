@@ -1,0 +1,25 @@
+{
+  "name": "word_sorting_240",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Sort the following words alphabetically: List: dove rodriguez sonant monaco strap horticulture claret play paschal bizarre valuate colonist baden deplore",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "baden bizarre claret colonist deplore dove horticulture monaco paschal play rodriguez sonant strap valuate",
+    "should_contain": [
+      "baden bizarre claret colonist deplore dove horticulture monaco paschal play rodriguez sonant strap valuate"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a list of words, sort them lexicographically.",
+    "side_effects": []
+  }
+}

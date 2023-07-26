@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_246",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"Here comes a perfectly valid argument: Everyone who is not a frequent consumer of Kiss My Face soap and not a regular user of Redken shampoo is a regular consumer of Bliss soap or an infrequent user of Shiseido shampoo. Being an owner of a Celtic Sea Salt soap is necessary for being a regular consumer of Bliss soap. Being an infrequent user of Shiseido shampoo is sufficient for being an owner of a Celtic Sea Salt soap. We may conclude: Not being an owner of a Celtic Sea Salt soap is sufficient for being a frequent consumer of Kiss My Face soap or not being a regular user of Redken shampoo.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "invalid",
+    "should_contain": [
+      "invalid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

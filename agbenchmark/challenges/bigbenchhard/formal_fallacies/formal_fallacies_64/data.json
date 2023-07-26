@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_64",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"Here comes a perfectly valid argument: First, every fan of FC Lugano is neither a devotee of PFC CSKA Moskva nor an ex-supporter of SV Zulte Waregem. We may conclude: Whoever is none of this: a devotee of PFC CSKA Moskva or ex-supporter of SV Zulte Waregem, is a fan of FC Lugano.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "invalid",
+    "should_contain": [
+      "invalid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "multistep_arithmetic_two_183",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: ((-7 - 1 + 3 * -2) + (0 - 4 + 6 + 1)) =",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "-11",
+    "should_contain": [
+      "-11"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

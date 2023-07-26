@@ -1,0 +1,25 @@
+{
+  "name": "word_sorting_191",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Sort the following words alphabetically: List: foamflower lawful cayenne chandigarh only excursion declassify equanimity aseptic inclement october debauch kruger groupoid scorch dingy alterate",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "alterate aseptic cayenne chandigarh debauch declassify dingy equanimity excursion foamflower groupoid inclement kruger lawful october only scorch",
+    "should_contain": [
+      "alterate aseptic cayenne chandigarh debauch declassify dingy equanimity excursion foamflower groupoid inclement kruger lawful october only scorch"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a list of words, sort them lexicographically.",
+    "side_effects": []
+  }
+}

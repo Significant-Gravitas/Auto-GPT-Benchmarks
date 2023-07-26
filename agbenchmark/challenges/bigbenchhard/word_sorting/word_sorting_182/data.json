@@ -1,0 +1,25 @@
+{
+  "name": "word_sorting_182",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Sort the following words alphabetically: List: peaceable residue sulfanilamide kingsley eft caliber headboard stamp phillip upholster irishman lobby nary gastrointestinal fragile faulkner capricious ouzo phylum",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "caliber capricious eft faulkner fragile gastrointestinal headboard irishman kingsley lobby nary ouzo peaceable phillip phylum residue stamp sulfanilamide upholster",
+    "should_contain": [
+      "caliber capricious eft faulkner fragile gastrointestinal headboard irishman kingsley lobby nary ouzo peaceable phillip phylum residue stamp sulfanilamide upholster"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a list of words, sort them lexicographically.",
+    "side_effects": []
+  }
+}

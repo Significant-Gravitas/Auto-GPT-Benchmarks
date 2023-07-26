@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_31",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"Here comes a perfectly valid argument: To start with, no stepbrother of Bryan is both a nephew of Wilburn and a son of Howard. Now, whoever is not a son of Howard is a son of Adrian. Moreover, nobody is neither a nephew of Wilburn nor a son of Adrian. Hence, everyone who is a stepbrother of Bryan is a son of Adrian, too.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "valid",
+    "should_contain": [
+      "valid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_108",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"Here comes a perfectly valid argument: First premise: Being an ancestor of Ana is sufficient for being a sister of Margie. Second premise: Every schoolmate of Guadalupe is an ancestor of Ana or an aunt of Peggy or a cousin of Diane. Third premise: Everyone who is an aunt of Peggy is a sister of Margie, too. Hence, to be a sister of Margie or a cousin of Diane is necessary for being a schoolmate of Guadalupe.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "valid",
+    "should_contain": [
+      "valid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

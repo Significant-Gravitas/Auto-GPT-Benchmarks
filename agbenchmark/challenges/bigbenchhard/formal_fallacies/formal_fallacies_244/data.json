@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_244",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"Here comes a perfectly valid argument: To start with, sodium Bromate is not an ingredient of Gel Laquer Debutant. Now, whatever is an ingredient of Gel Laquer Debutant is not an ingredient of Full-On Lipstick. We may conclude: Sodium Bromate is not an ingredient of Full-On Lipstick.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "invalid",
+    "should_contain": [
+      "invalid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

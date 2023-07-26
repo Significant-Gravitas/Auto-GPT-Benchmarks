@@ -1,0 +1,25 @@
+{
+  "name": "word_sorting_14",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Sort the following words alphabetically: List: crowfoot scrupulous campfire contrast purgatory",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "campfire contrast crowfoot purgatory scrupulous",
+    "should_contain": [
+      "campfire contrast crowfoot purgatory scrupulous"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a list of words, sort them lexicographically.",
+    "side_effects": []
+  }
+}

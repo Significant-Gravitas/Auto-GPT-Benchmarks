@@ -1,0 +1,25 @@
+{
+  "name": "movie_recommendation_20",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Find a movie similar to The Shawshank Redemption, Forrest Gump, Dances with Wolves, Mr Holland's Opus:\nOptions:\n(A) PK\n(B) The Great Gatsby\n(C) Philadelphia\n(D) Casper Meets Wendy",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "(C)",
+    "should_contain": [
+      "(C)"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a list of movies a user might have watched and liked, recommend a new, relevant movie to the user out of the four potential choices user might have.",
+    "side_effects": []
+  }
+}

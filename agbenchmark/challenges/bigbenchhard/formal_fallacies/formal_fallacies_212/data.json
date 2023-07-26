@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_212",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"Here comes a perfectly valid argument: Not being an ingredient of Eye Shadow (Gold) is sufficient for not being an ingredient of real fit lipstick 9. Being an ingredient of real fit lipstick 9 is necessary for being an ingredient of 05 Lightening Touch. Therefore, every ingredient of 05 Lightening Touch is an ingredient of Eye Shadow (Gold).\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "valid",
+    "should_contain": [
+      "valid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

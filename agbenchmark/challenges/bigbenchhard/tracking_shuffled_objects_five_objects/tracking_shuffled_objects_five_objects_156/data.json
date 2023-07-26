@@ -1,0 +1,25 @@
+{
+  "name": "tracking_shuffled_objects_five_objects_156",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Alice, Bob, Claire, Dave, and Eve are playing a game. At the start of the game, they are each holding a ball: Alice has a blue ball, Bob has a brown ball, Claire has a green ball, Dave has a white ball, and Eve has a red ball.\nAs the game progresses, pairs of players trade balls. First, Bob and Claire swap balls. Then, Dave and Eve swap balls. Then, Alice and Eve swap balls. Then, Dave and Claire swap balls. Finally, Bob and Dave swap balls. At the end of the game, Claire has the\nOptions:\n(A) blue ball\n(B) brown ball\n(C) green ball\n(D) white ball\n(E) red ball",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "(E)",
+    "should_contain": [
+      "(E)"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

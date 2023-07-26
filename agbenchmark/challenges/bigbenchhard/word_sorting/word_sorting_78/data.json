@@ -1,0 +1,25 @@
+{
+  "name": "word_sorting_78",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Sort the following words alphabetically: List: dew betelgeuse inexplainable snazzy tao stain meaty blue trail wash grossman lyre caudal epoch trailside char cyanide",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "betelgeuse blue caudal char cyanide dew epoch grossman inexplainable lyre meaty snazzy stain tao trail trailside wash",
+    "should_contain": [
+      "betelgeuse blue caudal char cyanide dew epoch grossman inexplainable lyre meaty snazzy stain tao trail trailside wash"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a list of words, sort them lexicographically.",
+    "side_effects": []
+  }
+}

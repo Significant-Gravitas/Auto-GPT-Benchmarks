@@ -1,0 +1,25 @@
+{
+  "name": "multistep_arithmetic_two_116",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: ((6 * 5 + 0 - -3) * (4 * 5 * 3 + 0)) =",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "1980",
+    "should_contain": [
+      "1980"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

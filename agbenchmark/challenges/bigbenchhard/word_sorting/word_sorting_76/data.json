@@ -1,0 +1,25 @@
+{
+  "name": "word_sorting_76",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Sort the following words alphabetically: List: zinc coriolanus leather easternmost highwaymen scavenge musky cutlet synaptic creak heaven paula astigmat muscular godson boyish",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "astigmat boyish coriolanus creak cutlet easternmost godson heaven highwaymen leather muscular musky paula scavenge synaptic zinc",
+    "should_contain": [
+      "astigmat boyish coriolanus creak cutlet easternmost godson heaven highwaymen leather muscular musky paula scavenge synaptic zinc"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a list of words, sort them lexicographically.",
+    "side_effects": []
+  }
+}

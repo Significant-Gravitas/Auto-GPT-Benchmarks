@@ -1,0 +1,25 @@
+{
+  "name": "word_sorting_94",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Sort the following words alphabetically: List: quench autocracy lodge exploitation custody ventricle annuity bruno thunderclap militant somatic dare acquisitive",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "acquisitive annuity autocracy bruno custody dare exploitation lodge militant quench somatic thunderclap ventricle",
+    "should_contain": [
+      "acquisitive annuity autocracy bruno custody dare exploitation lodge militant quench somatic thunderclap ventricle"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a list of words, sort them lexicographically.",
+    "side_effects": []
+  }
+}

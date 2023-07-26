@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_37",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"It is not always easy to see who is related to whom -- and in which ways. The following argument pertains to this question: First, whoever is an uncle of Owen is not a nephew of Gene. Second, whoever is both a nephew of Ignacio and a brother of David is a schoolmate of Steve or an uncle of Owen.third, everyone who is a schoolmate of Steve is a nephew of Gene, too. We may conclude: Every brother of David who is a nephew of Ignacio is not a nephew of Gene.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "invalid",
+    "should_contain": [
+      "invalid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "multistep_arithmetic_two_245",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: ((-1 + 2 - 9 + 0) * (0 - -2 + -6 - 2)) =",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "48",
+    "should_contain": [
+      "48"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

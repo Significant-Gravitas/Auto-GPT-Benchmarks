@@ -1,0 +1,25 @@
+{
+  "name": "snarks_172",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Which statement is sarcastic?\nOptions:\n(A) Good thing you can boil impurities out of water\n(B) Good thing you can boil Uranium out of water",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "(B)",
+    "should_contain": [
+      "(B)"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given two nearly-identical sentences, determine which one is sarcastic.",
+    "side_effects": []
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_175",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"It is not always easy to grasp who is consuming which products. The following argument pertains to this question: First of all, every regular consumer of Bumble and bumble shampoo is a rare consumer of Vaseline soap. Next, whoever is not an occasional purchaser of Organic Fiji soap is a regular consumer of Bumble and bumble shampoo. From this follows: Being a rare consumer of Vaseline soap is necessary for not being an occasional purchaser of Organic Fiji soap.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "valid",
+    "should_contain": [
+      "valid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_28",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"It is not always easy to see which chemicals are contained in our consumer products. The following argument pertains to this question: To begin with, being an ingredient of Aquablush is sufficient for being an ingredient of NARS Duo Eyeshadow. Moreover, whatever is neither an ingredient of Stop and Stare nor an ingredient of A.D LIPSTICK CHIC is an ingredient of Lash Tinsel Mascara or an ingredient of Aquablush.finally, everything that is an ingredient of Lash Tinsel Mascara is an ingredient of NARS Duo Eyeshadow, too. Therefore, whatever is not an ingredient of NARS Duo Eyeshadow is however an ingredient of Stop and Stare or an ingredient of A.D LIPSTICK CHIC.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "valid",
+    "should_contain": [
+      "valid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "logical_deduction_five_objects_115",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: The following paragraphs each describe a set of five objects arranged in a fixed order. The statements are logically consistent within each paragraph. A fruit stand sells five fruits: loquats, peaches, pears, plums, and watermelons. The watermelons are the most expensive. The peaches are more expensive than the loquats. The plums are the second-cheapest. The pears are the third-most expensive.\nOptions:\n(A) The loquats are the cheapest\n(B) The peaches are the cheapest\n(C) The pears are the cheapest\n(D) The plums are the cheapest\n(E) The watermelons are the cheapest",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "(A)",
+    "should_contain": [
+      "(A)"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

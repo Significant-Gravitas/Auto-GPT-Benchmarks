@@ -1,0 +1,25 @@
+{
+  "name": "temporal_sequences_84",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Today, James went to the swimming pool. Between what times could they have gone?\nWe know that:\nJames woke up at 10am.\nRichard saw James taking photos near the Eiffel Tower from 10am to 11am.\nLeslie saw James waiting at the airport from 12pm to 2pm.\nAshley saw James sitting on a rooftop from 2pm to 5pm.\nThomas saw James playing tennis at the tennis court from 5pm to 6pm.\nJennifer saw James walking towards the Statue of Liberty from 6pm to 7pm.\nThe swimming pool was closed after 7pm.\nBetween what times could James have gone to the swimming pool?\nOptions:\n(A) 10am to 11am\n(B) 12pm to 2pm\n(C) 11am to 12pm\n(D) 2pm to 5pm",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "(C)",
+    "should_contain": [
+      "(C)"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a series of events and activities a person has completed in the course of a day, determine what time, during the day, they might have been free to perform another activity.",
+    "side_effects": []
+  }
+}

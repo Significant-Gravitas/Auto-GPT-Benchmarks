@@ -1,0 +1,25 @@
+{
+  "name": "word_sorting_24",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Sort the following words alphabetically: List: daffy hypothesis croupier dockyard household peccary triode minstrelsy nepotism sawtimber mantic info confess serenade summate silver duty loam mandate",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "confess croupier daffy dockyard duty household hypothesis info loam mandate mantic minstrelsy nepotism peccary sawtimber serenade silver summate triode",
+    "should_contain": [
+      "confess croupier daffy dockyard duty household hypothesis info loam mandate mantic minstrelsy nepotism peccary sawtimber serenade silver summate triode"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a list of words, sort them lexicographically.",
+    "side_effects": []
+  }
+}

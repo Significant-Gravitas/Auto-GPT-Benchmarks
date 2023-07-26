@@ -1,0 +1,25 @@
+{
+  "name": "ruin_names_79",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Which of the following is a humorous edit of this artist or movie name: 'blade runner'?\nOptions:\n(A) blade runyner\n(B) blade ruiner\n(C) blade runnegr\n(D) bulade runner",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "(B)",
+    "should_contain": [
+      "(B)"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given an artist, band, or movie name, identify a one-character edit to the name that changes the meaning of the input and makes it humorous.",
+    "side_effects": []
+  }
+}

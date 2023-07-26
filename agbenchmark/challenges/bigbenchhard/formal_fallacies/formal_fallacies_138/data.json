@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_138",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"Here comes a perfectly valid argument: To begin with, being an ex-supporter of Vit\u00f3ria SC is necessary for being an opponent to S\u00f8nderjyskE. Moreover, whoever is neither a backer of PAOK FC nor an ex-supporter of Lyngby BK is a backer of Everton FC or an opponent to S\u00f8nderjyskE.finally, every backer of Everton FC is an ex-supporter of Vit\u00f3ria SC. In consequence, whoever is not an ex-supporter of Vit\u00f3ria SC is however a backer of PAOK FC or an ex-supporter of Lyngby BK.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "valid",
+    "should_contain": [
+      "valid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

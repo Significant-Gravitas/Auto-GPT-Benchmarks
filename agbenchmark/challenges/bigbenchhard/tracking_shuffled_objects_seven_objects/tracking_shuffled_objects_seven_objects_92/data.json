@@ -1,0 +1,25 @@
+{
+  "name": "tracking_shuffled_objects_seven_objects_92",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Alice, Bob, Claire, Dave, Eve, Fred, and Gertrude are on the same team in a soccer match. At the start of the match, they are each assigned to a position: Alice is playing fullback, Bob is playing benchwarmer, Claire is playing right midfielder, Dave is playing striker, Eve is playing left winger, Fred is playing goalkeeper, and Gertrude is playing cheerleader.\nAs the game progresses, pairs of players occasionally swap positions. First, Eve and Bob trade positions. Then, Fred and Claire trade positions. Then, Bob and Fred trade positions. Then, Bob and Claire trade positions. Then, Eve and Alice trade positions. Then, Dave and Gertrude trade positions. Finally, Claire and Gertrude trade positions. At the end of the match, Dave is playing\nOptions:\n(A) fullback\n(B) benchwarmer\n(C) right midfielder\n(D) striker\n(E) left winger\n(F) goalkeeper\n(G) cheerleader",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "(G)",
+    "should_contain": [
+      "(G)"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "temporal_sequences_97",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Today, Samantha went to the bakery. Between what times could they have gone?\nWe know that:\nSamantha woke up at 6am.\nSarah saw Samantha walking in the garden from 6am to 11am.\nSean saw Samantha taking photos near the Leaning Tower of Pisa from 12pm to 1pm.\nJason saw Samantha taking photos near the Eiffel Tower from 1pm to 2pm.\nElizabeth saw Samantha walking towards the Statue of Liberty from 2pm to 3pm.\nTiffany saw Samantha buying lunch at the deli from 3pm to 9pm.\nThe bakery was closed after 9pm.\nBetween what times could Samantha have gone to the bakery?\nOptions:\n(A) 1pm to 2pm\n(B) 11am to 12pm\n(C) 3pm to 9pm\n(D) 6am to 11am",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "(B)",
+    "should_contain": [
+      "(B)"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a series of events and activities a person has completed in the course of a day, determine what time, during the day, they might have been free to perform another activity.",
+    "side_effects": []
+  }
+}

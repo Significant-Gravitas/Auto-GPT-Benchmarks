@@ -1,0 +1,25 @@
+{
+  "name": "temporal_sequences_234",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Today, Andrew went to the park. Between what times could they have gone?\nWe know that:\nAndrew woke up at 6am.\nDavid saw Andrew stretching at a yoga studio from 6am to 7am.\nLeslie saw Andrew buying lunch at the deli from 7am to 9am.\nJames saw Andrew waiting at the train station from 9am to 12pm.\nTiffany saw Andrew working at the office from 12pm to 3pm.\nMark saw Andrew waiting at the airport from 3pm to 7pm.\nThe park was closed after 10pm.\nBetween what times could Andrew have gone to the park?\nOptions:\n(A) 6am to 7am\n(B) 9am to 12pm\n(C) 7pm to 10pm\n(D) 7am to 9am",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "(C)",
+    "should_contain": [
+      "(C)"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a series of events and activities a person has completed in the course of a day, determine what time, during the day, they might have been free to perform another activity.",
+    "side_effects": []
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_132",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"Here comes a perfectly valid argument: To start with, something is an ingredient of C-Note Green and not an ingredient of Loose pearls. Now, every ingredient of Blue Taffy Acrylic is an ingredient of Loose pearls. We may conclude: Not every ingredient of C-Note Green is an ingredient of Blue Taffy Acrylic.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "valid",
+    "should_contain": [
+      "valid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

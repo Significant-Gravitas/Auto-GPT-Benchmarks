@@ -1,0 +1,25 @@
+{
+  "name": "snarks_46",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Which statement is sarcastic?\nOptions:\n(A) Every package I get from Amazon is 2 to 3 days late, busted up, doesn't work right, and sometimes not even what I ordered. So disappointed I pay for free shipping with Prime\n(B) Every package I get from Amazon is 2 to 3 days late, busted up, doesn't work right, and sometimes not even what I ordered. So happy I pay for free shipping with Prime",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "(B)",
+    "should_contain": [
+      "(B)"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given two nearly-identical sentences, determine which one is sarcastic.",
+    "side_effects": []
+  }
+}

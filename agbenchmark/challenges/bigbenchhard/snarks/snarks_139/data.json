@@ -1,0 +1,25 @@
+{
+  "name": "snarks_139",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Which statement is sarcastic?\nOptions:\n(A) Thank you stranger on the internet, I won't trust your three word post without any sources over someone offering solid advice claiming to actually be from the country in question\n(B) Thank you stranger on the internet, I will trust your three word post without any sources over someone offering solid advice claiming to actually be from the country in question",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "(B)",
+    "should_contain": [
+      "(B)"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given two nearly-identical sentences, determine which one is sarcastic.",
+    "side_effects": []
+  }
+}

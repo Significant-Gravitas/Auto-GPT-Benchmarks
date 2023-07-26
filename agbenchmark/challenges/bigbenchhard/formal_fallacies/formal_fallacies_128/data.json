@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_128",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"Here comes a perfectly valid argument: First, it is not the case that Retinol is an ingredient of Hello Merlot. Second, everything that is an ingredient of Neon Pink is also an ingredient of Hello Merlot and an ingredient of Baked Alaska. All this entails that it is false that Retinol is an ingredient of Neon Pink.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "valid",
+    "should_contain": [
+      "valid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "word_sorting_33",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Sort the following words alphabetically: List: convair frighten citizen scrubby birdseed fateful soothe extensive trillion adonis southeastern stormy judaica trundle suppose contaminant",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "adonis birdseed citizen contaminant convair extensive fateful frighten judaica scrubby soothe southeastern stormy suppose trillion trundle",
+    "should_contain": [
+      "adonis birdseed citizen contaminant convair extensive fateful frighten judaica scrubby soothe southeastern stormy suppose trillion trundle"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a list of words, sort them lexicographically.",
+    "side_effects": []
+  }
+}

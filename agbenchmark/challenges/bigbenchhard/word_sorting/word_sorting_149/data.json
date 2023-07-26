@@ -1,0 +1,25 @@
+{
+  "name": "word_sorting_149",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Sort the following words alphabetically: List: choreograph retardant multifarious pro carbonic equestrian wishful wigwam countersink libya authenticate metal have corvallis nitric petition obfuscatory",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "authenticate carbonic choreograph corvallis countersink equestrian have libya metal multifarious nitric obfuscatory petition pro retardant wigwam wishful",
+    "should_contain": [
+      "authenticate carbonic choreograph corvallis countersink equestrian have libya metal multifarious nitric obfuscatory petition pro retardant wigwam wishful"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a list of words, sort them lexicographically.",
+    "side_effects": []
+  }
+}

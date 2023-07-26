@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_149",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"Is Titanium oxide an ingredient of my washing power? Which chemicals does my perfume contain? It is really difficult to keep track of all chemicals one is regularly exposed to. The following argument seeks to clarify some such relations: To start with, some ingredient of The Eraser is an ingredient of Lip pencil. Now, everything that is not both an ingredient of Full-On Lipstick and an ingredient of Lollibalm is however an ingredient of Lip pencil. We may conclude: Some ingredient of The Eraser is not both an ingredient of Full-On Lipstick and an ingredient of Lollibalm.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "invalid",
+    "should_contain": [
+      "invalid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

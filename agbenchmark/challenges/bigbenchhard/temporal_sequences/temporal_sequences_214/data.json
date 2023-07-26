@@ -1,0 +1,25 @@
+{
+  "name": "temporal_sequences_214",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Today, Jason went to the physics classroom. Between what times could they have gone?\nWe know that:\nJason woke up at 5am.\nLeslie saw Jason buying a bike at the bike shop from 5am to 9am.\nJames saw Jason stretching at a yoga studio from 1pm to 8pm.\nWilliam saw Jason taking photos near the Leaning Tower of Pisa from 8pm to 9pm.\nRichard saw Jason getting a coffee at the cafe from 9pm to 10pm.\nThe physics classroom was closed after 10pm.\nBetween what times could Jason have gone to the physics classroom?\nOptions:\n(A) 5am to 9am\n(B) 9am to 1pm\n(C) 1pm to 8pm\n(D) 8pm to 9pm",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "(B)",
+    "should_contain": [
+      "(B)"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a series of events and activities a person has completed in the course of a day, determine what time, during the day, they might have been free to perform another activity.",
+    "side_effects": []
+  }
+}

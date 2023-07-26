@@ -1,0 +1,25 @@
+{
+  "name": "geometric_shapes_17",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: This SVG path element <path d=\"M 55.55,71.33 L 51.11,64.45 L 42.82,59.85 L 51.86,58.44 M 51.86,58.44 L 52.09,49.14 M 52.09,49.14 L 58.23,50.71 M 58.23,50.71 L 62.67,57.59 M 62.67,57.59 L 62.43,66.89 M 62.43,66.89 L 55.55,71.33\"/> draws a\nOptions:\n(A) circle\n(B) heptagon\n(C) hexagon\n(D) kite\n(E) line\n(F) octagon\n(G) pentagon\n(H) rectangle\n(I) sector\n(J) triangle",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "(F)",
+    "should_contain": [
+      "(F)"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a full SVG path element containing multiple commands, determine the geometric shape that would be generated if one were to execute the full path element.",
+    "side_effects": []
+  }
+}

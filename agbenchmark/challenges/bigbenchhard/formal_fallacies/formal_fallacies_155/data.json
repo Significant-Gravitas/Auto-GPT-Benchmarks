@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_155",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"Consumer research aims at understanding whether users of some products also tend to consume other ones, or not. The following argument seeks to clarify some such relations: First of all, being a loyal buyer of Clairol shampoo is necessary for being a loyal buyer of Bed Head shampoo. Next, being a loyal buyer of Bed Head shampoo is sufficient for being an occasional purchaser of Infusium shampoo. Plus,whoever is loyal buyer of Bed Head shampoo is at least one of these: an occasional purchaser of Infusium shampoo, a loyal buyer of Cetaphil soap or a loyal buyer of Clairol shampoo. All this entails that everyone who is a loyal buyer of Bed Head shampoo is a loyal buyer of Cetaphil soap, too.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "invalid",
+    "should_contain": [
+      "invalid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

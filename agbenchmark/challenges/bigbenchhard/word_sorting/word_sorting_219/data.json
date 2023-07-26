@@ -1,0 +1,25 @@
+{
+  "name": "word_sorting_219",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Sort the following words alphabetically: List: portsmouth impalpable portrait gouda brainy succumb fatuous hoof lisbon erudite malaria enigma isaacson cony stronghold servomechanism",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "brainy cony enigma erudite fatuous gouda hoof impalpable isaacson lisbon malaria portrait portsmouth servomechanism stronghold succumb",
+    "should_contain": [
+      "brainy cony enigma erudite fatuous gouda hoof impalpable isaacson lisbon malaria portrait portsmouth servomechanism stronghold succumb"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a list of words, sort them lexicographically.",
+    "side_effects": []
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_83",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"It is not always easy to grasp who is consuming which products. The following argument pertains to this question: First, Jonathan is a regular consumer of Eucalyptus soap. Second, being an owner of a Lever soap or not being a regular consumer of Eucalyptus soap is sufficient for being a frequent consumer of Herbal Essences shampoo. We may conclude that Jonathan is not a frequent consumer of Herbal Essences shampoo.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "invalid",
+    "should_contain": [
+      "invalid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

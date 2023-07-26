@@ -1,0 +1,25 @@
+{
+  "name": "word_sorting_125",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Sort the following words alphabetically: List: seashore haughty",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "haughty seashore",
+    "should_contain": [
+      "haughty seashore"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a list of words, sort them lexicographically.",
+    "side_effects": []
+  }
+}

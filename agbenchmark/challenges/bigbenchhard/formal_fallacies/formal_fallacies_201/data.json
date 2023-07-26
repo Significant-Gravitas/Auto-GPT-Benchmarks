@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_201",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"Some football fans admire various clubs, others love only a single team. But who is a fan of whom precisely? The following argument pertains to this question: Every devotee of AEK Larnaca FC is a supporter of Club Atl\u00e9tico de Madrid and a member of RSC Anderlecht. Whoever is not a supporter of Club Atl\u00e9tico de Madrid is an opponent to Fenerbah\u00e7e SK. Whoever is not a member of RSC Anderlecht is an opponent to Fenerbah\u00e7e SK. We may conclude: Being an opponent to Fenerbah\u00e7e SK is necessary for being a devotee of AEK Larnaca FC.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "invalid",
+    "should_contain": [
+      "invalid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

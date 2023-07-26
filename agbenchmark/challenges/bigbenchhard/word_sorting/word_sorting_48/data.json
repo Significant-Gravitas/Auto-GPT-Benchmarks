@@ -1,0 +1,25 @@
+{
+  "name": "word_sorting_48",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Sort the following words alphabetically: List: keller frame hippodrome bungle yolk anheuser prompt together spidery chaperon miterwort",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "anheuser bungle chaperon frame hippodrome keller miterwort prompt spidery together yolk",
+    "should_contain": [
+      "anheuser bungle chaperon frame hippodrome keller miterwort prompt spidery together yolk"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a list of words, sort them lexicographically.",
+    "side_effects": []
+  }
+}

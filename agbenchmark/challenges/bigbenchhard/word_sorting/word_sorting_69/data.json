@@ -1,0 +1,25 @@
+{
+  "name": "word_sorting_69",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Sort the following words alphabetically: List: berniece bremsstrahlung hoe avalanche showroom goff dactylic befriend hurry housekeep lanka gilbertson posterior flick bong hereafter metazoan",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "avalanche befriend berniece bong bremsstrahlung dactylic flick gilbertson goff hereafter hoe housekeep hurry lanka metazoan posterior showroom",
+    "should_contain": [
+      "avalanche befriend berniece bong bremsstrahlung dactylic flick gilbertson goff hereafter hoe housekeep hurry lanka metazoan posterior showroom"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a list of words, sort them lexicographically.",
+    "side_effects": []
+  }
+}

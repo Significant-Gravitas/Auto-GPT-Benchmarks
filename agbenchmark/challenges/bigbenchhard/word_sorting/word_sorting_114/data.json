@@ -1,0 +1,25 @@
+{
+  "name": "word_sorting_114",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Sort the following words alphabetically: List: bijective song guidebook briton irrevocable eigenspace reversible floruit dive jacket dim glycogen pinkish gaucherie concord",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "bijective briton concord dim dive eigenspace floruit gaucherie glycogen guidebook irrevocable jacket pinkish reversible song",
+    "should_contain": [
+      "bijective briton concord dim dive eigenspace floruit gaucherie glycogen guidebook irrevocable jacket pinkish reversible song"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a list of words, sort them lexicographically.",
+    "side_effects": []
+  }
+}

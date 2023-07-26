@@ -1,0 +1,25 @@
+{
+  "name": "word_sorting_164",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Sort the following words alphabetically: List: contrariety hoop muong dimorphic crochet forthwith hurty titrate prodigy polytope guaranteeing atavism emanate iniquity grind more katie",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "atavism contrariety crochet dimorphic emanate forthwith grind guaranteeing hoop hurty iniquity katie more muong polytope prodigy titrate",
+    "should_contain": [
+      "atavism contrariety crochet dimorphic emanate forthwith grind guaranteeing hoop hurty iniquity katie more muong polytope prodigy titrate"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a list of words, sort them lexicographically.",
+    "side_effects": []
+  }
+}

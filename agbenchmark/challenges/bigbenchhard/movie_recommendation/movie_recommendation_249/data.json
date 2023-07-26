@@ -1,0 +1,25 @@
+{
+  "name": "movie_recommendation_249",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Find a movie similar to Schindler's List, The Shawshank Redemption, Terminator 2 Judgment Day, The Lion King:\nOptions:\n(A) The Red Turtle\n(B) Tarzan\n(C) Nothing But Trouble\n(D) Aladdin",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "(D)",
+    "should_contain": [
+      "(D)"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a list of movies a user might have watched and liked, recommend a new, relevant movie to the user out of the four potential choices user might have.",
+    "side_effects": []
+  }
+}

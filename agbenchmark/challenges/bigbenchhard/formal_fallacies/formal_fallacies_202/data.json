@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_202",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"Here comes a perfectly valid argument: First of all, nobody is neither a classmate of Georgia nor an ancestor of Geraldine. Next, every workmate of Regina is both a classmate of Georgia and a workmate of Carole. Plus,being an ancestor of Geraldine is necessary for not being a workmate of Carole. Therefore, everyone who is a workmate of Regina is an ancestor of Geraldine, too.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "invalid",
+    "should_contain": [
+      "invalid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

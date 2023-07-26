@@ -1,0 +1,25 @@
+{
+  "name": "snarks_38",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Which statement is sarcastic?\nOptions:\n(A) Yeah, he's clearly apathetic to earning minutes based on his lackluster play and the fact that he's grabbing hot dogs at half time..\n(B) Yeah, he's clearly dedicated to earning minutes based on his lackluster play and the fact that he's grabbing hot dogs at half time..",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "(B)",
+    "should_contain": [
+      "(B)"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given two nearly-identical sentences, determine which one is sarcastic.",
+    "side_effects": []
+  }
+}

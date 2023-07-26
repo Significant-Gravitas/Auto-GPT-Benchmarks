@@ -1,0 +1,25 @@
+{
+  "name": "causal_judgement_119",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: How would a typical person answer each of the following questions about causation?\nA machine is set up in such a way that it will short circuit if both the black wire and the red wire touch the battery at the same time. The machine will not short circuit if just one of these wires touches the battery. The machine is designed so that both wires move around inside the machine. The black wire is supposed to touch the battery at certain times as it moves around inside the machine. The red wire is never supposed to touch the battery as it moves around inside the machine. One day, the black wire and the red wire both come in contact with the battery at the exact same time. There is a short circuit. Did the red wire cause the short circuit?\nOptions:\n- Yes\n- No",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "Yes",
+    "should_contain": [
+      "Yes"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a short story (involving moral, intentional, or counterfactual analysis), determine how a typical person would answer a causal question about the story.",
+    "side_effects": []
+  }
+}

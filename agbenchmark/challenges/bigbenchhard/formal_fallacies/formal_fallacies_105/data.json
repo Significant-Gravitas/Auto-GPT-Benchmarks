@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_105",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"It is not always easy to see who is related to whom -- and in which ways. The following argument pertains to this question: To begin with, being a cousin of Sara is sufficient for not being a workmate of Kimberly. Moreover, every cousin of Sara is a workmate of Kimberly or, otherwise, neither a workmate of Kimberly nor a daughter of Valerie. Therefore, no cousin of Sara is a daughter of Valerie.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "valid",
+    "should_contain": [
+      "valid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

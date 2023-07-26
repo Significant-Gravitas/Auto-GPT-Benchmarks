@@ -1,0 +1,25 @@
+{
+  "name": "causal_judgement_45",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: How would a typical person answer each of the following questions about causation?\nLaurie likes GC brand coffee. GC is doing a new promotion for their new coffee flavor where customers can receive a free sample. Customers will receive a free sample if either they have previously purchased coffee beans from GC or they are subscribed to the GC email list. Laurie has previously purchased coffee beans from GC, and she is subscribed to the GC email list. When she hears about the promotion, Laurie checks to see if she is subscribed to the email list, and she sees that she is. So, she does not change her subscription status, and she remains subscribed to the email list. Because customers will receive a free sample if either they have previously purchased coffee beans from GC or they are subscribed to the GC email list, Laurie receives a free sample. Did Laurie receive a free sample because she did not change her subscription status?\nOptions:\n- Yes\n- No",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "Yes",
+    "should_contain": [
+      "Yes"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a short story (involving moral, intentional, or counterfactual analysis), determine how a typical person would answer a causal question about the story.",
+    "side_effects": []
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_220",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"Here comes a perfectly valid argument: To begin with, whatever is not an ingredient of MAVA-WHITE is an ingredient of PRO LONGLASH. Moreover, not being an ingredient of Brow Powder Duo is sufficient for not being an ingredient of PRO LONGLASH. We may conclude that being an ingredient of Brow Powder Duo is necessary for not being an ingredient of MAVA-WHITE.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "valid",
+    "should_contain": [
+      "valid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

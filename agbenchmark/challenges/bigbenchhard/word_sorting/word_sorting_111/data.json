@@ -1,0 +1,25 @@
+{
+  "name": "word_sorting_111",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Sort the following words alphabetically: List: wv habitation panicking schoolmate aerodynamic giacomo nebulous offset vector roosevelt jimmy botanist suburbia padre",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "aerodynamic botanist giacomo habitation jimmy nebulous offset padre panicking roosevelt schoolmate suburbia vector wv",
+    "should_contain": [
+      "aerodynamic botanist giacomo habitation jimmy nebulous offset padre panicking roosevelt schoolmate suburbia vector wv"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a list of words, sort them lexicographically.",
+    "side_effects": []
+  }
+}

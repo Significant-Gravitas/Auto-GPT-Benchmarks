@@ -1,0 +1,25 @@
+{
+  "name": "word_sorting_145",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Sort the following words alphabetically: List: fugue chicanery mountain",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "chicanery fugue mountain",
+    "should_contain": [
+      "chicanery fugue mountain"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a list of words, sort them lexicographically.",
+    "side_effects": []
+  }
+}

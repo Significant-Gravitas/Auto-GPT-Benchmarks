@@ -1,0 +1,25 @@
+{
+  "name": "word_sorting_168",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Sort the following words alphabetically: List: madeira offprint trafficked immemorial subject micro clinic sprue marx va anaheim eaten",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "anaheim clinic eaten immemorial madeira marx micro offprint sprue subject trafficked va",
+    "should_contain": [
+      "anaheim clinic eaten immemorial madeira marx micro offprint sprue subject trafficked va"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a list of words, sort them lexicographically.",
+    "side_effects": []
+  }
+}

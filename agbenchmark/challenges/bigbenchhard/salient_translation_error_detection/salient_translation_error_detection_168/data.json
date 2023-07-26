@@ -1,0 +1,25 @@
+{
+  "name": "salient_translation_error_detection_168",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: The following translations from German to English contain a particular error. That error will be one of the following types: Named Entities: An entity (names, places, locations, etc.) is changed to a different entity. Numerical Values: Numerical values (ordinals or cardinals), dates, and/or units are changed. Modifiers or Adjectives: The modifiers and adjectives pertaining to a noun are changed. Negation or Antonyms: Introduce or remove a negation or change comparatives to their antonyms. Facts: Trivial factual errors not pertaining to the above classes are introduced in the translations. Dropped Content: A significant clause in the translation is removed. Please identify that error.  Source: Dunau, laut Ortstafel Dunau-Lathwehren und auf Landkarten auch als Lathwehren-Dunau bezeichnet, ist eine Ortslage des Stadtteils Lathwehren der Stadt Seelze in der Region Hannover in Niedersachsen.\nTranslation: Dunau, according to the local plaque Dunau-Lathwehren, is a locality of the district of Lathwehren in the city of Seelze in the Hanover region of Lower Saxony.\nThe translation contains an error pertaining to\nOptions:\n(A) Modifiers or Adjectives\n(B) Numerical Values\n(C) Negation or Antonyms\n(D) Named Entities\n(E) Dropped Content\n(F) Facts",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "(E)",
+    "should_contain": [
+      "(E)"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a source sentence written in German and its translation in English, determine the type of translation error that the translated sentence contains.",
+    "side_effects": []
+  }
+}

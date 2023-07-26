@@ -1,0 +1,25 @@
+{
+  "name": "salient_translation_error_detection_41",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: The following translations from German to English contain a particular error. That error will be one of the following types: Named Entities: An entity (names, places, locations, etc.) is changed to a different entity. Numerical Values: Numerical values (ordinals or cardinals), dates, and/or units are changed. Modifiers or Adjectives: The modifiers and adjectives pertaining to a noun are changed. Negation or Antonyms: Introduce or remove a negation or change comparatives to their antonyms. Facts: Trivial factual errors not pertaining to the above classes are introduced in the translations. Dropped Content: A significant clause in the translation is removed. Please identify that error.  Source: Die ehemalige Abtei Chanteuges, das sp\u00e4tere Priorat, steht an der schmalsten Stelle eines von zwei sich gegen\u00fcberliegenden Steilw\u00e4nden eingezw\u00e4ngten schlanken Felssporns, hoch \u00fcber den Fl\u00fcssen Allier und Desges, die ihn umflie\u00dfen und die sich n\u00f6rdlich davon vereinigen.\nTranslation: The former abbey of Chanteuges, later priory, stands at the narrowest point of a slender rock spur, which is encircled by two opposite steep walls, high above the Allier and Desges rivers, which flow around it and unite south of it.\nThe translation contains an error pertaining to\nOptions:\n(A) Modifiers or Adjectives\n(B) Numerical Values\n(C) Negation or Antonyms\n(D) Named Entities\n(E) Dropped Content\n(F) Facts",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "(F)",
+    "should_contain": [
+      "(F)"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a source sentence written in German and its translation in English, determine the type of translation error that the translated sentence contains.",
+    "side_effects": []
+  }
+}

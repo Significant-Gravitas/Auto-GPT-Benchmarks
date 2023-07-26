@@ -1,0 +1,25 @@
+{
+  "name": "logical_deduction_five_objects_90",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: The following paragraphs each describe a set of five objects arranged in a fixed order. The statements are logically consistent within each paragraph. On a shelf, there are five books: a black book, a brown book, a yellow book, an orange book, and a red book. The black book is to the left of the yellow book. The red book is the third from the left. The brown book is the second from the left. The yellow book is to the left of the orange book.\nOptions:\n(A) The black book is the third from the left\n(B) The brown book is the third from the left\n(C) The yellow book is the third from the left\n(D) The orange book is the third from the left\n(E) The red book is the third from the left",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "(E)",
+    "should_contain": [
+      "(E)"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "word_sorting_237",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Sort the following words alphabetically: List: strove hendrickson apostasy jacm indonesia vibrate afloat lanthanide grosbeak scavenge quark chattel conner bechtel melancholy ferment",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "afloat apostasy bechtel chattel conner ferment grosbeak hendrickson indonesia jacm lanthanide melancholy quark scavenge strove vibrate",
+    "should_contain": [
+      "afloat apostasy bechtel chattel conner ferment grosbeak hendrickson indonesia jacm lanthanide melancholy quark scavenge strove vibrate"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a list of words, sort them lexicographically.",
+    "side_effects": []
+  }
+}

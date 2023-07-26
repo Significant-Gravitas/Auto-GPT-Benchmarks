@@ -1,0 +1,25 @@
+{
+  "name": "temporal_sequences_85",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Today, Michael went to the clothing store. Between what times could they have gone?\nWe know that:\nMichael woke up at 5am.\nAndrew saw Michael waiting at the train station from 6am to 1pm.\nSarah saw Michael walking towards the Statue of Liberty from 1pm to 3pm.\nMary saw Michael walking in the garden from 3pm to 6pm.\nLisa saw Michael taking photos near the Eiffel Tower from 6pm to 9pm.\nElizabeth saw Michael fixing their computer at the electronic store from 9pm to 10pm.\nThe clothing store was closed after 10pm.\nBetween what times could Michael have gone to the clothing store?\nOptions:\n(A) 1pm to 3pm\n(B) 9pm to 10pm\n(C) 6am to 1pm\n(D) 5am to 6am",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "(D)",
+    "should_contain": [
+      "(D)"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a series of events and activities a person has completed in the course of a day, determine what time, during the day, they might have been free to perform another activity.",
+    "side_effects": []
+  }
+}

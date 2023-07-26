@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_189",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"Here comes a perfectly valid argument: First premise: Every expert of Real Madrid CF is a fan of F91 Dudelange. Second premise: Being a backer of SCR Altach is sufficient for being an expert of Real Madrid CF. So, necessarily, every backer of SCR Altach is a fan of F91 Dudelange.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "valid",
+    "should_contain": [
+      "valid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

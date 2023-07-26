@@ -1,0 +1,25 @@
+{
+  "name": "word_sorting_83",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Sort the following words alphabetically: List: definite translate aggression arachne lengthy sanford bystander asplenium gneiss southeast",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "aggression arachne asplenium bystander definite gneiss lengthy sanford southeast translate",
+    "should_contain": [
+      "aggression arachne asplenium bystander definite gneiss lengthy sanford southeast translate"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a list of words, sort them lexicographically.",
+    "side_effects": []
+  }
+}

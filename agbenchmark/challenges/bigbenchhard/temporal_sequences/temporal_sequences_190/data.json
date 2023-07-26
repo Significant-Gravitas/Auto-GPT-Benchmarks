@@ -1,0 +1,25 @@
+{
+  "name": "temporal_sequences_190",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Today, Michael went to the football field. Between what times could they have gone?\nWe know that:\nMichael woke up at 5am.\nKimberly saw Michael stretching at a yoga studio from 5am to 7am.\nWilliam saw Michael walking in the garden from 7am to 8am.\nSarah saw Michael fixing their computer at the electronic store from 8am to 10am.\nNancy saw Michael waiting at the airport from 10am to 12pm.\nSamantha saw Michael working out at the gym from 1pm to 9pm.\nThe football field was closed after 9pm.\nBetween what times could Michael have gone to the football field?\nOptions:\n(A) 12pm to 1pm\n(B) 10am to 12pm\n(C) 7am to 8am\n(D) 5am to 7am",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "(A)",
+    "should_contain": [
+      "(A)"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a series of events and activities a person has completed in the course of a day, determine what time, during the day, they might have been free to perform another activity.",
+    "side_effects": []
+  }
+}

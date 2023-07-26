@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_94",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"It is not always easy to grasp who is consuming which products. The following argument pertains to this question: First of all, every rare consumer of KMS shampoo who is an owner of a Aveeno shampoo is a rare consumer of Colgate-Palmolive soap or a regular user of Sunsilk shampoo. Next, no rare consumer of Colgate-Palmolive soap is both a rare consumer of KMS shampoo and an owner of a Aveeno shampoo. Therefore, every rare consumer of KMS shampoo who is an owner of a Aveeno shampoo is also a regular user of Sunsilk shampoo.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "valid",
+    "should_contain": [
+      "valid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "temporal_sequences_4",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Today, Jason went to the movies. Between what times could they have gone?\nWe know that:\nJason woke up at 10am.\nLinda saw Jason getting a coffee at the cafe from 10am to 3pm.\nJennifer saw Jason walking towards the Statue of Liberty from 6pm to 7pm.\nSean saw Jason buying a phone at the electronics store from 7pm to 10pm.\nThe movies was closed after 10pm.\nBetween what times could Jason have gone to the movies?\nOptions:\n(A) 3pm to 6pm\n(B) 10am to 3pm\n(C) 7pm to 10pm\n(D) 6pm to 7pm",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "(A)",
+    "should_contain": [
+      "(A)"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a series of events and activities a person has completed in the course of a day, determine what time, during the day, they might have been free to perform another activity.",
+    "side_effects": []
+  }
+}

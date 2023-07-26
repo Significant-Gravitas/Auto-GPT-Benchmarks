@@ -1,0 +1,25 @@
+{
+  "name": "word_sorting_44",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Sort the following words alphabetically: List: wintertime mobster ugh brown fleabane longish ipsilateral cortex hair diminutive trapezoidal guy richfield highfalutin borough foot delphinium cosec abstract",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "abstract borough brown cortex cosec delphinium diminutive fleabane foot guy hair highfalutin ipsilateral longish mobster richfield trapezoidal ugh wintertime",
+    "should_contain": [
+      "abstract borough brown cortex cosec delphinium diminutive fleabane foot guy hair highfalutin ipsilateral longish mobster richfield trapezoidal ugh wintertime"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a list of words, sort them lexicographically.",
+    "side_effects": []
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "word_sorting_140",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Sort the following words alphabetically: List: yves butt scribe seaworthy manumitted clapeyron lift blackguard reconnaissance agile woodcut lightfooted sawbelly meager geophysical wiseacre mathieu cognoscenti purposive flamboyant",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "agile blackguard butt clapeyron cognoscenti flamboyant geophysical lift lightfooted manumitted mathieu meager purposive reconnaissance sawbelly scribe seaworthy wiseacre woodcut yves",
+    "should_contain": [
+      "agile blackguard butt clapeyron cognoscenti flamboyant geophysical lift lightfooted manumitted mathieu meager purposive reconnaissance sawbelly scribe seaworthy wiseacre woodcut yves"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a list of words, sort them lexicographically.",
+    "side_effects": []
+  }
+}

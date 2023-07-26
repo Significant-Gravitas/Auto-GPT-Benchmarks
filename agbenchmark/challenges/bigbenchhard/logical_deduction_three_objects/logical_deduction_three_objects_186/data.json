@@ -1,0 +1,25 @@
+{
+  "name": "logical_deduction_three_objects_186",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: The following paragraphs each describe a set of three objects arranged in a fixed order. The statements are logically consistent within each paragraph. A fruit stand sells three fruits: cantaloupes, apples, and loquats. The loquats are more expensive than the apples. The cantaloupes are less expensive than the apples.\nOptions:\n(A) The cantaloupes are the second-most expensive\n(B) The apples are the second-most expensive\n(C) The loquats are the second-most expensive",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "(B)",
+    "should_contain": [
+      "(B)"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

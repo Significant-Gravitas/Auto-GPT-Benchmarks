@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_65",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"It is not always easy to see which chemicals are contained in our consumer products. The following argument pertains to this question: First premise: It is not the case that Propylene oxide is an ingredient of Nobility. Second premise: It is false that Propylene oxide is an ingredient of Cover Pink, Core. Third premise: Every ingredient of Charged Up Cherry is neither an ingredient of Cover Pink, Core nor an ingredient of Nobility. It follows that propylene oxide is not an ingredient of Charged Up Cherry.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "invalid",
+    "should_contain": [
+      "invalid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

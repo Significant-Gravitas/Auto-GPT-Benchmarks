@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_101",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"It is not always easy to grasp who is consuming which products. The following argument pertains to this question: First premise: Some frequent consumer of Kiss My Face soap is not an infrequent user of AXE shampoo. Second premise: Being a frequent consumer of Kiss My Face soap is necessary for being a regular user of Sexy Hair shampoo. Hence, not every infrequent user of AXE shampoo is a regular user of Sexy Hair shampoo.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "invalid",
+    "should_contain": [
+      "invalid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

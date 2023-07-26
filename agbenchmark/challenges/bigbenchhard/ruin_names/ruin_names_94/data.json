@@ -1,0 +1,25 @@
+{
+  "name": "ruin_names_94",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Which of the following is a humorous edit of this artist or movie name: 'the jam'?\nOptions:\n(A) the jams\n(B) the ljam\n(C) the jar\n(D) the ham",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "(C)",
+    "should_contain": [
+      "(C)"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given an artist, band, or movie name, identify a one-character edit to the name that changes the meaning of the input and makes it humorous.",
+    "side_effects": []
+  }
+}

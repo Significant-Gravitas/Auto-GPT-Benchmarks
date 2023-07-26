@@ -1,0 +1,25 @@
+{
+  "name": "word_sorting_85",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Sort the following words alphabetically: List: nv menlo boyd counterweight groove spumoni intangible sans ovipositor hide detergent besetting",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "besetting boyd counterweight detergent groove hide intangible menlo nv ovipositor sans spumoni",
+    "should_contain": [
+      "besetting boyd counterweight detergent groove hide intangible menlo nv ovipositor sans spumoni"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a list of words, sort them lexicographically.",
+    "side_effects": []
+  }
+}

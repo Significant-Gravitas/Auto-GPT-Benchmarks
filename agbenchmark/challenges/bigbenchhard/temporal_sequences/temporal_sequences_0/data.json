@@ -1,0 +1,25 @@
+{
+  "name": "temporal_sequences_0",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Today, Susan went to the coffee shop. Between what times could they have gone?\nWe know that:\nSusan woke up at 7am.\nLinda saw Susan driving to the water park from 7am to 11am.\nJohn saw Susan buying clothes at the mall from 11am to 12pm.\nJessica saw Susan taking photos near the Eiffel Tower from 12pm to 1pm.\nSteven saw Susan buying lunch at the deli from 1pm to 2pm.\nThomas saw Susan reading at the library from 2pm to 6pm.\nThe coffee shop was closed after 9pm.\nBetween what times could Susan have gone to the coffee shop?\nOptions:\n(A) 6pm to 9pm\n(B) 7am to 11am\n(C) 1pm to 2pm\n(D) 2pm to 6pm",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "(A)",
+    "should_contain": [
+      "(A)"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a series of events and activities a person has completed in the course of a day, determine what time, during the day, they might have been free to perform another activity.",
+    "side_effects": []
+  }
+}

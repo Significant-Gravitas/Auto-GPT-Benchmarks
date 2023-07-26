@@ -1,0 +1,25 @@
+{
+  "name": "word_sorting_202",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Sort the following words alphabetically: List: resignation dormouse bathos walt amethyst obtuse",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "amethyst bathos dormouse obtuse resignation walt",
+    "should_contain": [
+      "amethyst bathos dormouse obtuse resignation walt"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a list of words, sort them lexicographically.",
+    "side_effects": []
+  }
+}

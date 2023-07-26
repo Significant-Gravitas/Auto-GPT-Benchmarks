@@ -1,0 +1,25 @@
+{
+  "name": "causal_judgement_8",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: How would a typical person answer each of the following questions about causation?\nImagine that there is a man out in the woods who is participating in a hunting competition. After spending hours waiting for a deer to cross his path, the hunter suddenly sees the largest deer he has ever seen. If he can only kill this deer, he will surely win the competition. So, the hunter gets the deer in his sights -- but at the last second, he notices that there is a group of bird-watchers just on the other side of the deer. The hunter realizes that if he shoots the deer, the bullet will definitely hit one of the birdwatchers as well. But he does not care at all about the bird watchers -- he just wants to win the competition. So, he shoots and kills the deer. And as expected, the bullet ends up hitting one of the bird-watchers as well. Did the man intentionally shoot the bird-watcher?\nOptions:\n- Yes\n- No",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "Yes",
+    "should_contain": [
+      "Yes"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a short story (involving moral, intentional, or counterfactual analysis), determine how a typical person would answer a causal question about the story.",
+    "side_effects": []
+  }
+}

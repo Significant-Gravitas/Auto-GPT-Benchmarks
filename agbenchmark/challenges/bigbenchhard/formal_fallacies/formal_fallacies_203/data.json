@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_203",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"It is not always easy to grasp who is consuming which products. The following argument pertains to this question: Whoever is an occasional purchaser of Eucalyptus soap is not a loyal buyer of Shield soap. No occasional purchaser of Colgate-Palmolive soap is a loyal buyer of Shield soap. Every regular user of Bliss soap is an occasional purchaser of Eucalyptus soap or an occasional purchaser of Colgate-Palmolive soap. Therefore, no regular user of Bliss soap is a loyal buyer of Shield soap.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "valid",
+    "should_contain": [
+      "valid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

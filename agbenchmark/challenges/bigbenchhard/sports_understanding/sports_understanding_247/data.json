@@ -1,0 +1,25 @@
+{
+  "name": "sports_understanding_247",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Is the following sentence plausible? \"Kenta Maeda threw to first base in the American League Championship Series.\"",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "yes",
+    "should_contain": [
+      "yes"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Determine whether a factitious sentence related to sports is plausible.",
+    "side_effects": []
+  }
+}

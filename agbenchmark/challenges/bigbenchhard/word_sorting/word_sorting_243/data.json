@@ -1,0 +1,25 @@
+{
+  "name": "word_sorting_243",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Sort the following words alphabetically: List: haddock colossus sheepskin honeymoon candid pragmatic agrarian people applicate",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "agrarian applicate candid colossus haddock honeymoon people pragmatic sheepskin",
+    "should_contain": [
+      "agrarian applicate candid colossus haddock honeymoon people pragmatic sheepskin"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a list of words, sort them lexicographically.",
+    "side_effects": []
+  }
+}

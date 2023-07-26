@@ -1,0 +1,25 @@
+{
+  "name": "logical_deduction_five_objects_140",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: The following paragraphs each describe a set of five objects arranged in a fixed order. The statements are logically consistent within each paragraph. On a branch, there are five birds: a blue jay, a cardinal, a hawk, a hummingbird, and a quail. The quail is to the left of the blue jay. The cardinal is the third from the left. The quail is the second from the left. The blue jay is to the left of the hummingbird.\nOptions:\n(A) The blue jay is the second from the right\n(B) The cardinal is the second from the right\n(C) The hawk is the second from the right\n(D) The hummingbird is the second from the right\n(E) The quail is the second from the right",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "(A)",
+    "should_contain": [
+      "(A)"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

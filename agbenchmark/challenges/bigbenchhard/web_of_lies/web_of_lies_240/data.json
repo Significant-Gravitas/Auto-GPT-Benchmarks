@@ -1,0 +1,25 @@
+{
+  "name": "web_of_lies_240",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Question: Fletcher lies. Tamika says Fletcher tells the truth. Ka says Tamika lies. Sima says Ka tells the truth. Ryan says Sima tells the truth. Does Ryan tell the truth?",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "Yes",
+    "should_contain": [
+      "Yes"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Evaluate the truth value of a random Boolean function expressed as a natural-language word problem.",
+    "side_effects": []
+  }
+}

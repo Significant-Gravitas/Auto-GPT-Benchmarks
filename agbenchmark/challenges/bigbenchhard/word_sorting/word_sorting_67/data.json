@@ -1,0 +1,25 @@
+{
+  "name": "word_sorting_67",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Sort the following words alphabetically: List: underclassmen pegging dale bartok goat martinson whoop badinage brunswick fraternity allele dar yourselves dun anthropocentric banish starkey morphemic monomer desolater",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "allele anthropocentric badinage banish bartok brunswick dale dar desolater dun fraternity goat martinson monomer morphemic pegging starkey underclassmen whoop yourselves",
+    "should_contain": [
+      "allele anthropocentric badinage banish bartok brunswick dale dar desolater dun fraternity goat martinson monomer morphemic pegging starkey underclassmen whoop yourselves"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a list of words, sort them lexicographically.",
+    "side_effects": []
+  }
+}

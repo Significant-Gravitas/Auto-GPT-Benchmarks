@@ -49,7 +49,8 @@ markers = [
     "adaptability",
     "safety",
     "first",
-    "second"
+    "second",
+    "bigbenchhard",
 ]
 
 [tool.poetry.scripts]

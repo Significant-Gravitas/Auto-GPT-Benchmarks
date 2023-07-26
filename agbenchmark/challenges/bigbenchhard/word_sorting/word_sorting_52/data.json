@@ -1,0 +1,25 @@
+{
+  "name": "word_sorting_52",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Sort the following words alphabetically: List: walnut scoot jugoslavia retrorocket polyhedron",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "jugoslavia polyhedron retrorocket scoot walnut",
+    "should_contain": [
+      "jugoslavia polyhedron retrorocket scoot walnut"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a list of words, sort them lexicographically.",
+    "side_effects": []
+  }
+}

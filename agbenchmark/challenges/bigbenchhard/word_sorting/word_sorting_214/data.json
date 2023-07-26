@@ -1,0 +1,25 @@
+{
+  "name": "word_sorting_214",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Sort the following words alphabetically: List: saul fresco teen chopstick footwork smalley anaplasmosis palisade orthography storey bumble pilate clue ingot fiesta",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "anaplasmosis bumble chopstick clue fiesta footwork fresco ingot orthography palisade pilate saul smalley storey teen",
+    "should_contain": [
+      "anaplasmosis bumble chopstick clue fiesta footwork fresco ingot orthography palisade pilate saul smalley storey teen"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a list of words, sort them lexicographically.",
+    "side_effects": []
+  }
+}

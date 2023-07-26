@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_131",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"It is not always easy to see which chemicals are contained in our consumer products. The following argument pertains to this question: First premise: Everything that is both an ingredient of Collagen Filler Eye and an ingredient of Pinky Lip Smacker is not an ingredient of NARS Lipstick. From this follows: Not being an ingredient of NARS Lipstick is sufficient for being an ingredient of Collagen Filler Eye and an ingredient of Pinky Lip Smacker.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "invalid",
+    "should_contain": [
+      "invalid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

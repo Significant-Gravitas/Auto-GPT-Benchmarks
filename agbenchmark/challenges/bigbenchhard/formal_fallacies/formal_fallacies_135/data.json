@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_135",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"Here comes a perfectly valid argument: To begin with, being an ingredient of Spoiled is necessary for being an ingredient of SILK EYE PENCIL 08. Moreover, everything that is an ingredient of Careless Whisper is an ingredient of Spoiled, too. Finally, whatever is ingredient of Just To Clarify is at least one of these: an ingredient of Careless Whisper, an ingredient of SILK EYE PENCIL 08 or an ingredient of Blush Rush (Bare). We may conclude: To be an ingredient of Spoiled or an ingredient of Blush Rush (Bare) is necessary for being an ingredient of Just To Clarify.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "valid",
+    "should_contain": [
+      "valid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

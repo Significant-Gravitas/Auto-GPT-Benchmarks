@@ -1,0 +1,25 @@
+{
+  "name": "dyck_languages_116",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Complete the rest of the sequence, making sure that the parentheses are closed properly. Input: ( < [ < ( [ ( ) ] < > < ( { } ) > ) < [ ] > > ] ( ) < [ < > ] >",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "> )",
+    "should_contain": [
+      "> )"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Predict the sequence of the closing parentheses of a Dyck-4 word without its last few closing parentheses.",
+    "side_effects": []
+  }
+}

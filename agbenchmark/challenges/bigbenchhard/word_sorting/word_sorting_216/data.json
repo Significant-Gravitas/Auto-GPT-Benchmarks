@@ -1,0 +1,25 @@
+{
+  "name": "word_sorting_216",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Sort the following words alphabetically: List: peculiar margaret contravention ingratiate dreg superintendent drapery bizarre sequential",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "bizarre contravention drapery dreg ingratiate margaret peculiar sequential superintendent",
+    "should_contain": [
+      "bizarre contravention drapery dreg ingratiate margaret peculiar sequential superintendent"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a list of words, sort them lexicographically.",
+    "side_effects": []
+  }
+}

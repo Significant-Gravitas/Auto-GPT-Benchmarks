@@ -1,0 +1,25 @@
+{
+  "name": "word_sorting_181",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Sort the following words alphabetically: List: hornblower dissipate amanita canticle annoy besiege straight notre propylene sepia california pasture encephalitis boggle crocodilian dexter snipe amatory dizzy psychiatric",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "amanita amatory annoy besiege boggle california canticle crocodilian dexter dissipate dizzy encephalitis hornblower notre pasture propylene psychiatric sepia snipe straight",
+    "should_contain": [
+      "amanita amatory annoy besiege boggle california canticle crocodilian dexter dissipate dizzy encephalitis hornblower notre pasture propylene psychiatric sepia snipe straight"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a list of words, sort them lexicographically.",
+    "side_effects": []
+  }
+}

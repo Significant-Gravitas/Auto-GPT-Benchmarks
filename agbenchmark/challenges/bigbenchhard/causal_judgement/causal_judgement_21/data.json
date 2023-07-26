@@ -1,0 +1,25 @@
+{
+  "name": "causal_judgement_21",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: How would a typical person answer each of the following questions about causation?\nIn Nazi Germany, there was a law called the 'racial identification law.' The purpose of the law was to help identify people of certain races so that they could be rounded up and sent to concentration camps. Shortly after this law was passed, the CEO of a small corporation decided to make certain organizational changes. The Vice-President of the corporation said: \"By making those changes, you'll definitely be increasing our profits. But you'll also be fulfilling the requirements of the racial identification law.\" The CEO said: \"Look, I know that I'll be fulfilling the requirements of the law, but I don't care one bit about that. All I care about is making as much profit as I can. Let's make those organizational changes!\" As soon as the CEO gave this order, the corporation began making the organizational changes. Did the CEO intentionally fulfill the requirements of the law?\nOptions:\n- Yes\n- No",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "No",
+    "should_contain": [
+      "No"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a short story (involving moral, intentional, or counterfactual analysis), determine how a typical person would answer a causal question about the story.",
+    "side_effects": []
+  }
+}

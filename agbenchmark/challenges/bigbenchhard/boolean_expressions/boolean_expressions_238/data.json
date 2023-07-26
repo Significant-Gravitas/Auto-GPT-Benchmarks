@@ -1,0 +1,25 @@
+{
+  "name": "boolean_expressions_238",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: False and not ( not not True ) is",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "False",
+    "should_contain": [
+      "False"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Evaluate the truth value of a random Boolean expression consisting of Boolean constants (`True`, `False`) and basic Boolean operators (`and`, `or`, `not`).",
+    "side_effects": []
+  }
+}

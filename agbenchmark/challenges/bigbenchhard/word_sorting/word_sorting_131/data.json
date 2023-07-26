@@ -1,0 +1,25 @@
+{
+  "name": "word_sorting_131",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Sort the following words alphabetically: List: erudite marriageable stahl coach inadvisable vicksburg virgo brownian eosine magnesium flax",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "brownian coach eosine erudite flax inadvisable magnesium marriageable stahl vicksburg virgo",
+    "should_contain": [
+      "brownian coach eosine erudite flax inadvisable magnesium marriageable stahl vicksburg virgo"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a list of words, sort them lexicographically.",
+    "side_effects": []
+  }
+}

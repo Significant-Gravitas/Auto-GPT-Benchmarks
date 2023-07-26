@@ -1,0 +1,25 @@
+{
+  "name": "causal_judgement_69",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: How would a typical person answer each of the following questions about causation?\nTodd, Anne, Jason, and Steph all share an account for a popular online television streaming service. In addition to keeping the account constantly logged in on their TV, they also use the same account on their laptops. Because the provider of this streaming service wants to increase the amount of active accounts in order to increase profits, they have begun to monitor the number of devices using a single account at once. Given that the account is always logged in on their TV, the streaming service will suspend their account if three people log into the account from their laptops at the same time. Todd, Anne, and Jason regularly use their account from their laptops on Saturdays. This Saturday, as usual, Todd logged into their account from his laptop to watch TV. Just then, Anne also logged into their account from her laptop, and Jason also logged into their account from his laptop to watch TV. Sure enough, since three people logged into the streaming account at the same time, the account was suspended. Did Todd logging into the streaming account from his laptop cause the account to be suspended?\nOptions:\n- Yes\n- No",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "No",
+    "should_contain": [
+      "No"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a short story (involving moral, intentional, or counterfactual analysis), determine how a typical person would answer a causal question about the story.",
+    "side_effects": []
+  }
+}

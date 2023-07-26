@@ -1,0 +1,25 @@
+{
+  "name": "word_sorting_134",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Sort the following words alphabetically: List: allyn carbonaceous majorca investigatory supersede cetacean pathogenic johann tung paradigmatic pray",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "allyn carbonaceous cetacean investigatory johann majorca paradigmatic pathogenic pray supersede tung",
+    "should_contain": [
+      "allyn carbonaceous cetacean investigatory johann majorca paradigmatic pathogenic pray supersede tung"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a list of words, sort them lexicographically.",
+    "side_effects": []
+  }
+}

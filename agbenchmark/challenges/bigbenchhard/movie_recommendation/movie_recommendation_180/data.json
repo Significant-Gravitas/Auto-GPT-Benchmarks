@@ -1,0 +1,25 @@
+{
+  "name": "movie_recommendation_180",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Find a movie similar to Star Wars Episode V - The Empire Strikes Back, The Lord of the Rings The Fellowship of the Ring, American Beauty, Forrest Gump:\nOptions:\n(A) Upside Down The Creation Records Story\n(B) The Adventures of Sherlock Holmes and Doctor Watson\n(C) Waking Life\n(D) The Lord of the Rings The Two Towers",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "(D)",
+    "should_contain": [
+      "(D)"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a list of movies a user might have watched and liked, recommend a new, relevant movie to the user out of the four potential choices user might have.",
+    "side_effects": []
+  }
+}

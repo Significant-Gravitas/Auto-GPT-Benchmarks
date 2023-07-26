@@ -1,0 +1,25 @@
+{
+  "name": "causal_judgement_179",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: How would a typical person answer each of the following questions about causation?\nA sniper has been ordered to kill an enemy commander. So, after getting himself into position, he finally has the enemy commander in his sights. Before he pulls the trigger, however, the sniper realizes that the gunfire will probably alert the other enemy soldiers to his presence. But the sniper doesn't care at all about that -- he just wants to shoot his target. So, he pulls the trigger -- thereby shooting and killing the commander. Unfortunately, the enemy soldiers are alerted to his presence. Did the sniper intentionally alert the enemies to his presence?\nOptions:\n- Yes\n- No",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "No",
+    "should_contain": [
+      "No"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a short story (involving moral, intentional, or counterfactual analysis), determine how a typical person would answer a causal question about the story.",
+    "side_effects": []
+  }
+}

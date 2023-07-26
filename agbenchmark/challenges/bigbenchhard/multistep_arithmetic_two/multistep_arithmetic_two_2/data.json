@@ -1,0 +1,25 @@
+{
+  "name": "multistep_arithmetic_two_2",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: ((3 * -3 * 6 + -5) - (-2 + -7 - 7 - -7)) =",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "-50",
+    "should_contain": [
+      "-50"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

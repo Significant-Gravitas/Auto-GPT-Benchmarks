@@ -1,0 +1,25 @@
+{
+  "name": "logical_deduction_seven_objects_83",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: The following paragraphs each describe a set of seven objects arranged in a fixed order. The statements are logically consistent within each paragraph. In an antique car show, there are seven vehicles: a sedan, a truck, a bus, a station wagon, a tractor, a convertible, and a limousine. The truck is the oldest. The tractor is the newest. The sedan is older than the station wagon. The station wagon is the third-newest. The bus is older than the convertible. The sedan is newer than the convertible.\nOptions:\n(A) The sedan is the fourth-newest\n(B) The truck is the fourth-newest\n(C) The bus is the fourth-newest\n(D) The station wagon is the fourth-newest\n(E) The tractor is the fourth-newest\n(F) The convertible is the fourth-newest\n(G) The limousine is the fourth-newest",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "(A)",
+    "should_contain": [
+      "(A)"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

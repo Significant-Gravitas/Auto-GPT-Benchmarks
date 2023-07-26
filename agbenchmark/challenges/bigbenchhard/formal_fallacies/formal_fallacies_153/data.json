@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_153",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"Here comes a perfectly valid argument: To start with, no devotee of FC Pyunik is a critic of AZ Alkmaar or a devotee of Feh\u00e9rv\u00e1r FC. Now, whoever is a critic of AZ Alkmaar is not an admirer of FC Augsburg. Moreover, whoever is a devotee of Feh\u00e9rv\u00e1r FC is not an admirer of FC Augsburg. All this entails that no devotee of FC Pyunik is an admirer of FC Augsburg.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "invalid",
+    "should_contain": [
+      "invalid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

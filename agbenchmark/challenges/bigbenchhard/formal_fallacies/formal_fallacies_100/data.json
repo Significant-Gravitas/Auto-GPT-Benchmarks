@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_100",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"It is not always easy to grasp who is consuming which products. The following argument pertains to this question: To begin with, being an owner of a Nag Champa soap is sufficient for being a rare consumer of KMS shampoo. Moreover, every rare consumer of KMS shampoo is not a loyal buyer of Schwarzkopf shampoo or not an owner of a Lush soap. It follows that every owner of a Nag Champa soap is an owner of a Lush soap and a loyal buyer of Schwarzkopf shampoo.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "invalid",
+    "should_contain": [
+      "invalid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

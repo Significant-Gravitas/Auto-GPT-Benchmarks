@@ -1,0 +1,25 @@
+{
+  "name": "word_sorting_234",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Sort the following words alphabetically: List: covenant thence davenport sonorant scoreboard densitometer noisy",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "covenant davenport densitometer noisy scoreboard sonorant thence",
+    "should_contain": [
+      "covenant davenport densitometer noisy scoreboard sonorant thence"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a list of words, sort them lexicographically.",
+    "side_effects": []
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "word_sorting_106",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Sort the following words alphabetically: List: solstice roadway loquacious niece planet steed abutted hondo loosen agamemnon islamic capacity tibet hitachi essex casualty guinea aquatic suspicion",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "abutted agamemnon aquatic capacity casualty essex guinea hitachi hondo islamic loosen loquacious niece planet roadway solstice steed suspicion tibet",
+    "should_contain": [
+      "abutted agamemnon aquatic capacity casualty essex guinea hitachi hondo islamic loosen loquacious niece planet roadway solstice steed suspicion tibet"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a list of words, sort them lexicographically.",
+    "side_effects": []
+  }
+}

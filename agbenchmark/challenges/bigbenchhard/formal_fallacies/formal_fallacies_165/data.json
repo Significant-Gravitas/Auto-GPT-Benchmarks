@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_165",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"Here comes a perfectly valid argument: Everything that is both an ingredient of HONEY LIPS and an ingredient of Renewal Cream is an ingredient of Take A Bow or an ingredient of LashGrip Clear. Every ingredient of Take A Bow is not an ingredient of Renewal Cream and not an ingredient of HONEY LIPS. From this follows: Everything that is not both an ingredient of HONEY LIPS and an ingredient of Renewal Cream is an ingredient of LashGrip Clear.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "invalid",
+    "should_contain": [
+      "invalid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "logical_deduction_five_objects_59",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: The following paragraphs each describe a set of five objects arranged in a fixed order. The statements are logically consistent within each paragraph. In an antique car show, there are five vehicles: a hatchback, a limousine, a sedan, a bus, and a tractor. The tractor is newer than the hatchback. The bus is the second-oldest. The hatchback is newer than the sedan. The limousine is the newest.\nOptions:\n(A) The hatchback is the second-oldest\n(B) The limousine is the second-oldest\n(C) The sedan is the second-oldest\n(D) The bus is the second-oldest\n(E) The tractor is the second-oldest",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "(D)",
+    "should_contain": [
+      "(D)"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

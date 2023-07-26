@@ -1,0 +1,25 @@
+{
+  "name": "word_sorting_110",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Sort the following words alphabetically: List: faithful broom integer menu gondola deathward brainwash soc kinematic",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "brainwash broom deathward faithful gondola integer kinematic menu soc",
+    "should_contain": [
+      "brainwash broom deathward faithful gondola integer kinematic menu soc"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a list of words, sort them lexicographically.",
+    "side_effects": []
+  }
+}

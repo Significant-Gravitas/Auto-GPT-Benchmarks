@@ -1,0 +1,25 @@
+{
+  "name": "word_sorting_161",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Sort the following words alphabetically: List: yuh edt cheddar oblivion from poignant pang",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "cheddar edt from oblivion pang poignant yuh",
+    "should_contain": [
+      "cheddar edt from oblivion pang poignant yuh"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a list of words, sort them lexicographically.",
+    "side_effects": []
+  }
+}

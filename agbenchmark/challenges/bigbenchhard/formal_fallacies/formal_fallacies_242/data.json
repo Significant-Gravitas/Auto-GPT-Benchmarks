@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_242",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"Here comes a perfectly valid argument: First, being an ingredient of CND VINYLUX is necessary for being an ingredient of Liquid Lips Catnip. Second, every ingredient of TV Paint Stick is not an ingredient of HIGHLIGHTER DUO or not an ingredient of Liquid Lips Catnip. Third, being an ingredient of CND VINYLUX is necessary for being an ingredient of HIGHLIGHTER DUO. We may conclude: Being an ingredient of CND VINYLUX is necessary for being an ingredient of TV Paint Stick.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "invalid",
+    "should_contain": [
+      "invalid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "tracking_shuffled_objects_five_objects_186",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Alice, Bob, Claire, Dave, and Eve are dancers at a square dance. At the start of a song, they each have a partner: Alice is dancing with Melissa, Bob is dancing with Rodrigo, Claire is dancing with Lola, Dave is dancing with Patrick, and Eve is dancing with Jamie.\nThroughout the song, the dancers often trade partners. First, Claire and Bob switch partners. Then, Claire and Eve switch partners. Then, Eve and Dave switch partners. Then, Claire and Alice switch partners. Finally, Bob and Eve switch partners. At the end of the dance, Alice is dancing with\nOptions:\n(A) Melissa\n(B) Rodrigo\n(C) Lola\n(D) Patrick\n(E) Jamie",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "(E)",
+    "should_contain": [
+      "(E)"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

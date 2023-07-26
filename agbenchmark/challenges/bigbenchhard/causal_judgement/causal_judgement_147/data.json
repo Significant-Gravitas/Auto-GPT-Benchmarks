@@ -1,0 +1,25 @@
+{
+  "name": "causal_judgement_147",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: How would a typical person answer each of the following questions about causation?\nEugene and Tina were a young married couple who lived in the country. Both were partially paralyzed and confined to wheelchairs. They had met four years before when Tina was a counsellor with the Canadian Paraplegic Association, had fallen in love, and were married one year later. On this particular evening, Eugene had phoned to request a cab to take them downtown. When the taxi driver arrived, Eugene and Tina were waiting by the street. On seeing that they were both in wheelchairs, the taxi driver refused their fare because he thought it would be too crowded in the taxi with both of them and the wheelchairs. So the taxi driver headed back downtown without them. Because there was no time to call another cab, Eugene and Tina took Tina's car, which was equipped with special hand controls. In order to get downtown from their house, they had to travel across a bridge over Rupert River. A severe storm the night before had weakened the structure of the bridge. About 5 minutes before Eugene and Tina reached it, a section of the bridge collapsed. The taxi driver had reached the bridge about 15 minutes before them, and made it safely across. In the dark, Eugene and Tina drove off the collapsed bridge and their car plummeted into the river below. They both drowned. Their bodies were retrieved from the car the next morning. Did the taxi driver's refusal to take Eugene and Tina cause their death?\nOptions:\n- Yes\n- No",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "Yes",
+    "should_contain": [
+      "Yes"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a short story (involving moral, intentional, or counterfactual analysis), determine how a typical person would answer a causal question about the story.",
+    "side_effects": []
+  }
+}

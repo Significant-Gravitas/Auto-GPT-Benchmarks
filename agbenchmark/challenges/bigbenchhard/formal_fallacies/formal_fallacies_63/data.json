@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_63",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"Consumer research aims at understanding whether users of some products also tend to consume other ones, or not. The following argument seeks to clarify some such relations: First, Nick is a frequent consumer of Colgate-Palmolive soap. Second, being a frequent consumer of Burt's Bees soap or not being a frequent consumer of Colgate-Palmolive soap is sufficient for being an occasional purchaser of Redken shampoo. All this entails that it is not the case that Nick is an occasional purchaser of Redken shampoo.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "invalid",
+    "should_contain": [
+      "invalid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}

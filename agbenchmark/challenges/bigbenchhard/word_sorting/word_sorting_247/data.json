@@ -1,0 +1,25 @@
+{
+  "name": "word_sorting_247",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: Sort the following words alphabetically: List: sanhedrin scratchy helical beau venezuela awash bessie extricable indoeuropean vice pendulum cream animism",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "animism awash beau bessie cream extricable helical indoeuropean pendulum sanhedrin scratchy venezuela vice",
+    "should_contain": [
+      "animism awash beau bessie cream extricable helical indoeuropean pendulum sanhedrin scratchy venezuela vice"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "Given a list of words, sort them lexicographically.",
+    "side_effects": []
+  }
+}

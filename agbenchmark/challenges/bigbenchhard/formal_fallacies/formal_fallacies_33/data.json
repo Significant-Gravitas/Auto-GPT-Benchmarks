@@ -1,0 +1,25 @@
+{
+  "name": "formal_fallacies_33",
+  "category": [
+    "bigbenchhard"
+  ],
+  "task": "Write the answer to the following question to a file called answer.txt: \"Here comes a perfectly valid argument: To begin with, whatever is an ingredient of Vertica Rush and an ingredient of Liqua Versa Gel is not an ingredient of Eyeshadow Quad. It follows that every ingredient of Eyeshadow Quad is not an ingredient of Liqua Versa Gel or not an ingredient of Vertica Rush.\"\nIs the argument, given the explicitly stated premises, deductively valid or invalid?\nOptions:\n- valid \n- invalid",
+  "dependencies": [],
+  "cutoff": 60,
+  "ground": {
+    "answer": "valid",
+    "should_contain": [
+      "valid"
+    ],
+    "should_not_contain": [],
+    "files": [
+      ".txt"
+    ],
+    "type": "file"
+  },
+  "info": {
+    "difficulty": "hard",
+    "description": "No description available.",
+    "side_effects": []
+  }
+}
