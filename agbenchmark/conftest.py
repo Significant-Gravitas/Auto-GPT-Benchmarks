@@ -221,6 +221,7 @@ def pytest_collection_modifyitems(items: Any, config: Any) -> None:
                 and config.getoption("--suite")
             )
             or config.getoption("--no_dep")
+            or config.getoption("--maintain")
         ):
             dependencies = []
 
