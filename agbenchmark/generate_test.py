@@ -8,9 +8,9 @@ from typing import Any, Dict, Optional
 
 import pytest
 
+from agbenchmark.start_benchmark import CURRENT_DIRECTORY, get_regression_data
 from agbenchmark.utils.challenge import Challenge
 from agbenchmark.utils.data_types import ChallengeData, SuiteConfig
-from agbenchmark.start_benchmark import CURRENT_DIRECTORY, get_regression_data
 from agbenchmark.utils.utils import get_test_path
 
 

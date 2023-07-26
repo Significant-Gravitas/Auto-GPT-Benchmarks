@@ -8,7 +8,6 @@ from typing import Any, Dict, Generator
 
 import pytest
 
-from agbenchmark.utils.data_types import SuiteConfig
 from agbenchmark.reports.reports import (
     finalize_reports,
     generate_combined_suite_report,
@@ -17,6 +16,7 @@ from agbenchmark.reports.reports import (
     setup_dummy_dependencies,
 )
 from agbenchmark.start_benchmark import CONFIG_PATH, get_regression_data
+from agbenchmark.utils.data_types import SuiteConfig
 
 
 def resolve_workspace(workspace: str) -> str:
