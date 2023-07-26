@@ -27,6 +27,9 @@ jobs:
           repository: ${{ github.event.pull_request.head.repo.full_name }}
           submodules: true
 
+      - name: List directory contents
+        run: ls -al
+
       - name: Set up Python ${{ env.min-python-version }}
         uses: actions/setup-python@v2
         with:
@@ -42,6 +45,7 @@ jobs:
 
       - name: Install dependencies
         run: |
+          poetry env info
           poetry install
 
       - name: Lint with flake8
