@@ -46,6 +46,7 @@ jobs:
 
       - name: Install dependencies
         run: |
+          export POETRY_VIRTUALENVS_IN_PROJECT=true
           poetry install -vvv
 
       - name: Lint with flake8
