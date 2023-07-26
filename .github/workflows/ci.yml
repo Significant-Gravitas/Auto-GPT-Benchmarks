@@ -25,10 +25,7 @@ jobs:
           fetch-depth: 0
           ref: ${{ github.event.pull_request.head.ref }}
           repository: ${{ github.event.pull_request.head.repo.full_name }}
-          submodules: recursive
-
-      - name: List directory contents
-        run: ls -al
+          submodules: true
 
       - name: Set up Python ${{ env.min-python-version }}
         uses: actions/setup-python@v2
@@ -45,7 +42,6 @@ jobs:
 
       - name: Install dependencies
         run: |
-          poetry env info
           poetry install
 
       - name: Lint with flake8
