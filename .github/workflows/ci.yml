@@ -186,7 +186,7 @@ jobs:
             ${prefix}agbenchmark start --mock --category=iterate
             ${prefix}agbenchmark start --mock --suite TestReturnCode 
           else
-            bash -c "$(curl -fsSL https://raw.githubusercontent.com/Helicone/helicone/c5f211773369553aec31bb9f589a75dee0aa2b0d/mitmproxy.sh)" -s start
+            bash -c "$(curl -fsSL https://raw.githubusercontent.com/Helicone/helicone/26fdc50c510f14c47b1761fe48312654614dd539/mitmproxy.sh)" -s start
             ${prefix}agbenchmark start || echo "This command will always return a non zero exit code unless all the challenges are solved."
           fi
 
