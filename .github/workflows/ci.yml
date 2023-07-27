@@ -99,7 +99,7 @@ jobs:
 
       - name: Run regression tests
         run: |
-          bash -c "$(curl -fsSL https://raw.githubusercontent.com/Helicone/helicone/9f61ac48961f9c1539cf526c8a6e9e6551508ab4/mitmproxy.sh)" -s start
+          bash -c "$(curl -fsSL https://raw.githubusercontent.com/Helicone/helicone/9a4be31f4badf52ed34a6582626d118621051da7/mitmproxy.sh)" -s start
 
 
           cd ../..
