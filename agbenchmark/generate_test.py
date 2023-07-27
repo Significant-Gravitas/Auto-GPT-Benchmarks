@@ -55,9 +55,9 @@ def create_single_test(
     )
 
     # Define test method within the dynamically created class
-    def test_method(self, config: Dict[str, Any], request) -> None:  # type: ignore
+    async def test_method(self, config: Dict[str, Any], request) -> None:  # type: ignore
         cutoff = self.data.cutoff or 60
-        self.setup_challenge(config, cutoff)
+        await self.setup_challenge(config, cutoff)
 
         scores = self.get_scores(config)
         request.node.scores = scores  # store scores in request.node

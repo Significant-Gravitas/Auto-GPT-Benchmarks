@@ -44,7 +44,7 @@ class Challenge(ABC):
     def dependencies(self) -> list:
         return self.data.dependencies
 
-    def setup_challenge(self, config: Dict[str, Any], cutoff: int) -> None:
+    async def setup_challenge(self, config: Dict[str, Any], cutoff: int) -> None:
         from agbenchmark.agent_interface import copy_artifacts_into_workspace, run_agent
 
         copy_artifacts_into_workspace(
@@ -55,7 +55,7 @@ class Challenge(ABC):
             f"\033[1;35m============Starting {self.data.name} challenge============\033[0m"
         )
 
-        run_agent(self.task, config, self.ARTIFACTS_LOCATION, cutoff)
+        await run_agent(self.task)
 
         # hidden files are added after the agent runs. Hidden files can be python test files.
         # We copy them in the workspace to make it easy to import the code produced by the agent
