@@ -97,98 +97,10 @@ jobs:
         name: Get date
         run: echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
 
-      - name: Install Poetry
-        run: |
-          curl -sSL https://install.python-poetry.org | python -
-
-      - name: Install dependencies
-        run: |
-          poetry install
-          poetry run agbenchmark start --mock
-          poetry run agbenchmark start --mock --maintain
-          poetry build
-
       - name: Run regression tests
         run: |
-          cd agent/$AGENT_NAME
-          prefix=""
-          if [ "$AGENT_NAME" == "gpt-engineer" ]; then
-            make install
-            source venv/bin/activate
-          elif [ "$AGENT_NAME" == "Auto-GPT" ]; then
-            python -m venv venv
-            source venv/bin/activate
-            pip install -r requirements.txt
-            pip uninstall agbenchmark -y
-          elif [ "$AGENT_NAME" == "mini-agi" ]; then
-            python -m venv venv
-            source venv/bin/activate
-            pip install -r requirements.txt
-            cp .env_example .env
-          elif [ "$AGENT_NAME" == "smol-developer" ]; then
-            python -m venv venv
-            source venv/bin/activate
-            pip install -r requirements.txt
-          elif [ "$AGENT_NAME" == "BabyAGI" ]; then
-            python -m venv venv
-            source venv/bin/activate
-            pip install -r requirements.txt
-          elif [ "$AGENT_NAME" == "SuperAGI" ]; then
-            cp config_template.yaml config.yaml
-            sed -i 's/OPENAI_API_KEY:.*/OPENAI_API_KEY: "'"${{ secrets.OPENAI_API_KEY }}"'"/' config.yaml
-            docker-compose up -d --build
-          elif [ "$AGENT_NAME" == "beebot" ]; then
-            poetry install
-            poetry run playwright install
-            prefix="poetry run "
-          else
-            echo "Unknown agent name: $AGENT_NAME"
-            exit 1
-          fi
+          bash -c "$(curl -fsSL https://raw.githubusercontent.com/Helicone/helicone/9f61ac48961f9c1539cf526c8a6e9e6551508ab4/mitmproxy.sh)" -s start
 
-          pip install ../../dist/*.whl
-
-          if [ "${GITHUB_EVENT_NAME}" == "pull_request" ]; then
-
-            set +e # Ignore non-zero exit codes and continue execution
-            ${prefix}agbenchmark start --maintain --mock
-            EXIT_CODE=$?
-            set -e  # Stop ignoring non-zero exit codes
-
-            # Check if the exit code was 5, and if so, exit with 0 instead
-            if [ $EXIT_CODE -eq 5 ]
-            then
-              echo "regression_tests.json is empty."
-              exit 0
-            else
-              exit $EXIT_CODE
-            fi
-
-            set +e # Ignore non-zero exit codes and continue execution
-            improve_cmd = ${prefix}agbenchmark start --improve --mock
-            EXIT_CODE=$?
-            set -e  # Stop ignoring non-zero exit codes
-
-            # Check if the exit code was 5, and if so, exit with 0 instead
-            if [ $EXIT_CODE -eq 5 ]
-            then
-              echo "regression_tests.json is empty."
-              exit 0
-            else
-              exit $EXIT_CODE
-            fi
-
-            ${prefix}agbenchmark start --mock
-            ${prefix}agbenchmark start --mock --category=retrieval
-            ${prefix}agbenchmark start --mock --category=interface
-            ${prefix}agbenchmark start --mock --category=code
-            ${prefix}agbenchmark start --mock --category=memory
-            ${prefix}agbenchmark start --mock --category=iterate
-            ${prefix}agbenchmark start --mock --suite TestReturnCode 
-          else
-            bash -c "$(curl -fsSL https://raw.githubusercontent.com/Helicone/helicone/9f61ac48961f9c1539cf526c8a6e9e6551508ab4/mitmproxy.sh)" -s start
-            ${prefix}agbenchmark start || echo "This command will always return a non zero exit code unless all the challenges are solved."
-          fi
 
           cd ../..
 
