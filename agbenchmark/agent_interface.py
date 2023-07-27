@@ -1,13 +1,10 @@
 import os
 import shutil
-import subprocess
-import sys
-import time
-from typing import Any, Dict
 
+from agent_protocol_client import AgentApi, ApiClient, Configuration, TaskRequestBody
 from dotenv import load_dotenv
 
-from agbenchmark.start_benchmark import CURRENT_DIRECTORY, HOME_DIRECTORY
+from agbenchmark.start_benchmark import CURRENT_DIRECTORY
 
 load_dotenv()
 
@@ -15,59 +12,25 @@ mock_test_str = os.getenv("MOCK_TEST")
 MOCK_FLAG = mock_test_str.lower() == "true" if mock_test_str else False
 
 
-def run_agent(
-    task: str, config: Dict[str, Any], artifacts_location: str, cutoff: int
-) -> None:
-    """Calling to get a response"""
+configuration = Configuration(host="http://localhost:8000")
 
-    if MOCK_FLAG:
-        print("Running mock agent")
-        copy_artifacts_into_workspace(
-            config["workspace"], "artifacts_out", artifacts_location
+
+async def run_agent(task: str):
+    async with ApiClient(configuration) as api_client:
+        api_instance = AgentApi(api_client)
+        task_request_body = TaskRequestBody(input=task)
+
+        response = await api_instance.create_agent_task(
+            task_request_body=task_request_body
         )
-    else:
-        entry_path = "agbenchmark.benchmarks"
+        task_id = response.task_id
 
-        timeout = cutoff
-        if "--nc" in sys.argv:
-            timeout = 100000
-
-        print(f"Running '{entry_path}' with timeout {timeout}")
-        command = [sys.executable, "-m", entry_path, str(task)]
-        process = subprocess.Popen(
-            command,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.STDOUT,
-            universal_newlines=True,
-            cwd=HOME_DIRECTORY,
-        )
-
-        start_time = time.time()
-
-        while True:
-            output = ""
-            if process.stdout is not None:
-                output = process.stdout.readline()
-                print(output.strip())
-
-            # Check if process has ended, has no more output, or exceeded timeout
-            if (
-                process.poll() is not None
-                or output == ""
-                or (time.time() - start_time > timeout)
-            ):
-                break
-
-        if time.time() - start_time > timeout:
-            print("The Python function has exceeded the time limit and was terminated.")
-            process.kill()
-        else:
-            print("The Python function has finished running.")
-
-        process.wait()
-
-        if process.returncode != 0:
-            print(f"The agent timed out")
+        i = 1
+        while (
+            step := await api_instance.execute_agent_task_step(task_id=task_id)
+        ) and step.is_last is False:
+            print(f"{i}. request finished")
+            i += 1
 
 
 def copy_artifacts_into_workspace(
