@@ -15,8 +15,10 @@ CURRENT_DIRECTORY = Path(__file__).resolve().parent
 BENCHMARK_START_TIME = datetime.now().strftime("%Y-%m-%d-%H:%M")
 
 HeliconeLockManager.write_custom_property("benchmark_start_time", BENCHMARK_START_TIME)
+os.environ['HELICONE_PROPERTY_BENCHMARK_START_TIME'] = challenge_data["name"]
 if AGENT_NAME:
     HeliconeLockManager.write_custom_property("agent_name", AGENT_NAME)
+    os.environ['HELICONE_PROPERTY_AGENT_NAME'] = AGENT_NAME
 (
     HOME_DIRECTORY,
     CONFIG_PATH,
