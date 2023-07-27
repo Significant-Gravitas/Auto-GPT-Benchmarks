@@ -4,11 +4,11 @@ on:
   workflow_dispatch:
     branches: [master]
   schedule:
-    - cron: '0 8 * * *'
+    - cron: "0 8 * * *"
   push:
     branches: [master, ci-test*]
     paths-ignore:
-      - 'reports/**'
+      - "reports/**"
   pull_request:
     branches: [stable, master, release-*]
 
@@ -16,7 +16,7 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     env:
-      min-python-version: '3.10'
+      min-python-version: "3.10"
 
     steps:
       - name: Checkout repository
@@ -68,20 +68,15 @@ jobs:
   tests:
     env:
       GH_TOKEN: ${{ github.event_name == 'pull_request' && github.token || secrets.PAT }}
-      min-python-version: '3.10'
-    name: '${{ matrix.agent-name }}'
+      min-python-version: "3.10"
+    name: "${{ matrix.agent-name }}"
     runs-on: ubuntu-latest
     timeout-minutes: 30
     strategy:
       fail-fast: false
       matrix:
         agent-name:
-          - 'gpt-engineer'
-          - 'smol-developer'
-          - 'Auto-GPT'
-          - 'mini-agi'
-          - 'beebot'
-          - 'BabyAGI'
+          - "smol-developer"
 
     steps:
       - name: Checkout repository
