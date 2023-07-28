@@ -127,9 +127,7 @@ class Challenge(ABC):
                 print_content = (
                     f"\033[1;34mWord that should exist\033[0m - {should_contain_word}:"
                 )
-                if ground.eval.type == "llm":
-                    return self.llm_eval(config, content, ground)
-                elif should_contain_word not in content:
+                if should_contain_word not in content:
                     print(print_content, "False")
                     return 0.0
                 else:
@@ -148,13 +146,9 @@ class Challenge(ABC):
 
     def llm_eval(self, config: Dict[str, Any], content: str, ground: Ground) -> float:
         openai.api_key = os.getenv("OPENAI_API_KEY")
+        print("we are here burh")
         if MOCK_FLAG:
             return 1.0
-
-        scores = self.get_artifact_scores(config, ground)
-
-        if not 1 in scores:
-            return 0.0
 
         # the validation for this is done in the Eval BaseModel
         scoring = SCORING_MAP[ground.eval.scoring]  # type: ignore
@@ -172,25 +166,7 @@ class Challenge(ABC):
             ],
         )
 
-        response = float(answer["choices"][0]["message"]["content"])  # type: ignore
-
-        if ground.eval.scoring == "percentage":
-            return math.ceil(response / 100)
-        elif ground.eval.scoring == "scale":
-            return math.ceil(response / 10)
-        return response
-
-    def get_artifact_scores(self, config: Dict[str, Any], ground) -> list[float]:
-        files_contents = self.get_artifacts_out(config["workspace"], ground)
-
-        scores = []
-
-        for file_content in files_contents:
-            score = self.scoring(config, file_content, ground)
-            print("\033[1;32mYour score is:\033[0m", score)
-            scores.append(score)
-
-        return scores
+        return float(answer["choices"][0]["message"]["content"])  # type: ignore
 
     def get_scores(self, config: Dict[str, Any]) -> dict[str, Any]:
         scores = []
@@ -199,7 +175,24 @@ class Challenge(ABC):
 
         try:
             if isinstance(self.data.ground, Ground):
-                scores = self.get_artifact_scores(config, self.data.ground)
+                files_contents = self.get_artifacts_out(
+                    config["workspace"], self.data.ground
+                )
+
+                for file_content in files_contents:
+                    score = self.scoring(config, file_content, self.data.ground)
+                    print("\033[1;32mYour score is:\033[0m", score)
+                    scores.append(score)
+
+                if self.data.ground.eval.type == "llm":
+                    llm_eval = self.llm_eval(
+                        config, "\n".join(files_contents), self.data.ground
+                    )
+                    if self.data.ground.eval.scoring == "percentage":
+                        scores.append(math.ceil(llm_eval / 100))
+                    elif self.data.ground.eval.scoring == "scale":
+                        scores.append(math.ceil(llm_eval / 10))
+                    scores.append(llm_eval)
             elif isinstance(self.data.ground, dict):
                 # if it's a dict then we know its a combined suite
                 for ground_key in self.data.ground:
@@ -213,6 +206,17 @@ class Challenge(ABC):
                             f"\033[1;35mScore for {ground_key}:\033[0m",
                             scores_dict[ground_key],
                         )
+
+                    if ground.eval.type == "llm":
+                        llm_eval = self.llm_eval(
+                            config, "\n".join(files_contents), ground
+                        )
+
+                        if ground.eval.scoring == "percentage":
+                            scores_dict[ground_key].append(math.ceil(llm_eval / 100))
+                        elif ground.eval.scoring == "scale":
+                            scores_dict[ground_key].append(math.ceil(llm_eval / 10))
+                        scores_dict[ground_key].append(llm_eval)
 
                 # Count the number of times the value 1.0 appears in the dictionary
                 num_ones = sum(1 for score in scores_dict.values() if score == 1.0)
