@@ -1,8 +1,8 @@
 import glob
+import math
 import os
 import subprocess
 import sys
-import math
 from abc import ABC
 from typing import Any, Dict, List
 
@@ -11,10 +11,10 @@ import openai
 from agbenchmark.agent_interface import MOCK_FLAG
 from agbenchmark.utils.data_types import ChallengeData, Ground
 from agbenchmark.utils.prompts import (
-    SCORING_MAP,
-    PROMPT_MAP,
     END_PROMPT,
     FEW_SHOT_EXAMPLES,
+    PROMPT_MAP,
+    SCORING_MAP,
 )
 
 
@@ -170,7 +170,7 @@ class Challenge(ABC):
 
     def get_scores(self, config: Dict[str, Any]) -> dict[str, Any]:
         scores = []
-        scores_dict = {}
+        scores_dict: Any = {}
         percentage = None
 
         try:
@@ -201,7 +201,7 @@ class Challenge(ABC):
 
                     for file_content in files_contents:
                         score = self.scoring(config, file_content, ground)
-                        scores_dict[ground_key] = score
+                        scores_dict.setdefault(ground_key, []).append(score)
                         print(
                             f"\033[1;35mScore for {ground_key}:\033[0m",
                             scores_dict[ground_key],
