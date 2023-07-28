@@ -1,4 +1,9 @@
 name: PR Agent Workflow
+
+permissions:
+  issues: write
+  pull-requests: write
+
 on:
   pull_request:
   issue_comment:
