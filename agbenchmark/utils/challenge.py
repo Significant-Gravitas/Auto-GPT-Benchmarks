@@ -2,6 +2,7 @@ import glob
 import os
 import subprocess
 import sys
+import math
 from abc import ABC
 from typing import Any, Dict, List
 
@@ -9,6 +10,12 @@ import openai
 
 from agbenchmark.agent_interface import MOCK_FLAG
 from agbenchmark.utils.data_types import ChallengeData, Ground
+from agbenchmark.utils.prompts import (
+    SCORING_MAP,
+    PROMPT_MAP,
+    END_PROMPT,
+    FEW_SHOT_EXAMPLES,
+)
 
 
 class Challenge(ABC):
@@ -81,7 +88,7 @@ class Challenge(ABC):
                 matching_files = [os.path.join(script_dir, file_pattern)]
 
             for file_path in matching_files:
-                if ground.type == "execute_python_code":
+                if ground.eval.type == "python":
                     result = subprocess.run(
                         [sys.executable, file_path],
                         cwd=os.path.abspath(workspace),
@@ -113,15 +120,15 @@ class Challenge(ABC):
             if os.path.isfile(os.path.join(workspace, filename))
         ]
 
-    def scoring(self, content: str, ground: Ground) -> float:
+    def scoring(self, config: Dict[str, Any], content: str, ground: Ground) -> float:
         print("\033[1;34mScoring content:\033[0m", content)
         if ground.should_contain:
             for should_contain_word in ground.should_contain:
                 print_content = (
                     f"\033[1;34mWord that should exist\033[0m - {should_contain_word}:"
                 )
-                if ground.type == "file_llm_evaluation":
-                    return self.llm_eval(content, should_contain_word)
+                if ground.eval.type == "llm":
+                    return self.llm_eval(config, content, ground)
                 elif should_contain_word not in content:
                     print(print_content, "False")
                     return 0.0
@@ -139,25 +146,51 @@ class Challenge(ABC):
 
         return 1.0
 
-    def llm_eval(self, content: str, should_contain_word: str) -> float:
+    def llm_eval(self, config: Dict[str, Any], content: str, ground: Ground) -> float:
         openai.api_key = os.getenv("OPENAI_API_KEY")
         if MOCK_FLAG:
             return 1.0
-        evaluation_question = f"""
-QUESTION:
-{should_contain_word} Answer with 0 for no, 1 for yes.
-CONTENT:
-{content}
-ANSWER:
 
-"""
+        scores = self.get_artifact_scores(config, ground)
+
+        if not 1 in scores:
+            return 0.0
+
+        # the validation for this is done in the Eval BaseModel
+        scoring = SCORING_MAP[ground.eval.scoring]  # type: ignore
+        prompt = PROMPT_MAP[ground.eval.template].format(task=self.data.task, scoring=scoring, answer=ground.answer, response=content)  # type: ignore
+
+        if ground.eval.examples:
+            prompt += FEW_SHOT_EXAMPLES.format(examples=ground.eval.examples)
+
+        prompt += END_PROMPT
+
         answer = openai.ChatCompletion.create(
             model="gpt-4",
             messages=[
-                {"role": "system", "content": evaluation_question},
+                {"role": "system", "content": prompt},
             ],
         )
-        return float(answer["choices"][0]["message"]["content"])
+
+        response = float(answer["choices"][0]["message"]["content"])  # type: ignore
+
+        if ground.eval.scoring == "percentage":
+            return math.ceil(response / 100)
+        elif ground.eval.scoring == "scale":
+            return math.ceil(response / 10)
+        return response
+
+    def get_artifact_scores(self, config: Dict[str, Any], ground) -> list[float]:
+        files_contents = self.get_artifacts_out(config["workspace"], ground)
+
+        scores = []
+
+        for file_content in files_contents:
+            score = self.scoring(config, file_content, ground)
+            print("\033[1;32mYour score is:\033[0m", score)
+            scores.append(score)
+
+        return scores
 
     def get_scores(self, config: Dict[str, Any]) -> dict[str, Any]:
         scores = []
@@ -166,14 +199,7 @@ ANSWER:
 
         try:
             if isinstance(self.data.ground, Ground):
-                files_contents = self.get_artifacts_out(
-                    config["workspace"], self.data.ground
-                )
-
-                for file_content in files_contents:
-                    score = self.scoring(file_content, self.data.ground)
-                    print("\033[1;32mYour score is:\033[0m", score)
-                    scores.append(score)
+                scores = self.get_artifact_scores(config, self.data.ground)
             elif isinstance(self.data.ground, dict):
                 # if it's a dict then we know its a combined suite
                 for ground_key in self.data.ground:
@@ -181,7 +207,7 @@ ANSWER:
                     files_contents = self.get_artifacts_out(config["workspace"], ground)
 
                     for file_content in files_contents:
-                        score = self.scoring(file_content, ground)
+                        score = self.scoring(config, file_content, ground)
                         scores_dict[ground_key] = score
                         print(
                             f"\033[1;35mScore for {ground_key}:\033[0m",
