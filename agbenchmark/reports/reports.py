@@ -208,7 +208,7 @@ def setup_dummy_dependencies(test_class_instance: Any, test_class: Any) -> None:
         # Define a dummy test function that does nothing
         def setup_dependency_test(self: Any, scores: dict[str, Any]) -> None:
             scores = self.get_dummy_scores(test_name, scores)
-            assert 1 == 1
+            assert scores == 1
 
         return setup_dependency_test
 
