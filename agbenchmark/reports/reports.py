@@ -65,7 +65,8 @@ def generate_combined_suite_report(
                 "success": False,
             },
         }
-        if scores.get("scores_obj", {}).get(test_name) == 1:
+
+        if 1 in scores.get("scores_obj", {}).get(test_name, []):
             # add dependency successful here
 
             test_info_details["metrics"]["success"] = True
