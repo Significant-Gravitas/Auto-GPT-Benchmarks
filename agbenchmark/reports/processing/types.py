@@ -1,49 +1,45 @@
-from dataclasses import dataclass
-from typing import Optional, Dict, List
+from typing import Optional, Dict, List, Union
+from pydantic import BaseModel, Field
 
 
-@dataclass
-class Metrics:
+class Metrics(BaseModel):
     difficulty: str
     success: bool
-    success_percent: float
+    success_percent: float = Field(..., alias="success_%")
     run_time: Optional[str] = None
     fail_reason: Optional[str] = None
 
 
-@dataclass
-class MetricsOverall:
+class MetricsOverall(BaseModel):
     run_time: str
     highest_difficulty: str
     percentage: Optional[float] = None
 
 
-@dataclass
-class Test:
+class Test(BaseModel):
     data_path: str
     is_regression: bool
     answer: str
     description: str
     metrics: Metrics
+    category: List[str]
+    task: Optional[str] = None
+    reached_cutoff: Optional[bool] = None
+
+
+class SuiteTest(BaseModel):
+    data_path: str
+    metrics: MetricsOverall
+    tests: Dict[str, Test]
     category: Optional[List[str]] = None
     task: Optional[str] = None
     reached_cutoff: Optional[bool] = None
 
 
-@dataclass
-class SuiteTest:
-    data_path: str
-    category: Optional[List[str]]
-    metrics: MetricsOverall
-    tests: Dict[str, Test]
-    task: Optional[str] = None
-    reached_cutoff: Optional[bool] = None
-
-
-@dataclass
-class Report:
+class Report(BaseModel):
     command: str
     completion_time: str
+    benchmark_start_time: str
     metrics: MetricsOverall
-    tests: Dict[str, Test]
+    tests: Dict[str, Union[Test, SuiteTest]]
     config: Dict[str, str]

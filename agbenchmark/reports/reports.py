@@ -8,7 +8,7 @@ import pytest
 from agbenchmark.reports.ReportManager import ReportManager
 from agbenchmark.start_benchmark import (
     CONFIG_PATH,
-    INFO_TESTS_PATH,
+    REPORTS_PATH,
     REGRESSION_TESTS_PATH,
 )
 from agbenchmark.utils.data_types import DIFFICULTY_MAP, DifficultyLevel, SuiteConfig
@@ -24,7 +24,7 @@ from agbenchmark.utils.utils import (
 regression_manager = ReportManager(REGRESSION_TESTS_PATH)
 
 # user facing reporting information
-info_manager = ReportManager(INFO_TESTS_PATH)
+info_manager = ReportManager(str(Path(REPORTS_PATH) / "report.json"))
 
 INTERNAL_LOGS_PATH = Path(__file__).resolve().parent
 

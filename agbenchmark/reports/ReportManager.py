@@ -3,10 +3,14 @@ import os
 import sys
 import time
 from datetime import datetime
+from pathlib import Path
 from typing import Any, Dict, Optional
 
-from agbenchmark.start_benchmark import BENCHMARK_START_TIME
+from agbenchmark.start_benchmark import BENCHMARK_START_TIME, REPORTS_PATH
 from agbenchmark.utils.utils import get_highest_success_difficulty
+from agbenchmark.reports.processing.graphs import draw_radar_chart_and_save_png
+from agbenchmark.reports.processing.types import Report
+from agbenchmark.reports.processing.process_report import get_agent_category
 
 
 class ReportManager:
@@ -71,5 +75,13 @@ class ReportManager:
             "tests": self.tests,
             "config": config,
         }
+
+        converted_data = Report.parse_obj(self.tests)
+
+        agent_categories = get_agent_category(converted_data)
+
+        draw_radar_chart_and_save_png(
+            agent_categories, Path(REPORTS_PATH) / "radar_chart.png"
+        )
 
         self.save()
