@@ -1,16 +1,22 @@
 name: PR Agent Workflow
 
 permissions:
-  issues: write
-  pull-requests: write
+  actions: write
+  checks: write
   contents: write
+  deployments: write
+  issues: write
+  packages: write
+  pull-requests: write
+  repository-projects: write
+  security-events: write
+  statuses: write
 
 on:
   pull_request:
   issue_comment:
 jobs:
   pr_agent_job:
-    permissions: write-all
     runs-on: ubuntu-latest
     name: Run pr agent on every pull request, respond to user comments
     steps:
