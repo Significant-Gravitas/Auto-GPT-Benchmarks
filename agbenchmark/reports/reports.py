@@ -58,6 +58,7 @@ def generate_combined_suite_report(
         test_info_details = {
             "data_path": replace_backslash(data_paths[i]),
             "is_regression": False,
+            "category": challenge_data["category"],
             "answer": challenge_data["ground"][test_name]["answer"],
             "description": challenge_data["info"][test_name]["description"],
             "metrics": {
