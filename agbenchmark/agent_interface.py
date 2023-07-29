@@ -15,7 +15,7 @@ MOCK_FLAG = mock_test_str.lower() == "true" if mock_test_str else False
 configuration = Configuration(host="http://localhost:8000")
 
 
-async def run_agent(task: str):
+async def run_agent(task: str) -> None:
     async with ApiClient(configuration) as api_client:
         api_instance = AgentApi(api_client)
         task_request_body = TaskRequestBody(input=task)
