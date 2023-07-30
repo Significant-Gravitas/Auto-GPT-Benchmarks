@@ -156,6 +156,9 @@ def save_single_radar_chart(
 
     ax.set_yticks([])
 
+    if values.size == 0:
+        return
+
     for y in np.arange(0, values.max(), 1):
         ax.plot(angles, [y] * len(angles), color="gray", linewidth=0.5, linestyle=":")
 
