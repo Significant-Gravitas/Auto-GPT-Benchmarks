@@ -261,10 +261,18 @@ jobs:
         with:
           python-version: '3.10'
 
+      - id: get_date
+        name: Get date
+        run: echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+
+      - name: Install Poetry
+        run: |
+          curl -sSL https://install.python-poetry.org | python -
+
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
-          pip install matplotlib pandas numpy # or whatever you need
+          poetry install -vvv
+          poetry build
 
       - name: Generate charts
         run: python agbenchmark/reports/processing/gen_combined_chart.py
