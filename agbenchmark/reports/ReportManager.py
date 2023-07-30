@@ -8,7 +8,7 @@ from typing import Any, Dict, Optional
 
 from agbenchmark.reports.processing.graphs import save_single_radar_chart
 from agbenchmark.reports.processing.process_report import get_agent_category
-from agbenchmark.reports.processing.types import Report
+from agbenchmark.reports.processing.report_types import Report
 from agbenchmark.start_benchmark import BENCHMARK_START_TIME, REPORTS_PATH
 from agbenchmark.utils.utils import get_highest_success_difficulty
 

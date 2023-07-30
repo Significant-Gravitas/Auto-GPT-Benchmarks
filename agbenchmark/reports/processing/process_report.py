@@ -4,7 +4,7 @@ from pathlib import Path
 from typing import Any
 
 from agbenchmark.reports.processing.get_files import get_latest_files_in_subdirectories
-from agbenchmark.reports.processing.types import Report, SuiteTest, Test
+from agbenchmark.reports.processing.report_types import Report, SuiteTest, Test
 from agbenchmark.utils.data_types import STRING_DIFFICULTY_MAP
 
 
