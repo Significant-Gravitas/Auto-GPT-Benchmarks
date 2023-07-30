@@ -251,6 +251,9 @@ jobs:
 
   generate_charts:
     needs: tests
+    env:
+      GH_TOKEN: ${{ github.event_name == 'pull_request' && github.token || secrets.PAT }}
+      min-python-version: '3.10'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
