@@ -1,5 +1,4 @@
 import os
-from pathlib import Path
 
 
 def get_last_file_in_directory(directory_path: str) -> str | None:
