@@ -275,7 +275,9 @@ jobs:
           poetry build
 
       - name: Generate charts
-        run: python agbenchmark/reports/processing/gen_combined_chart.py
+        run: |
+          pip install ../../dist/*.whl
+          python agbenchmark/reports/processing/gen_combined_chart.py
         env:
           REPORT_LOCATION: 'reports'
 
