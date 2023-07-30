@@ -1,11 +1,11 @@
-from typing import Any
-import os
 import json
+import os
 from pathlib import Path
+from typing import Any
 
-from agbenchmark.utils.data_types import STRING_DIFFICULTY_MAP
-from agbenchmark.reports.processing.types import Report, SuiteTest
 from agbenchmark.reports.processing.get_files import get_latest_files_in_subdirectories
+from agbenchmark.reports.processing.types import Report, SuiteTest
+from agbenchmark.utils.data_types import STRING_DIFFICULTY_MAP
 
 
 def get_reports_data(report_path: str) -> dict[str, Any]:

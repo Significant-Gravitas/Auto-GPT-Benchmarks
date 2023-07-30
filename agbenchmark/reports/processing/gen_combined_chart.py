@@ -3,8 +3,8 @@ from pathlib import Path
 
 from agbenchmark.reports.processing.graphs import save_combined_radar_chart
 from agbenchmark.reports.processing.process_report import (
-    get_reports_data,
     all_agent_categories,
+    get_reports_data,
 )
 from agbenchmark.start_benchmark import REPORTS_PATH
 

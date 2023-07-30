@@ -6,11 +6,7 @@ from typing import Any, Callable
 import pytest
 
 from agbenchmark.reports.ReportManager import ReportManager
-from agbenchmark.start_benchmark import (
-    CONFIG_PATH,
-    REPORTS_PATH,
-    REGRESSION_TESTS_PATH,
-)
+from agbenchmark.start_benchmark import CONFIG_PATH, REGRESSION_TESTS_PATH, REPORTS_PATH
 from agbenchmark.utils.data_types import DIFFICULTY_MAP, DifficultyLevel, SuiteConfig
 from agbenchmark.utils.utils import (
     AGENT_NAME,

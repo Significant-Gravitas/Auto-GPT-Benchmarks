@@ -1,9 +1,10 @@
+from pathlib import Path
+from typing import Any
+
+import matplotlib.patches as mpatches
 import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.colors import Normalize
-import matplotlib.patches as mpatches
-from pathlib import Path
-from typing import Any
 
 
 def save_combined_radar_chart(
