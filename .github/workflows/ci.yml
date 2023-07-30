@@ -273,10 +273,10 @@ jobs:
         run: |
           poetry install -vvv
           poetry build
+          pip install dist/*.whl
 
       - name: Generate charts
         run: |
-          pip install ../../dist/*.whl
           python agbenchmark/reports/processing/gen_combined_chart.py
         env:
           REPORT_LOCATION: 'reports'
