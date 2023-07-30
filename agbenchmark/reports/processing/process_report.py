@@ -5,12 +5,11 @@ from pathlib import Path
 
 from agbenchmark.utils.data_types import STRING_DIFFICULTY_MAP
 from agbenchmark.reports.processing.types import Report, SuiteTest
-from agbenchmark.start_benchmark import REPORTS_PATH
 from agbenchmark.reports.processing.get_files import get_latest_files_in_subdirectories
 
 
-def get_reports_data() -> dict[str, Any]:
-    latest_files = get_latest_files_in_subdirectories(REPORTS_PATH)
+def get_reports_data(report_path: str) -> dict[str, Any]:
+    latest_files = get_latest_files_in_subdirectories(report_path)
     print(latest_files)
 
     reports_data = {}

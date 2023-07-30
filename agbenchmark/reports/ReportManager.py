@@ -8,7 +8,7 @@ from typing import Any, Dict, Optional
 
 from agbenchmark.start_benchmark import BENCHMARK_START_TIME, REPORTS_PATH
 from agbenchmark.utils.utils import get_highest_success_difficulty
-from agbenchmark.reports.processing.graphs import draw_radar_chart_and_save_png
+from agbenchmark.reports.processing.graphs import save_single_radar_chart
 from agbenchmark.reports.processing.types import Report
 from agbenchmark.reports.processing.process_report import get_agent_category
 
@@ -80,7 +80,7 @@ class ReportManager:
 
         agent_categories = get_agent_category(converted_data)
 
-        draw_radar_chart_and_save_png(
+        save_single_radar_chart(
             agent_categories, Path(REPORTS_PATH) / "radar_chart.png"
         )
 

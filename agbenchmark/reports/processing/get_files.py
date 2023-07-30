@@ -1,6 +1,4 @@
 import os
-from pathlib import Path
-import json
 
 
 def get_last_file_in_directory(directory_path):

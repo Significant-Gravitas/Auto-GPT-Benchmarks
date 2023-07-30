@@ -3,9 +3,12 @@ import numpy as np
 from matplotlib.colors import Normalize
 import matplotlib.patches as mpatches
 from pathlib import Path
+from typing import Any
 
 
-def draw_radar_chart(categories):
+def save_combined_radar_chart(
+    categories: dict[str, Any], save_path: str | Path
+) -> None:
     labels = np.array(
         list(next(iter(categories.values())).keys())
     )  # We use the first category to get the keys
@@ -97,11 +100,11 @@ def draw_radar_chart(categories):
             verticalalignment="center",
         )
 
-    # plt.savefig(f"{save_path}/{name}.png", dpi=300)  # Save the figure as a PNG file
-    # plt.close()  # Close the figure to free up memory
+    plt.savefig(save_path, dpi=300)  # Save the figure as a PNG file
+    plt.close()  # Close the figure to free up memory
 
 
-def draw_radar_chart_and_save_png(
+def save_single_radar_chart(
     category_dict: dict[str, int], save_path: str | Path
 ) -> None:
     labels = np.array(list(category_dict.keys()))
