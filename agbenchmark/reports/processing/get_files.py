@@ -1,7 +1,8 @@
 import os
+from pathlib import Path
 
 
-def get_last_file_in_directory(directory_path):
+def get_last_file_in_directory(directory_path: str) -> str | None:
     # Get all files in the directory
     files = [
         f
@@ -16,7 +17,9 @@ def get_last_file_in_directory(directory_path):
     return files[-1] if files else None
 
 
-def get_latest_files_in_subdirectories(directory_path):
+def get_latest_files_in_subdirectories(
+    directory_path: str,
+) -> list[tuple[str, str]] | None:
     latest_files = []
     for subdir in os.scandir(directory_path):
         if subdir.is_dir():

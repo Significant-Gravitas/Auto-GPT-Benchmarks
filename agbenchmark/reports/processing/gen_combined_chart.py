@@ -9,7 +9,7 @@ from agbenchmark.reports.processing.process_report import (
 from agbenchmark.start_benchmark import REPORTS_PATH
 
 
-def generate_combined_chart():
+def generate_combined_chart() -> None:
     reports_data = get_reports_data(REPORTS_PATH)
 
     categories = all_agent_categories(reports_data)
