@@ -180,7 +180,7 @@ def get_highest_success_difficulty(
     return "No successful tests"
 
 
-def assign_paths(folder_path: Path) -> tuple[str, str, str, str]:
+def assign_paths(folder_path: Path) -> tuple[str, str, str, str, str]:
     CONFIG_PATH = str(folder_path / "config.json")
 
     reports_location = folder_path / "reports"
@@ -212,7 +212,7 @@ def assign_paths(folder_path: Path) -> tuple[str, str, str, str]:
     )
 
 
-def calculate_dynamic_paths() -> tuple[Path, str, str, str, str]:
+def calculate_dynamic_paths() -> tuple[Path, str, str, str, str, str]:
     # the default home is where you're running from
     HOME_DIRECTORY = Path(os.getcwd())
     benchmarks_folder_path = HOME_DIRECTORY / "agbenchmark"
