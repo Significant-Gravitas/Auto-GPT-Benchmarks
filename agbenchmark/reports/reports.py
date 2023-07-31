@@ -17,7 +17,6 @@ from agbenchmark.start_benchmark import (
 from agbenchmark.utils.data_types import DIFFICULTY_MAP, DifficultyLevel, SuiteConfig
 from agbenchmark.utils.get_data_from_helicone import get_data_from_helicone
 from agbenchmark.utils.utils import (
-    AGENT_NAME,
     calculate_success_percentage,
     get_highest_success_difficulty,
     get_test_path,

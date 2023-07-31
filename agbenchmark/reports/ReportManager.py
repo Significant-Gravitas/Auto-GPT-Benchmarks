@@ -4,7 +4,7 @@ import sys
 import time
 from datetime import datetime
 from pathlib import Path
-from typing import Any, Dict, Optional
+from typing import Any, Dict
 
 from agbenchmark.reports.processing.graphs import save_single_radar_chart
 from agbenchmark.reports.processing.process_report import get_agent_category
