@@ -4,8 +4,8 @@ from typing import Any
 import matplotlib.patches as mpatches
 import matplotlib.pyplot as plt
 import numpy as np
-from matplotlib.colors import Normalize
 import pandas as pd
+from matplotlib.colors import Normalize
 
 
 def save_combined_radar_chart(

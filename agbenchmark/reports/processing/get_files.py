@@ -18,7 +18,7 @@ def get_last_subdirectory(directory_path: str) -> str | None:
 
 def get_latest_report_from_agent_directories(
     directory_path: str,
-) -> list[tuple[str, str]] | None:
+) -> list[tuple[os.DirEntry[str], str]]:
     latest_reports = []
 
     for subdir in os.scandir(directory_path):
