@@ -12,6 +12,7 @@ on:
   pull_request:
     branches: [stable, master, release-*]
 
+
 jobs:
   lint:
     runs-on: ubuntu-latest
@@ -65,6 +66,18 @@ jobs:
           cmd="poetry run autoflake --remove-all-unused-imports --recursive --ignore-init-module-imports --ignore-pass-after-docstring agbenchmark"
           $cmd --check || (echo "You have unused imports or pass statements, please run '${cmd} --in-place'" && exit 1)
         if: success() || failure()
+  matrix-setup:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+    steps:
+      - id: set-matrix
+        run: |
+          if [ "${{ github.event_name }}" == "schedule" ] || [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
+            echo "::set-output name=matrix::[ 'gpt-engineer', 'smol-developer', 'Auto-GPT', 'mini-agi', 'beebot', 'BabyAGI' ]"
+          else
+            echo "::set-output name=matrix::[ 'mini-agi']"
+          fi
 
   tests:
     env:
@@ -76,13 +89,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        agent-name:
-          - 'gpt-engineer'
-          - 'smol-developer'
-          - 'Auto-GPT'
-          - 'mini-agi'
-          - 'beebot'
-          - 'BabyAGI'
+        agent-name: ${{fromJson(needs.matrix-setup.outputs.matrix)}}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
