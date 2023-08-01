@@ -45,7 +45,7 @@ query ExampleQuery($properties: [PropertyFilter!]){
 
     operation_name = "ExampleQuery"
 
-    data = None
+    data = {}
     response = None
 
     try:
