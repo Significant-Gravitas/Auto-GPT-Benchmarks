@@ -1,5 +1,6 @@
 import json
 import os
+import time
 from typing import Optional
 
 import requests
@@ -22,7 +23,6 @@ query ExampleQuery($properties: [PropertyFilter!]){
   }
 }
 """
-    print(query)
 
     variables = {
         "filters": [
@@ -41,39 +41,44 @@ query ExampleQuery($properties: [PropertyFilter!]){
             {"property": {"value": {"equals": challenge}, "name": "challenge"}},
         ]
     }
-    print(json.dumps(variables, indent=4))
 
     operation_name = "ExampleQuery"
 
-    data = None
-    response = None
+    max_retries = 5
+    backoff_time = 1  # Start with 1 second
 
-    try:
-        response = requests.post(
-            url,
-            headers=headers,
-            json={
-                "query": query,
-                "variables": variables,
-                "operationName": operation_name,
-            },
-        )
-        response.raise_for_status()  # Raises a HTTPError if the response was an unsuccessful status code
+    for retry in range(max_retries):
+        try:
+            response = requests.post(
+                url,
+                headers=headers,
+                json={
+                    "query": query,
+                    "variables": variables,
+                    "operationName": operation_name,
+                },
+            )
+            response.raise_for_status()
 
-        data = response.json()
-    except requests.HTTPError as http_err:
-        print(f"HTTP error occurred: {http_err}")
-        raise  # Re-raise the exception to stop execution
-    except json.JSONDecodeError:
-        print(f"Invalid JSON response: {response.text if response else 'No response'}")
-        raise
-    except Exception as err:
-        print(f"Other error occurred: {err}")
-        raise
+            data = response.json()
+            if data and data.get("data"):
+                return (
+                    data.get("data", {}).get("aggregatedHeliconeRequest", {}).get("costUSD", None)
+                )
+            else:
+                raise ValueError("Invalid response received from server: no data")
 
-    if data is None or data.get("data") is None:
-        raise ValueError("Invalid response received from server: no data")
+        except (requests.HTTPError, json.JSONDecodeError, ValueError) as error:
+            print(f"Attempt {retry + 1} failed: {error}")
+            if retry < max_retries - 1:  # Don't sleep on the last attempt
+                time.sleep(backoff_time)
+                backoff_time *= 2  # Exponential backoff
+            else:
+                print("Max retries reached. Returning 0.")
+                return 0
 
-    return (
-        data.get("data", {}).get("aggregatedHeliconeRequest", {}).get("costUSD", None)
-    )
+        except Exception as err:
+            print(f"Unexpected error occurred on attempt {retry + 1}: {err}")
+            raise
+
+    return 0
