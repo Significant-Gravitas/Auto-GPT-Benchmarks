@@ -272,14 +272,12 @@ def calculate_dynamic_paths() -> tuple[Path, str, str, str, str, str]:
     )
 
 
-def get_git_commit_sha() -> Optional[str]:
-    from agbenchmark.start_benchmark import HOME_DIRECTORY
-
+def get_git_commit_sha(directory) -> Optional[str]:
     try:
-        repo = git.Repo(HOME_DIRECTORY)
+        repo = git.Repo(directory)
         git_commit_sha = repo.head.commit.hexsha
         print(f"GIT_COMMIT_SHA: {git_commit_sha}")
         return git_commit_sha
     except Exception:
-        print(f"{HOME_DIRECTORY} is not a git repository!")
+        print(f"{directory} is not a git repository!")
         return None
