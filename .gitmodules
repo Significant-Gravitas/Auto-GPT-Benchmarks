@@ -24,7 +24,7 @@
 	branch = benchmark-integration
 [submodule "agent/beebot"]
 	path = agent/beebot
-	url = https://github.com/AutoPackAI/beebot.git
+	url = https://github.com/autopackai/beebot.git
 	branch = main
 [submodule "agbenchmark/challenges"]
 	path = agbenchmark/challenges
