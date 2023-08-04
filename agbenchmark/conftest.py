@@ -14,8 +14,8 @@ from agbenchmark.reports.reports import (
     generate_combined_suite_report,
     generate_single_call_report,
     session_finish,
-    setup_dummy_dependencies,
 )
+from agbenchmark.utils.dependencies.dependencies import topo_sort
 from agbenchmark.start_benchmark import CONFIG_PATH, get_regression_data
 from agbenchmark.utils.data_types import SuiteConfig
 
@@ -204,45 +204,27 @@ def scores(request: Any) -> None:
     return request.node.cls.scores.get(test_class_name)
 
 
-def pytest_generate_tests(metafunc: Any) -> None:
-    """This is to generate the dummy dependencies each test class"""
-    test_class_instance = metafunc.cls()
-
-    if test_class_instance.setup_dependencies:
-        test_class = metafunc.cls
-        setup_dummy_dependencies(test_class_instance, test_class)
-        setattr(test_class, "setup_dependencies", [])
-
-
 # this is adding the dependency marker and category markers automatically from the json
 def pytest_collection_modifyitems(items: Any, config: Any) -> None:
     data = get_regression_data()
 
+    graph = {}
+
     for item in items:
         # Assuming item.cls is your test class
         test_class_instance = item.cls()
-
-        # if it's a dummy dependency setup test, we also skip
-        if "test_method" not in item.name:
-            continue
 
         # Then you can access your properties
         name = item.parent.cls.__name__
         dependencies = test_class_instance.data.dependencies
 
         # Filter dependencies if they exist in regression data if its an improvement test
-        if (
-            config.getoption("--improve")
-            or config.getoption("--category")
-            or test_class_instance.setup_dependencies  # same_task suite
-        ):
+        if config.getoption("--improve") or config.getoption(
+            "--category"
+        ):  # TODO: same task suite
             dependencies = [dep for dep in dependencies if not data.get(dep, None)]
-        if (
+        if (  # TODO: separate task suite
             config.getoption("--test")
-            or (  # separate task suite
-                not test_class_instance.setup_dependencies
-                and config.getoption("--suite")
-            )
             or config.getoption("--no_dep")
             or config.getoption("--maintain")
         ):
@@ -250,9 +232,18 @@ def pytest_collection_modifyitems(items: Any, config: Any) -> None:
 
         categories = test_class_instance.data.category
 
-        # Add depends marker dynamically
-        item.add_marker(pytest.mark.depends(on=dependencies, name=name))
+        dependency_graph_id = item.nodeid
+        graph[dependency_graph_id] = dependencies
 
         # Add category marker dynamically
         for category in categories:
             item.add_marker(getattr(pytest.mark, category))
+
+    print("graph", graph)
+
+    ordered_tests = topo_sort(graph)
+    print("ordered_tests", ordered_tests)
+
+    items.sort(key=lambda item: ordered_tests.index(item.nodeid))
+
+    print("items.sort ordered_tests", ordered_tests)
