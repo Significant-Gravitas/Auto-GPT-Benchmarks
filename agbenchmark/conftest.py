@@ -23,6 +23,8 @@ GLOBAL_TIMEOUT = (
     1500  # The tests will stop after 25 minutes so we can send the reports.
 )
 
+pytest_plugins = ["agbenchmark.utils.dependencies"]
+
 
 def resolve_workspace(workspace: str) -> str:
     if workspace.startswith("${") and workspace.endswith("}"):
@@ -208,11 +210,12 @@ def scores(request: Any) -> None:
 def pytest_collection_modifyitems(items: Any, config: Any) -> None:
     data = get_regression_data()
 
-    graph = {}
-
     for item in items:
         # Assuming item.cls is your test class
         test_class_instance = item.cls()
+
+        if "test_method" not in item.name:
+            continue
 
         # Then you can access your properties
         name = item.parent.cls.__name__
@@ -230,20 +233,12 @@ def pytest_collection_modifyitems(items: Any, config: Any) -> None:
         ):
             dependencies = []
 
-        categories = test_class_instance.data.category
+        print("name", name)
+        # Add depends marker dynamically
+        item.add_marker(pytest.mark.depends(on=dependencies, name=name))
 
-        dependency_graph_id = item.nodeid
-        graph[dependency_graph_id] = dependencies
+        categories = test_class_instance.data.category
 
         # Add category marker dynamically
         for category in categories:
             item.add_marker(getattr(pytest.mark, category))
-
-    print("graph", graph)
-
-    ordered_tests = topo_sort(graph)
-    print("ordered_tests", ordered_tests)
-
-    items.sort(key=lambda item: ordered_tests.index(item.nodeid))
-
-    print("items.sort ordered_tests", ordered_tests)

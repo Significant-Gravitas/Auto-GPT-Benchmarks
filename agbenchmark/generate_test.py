@@ -34,6 +34,10 @@ def setup_dummy_dependencies(
 
     for datum in file_datum:
         test_func = create_test_func(datum["name"])
+        # TODO: replace this once I figure out actual dependencies
+        test_func = pytest.mark.depends(on=[challenge_data.name], name=datum["name"])(
+            test_func
+        )
         test_func = pytest.mark.parametrize(
             "challenge_data",
             [None],

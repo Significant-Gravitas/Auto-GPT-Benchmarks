@@ -22,6 +22,8 @@ helicone = "^1.0.6"
 matplotlib = "^3.7.2"
 pandas = "^2.0.3"
 gitpython = "^3.1.32"
+networkx = "^3.1"
+colorama = "^0.4.6"
 
 [tool.poetry.group.dev.dependencies]
 flake8 = "^3.9.2"
@@ -53,6 +55,7 @@ markers = [
     "safety",
     "content_gen"
 ]
+filterwarnings = "ignore::pytest.PytestAssertRewriteWarning"
 
 [tool.poetry.scripts]
 agbenchmark = "agbenchmark.start_benchmark:cli"
