@@ -18,6 +18,8 @@
         true,
         true,
         true,
+        true,
+        true,
         true
     ],
     "TestAdaptSimpleTypoWithGuidance": [
@@ -39,7 +41,9 @@
         false,
         false,
         true,
-        false
+        false,
+        false,
+        true
     ],
     "TestAdaptTeslaRevenue": [
         false,
@@ -48,6 +52,8 @@
         true,
         false,
         true,
+        false,
+        false,
         false,
         false,
         false,
@@ -81,7 +87,9 @@
         true,
         false,
         false,
-        true
+        true,
+        false,
+        false
     ],
     "TestBasicMemory": [
         false,
@@ -90,6 +98,8 @@
         false,
         false,
         true,
+        false,
+        false,
         false,
         false,
         false,
@@ -123,6 +133,8 @@
         true,
         true,
         true,
+        true,
+        true,
         true
     ],
     "TestDebugMultipleTypo": [
@@ -144,9 +156,13 @@
         false,
         false,
         false,
+        false,
+        false,
         false
     ],
     "TestDebugSimpleTypoWithGuidance": [
+        true,
+        true,
         true,
         true,
         true,
@@ -186,9 +202,13 @@
         true,
         true,
         true,
-        false
+        false,
+        true,
+        true
     ],
     "TestFunctionCodeGeneration": [
+        false,
+        false,
         false,
         false,
         false,
@@ -228,9 +248,13 @@
         false,
         false,
         false,
+        false,
+        false,
         false
     ],
     "TestGoalLoss_Hard": [
+        false,
+        false,
         false,
         false,
         false,
@@ -270,9 +294,13 @@
         false,
         false,
         false,
+        false,
+        false,
         false
     ],
     "TestGoalLoss_Simple": [
+        false,
+        false,
         false,
         false,
         false,
@@ -312,9 +340,13 @@
         false,
         false,
         false,
+        false,
+        false,
         false
     ],
     "TestInstructionFollowing": [
+        false,
+        false,
         false,
         false,
         false,
@@ -355,9 +387,13 @@
         false,
         false,
         false,
-        true
+        true,
+        true,
+        false
     ],
     "TestReadFile": [
+        true,
+        true,
         true,
         true,
         true,
@@ -397,9 +433,13 @@
         false,
         false,
         false,
+        false,
+        false,
         false
     ],
     "TestRememberMultiplePhrasesWithNoise": [
+        false,
+        false,
         false,
         false,
         false,
@@ -439,9 +479,13 @@
         false,
         false,
         false,
+        false,
+        false,
         false
     ],
     "TestRetrieval3": [
+        false,
+        false,
         false,
         false,
         false,
@@ -481,6 +525,8 @@
         false,
         false,
         false,
+        false,
+        false,
         false
     ],
     "TestReturnCode_Simple": [
@@ -502,9 +548,13 @@
         false,
         false,
         false,
+        false,
+        false,
         false
     ],
     "TestReturnCode_Tests": [
+        false,
+        false,
         false,
         false,
         false,
@@ -544,6 +594,8 @@
         false,
         false,
         false,
+        false,
+        false,
         false
     ],
     "TestRevenueRetrieval_1.0": [
@@ -565,9 +617,13 @@
         true,
         true,
         true,
-        true
+        true,
+        true,
+        false
     ],
     "TestRevenueRetrieval_1.1": [
+        false,
+        false,
         false,
         false,
         false,
@@ -607,9 +663,13 @@
         false,
         false,
         false,
+        false,
+        false,
         false
     ],
     "TestSearch": [
+        true,
+        true,
         true,
         true,
         true,
@@ -649,9 +709,13 @@
         false,
         false,
         false,
+        false,
+        false,
         false
     ],
     "TestWriteFile": [
+        true,
+        true,
         true,
         true,
         true,
