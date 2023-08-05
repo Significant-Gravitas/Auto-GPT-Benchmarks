@@ -29,9 +29,8 @@
 [submodule "agent/polygpt"]
 	path = agent/polygpt
 	url = https://github.com/polywrap/PolyGPT.git
-	branch = dev
+	branch = nerfzael-agent-protocol
 [submodule "agbenchmark/challenges"]
 	path = agbenchmark/challenges
 	url = https://github.com/SilenNaihin/agbenchmark_challenges.git
 	branch = main
-

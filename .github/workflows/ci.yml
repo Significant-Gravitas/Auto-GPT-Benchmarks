@@ -7,7 +7,7 @@ on:
       agents:
         description: 'Agents to run (comma-separated)'
         required: false
-        default: 'gpt-engineer,smol-developer,Auto-GPT,mini-agi,beebot,BabyAGI'  # Default agents if none are specified
+        default: 'gpt-engineer,smol-developer,Auto-GPT,mini-agi,beebot,BabyAGI,PolyGPT'  # Default agents if none are specified
   schedule:
     - cron: '0 8 * * *'
   push:
