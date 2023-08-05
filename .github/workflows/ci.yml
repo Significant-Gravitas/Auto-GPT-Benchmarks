@@ -171,6 +171,12 @@ jobs:
             poetry install
             poetry run playwright install
             prefix="poetry run "
+          elif [ "$AGENT_NAME" == "PolyGPT" ]; then
+            cp .env.template .env
+            nvm install && nvm use
+            yarn install
+            yarn start
+
           else
             echo "Unknown agent name: $AGENT_NAME"
             exit 1
