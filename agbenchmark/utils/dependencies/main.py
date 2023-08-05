@@ -111,6 +111,7 @@ class DependencyManager(object):
             self._nodeid_to_item[nodeid] = item
             # Add the mappings from all names to the node id
             for name in get_names(item):
+                print("get_names name: ", name)
                 self._name_to_nodeids[name].append(nodeid)
             # Create the object that will contain the results of this test
             self._results[nodeid] = TestResult(clean_nodeid(item.nodeid))
@@ -201,8 +202,12 @@ class DependencyManager(object):
         # Insert edges for all the dependencies
         for item in self.items:
             nodeid = clean_nodeid(item.nodeid)
+            print("nodeid: ", nodeid)
             for dependency in self.dependencies[nodeid].dependencies:
+                print("dependency", dependency)
                 dag.add_edge(self.nodeid_to_item[dependency], item)
+
+        print("dag: ", dag)
 
         # Return the sorted list
         return networkx.topological_sort(dag)

@@ -233,7 +233,6 @@ def pytest_collection_modifyitems(items: Any, config: Any) -> None:
         ):
             dependencies = []
 
-        print("name", name)
         # Add depends marker dynamically
         item.add_marker(pytest.mark.depends(on=dependencies, name=name))
 

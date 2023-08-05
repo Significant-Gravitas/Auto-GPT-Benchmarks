@@ -156,7 +156,6 @@ def create_challenge(
         file_datum = [data, *suite_file_datum]
 
         if suite_config.same_task:
-            print(file_datum)
             challenge_data = suite_config.challenge_from_datum(file_datum)
 
             create_single_test(

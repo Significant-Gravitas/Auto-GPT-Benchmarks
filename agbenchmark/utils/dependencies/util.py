@@ -2,8 +2,7 @@
 
 import re
 
-from .constants import MARKER_NAME
-from .constants import MARKER_KWARG_ID
+from .constants import MARKER_NAME, MARKER_KWARG_ID, MARKER_KWARG_DEPENDENCIES
 
 
 REGEX_PARAMETERS = re.compile(r"\[.+\]$")
@@ -64,33 +63,15 @@ def get_names(item):
     Get all names for a test.
 
     This will use the following methods to determine the name of the test:
-            - If given, the custom name(s) passed to the keyword argument name on the marker
-            - The full node id of the test
-            - The node id of the test with any parameters removed, if it had any
-            - All 'scope' parts of the node id. For example, for a test test_file.py::TestClass::test, this would be
-            test_file.py and test_file.py::TestClass
+        - If given, the custom name(s) passed to the keyword argument name on the marker
     """
     names = set()
-
-    # Node id
-    nodeid = clean_nodeid(item.nodeid)
-    names.add(nodeid)
-
-    # Node id without parameter
-    nodeid = strip_nodeid_parameters(nodeid)
-    names.add(nodeid)
-
-    # Node id scopes
-    while "::" in nodeid:
-        nodeid = nodeid.rsplit("::", 1)[0]
-        names.add(nodeid)
 
     # Custom name
     markers = get_markers(item, MARKER_NAME)
     for marker in markers:
         if MARKER_KWARG_ID in marker.kwargs:
-            for name in as_list(marker.kwargs[MARKER_KWARG_ID]):
-                names.add(name)
+            names.add(marker.kwargs[MARKER_KWARG_ID])
 
     return names
 
