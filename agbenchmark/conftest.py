@@ -15,7 +15,6 @@ from agbenchmark.reports.reports import (
     generate_single_call_report,
     session_finish,
 )
-from agbenchmark.utils.dependencies.dependencies import topo_sort
 from agbenchmark.start_benchmark import CONFIG_PATH, get_regression_data
 from agbenchmark.utils.data_types import SuiteConfig
 

@@ -2,9 +2,7 @@ import json
 import os
 import sys
 from pathlib import Path
-from typing import Any, Callable
-
-import pytest
+from typing import Any
 
 from agbenchmark.agent_interface import MOCK_FLAG
 from agbenchmark.reports.ReportManager import ReportManager

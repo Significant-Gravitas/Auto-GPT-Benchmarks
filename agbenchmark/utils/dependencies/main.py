@@ -5,15 +5,16 @@ This module provides the methods implementing the main logic. These are used in 
 __init__.py.
 """
 
-from typing import Any, Generator
 import collections
+from typing import Any, Generator
 
 import colorama
 import networkx
+from _pytest.nodes import Item
 
-from .constants import MARKER_NAME, MARKER_KWARG_DEPENDENCIES
-from .util import as_list, clean_nodeid, get_absolute_nodeid, get_markers, get_name
-from .graphs import graph_spring_layout, graph_interactive_network
+from .constants import MARKER_KWARG_DEPENDENCIES, MARKER_NAME
+from .graphs import graph_interactive_network
+from .util import clean_nodeid, get_absolute_nodeid, get_markers, get_name
 
 
 class TestResult(object):
@@ -22,12 +23,12 @@ class TestResult(object):
     STEPS = ["setup", "call", "teardown"]
     GOOD_OUTCOMES = ["passed"]
 
-    def __init__(self, nodeid):
+    def __init__(self, nodeid: str) -> None:
         """Create a new instance for a test with a given node id."""
         self.nodeid = nodeid
-        self.results = {}
+        self.results: dict[str, Any] = {}
 
-    def register_result(self, result):
+    def register_result(self, result: Any) -> None:
         """Register a result of this test."""
         if result.when not in self.STEPS:
             raise ValueError(
@@ -40,7 +41,7 @@ class TestResult(object):
         self.results[result.when] = result.outcome
 
     @property
-    def success(self):
+    def success(self) -> bool:
         """Whether the entire test was successful."""
         return all(
             self.results.get(step, None) in self.GOOD_OUTCOMES for step in self.STEPS
@@ -50,7 +51,7 @@ class TestResult(object):
 class TestDependencies(object):
     """Information about the resolved dependencies of a single test."""
 
-    def __init__(self, item, manager):
+    def __init__(self, item: Item, manager: "DependencyManager") -> None:
         """Create a new instance for a given test."""
         self.nodeid = clean_nodeid(item.nodeid)
         self.dependencies = set()
@@ -60,7 +61,7 @@ class TestDependencies(object):
         dependencies = [
             dep
             for marker in markers
-            for dep in as_list(marker.kwargs.get(MARKER_KWARG_DEPENDENCIES, []))
+            for dep in marker.kwargs.get(MARKER_KWARG_DEPENDENCIES, [])
         ]
         for dependency in dependencies:
             # If the name is not known, try to make it absolute (ie file::[class::]method)
@@ -80,28 +81,28 @@ class TestDependencies(object):
 class DependencyManager(object):
     """Keep track of tests, their names and their dependencies."""
 
-    def __init__(self):
+    def __init__(self) -> None:
         """Create a new DependencyManager."""
-        self.options = {}
-        self._items = None
-        self._name_to_nodeids = None
+        self.options: dict[str, Any] = {}
+        self._items: list[Item] | None = None
+        self._name_to_nodeids: Any = None
         self._nodeid_to_item: Any = None
         self._results: Any = None
 
     @property
-    def items(self):  # noqa: D401
+    def items(self) -> list[Item]:
         """The collected tests that are managed by this instance."""
         if self._items is None:
             raise AttributeError("The items attribute has not been set yet")
         return self._items
 
     @items.setter
-    def items(self, items):
+    def items(self, items: list[Item]) -> None:
         if self._items is not None:
             raise AttributeError("The items attribute has already been set")
         self._items = items
 
-        self._name_to_nodeids: Any = collections.defaultdict(list)
+        self._name_to_nodeids = collections.defaultdict(list)
         self._nodeid_to_item = {}
         self._results = {}
         self._dependencies = {}
@@ -126,30 +127,30 @@ class DependencyManager(object):
             self._dependencies[nodeid] = TestDependencies(item, self)
 
     @property
-    def name_to_nodeids(self):  # noqa: D401
+    def name_to_nodeids(self) -> dict[str, list[str]]:
         """A mapping from names to matching node id(s)."""
         assert self.items is not None
         return self._name_to_nodeids
 
     @property
-    def nodeid_to_item(self):  # noqa: D401
+    def nodeid_to_item(self) -> dict[str, Item]:
         """A mapping from node ids to test items."""
         assert self.items is not None
         return self._nodeid_to_item
 
     @property
-    def results(self):  # noqa: D401
+    def results(self) -> dict[str, TestResult]:
         """The results of the tests."""
         assert self.items is not None
         return self._results
 
     @property
-    def dependencies(self):  # noqa: D401
+    def dependencies(self) -> dict[str, TestDependencies]:
         """The dependencies of the tests."""
         assert self.items is not None
         return self._dependencies
 
-    def print_name_map(self, verbose=False):
+    def print_name_map(self, verbose: bool = False) -> None:
         """Print a human-readable version of the name -> test mapping."""
         print("Available dependency names:")
         for name, nodeids in sorted(self.name_to_nodeids.items(), key=lambda x: x[0]):
@@ -167,7 +168,7 @@ class DependencyManager(object):
                 for nodeid in sorted(nodeids):
                     print(f"    {nodeid}")
 
-    def print_processed_dependencies(self, colors=False):
+    def print_processed_dependencies(self, colors: bool = False) -> None:
         """Print a human-readable list of the processed dependencies."""
         missing = "MISSING"
         if colors:
@@ -216,12 +217,12 @@ class DependencyManager(object):
         # Sort based on the dependencies
         return networkx.topological_sort(dag)
 
-    def register_result(self, item, result):
+    def register_result(self, item: Item, result: Any) -> None:
         """Register a result of a test."""
         nodeid = clean_nodeid(item.nodeid)
         self.results[nodeid].register_result(result)
 
-    def get_failed(self, item):
+    def get_failed(self, item: Item) -> Any:
         """Get a list of unfulfilled dependencies for a test."""
         nodeid = clean_nodeid(item.nodeid)
         failed = []
@@ -231,7 +232,7 @@ class DependencyManager(object):
                 failed.append(dependency)
         return failed
 
-    def get_missing(self, item):
+    def get_missing(self, item: Item) -> Any:
         """Get a list of missing dependencies for a test."""
         nodeid = clean_nodeid(item.nodeid)
         return self.dependencies[nodeid].unresolved

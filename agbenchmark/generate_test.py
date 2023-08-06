@@ -5,7 +5,7 @@ import sys
 import types
 from collections import deque
 from pathlib import Path
-from typing import Any, Dict, Optional, Callable
+from typing import Any, Callable, Dict, Optional
 
 import pytest
 

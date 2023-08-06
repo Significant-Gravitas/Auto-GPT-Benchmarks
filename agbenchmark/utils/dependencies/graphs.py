@@ -1,18 +1,30 @@
 import math
+from pathlib import Path
+from typing import Any, Dict, List, Tuple
 
+import matplotlib.patches as patches
+import matplotlib.pyplot as plt
 import networkx as nx
 import numpy as np
-import matplotlib.pyplot as plt
-import matplotlib.patches as patches
 from pyvis.network import Network
-from pathlib import Path
 
-from agbenchmark.start_benchmark import REPORTS_PATH
 from agbenchmark.generate_test import DATA_CATEGORY
 
 
-def bezier_curve(src, ctrl, dst):
-    """Generate Bézier curve points."""
+def bezier_curve(
+    src: np.ndarray, ctrl: List[float], dst: np.ndarray
+) -> List[np.ndarray]:
+    """
+    Generate Bézier curve points.
+
+    Args:
+    - src (np.ndarray): The source point.
+    - ctrl (List[float]): The control point.
+    - dst (np.ndarray): The destination point.
+
+    Returns:
+    - List[np.ndarray]: The Bézier curve points.
+    """
     curve = []
     for t in np.linspace(0, 1, num=100):
         curve_point = (
@@ -24,8 +36,20 @@ def bezier_curve(src, ctrl, dst):
     return curve
 
 
-def curved_edges(G, pos, dist=0.2):
-    """Draw curved edges for nodes on the same level."""
+def curved_edges(
+    G: nx.Graph, pos: Dict[Any, Tuple[float, float]], dist: float = 0.2
+) -> None:
+    """
+    Draw curved edges for nodes on the same level.
+
+    Args:
+    - G (Any): The graph object.
+    - pos (Dict[Any, Tuple[float, float]]): Dictionary with node positions.
+    - dist (float, optional): Distance for curvature. Defaults to 0.2.
+
+    Returns:
+    - None
+    """
     ax = plt.gca()
     for u, v, data in G.edges(data=True):
         src = np.array(pos[u])
@@ -37,8 +61,8 @@ def curved_edges(G, pos, dist=0.2):
             control = [(src[0] + dst[0]) / 2, src[1] + dist]
             curve = bezier_curve(src, control, dst)
             arrow = patches.FancyArrowPatch(
-                posA=curve[0],
-                posB=curve[-1],
+                posA=curve[0],  # type: ignore
+                posB=curve[-1],  # type: ignore
                 connectionstyle=f"arc3,rad=0.2",
                 color="gray",
                 arrowstyle="-|>",
@@ -59,7 +83,7 @@ def curved_edges(G, pos, dist=0.2):
             )
 
 
-def tree_layout(graph, root_node):
+def tree_layout(graph: nx.DiGraph, root_node: Any) -> Dict[Any, Tuple[float, float]]:
     """Compute positions as a tree layout centered on the root with alternating vertical shifts."""
     bfs_tree = nx.bfs_tree(graph, source=root_node)
     levels = {
@@ -74,7 +98,7 @@ def tree_layout(graph, root_node):
     level_positions = {i: 0 for i in range(max_depth + 1)}  # type: ignore
 
     # Count the number of nodes per level to compute the width
-    level_count = {}
+    level_count: Any = {}
     for node, level in levels.items():
         level_count[level] = level_count.get(level, 0) + 1
 
@@ -105,13 +129,15 @@ def tree_layout(graph, root_node):
     return pos
 
 
-def graph_spring_layout(dag, labels, tree: bool = True):  # Default to spring layout
+def graph_spring_layout(
+    dag: nx.DiGraph, labels: Dict[Any, str], tree: bool = True
+) -> None:
     num_nodes = len(dag.nodes())
     # Setting up the figure and axis
     fig, ax = plt.subplots()
     ax.axis("off")  # Turn off the axis
 
-    base = 3
+    base = 3.0
 
     if num_nodes > 10:
         base /= 1 + math.log(num_nodes)
@@ -134,19 +160,19 @@ def graph_spring_layout(dag, labels, tree: bool = True):  # Default to spring la
     nx.draw_networkx_labels(dag, pos, labels=labels, font_size=int(font_size))
 
     # Draw curved edges
-    curved_edges(dag, pos)
+    curved_edges(dag, pos)  # type: ignore
 
     plt.tight_layout()
     plt.show()
 
 
-def rgb_to_hex(rgb):
+def rgb_to_hex(rgb: Tuple[float, float, float]) -> str:
     return "#{:02x}{:02x}{:02x}".format(
         int(rgb[0] * 255), int(rgb[1] * 255), int(rgb[2] * 255)
     )
 
 
-def get_category_colors(categories):
+def get_category_colors(categories: Dict[Any, str]) -> Dict[str, str]:
     unique_categories = set(categories.values())
     colormap = plt.cm.get_cmap("tab10", len(unique_categories))  # type: ignore
     return {
@@ -155,7 +181,9 @@ def get_category_colors(categories):
     }
 
 
-def graph_interactive_network(dag, labels, show=False):
+def graph_interactive_network(
+    dag: nx.DiGraph, labels: Dict[Any, str], show: bool = False
+) -> None:
     nt = Network(notebook=True, width="100%", height="800px", directed=True)
 
     category_colors = get_category_colors(DATA_CATEGORY)

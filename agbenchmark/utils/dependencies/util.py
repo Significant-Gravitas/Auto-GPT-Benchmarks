@@ -1,14 +1,16 @@
 """ Utility functions to process the identifiers of tests. """
-
 import re
+from typing import Iterator
 
-from .constants import MARKER_NAME, MARKER_KWARG_ID, MARKER_KWARG_DEPENDENCIES
+from _pytest.mark.structures import Mark
+from _pytest.nodes import Item
 
+from .constants import MARKER_KWARG_ID, MARKER_NAME
 
 REGEX_PARAMETERS = re.compile(r"\[.+\]$")
 
 
-def clean_nodeid(nodeid):
+def clean_nodeid(nodeid: str) -> str:
     """
     Remove any superfluous ::() from a node id.
 
@@ -22,7 +24,7 @@ def clean_nodeid(nodeid):
     return nodeid.replace("::()::", "::")
 
 
-def strip_nodeid_parameters(nodeid):
+def strip_nodeid_parameters(nodeid: str) -> str:
     """
     Strip parameters from a node id.
 
@@ -34,7 +36,7 @@ def strip_nodeid_parameters(nodeid):
     return REGEX_PARAMETERS.sub("", nodeid)
 
 
-def get_absolute_nodeid(nodeid, scope):
+def get_absolute_nodeid(nodeid: str, scope: str) -> str:
     """
     Transform a possibly relative node id to an absolute one using the scope in which it is used.
 
@@ -58,7 +60,7 @@ def get_absolute_nodeid(nodeid, scope):
     return clean_nodeid(nodeid)
 
 
-def get_name(item):
+def get_name(item: Item) -> str:
     """
     Get all names for a test.
 
@@ -76,22 +78,8 @@ def get_name(item):
     return name
 
 
-def get_markers(item, name):
+def get_markers(item: Item, name: str) -> Iterator[Mark]:
     """Get all markers with the given name for a given item."""
     for marker in item.iter_markers():
         if marker.name == name:
             yield marker
-
-
-def as_list(lst):
-    """
-    Convert the input to a list of strings.
-
-    If the input is a single string, it will be wrapped in a list instead of iterated over.
-
-    >>> as_list(['foo'])
-    ['foo']
-    >>> as_list('foo')
-    ['foo']
-    """
-    return lst

@@ -5,7 +5,11 @@ The logic itself is in main.py.
 """
 
 import warnings
+from typing import Any, Callable, Optional
+
 import pytest
+from _pytest.config.argparsing import OptionGroup
+from _pytest.nodes import Item
 
 from .main import DependencyManager
 
@@ -13,10 +17,10 @@ from .main import DependencyManager
 # our own tests this causes problems, as the nested pytest runs get the same instance. This can be worked around by
 # running them all in subprocesses, but this slows the tests down massively. Instead, keep a stack of managers, so each
 # test suite will have its own manager, even nested ones.
-managers = []
+managers: list[DependencyManager] = []
 
 
-DEPENDENCY_PROBLEM_ACTIONS = {
+DEPENDENCY_PROBLEM_ACTIONS: dict[str, Callable[[str], None] | None] = {
     "run": None,
     "skip": lambda m: pytest.skip(m),
     "fail": lambda m: pytest.fail(m, False),
@@ -24,7 +28,14 @@ DEPENDENCY_PROBLEM_ACTIONS = {
 }
 
 
-def _add_ini_and_option(parser, group, name, help, default, **kwargs):
+def _add_ini_and_option(
+    parser: Any,
+    group: OptionGroup,
+    name: str,
+    help: str,
+    default: str | bool | int,
+    **kwargs: Any,
+) -> None:
     """Add an option to both the ini file as well as the command line flags, with the latter overriding the former."""
     parser.addini(
         name,
@@ -34,7 +45,9 @@ def _add_ini_and_option(parser, group, name, help, default, **kwargs):
     group.addoption(f'--{name.replace("_", "-")}', help=help, default=None, **kwargs)
 
 
-def _get_ini_or_option(config, name, choices):
+def _get_ini_or_option(
+    config: Any, name: str, choices: Optional[list[str]]
+) -> str | None:
     """Get an option from either the ini file or the command line flags, the latter taking precedence."""
     value = config.getini(name)
     if value is not None and choices is not None and value not in choices:
@@ -44,7 +57,7 @@ def _get_ini_or_option(config, name, choices):
     return config.getoption(name) or value
 
 
-def pytest_addoption(parser):  # noqa: D103
+def pytest_addoption(parser: Any) -> None:
     group = parser.getgroup("depends")
 
     # Add a flag to list all names + the tests they resolve to
@@ -93,7 +106,7 @@ def pytest_addoption(parser):  # noqa: D103
     )
 
 
-def pytest_configure(config):  # noqa: D103
+def pytest_configure(config: Any) -> None:
     manager = DependencyManager()
     managers.append(manager)
 
@@ -101,12 +114,12 @@ def pytest_configure(config):  # noqa: D103
     manager.options["failed_dependency_action"] = _get_ini_or_option(
         config,
         "failed_dependency_action",
-        DEPENDENCY_PROBLEM_ACTIONS.keys(),
+        list(DEPENDENCY_PROBLEM_ACTIONS.keys()),
     )
     manager.options["missing_dependency_action"] = _get_ini_or_option(
         config,
         "missing_dependency_action",
-        DEPENDENCY_PROBLEM_ACTIONS.keys(),
+        list(DEPENDENCY_PROBLEM_ACTIONS.keys()),
     )
 
     # Register marker
@@ -117,7 +130,7 @@ def pytest_configure(config):  # noqa: D103
 
 
 @pytest.hookimpl(trylast=True)
-def pytest_collection_modifyitems(config, items):  # noqa: D103
+def pytest_collection_modifyitems(config: Any, items: list[Item]) -> None:
     manager = managers[-1]
 
     # Register the founds tests on the manager
@@ -136,7 +149,7 @@ def pytest_collection_modifyitems(config, items):  # noqa: D103
 
 
 @pytest.hookimpl(tryfirst=True, hookwrapper=True)
-def pytest_runtest_makereport(item, call):  # noqa: D103
+def pytest_runtest_makereport(item: Item) -> Any:
     manager = managers[-1]
 
     # Run the step
@@ -146,7 +159,7 @@ def pytest_runtest_makereport(item, call):  # noqa: D103
     manager.register_result(item, outcome.get_result())
 
 
-def pytest_runtest_call(item):  # noqa: D103
+def pytest_runtest_call(item: Item) -> None:
     manager = managers[-1]
 
     # Handle missing dependencies
@@ -168,5 +181,5 @@ def pytest_runtest_call(item):  # noqa: D103
         failed_dependency_action(f'{item.nodeid} depends on {", ".join(failed)}')
 
 
-def pytest_unconfigure():  # noqa: D103
+def pytest_unconfigure() -> None:
     managers.pop()
