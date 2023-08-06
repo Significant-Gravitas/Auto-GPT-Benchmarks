@@ -13,6 +13,8 @@ from agbenchmark.utils.challenge import Challenge
 from agbenchmark.utils.data_types import ChallengeData, SuiteConfig
 from agbenchmark.utils.utils import get_test_path
 
+DATA_CATEGORY = {}
+
 
 def setup_dummy_dependencies(
     file_datum: list[dict[str, Any]],
@@ -33,6 +35,7 @@ def setup_dummy_dependencies(
         return setup_dependency_test
 
     for datum in file_datum:
+        DATA_CATEGORY[datum["name"]] = challenge_data.category[0]
         test_func = create_test_func(datum["name"])
         # TODO: replace this once I figure out actual dependencies
         test_func = pytest.mark.depends(on=[challenge_data.name], name=datum["name"])(
@@ -62,6 +65,8 @@ def create_single_test(
     if isinstance(data, ChallengeData):
         challenge_data = data
         data = data.get_data()
+
+    DATA_CATEGORY[data["name"]] = data["category"][0]
 
     # Define test class dynamically
     challenge_class = types.new_class(data["name"], (Challenge,))

@@ -210,8 +210,8 @@ class DependencyManager(object):
             node_name = get_name(item)
             labels[item] = node_name
 
-        graph_spring_layout(dag, labels)
-        # graph_interactive_network(dag, labels, show=True)
+        # graph_spring_layout(dag, labels)
+        graph_interactive_network(dag, labels, show=True)
 
         # Sort based on the dependencies
         return networkx.topological_sort(dag)
