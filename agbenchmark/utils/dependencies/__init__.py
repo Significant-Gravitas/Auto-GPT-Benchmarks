@@ -4,10 +4,10 @@ A module that provides the pytest hooks for this plugin.
 The logic itself is in main.py.
 """
 
+import warnings
 import pytest
 
 from .main import DependencyManager
-from .util import clean_nodeid
 
 # Each test suite run should have a single manager object. For regular runs, a simple singleton would suffice, but for
 # our own tests this causes problems, as the nested pytest runs get the same instance. This can be worked around by
@@ -20,6 +20,7 @@ DEPENDENCY_PROBLEM_ACTIONS = {
     "run": None,
     "skip": lambda m: pytest.skip(m),
     "fail": lambda m: pytest.fail(m, False),
+    "warning": lambda m: warnings.warn(m),
 }
 
 
@@ -87,7 +88,7 @@ def pytest_addoption(parser):  # noqa: D103
             "The action to take when a test has dependencies that cannot be found within the current scope. "
             'Use "run" to run the test anyway, "skip" to skip the test, and "fail" to fail the test.'
         ),
-        default="skip",
+        default="warning",
         choices=DEPENDENCY_PROBLEM_ACTIONS.keys(),
     )
 

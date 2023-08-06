@@ -161,15 +161,12 @@ def pytest_runtest_makereport(item: Any, call: Any) -> None:
     flags = "--test" in sys.argv or "--maintain" in sys.argv or "--improve" in sys.argv
 
     if call.when == "call":
-        test_name = ""
         # if it's a same task suite, we combine the report.
         # but not if it's a single --test
         if is_suite and is_suite.same_task and not flags:
-            test_name = is_suite.prefix
             generate_combined_suite_report(item, challenge_data, challenge_location)
         else:
             # single non suite test
-            test_name = challenge_data["name"]
             generate_single_call_report(item, call, challenge_data)
         # else: it's a same_task=false suite (tests aren't combined)
     if call.when == "teardown":

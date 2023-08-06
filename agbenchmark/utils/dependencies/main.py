@@ -5,7 +5,7 @@ This module provides the methods implementing the main logic. These are used in 
 __init__.py.
 """
 
-from typing import Any
+from typing import Any, Generator
 import collections
 
 import colorama
@@ -111,7 +111,6 @@ class DependencyManager(object):
             self._nodeid_to_item[nodeid] = item
             # Add the mappings from all names to the node id
             for name in get_names(item):
-                print("get_names name: ", name)
                 self._name_to_nodeids[name].append(nodeid)
             # Create the object that will contain the results of this test
             self._results[nodeid] = TestResult(clean_nodeid(item.nodeid))
@@ -190,7 +189,7 @@ class DependencyManager(object):
                 colorama.deinit()
 
     @property
-    def sorted_items(self):
+    def sorted_items(self) -> Generator:
         """Get a sorted list of tests where all tests are sorted after their dependencies."""
         # Build a directed graph for sorting
         dag = networkx.DiGraph()
@@ -207,9 +206,7 @@ class DependencyManager(object):
                 print("dependency", dependency)
                 dag.add_edge(self.nodeid_to_item[dependency], item)
 
-        print("dag: ", dag)
-
-        # Return the sorted list
+        # Sort based on the dependencies
         return networkx.topological_sort(dag)
 
     def register_result(self, item, result):
