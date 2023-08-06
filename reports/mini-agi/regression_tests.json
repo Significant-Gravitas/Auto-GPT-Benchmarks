@@ -1,23 +1,11 @@
 {
-    "TestAdaptLink": {
-        "difficulty": "novice",
-        "data_path": "agbenchmark/challenges/adapatability/a3_book_price/data.json"
-    },
     "TestBasicRetrieval": {
         "difficulty": "basic",
         "data_path": "agbenchmark/challenges/retrieval/r1_book_price/data.json"
     },
-    "TestDebugSimpleTypoWithGuidance": {
-        "difficulty": "novice",
-        "data_path": "agbenchmark/challenges/code/c2_debug_suite/d2_debug/data.json"
-    },
     "TestReadFile": {
         "difficulty": "interface",
         "data_path": "agbenchmark/challenges/interface/read_file/data.json"
-    },
-    "TestRevenueRetrieval_1.0": {
-        "difficulty": "novice",
-        "data_path": "agbenchmark/challenges/retrieval/r2_search_suite_1"
     },
     "TestSearch": {
         "difficulty": "interface",
