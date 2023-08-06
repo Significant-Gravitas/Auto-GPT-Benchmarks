@@ -58,22 +58,22 @@ def get_absolute_nodeid(nodeid, scope):
     return clean_nodeid(nodeid)
 
 
-def get_names(item):
+def get_name(item):
     """
     Get all names for a test.
 
     This will use the following methods to determine the name of the test:
         - If given, the custom name(s) passed to the keyword argument name on the marker
     """
-    names = set()
+    name = ""
 
     # Custom name
     markers = get_markers(item, MARKER_NAME)
     for marker in markers:
         if MARKER_KWARG_ID in marker.kwargs:
-            names.add(marker.kwargs[MARKER_KWARG_ID])
+            name = marker.kwargs[MARKER_KWARG_ID]
 
-    return names
+    return name
 
 
 def get_markers(item, name):

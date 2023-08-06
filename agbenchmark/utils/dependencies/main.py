@@ -12,7 +12,8 @@ import colorama
 import networkx
 
 from .constants import MARKER_NAME, MARKER_KWARG_DEPENDENCIES
-from .util import as_list, clean_nodeid, get_absolute_nodeid, get_markers, get_names
+from .util import as_list, clean_nodeid, get_absolute_nodeid, get_markers, get_name
+from .graphs import graph_spring_layout, graph_interactive_network
 
 
 class TestResult(object):
@@ -110,8 +111,8 @@ class DependencyManager(object):
             # Add the mapping from nodeid to the test item
             self._nodeid_to_item[nodeid] = item
             # Add the mappings from all names to the node id
-            for name in get_names(item):
-                self._name_to_nodeids[name].append(nodeid)
+            name = get_name(item)
+            self._name_to_nodeids[name].append(nodeid)
             # Create the object that will contain the results of this test
             self._results[nodeid] = TestResult(clean_nodeid(item.nodeid))
 
@@ -201,10 +202,16 @@ class DependencyManager(object):
         # Insert edges for all the dependencies
         for item in self.items:
             nodeid = clean_nodeid(item.nodeid)
-            print("nodeid: ", nodeid)
             for dependency in self.dependencies[nodeid].dependencies:
-                print("dependency", dependency)
                 dag.add_edge(self.nodeid_to_item[dependency], item)
+
+        labels = {}
+        for item in self.items:
+            node_name = get_name(item)
+            labels[item] = node_name
+
+        graph_spring_layout(dag, labels)
+        # graph_interactive_network(dag, labels, show=True)
 
         # Sort based on the dependencies
         return networkx.topological_sort(dag)
