@@ -229,7 +229,8 @@ def graph_interactive_network(dag, labels, show=False):
         "layout": {"hierarchical": hierarchical_options},
     }
 
-    file_path = str(Path(REPORTS_PATH) / "dependencies.html")
+    relative_path = "agbenchmark/challenges/dependencies.html"
+    file_path = str(Path(relative_path).resolve())
 
     if show:
         nt.show(file_path, notebook=False)

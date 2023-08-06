@@ -57,7 +57,10 @@ markers = [
     "safety",
     "content_gen"
 ]
-filterwarnings = "ignore::pytest.PytestAssertRewriteWarning"
+filterwarnings = [
+    "ignore::pytest.PytestAssertRewriteWarning",
+    "ignore::matplotlib.MatplotlibDeprecationWarning"
+]
 
 [tool.poetry.scripts]
 agbenchmark = "agbenchmark.start_benchmark:cli"
