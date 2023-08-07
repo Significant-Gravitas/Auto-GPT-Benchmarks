@@ -50,12 +50,18 @@ def get_unique_categories() -> set[str]:
     this_dir = os.path.dirname(os.path.abspath(__file__))
 
     glob_path = os.path.join(this_dir, "./challenges/**/data.json")
-    print(glob_path)
     # Use it as the base for the glob pattern
     for data_file in glob.glob(glob_path, recursive=True):
         with open(data_file, "r") as f:
-            data = json.load(f)
-            categories.update(data.get("category", []))
+            try:
+                data = json.load(f)
+                categories.update(data.get("category", []))
+            except json.JSONDecodeError:
+                print(f"Error: {data_file} is not a valid JSON file.")
+                continue
+            except IOError:
+                print(f"IOError: file could not be read: {data_file}")
+                continue
 
     return categories
 
@@ -167,7 +173,7 @@ def start(
         ), f"Invalid categories: {invalid_categories}. Valid categories are: {categories}"
 
         if category:
-
+            
             categories_to_run = set(category)
             if skip_category:
                 categories_to_run = categories_to_run.difference(set(skip_category))
