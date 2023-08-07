@@ -74,7 +74,7 @@ def cli() -> None:
     "--skip-category",
     default=None,
     multiple=True,
-    help="Specific category to run",
+    help="Skips preventing the tests from this category from running",
 )
 @click.option("--test", default=None, help="Specific test to run")
 @click.option("--maintain", is_flag=True, help="Runs only regression tests")
