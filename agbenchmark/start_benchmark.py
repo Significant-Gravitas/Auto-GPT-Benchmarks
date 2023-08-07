@@ -173,7 +173,6 @@ def start(
         ), f"Invalid categories: {invalid_categories}. Valid categories are: {categories}"
 
         if category:
-            
             categories_to_run = set(category)
             if skip_category:
                 categories_to_run = categories_to_run.difference(set(skip_category))
