@@ -1,5 +1,5 @@
-import json
 import glob
+import json
 import os
 import sys
 from datetime import datetime
@@ -41,7 +41,7 @@ with open(
     OPTIONAL_CATEGORIES = json.load(f)["optional_categories"]
 
 
-def get_unique_categories():
+def get_unique_categories() -> set[str]:
     """Find all data.json files in the directory relative to this file and its subdirectories,
     read the "category" field from each file, and return a set of unique categories."""
     categories = set()
@@ -49,13 +49,13 @@ def get_unique_categories():
     # Get the directory of this file
     this_dir = os.path.dirname(os.path.abspath(__file__))
 
-    glob_path = os.path.join(this_dir, './challenges/**/data.json')
+    glob_path = os.path.join(this_dir, "./challenges/**/data.json")
     print(glob_path)
     # Use it as the base for the glob pattern
     for data_file in glob.glob(glob_path, recursive=True):
-        with open(data_file, 'r') as f:
+        with open(data_file, "r") as f:
             data = json.load(f)
-            categories.update(data.get('category', []))
+            categories.update(data.get("category", []))
 
     return categories
 
@@ -66,8 +66,16 @@ def cli() -> None:
 
 
 @cli.command()
-@click.option("-c", "--category", default=None, multiple=True, help="Specific category to run")
-@click.option("-s", "--skip-category", default=None, multiple=True, help="Specific category to run")
+@click.option(
+    "-c", "--category", default=None, multiple=True, help="Specific category to run"
+)
+@click.option(
+    "-s",
+    "--skip-category",
+    default=None,
+    multiple=True,
+    help="Specific category to run",
+)
 @click.option("--test", default=None, help="Specific test to run")
 @click.option("--maintain", is_flag=True, help="Runs only regression tests")
 @click.option("--improve", is_flag=True, help="Run only non-regression tests")
@@ -154,7 +162,9 @@ def start(
         # Categories that are used in the challenges
         categories = get_unique_categories()
         invalid_categories = set(category) - categories
-        assert not invalid_categories, f"Invalid categories: {invalid_categories}. Valid categories are: {categories}"
+        assert (
+            not invalid_categories
+        ), f"Invalid categories: {invalid_categories}. Valid categories are: {categories}"
 
         if category:
 
@@ -162,12 +172,12 @@ def start(
             if skip_category:
                 categories_to_run = categories_to_run.difference(set(skip_category))
                 assert categories_to_run, "Error: You can't skip all categories"
-            pytest_args.extend(["-m", ' or '.join(categories_to_run), "--category"])
+            pytest_args.extend(["-m", " or ".join(categories_to_run), "--category"])
             print("Running tests of category:", categories_to_run)
         elif skip_category:
             categories_to_run = categories - set(skip_category)
             assert categories_to_run, "Error: You can't skip all categories"
-            pytest_args.extend(["-m", ' or '.join(categories_to_run), "--category"])
+            pytest_args.extend(["-m", " or ".join(categories_to_run), "--category"])
             print("Running tests of category:", categories_to_run)
         else:
             print("Running all categories")

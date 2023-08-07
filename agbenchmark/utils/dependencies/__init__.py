@@ -8,9 +8,8 @@ import warnings
 from typing import Any, Callable, Optional
 
 import pytest
-from _pytest.config.argparsing import OptionGroup
+from _pytest.config.argparsing import OptionGroup, Parser
 from _pytest.nodes import Item
-from _pytest.config.argparsing import Parser
 
 from .main import DependencyManager
 
@@ -67,7 +66,7 @@ def pytest_addoption(parser: Parser) -> None:
     for group in parser._groups:
         for action in group.options:
             current_options += action._short_opts + action._long_opts
-    
+
     print(current_options)
 
     group = parser.getgroup("depends")
