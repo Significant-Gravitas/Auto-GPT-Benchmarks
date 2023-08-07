@@ -17,8 +17,11 @@ from agbenchmark.utils.utils import (
 
 CURRENT_DIRECTORY = Path(__file__).resolve().parent
 BENCHMARK_START_TIME = datetime.now().strftime("%Y-%m-%d-%H:%M")
+if os.environ.get("HELICONE_API_KEY"):
+    HeliconeLockManager.write_custom_property(
+        "benchmark_start_time", BENCHMARK_START_TIME
+    )
 
-HeliconeLockManager.write_custom_property("benchmark_start_time", BENCHMARK_START_TIME)
 
 (
     HOME_DIRECTORY,
@@ -30,6 +33,11 @@ HeliconeLockManager.write_custom_property("benchmark_start_time", BENCHMARK_STAR
 ) = calculate_dynamic_paths()
 BENCHMARK_GIT_COMMIT_SHA = get_git_commit_sha(HOME_DIRECTORY / ".." / "..")
 AGENT_GIT_COMMIT_SHA = get_git_commit_sha(HOME_DIRECTORY)
+# open a file in the challenges/optional_categories
+with open(
+    Path(__file__).resolve().parent / "challenges" / "optional_categories.json"
+) as f:
+    OPTIONAL_CATEGORIES = json.load(f)["optional_categories"]
 
 
 @click.group()

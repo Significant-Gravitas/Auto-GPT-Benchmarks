@@ -6,6 +6,7 @@ import sys
 import time
 from typing import Any, Dict
 
+import psutil
 from dotenv import load_dotenv
 
 from agbenchmark.start_benchmark import CURRENT_DIRECTORY, HOME_DIRECTORY
@@ -14,6 +15,10 @@ load_dotenv()
 
 mock_test_str = os.getenv("MOCK_TEST")
 MOCK_FLAG = mock_test_str.lower() == "true" if mock_test_str else False
+helicone_graphql_logs = os.getenv("HELICONE_GRAPHQL_LOGS")
+HELICONE_GRAPHQL_LOGS = (
+    helicone_graphql_logs.lower() == "true" if helicone_graphql_logs else False
+)
 
 
 def run_agent(
@@ -65,7 +70,11 @@ def run_agent(
 
     if time.time() - start_time > timeout:
         print("The Python function has exceeded the time limit and was terminated.")
-        process.kill()
+        parent = psutil.Process(process.pid)
+        for child in parent.children(recursive=True):
+            child.kill()
+        parent.kill()
+
     else:
         print("The Python function has finished running.")
 
