@@ -6,6 +6,7 @@ import sys
 import time
 from typing import Any, Dict
 
+import psutil
 from dotenv import load_dotenv
 
 from agbenchmark.start_benchmark import CURRENT_DIRECTORY, HOME_DIRECTORY
@@ -37,6 +38,8 @@ def run_agent(
     timeout = cutoff
     if "--nc" in sys.argv:
         timeout = 100000
+    if "--cutoff" in sys.argv:
+        timeout = int(sys.argv[sys.argv.index("--cutoff") + 1])
 
     print(f"Running '{entry_path}' with timeout {timeout}")
 
@@ -67,7 +70,11 @@ def run_agent(
 
     if time.time() - start_time > timeout:
         print("The Python function has exceeded the time limit and was terminated.")
-        process.kill()
+        parent = psutil.Process(process.pid)
+        for child in parent.children(recursive=True):
+            child.kill()
+        parent.kill()
+
     else:
         print("The Python function has finished running.")
 
