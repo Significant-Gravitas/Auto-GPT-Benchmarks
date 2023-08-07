@@ -27,7 +27,7 @@
 	url = https://github.com/AutoPackAI/beebot.git
 	branch = main
 [submodule "agent/polygpt"]
-	path = agent/polygpt
+	path = agent/PolyGPT
 	url = https://github.com/polywrap/PolyGPT.git
 	branch = nerfzael-agent-protocol
 [submodule "agbenchmark/challenges"]
