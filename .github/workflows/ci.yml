@@ -100,7 +100,7 @@ jobs:
       min-python-version: '3.10'
     name: '${{ matrix.agent-name }}'
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 40
     strategy:
       fail-fast: false
       matrix:
@@ -170,6 +170,7 @@ jobs:
           elif [ "$AGENT_NAME" == "beebot" ]; then
             poetry install
             poetry run playwright install
+            uvicorn beebot.initiator.api:create_app --reload &
             prefix="poetry run "
           elif [ "$AGENT_NAME" == "PolyGPT" ]; then
             cp .env.template .env

@@ -6,6 +6,7 @@ import sys
 import time
 from typing import Any, Dict
 
+import psutil
 from dotenv import load_dotenv
 
 from agbenchmark.start_benchmark import CURRENT_DIRECTORY, HOME_DIRECTORY
@@ -14,62 +15,73 @@ load_dotenv()
 
 mock_test_str = os.getenv("MOCK_TEST")
 MOCK_FLAG = mock_test_str.lower() == "true" if mock_test_str else False
+helicone_graphql_logs = os.getenv("HELICONE_GRAPHQL_LOGS")
+HELICONE_GRAPHQL_LOGS = (
+    helicone_graphql_logs.lower() == "true" if helicone_graphql_logs else False
+)
 
 
 def run_agent(
     task: str, config: Dict[str, Any], artifacts_location: str, cutoff: int
 ) -> None:
     """Calling to get a response"""
-
+    if task == "":
+        return
     if MOCK_FLAG:
         print("Running mock agent")
         copy_artifacts_into_workspace(
             config["workspace"], "artifacts_out", artifacts_location
         )
+        return
+    entry_path = "agbenchmark.benchmarks"
+
+    timeout = cutoff
+    if "--nc" in sys.argv:
+        timeout = 100000
+    if "--cutoff" in sys.argv:
+        timeout = int(sys.argv[sys.argv.index("--cutoff") + 1])
+
+    print(f"Running '{entry_path}' with timeout {timeout}")
+
+    command = [sys.executable, "-m", entry_path, str(task)]
+    process = subprocess.Popen(
+        command,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        universal_newlines=True,
+        cwd=HOME_DIRECTORY,
+        bufsize=1,
+    )
+
+    start_time = time.time()
+
+    while True:
+        try:
+            # This checks if there's data to be read from stdout without blocking.
+            if process.stdout and select.select([process.stdout], [], [], 0)[0]:
+                output = process.stdout.readline()
+                print(output.strip())
+        except Exception as e:
+            continue
+
+        # Check if process has ended, has no more output, or exceeded timeout
+        if process.poll() is not None or (time.time() - start_time > timeout):
+            break
+
+    if time.time() - start_time > timeout:
+        print("The Python function has exceeded the time limit and was terminated.")
+        parent = psutil.Process(process.pid)
+        for child in parent.children(recursive=True):
+            child.kill()
+        parent.kill()
+
     else:
-        entry_path = "agbenchmark.benchmarks"
+        print("The Python function has finished running.")
 
-        timeout = cutoff
-        if "--nc" in sys.argv:
-            timeout = 100000
+    process.wait()
 
-        print(f"Running '{entry_path}' with timeout {timeout}")
-
-        command = [sys.executable, "-m", entry_path, str(task)]
-        process = subprocess.Popen(
-            command,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.STDOUT,
-            universal_newlines=True,
-            cwd=HOME_DIRECTORY,
-            bufsize=1,
-        )
-
-        start_time = time.time()
-
-        while True:
-            try:
-                # This checks if there's data to be read from stdout without blocking.
-                if process.stdout and select.select([process.stdout], [], [], 0)[0]:
-                    output = process.stdout.readline()
-                    print(output.strip())
-            except Exception as e:
-                continue
-
-            # Check if process has ended, has no more output, or exceeded timeout
-            if process.poll() is not None or (time.time() - start_time > timeout):
-                break
-
-        if time.time() - start_time > timeout:
-            print("The Python function has exceeded the time limit and was terminated.")
-            process.kill()
-        else:
-            print("The Python function has finished running.")
-
-        process.wait()
-
-        if process.returncode != 0:
-            print(f"The agent timed out")
+    if process.returncode != 0:
+        print(f"The agent timed out")
 
 
 def copy_artifacts_into_workspace(
