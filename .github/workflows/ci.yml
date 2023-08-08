@@ -176,7 +176,6 @@ jobs:
             cp .env.template .env
             nvm install && nvm use
             yarn install
-            yarn start:api
           else
             echo "Unknown agent name: $AGENT_NAME"
             exit 1
