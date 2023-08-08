@@ -22,7 +22,7 @@ HELICONE_GRAPHQL_LOGS = (
 
 
 def run_agent(
-    task: str, config: Dict[str, Any], artifacts_location: str, cutoff: int
+    task: str, config: Dict[str, Any], artifacts_location: str, timeout: int
 ) -> None:
     """Calling to get a response"""
     if task == "":
@@ -34,12 +34,6 @@ def run_agent(
         )
         return
     entry_path = "agbenchmark.benchmarks"
-
-    timeout = cutoff
-    if "--nc" in sys.argv:
-        timeout = 100000
-    if "--cutoff" in sys.argv:
-        timeout = int(sys.argv[sys.argv.index("--cutoff") + 1])
 
     print(f"Running '{entry_path}' with timeout {timeout}")
 

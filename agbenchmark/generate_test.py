@@ -96,7 +96,7 @@ def create_single_test(
     )
 
     # Define test method within the dynamically created class
-    def test_method(self, config: Dict[str, Any], request) -> None:  # type: ignore
+    async def test_method(self, config: Dict[str, Any], request) -> None:  # type: ignore
         self.skip_optional_categories(config)
         from helicone.lock import HeliconeLockManager
 
@@ -104,7 +104,14 @@ def create_single_test(
             HeliconeLockManager.write_custom_property("challenge", self.data.name)
 
         cutoff = self.data.cutoff or 60
-        self.setup_challenge(config, cutoff)
+
+        timeout = cutoff
+        if "--nc" in sys.argv:
+            timeout = 100000
+        if "--cutoff" in sys.argv:
+            timeout = int(sys.argv[sys.argv.index("--cutoff") + 1])
+
+        await self.setup_challenge(config, timeout)
 
         scores = self.get_scores(config)
         request.node.scores = scores  # store scores in request.node
