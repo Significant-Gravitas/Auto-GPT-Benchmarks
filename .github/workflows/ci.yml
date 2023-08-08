@@ -172,6 +172,11 @@ jobs:
             poetry run playwright install
             uvicorn beebot.initiator.api:create_app --reload &
             prefix="poetry run "
+          elif [ "$AGENT_NAME" == "PolyGPT" ]; then
+            cp .env.template .env
+            nvm install && nvm use
+            yarn install
+            yarn start:api
           else
             echo "Unknown agent name: $AGENT_NAME"
             exit 1
