@@ -4,7 +4,7 @@ import shutil
 import subprocess
 import sys
 import time
-from typing import Any, Dict
+from typing import Any, Dict, List
 
 import psutil
 from dotenv import load_dotenv
@@ -78,19 +78,22 @@ def run_agent(
         print(f"The agent timed out")
 
 
-def copy_artifacts_into_workspace(
-    workspace: str, artifact_folder_name: str, challenge_dir_path: str
-) -> None:
+def get_list_of_file_paths(
+    challenge_dir_path: str, artifact_folder_name: str
+) -> List[str]:
     # this file is at agbenchmark\agent_interface.py
     source_dir = os.path.join(
         CURRENT_DIRECTORY, "..", challenge_dir_path, artifact_folder_name
     )
-
-    # Check if source_dir exists, if not then return immediately.
     if not os.path.exists(source_dir):
-        return
+        return []
+    return [os.path.join(source_dir, file_name) for file_name in os.listdir(source_dir)]
 
-    for file_name in os.listdir(source_dir):
-        full_file_name = os.path.join(source_dir, file_name)
-        if os.path.isfile(full_file_name):
-            shutil.copy(full_file_name, workspace)
+
+def copy_artifacts_into_workspace(
+    workspace: str, artifact_folder_name: str, challenge_dir_path: str
+) -> None:
+    file_paths = get_list_of_file_paths(challenge_dir_path, artifact_folder_name)
+    for file_path in file_paths:
+        if os.path.isfile(file_path):
+            shutil.copy(file_path, workspace)

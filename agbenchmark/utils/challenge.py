@@ -60,7 +60,7 @@ class Challenge(ABC):
         print(f"\033[1;30mTask: {self.task}\033[0m")
 
         if config["api_mode"]:
-            await run_api_agent(self.data, config, cutoff)
+            await run_api_agent(self.data, config, self.ARTIFACTS_LOCATION, cutoff)
         else:
             run_agent(self.task, config, self.ARTIFACTS_LOCATION, cutoff)
 

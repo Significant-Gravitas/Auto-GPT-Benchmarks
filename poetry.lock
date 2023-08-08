@@ -33,13 +33,13 @@ requests = ">=2.31.0,<3.0.0"
 
 [[package]]
 name = "agent-protocol-client"
-version = "0.2.0"
+version = "0.2.1"
 description = "Agent Communication Protocol Client"
 optional = false
 python-versions = ">=3.10,<4.0"
 files = [
-    {file = "agent_protocol_client-0.2.0-py3-none-any.whl", hash = "sha256:a016f83f7556f3e6581c9503aa745511f444247bf8572aec7ec1e65bd30fff44"},
-    {file = "agent_protocol_client-0.2.0.tar.gz", hash = "sha256:aa70dd0ed3ed7a59395e235c997c7588f3db7f957a3d1ce8431ba16b41f84c7a"},
+    {file = "agent_protocol_client-0.2.1-py3-none-any.whl", hash = "sha256:ce69622b6b4f2f2cf5f003696ac31badb3924176a7ef0260156b2a65f2a61fc8"},
+    {file = "agent_protocol_client-0.2.1.tar.gz", hash = "sha256:cd12586e175252fe556cbd05556cbdabdee2e917ae1a1ea6c783d8f42e3d2a54"},
 ]
 
 [package.dependencies]
@@ -2557,4 +2557,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "dcb80c8cacb711cf2f1335a9833df92f1dcc1733bdd2d93996a540fac037f346"
+content-hash = "2acdf62ea4654f25a35d4e973015ab7094cbb9524567e699ecbd29ceb03ff9f5"
