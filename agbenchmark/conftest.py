@@ -266,3 +266,5 @@ def run_agent(request: Any) -> Any:
         yield
         print(f"Terminating agent")
         process.terminate()
+    else:
+        yield
