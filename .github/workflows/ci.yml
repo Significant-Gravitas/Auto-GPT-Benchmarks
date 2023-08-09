@@ -179,9 +179,6 @@ jobs:
             source $NVM_DIR/nvm.sh
             nvm install && nvm use
             yarn install
-            poetry install
-            poetry run playwright install
-            prefix="poetry run "
           else
             echo "Unknown agent name: $AGENT_NAME"
             exit 1
