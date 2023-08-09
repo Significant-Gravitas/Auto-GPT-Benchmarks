@@ -6,6 +6,7 @@ __init__.py.
 """
 
 import collections
+import json
 from typing import Any, Generator, Optional
 
 import colorama
@@ -208,8 +209,15 @@ class DependencyManager(object):
 
         labels = {}
         for item in self.items:
+            try:
+                with open(item.cls.CHALLENGE_LOCATION) as f:
+                    data = json.load(f)
+            except:
+                data = {}
+
             node_name = get_name(item)
-            labels[item] = node_name
+            data["name"] = node_name
+            labels[item] = data
 
         if show_graph:
             # graph_spring_layout(dag, labels)
