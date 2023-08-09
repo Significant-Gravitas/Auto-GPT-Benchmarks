@@ -10,7 +10,7 @@ import openai
 import pytest
 
 from agbenchmark.agent_api_interface import run_api_agent
-from agbenchmark.start_benchmark import OPTIONAL_CATEGORIES, MOCK_FLAG
+from agbenchmark.start_benchmark import MOCK_FLAG, OPTIONAL_CATEGORIES
 from agbenchmark.utils.data_types import ChallengeData, Ground
 from agbenchmark.utils.prompts import (
     END_PROMPT,

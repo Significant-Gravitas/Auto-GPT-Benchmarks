@@ -16,7 +16,7 @@ from agbenchmark.reports.reports import (
     generate_single_call_report,
     session_finish,
 )
-from agbenchmark.start_benchmark import CONFIG_PATH, get_regression_data, HOME_DIRECTORY
+from agbenchmark.start_benchmark import CONFIG_PATH, HOME_DIRECTORY, get_regression_data
 from agbenchmark.utils.data_types import SuiteConfig
 
 GLOBAL_TIMEOUT = (
@@ -249,7 +249,7 @@ def pytest_collection_modifyitems(items: Any, config: Any) -> None:
 
 
 @pytest.fixture(scope="session", autouse=True)
-def run_agent(request: Any) -> None:
+def run_agent(request: Any) -> Any:
     with open(CONFIG_PATH, "r") as f:
         config = json.load(f)
 
