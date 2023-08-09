@@ -253,7 +253,7 @@ def run_agent(request: Any) -> None:
     with open(CONFIG_PATH, "r") as f:
         config = json.load(f)
 
-    if config["api_mode"]:
+    if config.get("api_mode"):
         command = [sys.executable, "-m", "agbenchmark.benchmarks"]
         process = subprocess.Popen(
             command,

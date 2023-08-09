@@ -66,7 +66,7 @@ class Challenge(ABC):
             copy_artifacts_into_workspace(
                 config["workspace"], "artifacts_out", self.ARTIFACTS_LOCATION
             )
-        elif config["api_mode"]:
+        elif config.get("api_mode"):
             await run_api_agent(self.data, config, self.ARTIFACTS_LOCATION, cutoff)
         else:
             run_agent(self.task, cutoff)

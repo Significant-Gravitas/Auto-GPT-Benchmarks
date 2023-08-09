@@ -156,15 +156,7 @@ def start(
             show_default=True,
         )
 
-    if not config.get("api_mode"):
-        config["api_mode"] = click.prompt(
-            "Do you want to run in API mode?",
-            default=False,
-            show_default=True,
-            type=bool,
-        )
-
-    if config["api_mode"] and not config.get("host"):
+    if config.get("api_mode") and not config.get("host"):
         config["host"] = click.prompt(
             "Please enter the Agent API host address",
             default="http://localhost:8000",
