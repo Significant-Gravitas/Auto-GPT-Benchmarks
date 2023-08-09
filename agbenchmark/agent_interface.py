@@ -4,7 +4,7 @@ import shutil
 import subprocess
 import sys
 import time
-from typing import Any, Dict, List
+from typing import List
 
 import psutil
 from dotenv import load_dotenv
@@ -13,26 +13,15 @@ from agbenchmark.start_benchmark import CURRENT_DIRECTORY, HOME_DIRECTORY
 
 load_dotenv()
 
-mock_test_str = os.getenv("MOCK_TEST")
-MOCK_FLAG = mock_test_str.lower() == "true" if mock_test_str else False
 helicone_graphql_logs = os.getenv("HELICONE_GRAPHQL_LOGS")
 HELICONE_GRAPHQL_LOGS = (
     helicone_graphql_logs.lower() == "true" if helicone_graphql_logs else False
 )
 
 
-def run_agent(
-    task: str, config: Dict[str, Any], artifacts_location: str, timeout: int
-) -> None:
+def run_agent(task: str, timeout: int) -> None:
     """Calling to get a response"""
-    if task == "":
-        return
-    if MOCK_FLAG:
-        print("Running mock agent")
-        copy_artifacts_into_workspace(
-            config["workspace"], "artifacts_out", artifacts_location
-        )
-        return
+
     entry_path = "agbenchmark.benchmarks"
 
     print(f"Running '{entry_path}' with timeout {timeout}")

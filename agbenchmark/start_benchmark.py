@@ -22,6 +22,7 @@ if os.environ.get("HELICONE_API_KEY"):
     HeliconeLockManager.write_custom_property(
         "benchmark_start_time", BENCHMARK_START_TIME
     )
+MOCK_FLAG = os.getenv("MOCK_TEST", "").lower() == "true"
 
 
 (
