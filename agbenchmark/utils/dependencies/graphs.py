@@ -190,7 +190,6 @@ def graph_interactive_network(
 
     # Add nodes and edges to the pyvis network
     for node, json_data in labels.items():
-
         label = json_data.get("name", "")
         # remove the first 4 letters of label
         label_without_test = label[4:]

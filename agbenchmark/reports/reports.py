@@ -144,7 +144,6 @@ def update_regression_tests(
 def generate_single_call_report(
     item: Any, call: Any, challenge_data: dict[str, Any]
 ) -> None:
-
     try:
         difficulty = challenge_data["info"]["difficulty"]
     except KeyError:
