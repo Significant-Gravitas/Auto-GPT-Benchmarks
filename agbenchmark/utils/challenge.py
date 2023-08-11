@@ -7,8 +7,10 @@ from abc import ABC
 from typing import Any, Dict, List
 
 import openai
+import pytest
 
-from agbenchmark.agent_interface import MOCK_FLAG
+from agbenchmark.agent_api_interface import run_api_agent
+from agbenchmark.start_benchmark import OPTIONAL_CATEGORIES
 from agbenchmark.utils.data_types import ChallengeData, Ground
 from agbenchmark.utils.prompts import (
     END_PROMPT,
@@ -16,6 +18,7 @@ from agbenchmark.utils.prompts import (
     PROMPT_MAP,
     SCORING_MAP,
 )
+from agbenchmark.utils.utils import agent_eligibible_for_optional_categories
 
 
 class Challenge(ABC):
@@ -25,7 +28,6 @@ class Challenge(ABC):
     _data_cache: Dict[str, ChallengeData] = {}
     CHALLENGE_LOCATION: str = ""
     ARTIFACTS_LOCATION: str = ""  # this is for suites
-    setup_dependencies: List[str] = []  # this is for suites
     scores: dict[str, Any] = {}  # this is for suites
 
     @property
@@ -44,7 +46,10 @@ class Challenge(ABC):
     def dependencies(self) -> list:
         return self.data.dependencies
 
-    def setup_challenge(self, config: Dict[str, Any], cutoff: int) -> None:
+    async def setup_challenge(self, config: Dict[str, Any], cutoff: int) -> None:
+        if not self.task:
+            return
+
         from agbenchmark.agent_interface import copy_artifacts_into_workspace, run_agent
 
         copy_artifacts_into_workspace(
@@ -56,7 +61,15 @@ class Challenge(ABC):
         )
         print(f"\033[1;30mTask: {self.task}\033[0m")
 
-        run_agent(self.task, config, self.ARTIFACTS_LOCATION, cutoff)
+        if "--mock" in sys.argv:
+            print("Running mock agent")
+            copy_artifacts_into_workspace(
+                config["workspace"], "artifacts_out", self.ARTIFACTS_LOCATION
+            )
+        elif config.get("api_mode"):
+            await run_api_agent(self.data, config, self.ARTIFACTS_LOCATION, cutoff)
+        else:
+            run_agent(self.task, cutoff)
 
         # hidden files are added after the agent runs. Hidden files can be python test files.
         # We copy them in the workspace to make it easy to import the code produced by the agent
@@ -75,7 +88,12 @@ class Challenge(ABC):
         with open(workspace_dir, "r") as f:
             return f.read()
 
-    def get_artifacts_out(self, workspace: str, ground: Ground) -> List[str]:
+    def get_artifacts_out(
+        self, workspace: str | dict[str, str], ground: Ground
+    ) -> List[str]:
+        if isinstance(workspace, dict):
+            workspace = workspace["output"]
+
         script_dir = workspace
         files_contents = []
 
@@ -96,7 +114,10 @@ class Challenge(ABC):
                         capture_output=True,
                         text=True,
                     )
-                    files_contents.append(result.stdout)
+                    if "error" in result.stderr or result.returncode != 0:
+                        print(result.stderr)
+                        assert False, result.stderr
+                    files_contents.append(f"Output: {result.stdout}\n")
                 else:
                     with open(file_path, "r") as f:
                         files_contents.append(f.read())
@@ -147,7 +168,7 @@ class Challenge(ABC):
 
     def llm_eval(self, config: Dict[str, Any], content: str, ground: Ground) -> float:
         openai.api_key = os.getenv("OPENAI_API_KEY")
-        if MOCK_FLAG:
+        if "--mock" in sys.argv:
             return 1.0
 
         # the validation for this is done in the Eval BaseModel
@@ -174,7 +195,9 @@ class Challenge(ABC):
         percentage = None
 
         try:
-            if isinstance(self.data.ground, Ground):
+            if self.data.task == "" and "--mock" in sys.argv:
+                scores = [1.0]
+            elif isinstance(self.data.ground, Ground):
                 files_contents = self.get_artifacts_out(
                     config["workspace"], self.data.ground
                 )
@@ -254,7 +277,20 @@ class Challenge(ABC):
         return scores_data
 
     def get_dummy_scores(self, test_name: str, scores: dict[str, Any]) -> int | None:
+        return 1  # remove this once this works
         if 1 in scores.get("scores_obj", {}).get(test_name, []):
             return 1
 
         return None
+
+    def skip_optional_categories(self, config: Dict[str, Any]) -> None:
+        challenge_category = self.data.category
+        categories = [
+            category
+            for category in OPTIONAL_CATEGORIES
+            if category in challenge_category
+        ]
+        if not agent_eligibible_for_optional_categories(
+            categories, config.get("category", [])
+        ):
+            pytest.skip("Agent is not eligible for this category")

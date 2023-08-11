@@ -2,11 +2,8 @@ import json
 import os
 import sys
 from pathlib import Path
-from typing import Any, Callable
+from typing import Any, Dict
 
-import pytest
-
-from agbenchmark.agent_interface import MOCK_FLAG
 from agbenchmark.reports.ReportManager import ReportManager
 from agbenchmark.start_benchmark import (
     CONFIG_PATH,
@@ -146,7 +143,10 @@ def update_regression_tests(
 def generate_single_call_report(
     item: Any, call: Any, challenge_data: dict[str, Any]
 ) -> None:
-    difficulty = challenge_data["info"]["difficulty"]
+    try:
+        difficulty = challenge_data["info"]["difficulty"]
+    except KeyError:
+        return None
 
     if isinstance(difficulty, DifficultyLevel):
         difficulty = difficulty.value
@@ -194,41 +194,6 @@ def generate_single_call_report(
     item.info_details = info_details
 
 
-def setup_dummy_dependencies(test_class_instance: Any, test_class: Any) -> None:
-    """Sets up the dependencies if it's a suite. Creates tests that pass
-    based on the main test run."""
-
-    def create_test_func(test_name: str) -> Callable[[Any, dict[str, Any]], None]:
-        # This function will return another function
-
-        # Define a dummy test function that does nothing
-        def setup_dependency_test(self: Any, scores: dict[str, Any]) -> None:
-            scores = self.get_dummy_scores(test_name, scores)
-            assert scores == 1
-
-        return setup_dependency_test
-
-    for test_name in test_class_instance.setup_dependencies:
-        setup_dependency_test = create_test_func(test_name)
-        # Add the dummy test function to the class that the current test is part of
-        # TODO: remove on=[test_class.__name__] and fix the actual dependencies problem
-        test_func = pytest.mark.depends(on=[test_class.__name__], name=test_name)(
-            setup_dependency_test
-        )
-        # Parametrize to tell makereport to skip it
-        test_func = pytest.mark.parametrize(
-            "challenge_data",
-            [None],
-            indirect=True,
-        )(test_func)
-        # Add category markers
-        for category in test_class_instance.data.category:
-            test_func = getattr(pytest.mark, category)(test_func)
-
-        test_func = pytest.mark.usefixtures("scores")(test_func)
-        setattr(test_class, f"test_{test_name}", test_func)
-
-
 def finalize_reports(item: Any, challenge_data: dict[str, Any]) -> None:
     run_time = dict(item.user_properties).get("run_time")
 
@@ -238,11 +203,9 @@ def finalize_reports(item: Any, challenge_data: dict[str, Any]) -> None:
     if info_details and test_name:
         if run_time:
             cost = None
-            if not MOCK_FLAG and os.environ.get("HELICONE_API_KEY"):
+            if "--mock" not in sys.argv and os.environ.get("HELICONE_API_KEY"):
                 print("Getting cost from Helicone")
                 cost = get_data_from_helicone(test_name)
-            else:
-                print("Helicone not setup or mock flag set, not getting cost")
 
             info_details["metrics"]["cost"] = cost
 
@@ -259,7 +222,36 @@ def finalize_reports(item: Any, challenge_data: dict[str, Any]) -> None:
 
             info_details["reached_cutoff"] = float(run_time) > challenge_data["cutoff"]
 
+            if "--mock" not in sys.argv:
+                update_challenges_already_beaten(info_details, test_name)
+                if info_details.get("tests") is not None:
+                    for nested_test_name, nested_test_info in info_details[
+                        "tests"
+                    ].items():
+                        update_challenges_already_beaten(
+                            nested_test_info, nested_test_name
+                        )
+
         info_manager.add_test(test_name, info_details)
+
+
+def update_challenges_already_beaten(
+    info_details: Dict[str, Any], test_name: str
+) -> None:
+    current_run_successful = info_details["metrics"]["success"]
+    try:
+        with open("challenges_already_beaten.json", "r") as f:
+            challenge_data = json.load(f)
+    except:
+        challenge_data = {}
+    challenge_beaten_in_the_past = challenge_data.get(test_name)
+
+    challenge_data[test_name] = True
+    if challenge_beaten_in_the_past is None and not current_run_successful:
+        challenge_data[test_name] = False
+
+    with open("challenges_already_beaten.json", "w") as f:
+        json.dump(challenge_data, f, indent=4)
 
 
 def generate_separate_suite_reports(suite_reports: dict) -> None:

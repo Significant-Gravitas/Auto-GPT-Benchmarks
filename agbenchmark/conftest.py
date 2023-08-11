@@ -1,6 +1,7 @@
 import json
 import os
 import shutil
+import subprocess
 import sys
 import threading
 import time
@@ -14,14 +15,15 @@ from agbenchmark.reports.reports import (
     generate_combined_suite_report,
     generate_single_call_report,
     session_finish,
-    setup_dummy_dependencies,
 )
-from agbenchmark.start_benchmark import CONFIG_PATH, get_regression_data
+from agbenchmark.start_benchmark import CONFIG_PATH, HOME_DIRECTORY, get_regression_data
 from agbenchmark.utils.data_types import SuiteConfig
 
 GLOBAL_TIMEOUT = (
     1500  # The tests will stop after 25 minutes so we can send the reports.
 )
+
+pytest_plugins = ["agbenchmark.utils.dependencies"]
 
 
 def resolve_workspace(workspace: str) -> str:
@@ -73,24 +75,26 @@ def workspace(config: Dict[str, Any]) -> Generator[str, None, None]:
 
     yield config["workspace"]
     # teardown after test function completes
-
-    for filename in os.listdir(output_path):
-        file_path = os.path.join(output_path, filename)
-        try:
-            if os.path.isfile(file_path) or os.path.islink(file_path):
-                os.unlink(file_path)
-            elif os.path.isdir(file_path):
-                shutil.rmtree(file_path)
-        except Exception as e:
-            print(f"Failed to delete {file_path}. Reason: {e}")
+    if not config.get("keep_workspace_files", False):
+        for filename in os.listdir(output_path):
+            file_path = os.path.join(output_path, filename)
+            try:
+                if os.path.isfile(file_path) or os.path.islink(file_path):
+                    os.unlink(file_path)
+                elif os.path.isdir(file_path):
+                    shutil.rmtree(file_path)
+            except Exception as e:
+                print(f"Failed to delete {file_path}. Reason: {e}")
 
 
 def pytest_addoption(parser: Any) -> None:
     parser.addoption("--mock", action="store_true", default=False)
     parser.addoption("--category", action="store_true", default=False)
     parser.addoption("--nc", action="store_true", default=False)
+    parser.addoption("--cutoff", action="store_true", default=False)
     parser.addoption("--improve", action="store_true", default=False)
     parser.addoption("--maintain", action="store_true", default=False)
+    parser.addoption("--explore", action="store_true", default=False)
     parser.addoption("--test", action="store_true", default=None)
     parser.addoption("--no_dep", action="store_true", default=False)
     parser.addoption("--suite", action="store_true", default=False)
@@ -156,18 +160,20 @@ def pytest_runtest_makereport(item: Any, call: Any) -> None:
     except Exception as e:
         pass
 
-    flags = "--test" in sys.argv or "--maintain" in sys.argv or "--improve" in sys.argv
+    flags = (
+        "--test" in sys.argv
+        or "--maintain" in sys.argv
+        or "--improve" in sys.argv
+        or "--explore" in sys.argv
+    )
 
     if call.when == "call":
-        test_name = ""
         # if it's a same task suite, we combine the report.
         # but not if it's a single --test
         if is_suite and is_suite.same_task and not flags:
-            test_name = is_suite.prefix
             generate_combined_suite_report(item, challenge_data, challenge_location)
         else:
             # single non suite test
-            test_name = challenge_data["name"]
             generate_single_call_report(item, call, challenge_data)
         # else: it's a same_task=false suite (tests aren't combined)
     if call.when == "teardown":
@@ -204,16 +210,6 @@ def scores(request: Any) -> None:
     return request.node.cls.scores.get(test_class_name)
 
 
-def pytest_generate_tests(metafunc: Any) -> None:
-    """This is to generate the dummy dependencies each test class"""
-    test_class_instance = metafunc.cls()
-
-    if test_class_instance.setup_dependencies:
-        test_class = metafunc.cls
-        setup_dummy_dependencies(test_class_instance, test_class)
-        setattr(test_class, "setup_dependencies", [])
-
-
 # this is adding the dependency marker and category markers automatically from the json
 def pytest_collection_modifyitems(items: Any, config: Any) -> None:
     data = get_regression_data()
@@ -222,7 +218,6 @@ def pytest_collection_modifyitems(items: Any, config: Any) -> None:
         # Assuming item.cls is your test class
         test_class_instance = item.cls()
 
-        # if it's a dummy dependency setup test, we also skip
         if "test_method" not in item.name:
             continue
 
@@ -231,28 +226,44 @@ def pytest_collection_modifyitems(items: Any, config: Any) -> None:
         dependencies = test_class_instance.data.dependencies
 
         # Filter dependencies if they exist in regression data if its an improvement test
-        if (
-            config.getoption("--improve")
-            or config.getoption("--category")
-            or test_class_instance.setup_dependencies  # same_task suite
-        ):
+        if config.getoption("--improve") or config.getoption(
+            "--category"
+        ):  # TODO: same task suite
             dependencies = [dep for dep in dependencies if not data.get(dep, None)]
-        if (
+        if (  # TODO: separate task suite
             config.getoption("--test")
-            or (  # separate task suite
-                not test_class_instance.setup_dependencies
-                and config.getoption("--suite")
-            )
             or config.getoption("--no_dep")
             or config.getoption("--maintain")
         ):
             dependencies = []
 
-        categories = test_class_instance.data.category
-
         # Add depends marker dynamically
         item.add_marker(pytest.mark.depends(on=dependencies, name=name))
+
+        categories = test_class_instance.data.category
 
         # Add category marker dynamically
         for category in categories:
             item.add_marker(getattr(pytest.mark, category))
+
+
+@pytest.fixture(scope="session", autouse=True)
+def run_agent(request: Any) -> Any:
+    with open(CONFIG_PATH, "r") as f:
+        config = json.load(f)
+
+    if config.get("api_mode"):
+        command = [sys.executable, "-m", "agbenchmark.benchmarks"]
+        process = subprocess.Popen(
+            command,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            universal_newlines=True,
+            cwd=HOME_DIRECTORY,
+        )
+        time.sleep(3)
+        yield
+        print(f"Terminating agent")
+        process.terminate()
+    else:
+        yield

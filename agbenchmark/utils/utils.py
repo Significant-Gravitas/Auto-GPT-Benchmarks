@@ -5,7 +5,7 @@ import re
 import sys
 from datetime import datetime
 from pathlib import Path
-from typing import Any, Optional
+from typing import Any, List, Optional
 
 import git
 from dotenv import load_dotenv
@@ -47,6 +47,9 @@ def calculate_info_test_path(reports_path: Path) -> str:
     elif "--improve" in command:
         test_index = command.index("--improve")
         test_arg = "improve"
+    elif "--improve" in command:
+        test_index = command.index("--explore")
+        test_arg = "explore"
 
     if test_index:
         if not test_arg:
@@ -285,3 +288,12 @@ def get_git_commit_sha(directory: Path) -> Optional[str]:
     except Exception:
         print(f"{directory} is not a git repository!")
         return None
+
+
+def agent_eligibible_for_optional_categories(
+    optional_challenge_categories: List, agent_categories: List
+) -> bool:
+    for element in optional_challenge_categories:
+        if element not in agent_categories:
+            return False
+    return True
