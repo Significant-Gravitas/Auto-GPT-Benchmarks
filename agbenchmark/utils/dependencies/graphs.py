@@ -1,6 +1,6 @@
+import json
 import math
 from pathlib import Path
-import json
 from typing import Any, Dict, List, Tuple
 
 import matplotlib.patches as patches

@@ -8,7 +8,7 @@ __init__.py.
 import collections
 import json
 import os
-from typing import Any, Generator, Optional
+from typing import Any, Generator
 
 import colorama
 import networkx
