@@ -71,17 +71,14 @@ def cli() -> None:
 
 
 @cli.command()
-@click.option(
-    "-c", "--category", default=None, multiple=True, help="Specific category to run"
-)
+@click.option("-c", "--category", multiple=True, help="Specific category to run")
 @click.option(
     "-s",
     "--skip-category",
-    default=None,
     multiple=True,
     help="Skips preventing the tests from this category from running",
 )
-@click.option("--test", default=None, help="Specific test to run")
+@click.option("--test", help="Specific test to run")
 @click.option("--maintain", is_flag=True, help="Runs only regression tests")
 @click.option("--improve", is_flag=True, help="Run only non-regression tests")
 @click.option(
@@ -90,31 +87,31 @@ def cli() -> None:
     help="Only attempt challenges that have never been beaten",
 )
 @click.option("--mock", is_flag=True, help="Run with mock")
-@click.option("--suite", default=None, help="Run a suite of related tests")
+@click.option("--suite", help="Run a suite of related tests")
 @click.option(
     "--no_dep",
     is_flag=True,
     help="Run without dependencies (can be useful for a suite run)",
 )
 @click.option("--nc", is_flag=True, help="Run without cutoff")
-@click.option("--cutoff", default=None, help="Set or override tests cutoff (seconds)")
+@click.option("--cutoff", help="Set or override tests cutoff (seconds)")
 def start(
-    category: str,
-    skip_category: list[str],
-    test: str,
     maintain: bool,
     improve: bool,
     explore: bool,
     mock: bool,
-    suite: str,
     no_dep: bool,
     nc: bool,
+    category: Optional[list[str]] = None,
+    skip_category: Optional[list[str]] = None,
+    test: Optional[str] = None,
+    suite: Optional[str] = None,
     cutoff: Optional[int] = None,
 ) -> int:
     """Start the benchmark tests. If a category flag is provided, run the categories with that mark."""
     # Check if configuration file exists and is not empty
 
-    if int(maintain) + int(improve) + int(explore) > 1:
+    if maintain and improve and explore:
         print(
             "Error: You can't use --maintain, --improve or --explore at the same time. Please choose one."
         )
@@ -178,10 +175,11 @@ def start(
     else:
         # Categories that are used in the challenges
         categories = get_unique_categories()
-        invalid_categories = set(category) - categories
-        assert (
-            not invalid_categories
-        ), f"Invalid categories: {invalid_categories}. Valid categories are: {categories}"
+        if category:
+            invalid_categories = set(category) - categories
+            assert (
+                not invalid_categories
+            ), f"Invalid categories: {invalid_categories}. Valid categories are: {categories}"
 
         if category:
             categories_to_run = set(category)
