@@ -13,5 +13,5 @@ app.add_middleware(
 
 
 @app.get("/data")
-async def read_data():
+async def read_data() -> dict[str, str]:
     return {"data": "Hello, World!"}
