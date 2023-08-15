@@ -1,3 +1,4 @@
+import json
 import math
 from pathlib import Path
 from typing import Any, Dict, List, Tuple
@@ -182,7 +183,9 @@ def get_category_colors(categories: Dict[Any, str]) -> Dict[str, str]:
 
 
 def graph_interactive_network(
-    dag: nx.DiGraph, labels: Dict[Any, Dict[str, Any]], show: bool = False
+    dag: nx.DiGraph,
+    labels: Dict[Any, Dict[str, Any]],
+    html_graph_path: str = "",
 ) -> None:
     nt = Network(notebook=True, width="100%", height="800px", directed=True)
 
@@ -190,7 +193,6 @@ def graph_interactive_network(
 
     # Add nodes and edges to the pyvis network
     for node, json_data in labels.items():
-
         label = json_data.get("name", "")
         # remove the first 4 letters of label
         label_without_test = label[4:]
@@ -208,19 +210,22 @@ def graph_interactive_network(
             node_id_str,
             label=label_without_test,
             color=color,
-            task=json_data.get("task"),
+            data=json_data,
         )
 
     # Add edges to the pyvis network
     for edge in dag.edges():
         source_id_str = edge[0].nodeid
         target_id_str = edge[1].nodeid
+        edge_id_str = (
+            f"{source_id_str}_to_{target_id_str}"  # Construct a unique edge id
+        )
         if not (source_id_str in nt.get_nodes() and target_id_str in nt.get_nodes()):
             print(
                 f"Skipping edge {source_id_str} -> {target_id_str} due to missing nodes."
             )
             continue
-        nt.add_edge(source_id_str, target_id_str)
+        nt.add_edge(source_id_str, target_id_str, id=edge_id_str)
 
     # Configure physics for hierarchical layout
     hierarchical_options = {
@@ -266,100 +271,16 @@ def graph_interactive_network(
         "layout": {"hierarchical": hierarchical_options},
     }
 
-    relative_path = "agbenchmark/challenges/skill_tree/index.html"
-    file_path = str(Path(relative_path).resolve())
+    # Serialize the graph to JSON
+    graph_data = {"nodes": nt.nodes, "edges": nt.edges}
 
-    if show:
-        nt.show(file_path, notebook=False)
-    nt.write_html(file_path)
+    json_graph = json.dumps(graph_data)
 
-    # Example usage
-    table_data = [
-        ["Task: ", "Click on a skill to to see the task"],
-    ]
+    # Optionally, save to a file
+    with open(Path("frontend/public/graph.json").resolve(), "w") as f:
+        f.write(json_graph)
 
-    iframe_path = "index.html"
-    combined_file_path = "agbenchmark/challenges/skill_tree/combined_view.html"
+    if html_graph_path:
+        file_path = str(Path(html_graph_path).resolve())
 
-    create_combined_html(combined_file_path, iframe_path, table_data)
-    # JavaScript code snippet to be inserted
-    iframe_js_code = """
-    network.on("click", function(params) {
-        if (params.nodes.length > 0) {
-            var clickedNodeId = params.nodes[0];
-            var clickedNode = nodes.get(clickedNodeId);
-            var clickedNodeLabel = clickedNode.task;
-            window.parent.updateLabel(clickedNodeLabel);
-        }
-    });
-    """
-
-    # Path to the iframe HTML file
-    iframe_path = "agbenchmark/challenges/skill_tree/index.html"
-
-    # Insert the JS code snippet into the iframe HTML file
-    insert_js_into_iframe(iframe_path, iframe_js_code)
-
-
-def create_combined_html(
-    file_path: str, iframe_path: str, table_data: List[List[Any]]
-) -> None:
-    table_html = "<table>"
-    for row in table_data:
-        table_html += "<tr>"
-        for cell in row:
-            table_html += f"<td>{cell}</td>"
-        table_html += "</tr>"
-    table_html += "</table>"
-    table_html = table_html.replace(
-        "<td>Click on a skill to to see the task</td>",
-        '<td id="labelCell">Click on a skill to to see the task</td>',
-        1,
-    )
-
-    # JavaScript function to update the table
-    js_function = """
-    <script type="text/javascript">
-        function updateLabel(label) {
-            document.getElementById('labelCell').innerText = label;
-        }
-    </script>
-    """
-
-    iframe_html = f'<iframe src="{iframe_path}" width="100%" height="800px"></iframe>'
-
-    full_html = f"""
-    <!DOCTYPE html>
-    <html>
-    <head>
-        <title>Graph with Table</title>
-    </head>
-    <body>
-        {js_function}
-        {table_html}
-        {iframe_html}
-    </body>
-    </html>
-    """
-
-    with open(file_path, "w", encoding="utf-8") as file:
-        file.write(full_html)
-
-
-def insert_js_into_iframe(iframe_path: str, js_code: str) -> None:
-    with open(iframe_path, "r", encoding="utf-8") as file:
-        content = file.readlines()
-
-    # Locate the line number where "drawGraph();" is called
-    line_number = -1
-    for index, line in enumerate(content):
-        if "drawGraph();" in line:
-            line_number = index
-            break
-
-    # Insert the JS code snippet just after "drawGraph();"
-    if line_number != -1:
-        content.insert(line_number + 1, js_code)
-
-    with open(iframe_path, "w", encoding="utf-8") as file:
-        file.writelines(content)
+        nt.write_html(file_path)
