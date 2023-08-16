@@ -1,5 +1,4 @@
 # radio charts, logs, helper functions for tests, anything else relevant.
-import math
 import os
 import re
 import sys
