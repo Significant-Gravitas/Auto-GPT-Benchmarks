@@ -122,17 +122,19 @@ jobs:
       - name: Setup Chrome and ChromeDriver
         run: |
           sudo apt-get update
-          sudo apt-get install -y unzip xvfb
-          wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-          sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
-          sudo apt-get -y update
-          sudo apt-get -y install google-chrome-stable
-          CHROMEDRIVER_VERSION=$(curl -s https://chromedriver.storage.googleapis.com/LATEST_RELEASE)
+          sudo apt-get install -y unzip wget xvfb
+          wget https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/116.0.5845.96/linux64/chrome-linux64.zip
+          unzip chrome-linux64.zip
+          # You can move or run the Chrome binary from here as per your needs
+          
+          # If you still want to install the matching ChromeDriver, you can continue with the following:
+          CHROMEDRIVER_VERSION=116.0.5845.96 # Specific version
           wget https://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip
           unzip chromedriver_linux64.zip
           sudo mv chromedriver /usr/local/bin/chromedriver
           sudo chown root:root /usr/local/bin/chromedriver
           sudo chmod 755 /usr/local/bin/chromedriver # Setting permissions
+
 
       - name: Set up Python ${{ env.min-python-version }}
         uses: actions/setup-python@v2
