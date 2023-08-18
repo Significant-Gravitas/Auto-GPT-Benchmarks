@@ -33,3 +33,6 @@
 [submodule "frontend"]
 	path = frontend
 	url = https://github.com/agbenchmark/agbenchmark-frontend.git
+[submodule "agent/evo"]
+	path = agent/evo
+	url = https://github.com/polywrap/evo.ninja.git
