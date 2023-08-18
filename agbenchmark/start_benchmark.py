@@ -65,43 +65,13 @@ def get_unique_categories() -> set[str]:
     return categories
 
 
-@click.group()
-def cli() -> None:
-    pass
-
-
-@cli.command()
-@click.option("-c", "--category", multiple=True, help="Specific category to run")
-@click.option(
-    "-s",
-    "--skip-category",
-    multiple=True,
-    help="Skips preventing the tests from this category from running",
-)
-@click.option("--test", help="Specific test to run")
-@click.option("--maintain", is_flag=True, help="Runs only regression tests")
-@click.option("--improve", is_flag=True, help="Run only non-regression tests")
-@click.option(
-    "--explore",
-    is_flag=True,
-    help="Only attempt challenges that have never been beaten",
-)
-@click.option("--mock", is_flag=True, help="Run with mock")
-@click.option("--suite", help="Run a suite of related tests")
-@click.option(
-    "--no_dep",
-    is_flag=True,
-    help="Run without dependencies (can be useful for a suite run)",
-)
-@click.option("--nc", is_flag=True, help="Run without cutoff")
-@click.option("--cutoff", help="Set or override tests cutoff (seconds)")
-def start(
-    maintain: bool,
-    improve: bool,
-    explore: bool,
-    mock: bool,
-    no_dep: bool,
-    nc: bool,
+def run_benchmark(
+    maintain: bool = False,
+    improve: bool = False,
+    explore: bool = False,
+    mock: bool = False,
+    no_dep: bool = False,
+    nc: bool = False,
     category: Optional[list[str]] = None,
     skip_category: Optional[list[str]] = None,
     test: Optional[str] = None,
@@ -228,6 +198,64 @@ def start(
     pytest_args.append(str(CURRENT_DIRECTORY))
 
     return sys.exit(pytest.main(pytest_args))
+
+
+@click.group()
+def cli() -> None:
+    pass
+
+
+@cli.command()
+@click.option("-c", "--category", multiple=True, help="Specific category to run")
+@click.option(
+    "-s",
+    "--skip-category",
+    multiple=True,
+    help="Skips preventing the tests from this category from running",
+)
+@click.option("--test", help="Specific test to run")
+@click.option("--maintain", is_flag=True, help="Runs only regression tests")
+@click.option("--improve", is_flag=True, help="Run only non-regression tests")
+@click.option(
+    "--explore",
+    is_flag=True,
+    help="Only attempt challenges that have never been beaten",
+)
+@click.option("--mock", is_flag=True, help="Run with mock")
+@click.option("--suite", help="Run a suite of related tests")
+@click.option(
+    "--no_dep",
+    is_flag=True,
+    help="Run without dependencies (can be useful for a suite run)",
+)
+@click.option("--nc", is_flag=True, help="Run without cutoff")
+@click.option("--cutoff", help="Set or override tests cutoff (seconds)")
+def start(
+    maintain: bool,
+    improve: bool,
+    explore: bool,
+    mock: bool,
+    no_dep: bool,
+    nc: bool,
+    category: Optional[list[str]] = None,
+    skip_category: Optional[list[str]] = None,
+    test: Optional[str] = None,
+    suite: Optional[str] = None,
+    cutoff: Optional[int] = None,
+) -> int:
+    return run_benchmark(
+        maintain=maintain,
+        improve=improve,
+        explore=explore,
+        mock=mock,
+        no_dep=no_dep,
+        nc=nc,
+        category=category,
+        skip_category=skip_category,
+        test=test,
+        suite=suite,
+        cutoff=cutoff,
+    )
 
 
 def get_regression_data() -> Any:

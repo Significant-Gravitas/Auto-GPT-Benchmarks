@@ -6,7 +6,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 
 from fastapi import FastAPI, Query
-from agbenchmark.start_benchmark import start
+from agbenchmark.start_benchmark import run_benchmark
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
@@ -29,7 +29,7 @@ def run_single_test(
     nc: bool = Query(False),
     cutoff: int = Query(None),
 ):
-    return start(test=test, mock=mock, nc=nc, cutoff=cutoff)
+    return run_benchmark(test=test, mock=mock, nc=nc, cutoff=cutoff)
 
 
 @app.get("/run_suite")
@@ -39,17 +39,17 @@ def run_suite(
     nc: bool = Query(False),
     cutoff: int = Query(None),
 ):
-    return start(suite=suite, mock=mock, nc=nc, cutoff=cutoff)
+    return run_benchmark(suite=suite, mock=mock, nc=nc, cutoff=cutoff)
 
 
 @app.get("/run_by_category")
 def run_by_category(
-    category: str = Query(...),  # required
+    category: list[str] = Query(...),  # required
     mock: bool = Query(False),
     nc: bool = Query(False),
     cutoff: int = Query(None),
 ):
-    return start(
+    return run_benchmark(
         category=category,
         mock=mock,
         nc=nc,
@@ -57,7 +57,7 @@ def run_by_category(
     )
 
 
-@app.get("/run/")
+@app.get("/run")
 def run(
     category: Optional[list[str]] = Query(None),
     skip_category: Optional[list[str]] = Query(None),

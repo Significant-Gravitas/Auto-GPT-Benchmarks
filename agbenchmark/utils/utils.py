@@ -297,3 +297,25 @@ def agent_eligibible_for_optional_categories(
         if element not in agent_categories:
             return False
     return True
+
+
+def find_absolute_benchmark_path() -> Path:
+    # Find the absolute path to the current working directory
+    current_path = Path.cwd()
+
+    # Find the position of "Auto-GPT-Benchmarks" in the path
+    benchmark_path_index = (
+        current_path.parts.index("Auto-GPT-Benchmarks")
+        if "Auto-GPT-Benchmarks" in current_path.parts
+        else None
+    )
+
+    if benchmark_path_index is not None:
+        # Construct the absolute path starting from "Auto-GPT-Benchmarks"
+        benchmark_path = Path(*current_path.parts[: benchmark_path_index + 1])
+
+        return benchmark_path
+    else:
+        raise ValueError(
+            "The directory 'Auto-GPT-Benchmarks' is not found in the current path."
+        )
