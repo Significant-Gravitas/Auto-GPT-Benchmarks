@@ -1,8 +1,9 @@
 import glob
 import json
 import os
+import subprocess
 import sys
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Optional
 
@@ -17,7 +18,7 @@ from agbenchmark.utils.utils import (
 )
 
 CURRENT_DIRECTORY = Path(__file__).resolve().parent
-BENCHMARK_START_TIME = datetime.now().strftime("%Y-%m-%d-%H:%M")
+BENCHMARK_START_TIME = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S+00:00")
 if os.environ.get("HELICONE_API_KEY"):
     HeliconeLockManager.write_custom_property(
         "benchmark_start_time", BENCHMARK_START_TIME
@@ -98,6 +99,7 @@ def cli() -> None:
 )
 @click.option("--nc", is_flag=True, help="Run without cutoff")
 @click.option("--cutoff", default=None, help="Set or override tests cutoff (seconds)")
+@click.option("--server", is_flag=True, help="Starts the server")
 def start(
     category: str,
     skip_category: list[str],
@@ -110,6 +112,7 @@ def start(
     no_dep: bool,
     nc: bool,
     cutoff: Optional[int] = None,
+    server: bool = False,
 ) -> int:
     """Start the benchmark tests. If a category flag is provided, run the categories with that mark."""
     # Check if configuration file exists and is not empty
@@ -228,7 +231,19 @@ def start(
 
     # when used as a library, the pytest directory to execute is in the CURRENT_DIRECTORY
     pytest_args.append(str(CURRENT_DIRECTORY))
-
+    if server:
+        subprocess.run(
+            [
+                "uvicorn",
+                "agbenchmark.app:app",
+                "--reload",
+                "--host",
+                "0.0.0.0",
+                "--port",
+                "8000",
+            ]
+        )
+        return 0
     return sys.exit(pytest.main(pytest_args))
 
 
