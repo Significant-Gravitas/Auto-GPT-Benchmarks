@@ -16,7 +16,6 @@ from agbenchmark.utils.utils import (
     calculate_dynamic_paths,
     get_git_commit_sha,
 )
-from agbenchmark.reports.processing.get_files import get_agent_report_path
 
 CURRENT_DIRECTORY = Path(__file__).resolve().parent
 BENCHMARK_START_TIME = datetime.now().strftime("%Y-%m-%d-%H:%M")
@@ -297,7 +296,6 @@ def run_from_backend(
     global HOME_DIRECTORY, CONFIG_PATH, REGRESSION_TESTS_PATH, REPORTS_PATH, SUCCESS_RATE_PATH, CHALLENGES_PATH
     global REGRESSION_MANAGER, INFO_MANAGER, INTERNAL_INFO_MANAGER
 
-    print("REPORTS_PATH, INFO_MANAGER.tests", REPORTS_PATH, INFO_MANAGER.tests)
     if INFO_MANAGER.tests != {}:
         (
             HOME_DIRECTORY,
@@ -313,8 +311,6 @@ def run_from_backend(
             INFO_MANAGER,
             INTERNAL_INFO_MANAGER,
         ) = get_report_managers()
-
-    print("AFTER REPORTS_PATH, INFO_MANAGER.tests", REPORTS_PATH, INFO_MANAGER.tests)
 
     sys.argv = ["run_benchmark"]
 
@@ -362,9 +358,10 @@ def run_from_backend(
         cutoff=cutoff,
     )
 
-    latest_report = get_agent_report_path(REPORTS_PATH)
+    with open(Path(REPORTS_PATH) / "report.json", "r") as file:
+        latest_report = json.load(file)
 
-    print("latest_report HERE IT IS", latest_report)
+    return latest_report
 
 
 def get_regression_data() -> Any:

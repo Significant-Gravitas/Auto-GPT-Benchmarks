@@ -66,31 +66,28 @@ def run_by_category(
 
 @app.get("/run")
 def run(
-    category: Optional[list[str]] = Query(None),
-    skip_category: Optional[list[str]] = Query(None),
-    test: Optional[str] = None,
-    maintain: Optional[bool] = False,
-    improve: Optional[bool] = False,
-    explore: Optional[bool] = False,
-    mock: Optional[bool] = False,
-    suite: Optional[str] = None,
-    no_dep: Optional[bool] = False,
-    nc: Optional[bool] = False,
-    cutoff: Optional[int] = None,
+    maintain: bool = Query(False),
+    improve: bool = Query(False),
+    explore: bool = Query(False),
+    mock: bool = Query(False),
+    no_dep: bool = Query(False),
+    nc: bool = Query(False),
+    category: list[str] = Query(None),
+    skip_category: list[str] = Query(None),
+    test: str = Query(None),
+    suite: str = Query(None),
+    cutoff: int = Query(None),
 ):
-    # Call the `start` function with appropriate parameters.
-    # For simplicity, I'm just returning a message. You can replace this with the actual call.
-    return {
-        "message": "Generic run",
-        "category": category,
-        "skip_category": skip_category,
-        "test": test,
-        "maintain": maintain,
-        "improve": improve,
-        "explore": explore,
-        "mock": mock,
-        "suite": suite,
-        "no_dep": no_dep,
-        "nc": nc,
-        "cutoff": cutoff,
-    }
+    return run_from_backend(
+        maintain=maintain,
+        improve=improve,
+        explore=explore,
+        mock=mock,
+        no_dep=no_dep,
+        nc=nc,
+        category=category,
+        skip_category=skip_category,
+        test=test,
+        suite=suite,
+        cutoff=cutoff,
+    )
