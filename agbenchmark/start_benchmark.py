@@ -5,6 +5,7 @@ import sys
 from datetime import datetime
 from pathlib import Path
 from typing import Any, Optional
+from agbenchmark.reports.ReportManager import ReportManager
 
 import click
 import pytest
@@ -15,6 +16,7 @@ from agbenchmark.utils.utils import (
     calculate_dynamic_paths,
     get_git_commit_sha,
 )
+from agbenchmark.reports.processing.get_files import get_agent_report_path
 
 CURRENT_DIRECTORY = Path(__file__).resolve().parent
 BENCHMARK_START_TIME = datetime.now().strftime("%Y-%m-%d-%H:%M")
@@ -65,6 +67,23 @@ def get_unique_categories() -> set[str]:
     return categories
 
 
+def get_report_managers() -> tuple[ReportManager, ReportManager, ReportManager]:
+    # tests that consistently pass are considered regression tests
+    REGRESSION_MANAGER = ReportManager(REGRESSION_TESTS_PATH)
+
+    print(f"Using {REPORTS_PATH} for reports")
+    # user facing reporting information
+    INFO_MANAGER = ReportManager(str(Path(REPORTS_PATH) / "report.json"))
+
+    # internal db step in replacement track pass/fail rate
+    INTERNAL_INFO_MANAGER = ReportManager(SUCCESS_RATE_PATH)
+
+    return REGRESSION_MANAGER, INFO_MANAGER, INTERNAL_INFO_MANAGER
+
+
+(REGRESSION_MANAGER, INFO_MANAGER, INTERNAL_INFO_MANAGER) = get_report_managers()
+
+
 def run_benchmark(
     maintain: bool = False,
     improve: bool = False,
@@ -77,7 +96,7 @@ def run_benchmark(
     test: Optional[str] = None,
     suite: Optional[str] = None,
     cutoff: Optional[int] = None,
-) -> int:
+) -> None:
     """Start the benchmark tests. If a category flag is provided, run the categories with that mark."""
     # Check if configuration file exists and is not empty
 
@@ -85,13 +104,13 @@ def run_benchmark(
         print(
             "Error: You can't use --maintain, --improve or --explore at the same time. Please choose one."
         )
-        return 1
+        return
 
     if test and (category or skip_category or maintain or improve or suite or explore):
         print(
             "Error: If you're running a specific test make sure no other options are selected. Please just pass the --test."
         )
-        return 1
+        return
 
     # TODO: test and ensure that this functionality works before removing
     # change elif suite below if removing
@@ -99,13 +118,13 @@ def run_benchmark(
         print(
             "Error: If you're running a specific suite make sure no other options are selected. Please just pass the --suite."
         )
-        return 1
+        return
 
     if os.path.join("Auto-GPT-Benchmarks") in str(HOME_DIRECTORY) and not AGENT_NAME:
         print(
             "If you are running from the Auto-GPT-Benchmarks repo, you must have AGENT_NAME defined."
         )
-        return 1
+        return
 
     if os.path.exists(CONFIG_PATH) and os.stat(CONFIG_PATH).st_size:
         # If the configuration file exists and is not empty, load it
@@ -114,6 +133,7 @@ def run_benchmark(
     else:
         config = {}
 
+    print("benchmark run path", CONFIG_PATH, HOME_DIRECTORY)
     if not config.get("workspace"):
         config["workspace"] = click.prompt(
             "Please enter a new workspace path",
@@ -186,7 +206,7 @@ def run_benchmark(
         print(
             "Error: You can't use both --nc and --cutoff at the same time. Please choose one."
         )
-        return 1
+        return
 
     if nc:
         pytest_args.append("--nc")
@@ -197,7 +217,10 @@ def run_benchmark(
     # when used as a library, the pytest directory to execute is in the CURRENT_DIRECTORY
     pytest_args.append(str(CURRENT_DIRECTORY))
 
-    return sys.exit(pytest.main(pytest_args))
+    exit_code = pytest.main(pytest_args)
+
+    if exit_code != 0:
+        raise RuntimeError(f"pytest failed with exit code: {exit_code}")
 
 
 @click.group()
@@ -242,7 +265,7 @@ def start(
     test: Optional[str] = None,
     suite: Optional[str] = None,
     cutoff: Optional[int] = None,
-) -> int:
+) -> None:
     return run_benchmark(
         maintain=maintain,
         improve=improve,
@@ -256,6 +279,92 @@ def start(
         suite=suite,
         cutoff=cutoff,
     )
+
+
+def run_from_backend(
+    maintain: bool = False,
+    improve: bool = False,
+    explore: bool = False,
+    mock: bool = False,
+    no_dep: bool = False,
+    nc: bool = False,
+    category: Optional[list[str]] = None,
+    skip_category: Optional[list[str]] = None,
+    test: Optional[str] = None,
+    suite: Optional[str] = None,
+    cutoff: Optional[int] = None,
+) -> None:
+    global HOME_DIRECTORY, CONFIG_PATH, REGRESSION_TESTS_PATH, REPORTS_PATH, SUCCESS_RATE_PATH, CHALLENGES_PATH
+    global REGRESSION_MANAGER, INFO_MANAGER, INTERNAL_INFO_MANAGER
+
+    print("REPORTS_PATH, INFO_MANAGER.tests", REPORTS_PATH, INFO_MANAGER.tests)
+    if INFO_MANAGER.tests != {}:
+        (
+            HOME_DIRECTORY,
+            CONFIG_PATH,
+            REGRESSION_TESTS_PATH,
+            REPORTS_PATH,
+            SUCCESS_RATE_PATH,
+            CHALLENGES_PATH,
+        ) = calculate_dynamic_paths()
+
+        (
+            REGRESSION_MANAGER,
+            INFO_MANAGER,
+            INTERNAL_INFO_MANAGER,
+        ) = get_report_managers()
+
+    print("AFTER REPORTS_PATH, INFO_MANAGER.tests", REPORTS_PATH, INFO_MANAGER.tests)
+
+    sys.argv = ["run_benchmark"]
+
+    if maintain:
+        sys.argv.append("--maintain")
+    if improve:
+        sys.argv.append("--improve")
+    if explore:
+        sys.argv.append("--explore")
+    if mock:
+        sys.argv.append("--mock")
+    if no_dep:
+        sys.argv.append("--no_dep")
+    if nc:
+        sys.argv.append("--nc")
+
+    if category:
+        for cat in category:
+            sys.argv.extend(["-c", cat])
+
+    if skip_category:
+        for skip_cat in skip_category:
+            sys.argv.extend(["-s", skip_cat])
+
+    if test:
+        sys.argv.extend(["--test", test])
+
+    if suite:
+        sys.argv.extend(["--suite", suite])
+
+    if cutoff is not None:
+        sys.argv.extend(["--cutoff", str(cutoff)])
+
+    run_benchmark(
+        maintain=maintain,
+        improve=improve,
+        explore=explore,
+        mock=mock,
+        no_dep=no_dep,
+        nc=nc,
+        category=category,
+        skip_category=skip_category,
+        test=test,
+        suite=suite,
+        cutoff=cutoff,
+    )
+
+    latest_report = get_agent_report_path(REPORTS_PATH)
+
+    print("latest_report HERE IT IS", latest_report)
 
 
 def get_regression_data() -> Any:

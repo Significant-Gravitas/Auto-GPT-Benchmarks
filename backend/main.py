@@ -2,11 +2,14 @@ from typing import Optional
 import sys
 import os
 
+from pathlib import Path
+
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 
 from fastapi import FastAPI, Query
-from agbenchmark.start_benchmark import run_benchmark
+from agbenchmark.start_benchmark import run_from_backend
+from agbenchmark.utils.utils import find_absolute_benchmark_path
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
@@ -21,6 +24,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Change the current working directory to the benchmark path
+home_path = find_absolute_benchmark_path()
+os.chdir(home_path)
+
 
 @app.get("/run_single_test")
 def run_single_test(
@@ -29,7 +36,7 @@ def run_single_test(
     nc: bool = Query(False),
     cutoff: int = Query(None),
 ):
-    return run_benchmark(test=test, mock=mock, nc=nc, cutoff=cutoff)
+    return run_from_backend(test=test, mock=mock, nc=nc, cutoff=cutoff)
 
 
 @app.get("/run_suite")
@@ -39,7 +46,7 @@ def run_suite(
     nc: bool = Query(False),
     cutoff: int = Query(None),
 ):
-    return run_benchmark(suite=suite, mock=mock, nc=nc, cutoff=cutoff)
+    return run_from_backend(suite=suite, mock=mock, nc=nc, cutoff=cutoff)
 
 
 @app.get("/run_by_category")
@@ -49,7 +56,7 @@ def run_by_category(
     nc: bool = Query(False),
     cutoff: int = Query(None),
 ):
-    return run_benchmark(
+    return run_from_backend(
         category=category,
         mock=mock,
         nc=nc,

@@ -9,7 +9,7 @@ from typing import List
 import psutil
 from dotenv import load_dotenv
 
-from agbenchmark.start_benchmark import CURRENT_DIRECTORY, HOME_DIRECTORY
+import agbenchmark.start_benchmark
 
 load_dotenv()
 
@@ -32,7 +32,7 @@ def run_agent(task: str, timeout: int) -> None:
         stdout=subprocess.PIPE,
         stderr=subprocess.STDOUT,
         universal_newlines=True,
-        cwd=HOME_DIRECTORY,
+        cwd=agbenchmark.start_benchmark.HOME_DIRECTORY,
         bufsize=1,
     )
 
@@ -72,7 +72,10 @@ def get_list_of_file_paths(
 ) -> List[str]:
     # this file is at agbenchmark\agent_interface.py
     source_dir = os.path.join(
-        CURRENT_DIRECTORY, "..", challenge_dir_path, artifact_folder_name
+        agbenchmark.start_benchmark.CURRENT_DIRECTORY,
+        "..",
+        challenge_dir_path,
+        artifact_folder_name,
     )
     if not os.path.exists(source_dir):
         return []

@@ -140,6 +140,8 @@ def get_highest_success_difficulty(
     highest_difficulty = None
     highest_difficulty_level = 0
 
+    print("data CHECK ME OUT", data)
+
     for test_name, test_data in data.items():
         try:
             if test_data.get("tests", None):
@@ -219,6 +221,12 @@ def assign_paths(folder_path: Path) -> tuple[str, str, str, str, str]:
 def calculate_dynamic_paths() -> tuple[Path, str, str, str, str, str]:
     # the default home is where you're running from
     HOME_DIRECTORY = Path(os.getcwd())
+
+    if os.path.join("Auto-GPT-Benchmarks", "backend") in str(
+        HOME_DIRECTORY
+    ):  # accounting for backend calls
+        HOME_DIRECTORY = HOME_DIRECTORY.parent
+
     benchmarks_folder_path = HOME_DIRECTORY / "agbenchmark"
 
     if AGENT_NAME and not os.path.join("Auto-GPT-Benchmarks", "agent") in str(
@@ -226,7 +234,7 @@ def calculate_dynamic_paths() -> tuple[Path, str, str, str, str, str]:
     ):
         # if the agent name is defined but the run is not from the agent repo, then home is the agent repo
         # used for development of both a benchmark and an agent
-        HOME_DIRECTORY = Path(os.getcwd()) / "agent" / AGENT_NAME
+        HOME_DIRECTORY = HOME_DIRECTORY / "agent" / AGENT_NAME
         benchmarks_folder_path = HOME_DIRECTORY / "agbenchmark"
 
         (

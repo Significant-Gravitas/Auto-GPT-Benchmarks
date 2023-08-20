@@ -5,7 +5,7 @@ from typing import Optional
 import requests
 
 from agbenchmark.agent_interface import HELICONE_GRAPHQL_LOGS
-from agbenchmark.start_benchmark import BENCHMARK_START_TIME
+import agbenchmark.start_benchmark
 
 
 def get_data_from_helicone(challenge: str) -> Optional[float]:
@@ -31,7 +31,7 @@ query ExampleQuery($properties: [PropertyFilter!]){
                 "name": "agent",
             },
             {
-                "value": {"equals": BENCHMARK_START_TIME},
+                "value": {"equals": agbenchmark.start_benchmark.BENCHMARK_START_TIME},
                 "name": "benchmark_start_time",
             },
             {"value": {"equals": challenge}, "name": "challenge"},
