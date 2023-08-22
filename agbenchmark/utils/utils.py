@@ -140,8 +140,6 @@ def get_highest_success_difficulty(
     highest_difficulty = None
     highest_difficulty_level = 0
 
-    print("data CHECK ME OUT", data)
-
     for test_name, test_data in data.items():
         try:
             if test_data.get("tests", None):

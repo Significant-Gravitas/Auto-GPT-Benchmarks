@@ -95,7 +95,7 @@ def run_benchmark(
     test: Optional[str] = None,
     suite: Optional[str] = None,
     cutoff: Optional[int] = None,
-) -> None:
+) -> int:
     """Start the benchmark tests. If a category flag is provided, run the categories with that mark."""
     # Check if configuration file exists and is not empty
 
@@ -103,13 +103,13 @@ def run_benchmark(
         print(
             "Error: You can't use --maintain, --improve or --explore at the same time. Please choose one."
         )
-        return
+        return 1
 
     if test and (category or skip_category or maintain or improve or suite or explore):
         print(
             "Error: If you're running a specific test make sure no other options are selected. Please just pass the --test."
         )
-        return
+        return 1
 
     # TODO: test and ensure that this functionality works before removing
     # change elif suite below if removing
@@ -117,13 +117,13 @@ def run_benchmark(
         print(
             "Error: If you're running a specific suite make sure no other options are selected. Please just pass the --suite."
         )
-        return
+        return 1
 
     if os.path.join("Auto-GPT-Benchmarks") in str(HOME_DIRECTORY) and not AGENT_NAME:
         print(
             "If you are running from the Auto-GPT-Benchmarks repo, you must have AGENT_NAME defined."
         )
-        return
+        return 1
 
     if os.path.exists(CONFIG_PATH) and os.stat(CONFIG_PATH).st_size:
         # If the configuration file exists and is not empty, load it
@@ -205,12 +205,12 @@ def run_benchmark(
         print(
             "Error: You can't use both --nc and --cutoff at the same time. Please choose one."
         )
-        return
+        return 1
 
     if nc:
         pytest_args.append("--nc")
     if cutoff:
-        pytest_args.extend(["--cutoff", str(cutoff)])
+        pytest_args.append("--cutoff")
         print(f"Setting cuttoff override to {cutoff} seconds.")
 
     # when used as a library, the pytest directory to execute is in the CURRENT_DIRECTORY
@@ -218,8 +218,7 @@ def run_benchmark(
 
     exit_code = pytest.main(pytest_args)
 
-    if exit_code != 0:
-        raise RuntimeError(f"pytest failed with exit code: {exit_code}")
+    return exit_code
 
 
 @click.group()
@@ -265,7 +264,7 @@ def start(
     suite: Optional[str] = None,
     cutoff: Optional[int] = None,
 ) -> None:
-    return run_benchmark(
+    exit_code = run_benchmark(
         maintain=maintain,
         improve=improve,
         explore=explore,
@@ -278,6 +277,8 @@ def start(
         suite=suite,
         cutoff=cutoff,
     )
+
+    sys.exit(exit_code)
 
 
 def run_from_backend(
@@ -292,7 +293,7 @@ def run_from_backend(
     test: Optional[str] = None,
     suite: Optional[str] = None,
     cutoff: Optional[int] = None,
-) -> None:
+) -> Any:
     global HOME_DIRECTORY, CONFIG_PATH, REGRESSION_TESTS_PATH, REPORTS_PATH, SUCCESS_RATE_PATH, CHALLENGES_PATH
     global REGRESSION_MANAGER, INFO_MANAGER, INTERNAL_INFO_MANAGER
 
@@ -344,7 +345,7 @@ def run_from_backend(
     if cutoff is not None:
         sys.argv.extend(["--cutoff", str(cutoff)])
 
-    run_benchmark(
+    exit_code = run_benchmark(
         maintain=maintain,
         improve=improve,
         explore=explore,
@@ -357,6 +358,9 @@ def run_from_backend(
         suite=suite,
         cutoff=cutoff,
     )
+
+    if exit_code != 0:
+        return f"pytest failed with exit code: {exit_code}"
 
     with open(Path(REPORTS_PATH) / "report.json", "r") as file:
         latest_report = json.load(file)
