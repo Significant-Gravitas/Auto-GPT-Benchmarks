@@ -98,7 +98,8 @@ def create_single_test(
     )
 
     # Define test method within the dynamically created class
-    def test_method(self, config: Dict[str, Any], request) -> None:  # type: ignore
+    @pytest.mark.asyncio
+    async def test_method(self, config: Dict[str, Any], request) -> None:  # type: ignore
         # create a random number between 0 and 1
         test_name = self.data.name
 
@@ -129,9 +130,8 @@ def create_single_test(
         if "--cutoff" in sys.argv:
             timeout = int(sys.argv[sys.argv.index("--cutoff") + 1])
 
-        asyncio.get_event_loop().run_until_complete(
-            self.setup_challenge(config, timeout)
-        )
+        print("BEFORE THE EVENT LOOP")
+        await self.setup_challenge(config, timeout)
 
         scores = self.get_scores(config)
         request.node.scores = scores  # store scores in request.node
