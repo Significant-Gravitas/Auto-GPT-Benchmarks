@@ -154,7 +154,7 @@ class Challenge(ABC):
                 print_content = (
                     f"\033[1;34mWord that should exist\033[0m - {should_contain_word}:"
                 )
-                if should_contain_word not in content:
+                if should_contain_word.lower() not in content.lower():
                     print(print_content, "False")
                     return 0.0
                 else:
@@ -163,7 +163,7 @@ class Challenge(ABC):
         if ground.should_not_contain:
             for should_not_contain_word in ground.should_not_contain:
                 print_content = f"\033[1;34mWord that should not exist\033[0m - {should_not_contain_word}:"
-                if should_not_contain_word in content:
+                if should_not_contain_word.lower() in content.lower():
                     print(print_content, "False")
                     return 0.0
                 else:
