@@ -1,8 +1,9 @@
 import glob
 import json
 import os
+import subprocess
 import sys
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Optional
 from agbenchmark.reports.ReportManager import ReportManager
@@ -18,7 +19,7 @@ from agbenchmark.utils.utils import (
 )
 
 CURRENT_DIRECTORY = Path(__file__).resolve().parent
-BENCHMARK_START_TIME = datetime.now().strftime("%Y-%m-%d-%H:%M")
+BENCHMARK_START_TIME = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S+00:00")
 if os.environ.get("HELICONE_API_KEY"):
     HeliconeLockManager.write_custom_property(
         "benchmark_start_time", BENCHMARK_START_TIME
@@ -95,6 +96,7 @@ def run_benchmark(
     test: Optional[str] = None,
     suite: Optional[str] = None,
     cutoff: Optional[int] = None,
+    server: bool = False,
 ) -> int:
     """Start the benchmark tests. If a category flag is provided, run the categories with that mark."""
     # Check if configuration file exists and is not empty
