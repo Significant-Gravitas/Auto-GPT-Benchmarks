@@ -71,7 +71,7 @@ def get_report_managers() -> tuple[ReportManager, ReportManager, ReportManager]:
     # tests that consistently pass are considered regression tests
     REGRESSION_MANAGER = ReportManager(REGRESSION_TESTS_PATH)
 
-    print(f"Using {REPORTS_PATH} for reports")
+    # print(f"Using {REPORTS_PATH} for reports")
     # user facing reporting information
     INFO_MANAGER = ReportManager(str(Path(REPORTS_PATH) / "report.json"))
 
@@ -215,12 +215,8 @@ def run_benchmark(
         pytest_args.append("--cutoff")
         print(f"Setting cuttoff override to {cutoff} seconds.")
 
-    # when used as a library, the pytest directory to execute is in the CURRENT_DIRECTORY
-    pytest_args.append(str(CURRENT_DIRECTORY))
-
-    exit_code = pytest.main(pytest_args)
-
-    return exit_code
+    pytest_args.extend((str(CURRENT_DIRECTORY), "--cache-clear"))
+    return pytest.main(pytest_args)
 
 
 @click.group()
@@ -229,6 +225,7 @@ def cli() -> None:
 
 
 @cli.command()
+@click.option("--backend", is_flag=True, help="If it's being run from the cli")
 @click.option("-c", "--category", multiple=True, help="Specific category to run")
 @click.option(
     "-s",
@@ -265,109 +262,52 @@ def start(
     test: Optional[str] = None,
     suite: Optional[str] = None,
     cutoff: Optional[int] = None,
-) -> None:
-    exit_code = run_benchmark(
-        maintain=maintain,
-        improve=improve,
-        explore=explore,
-        mock=mock,
-        no_dep=no_dep,
-        nc=nc,
-        category=category,
-        skip_category=skip_category,
-        test=test,
-        suite=suite,
-        cutoff=cutoff,
-    )
-
-    sys.exit(exit_code)
-
-
-def run_from_backend(
-    maintain: bool = False,
-    improve: bool = False,
-    explore: bool = False,
-    mock: bool = False,
-    no_dep: bool = False,
-    nc: bool = False,
-    category: Optional[list[str]] = None,
-    skip_category: Optional[list[str]] = None,
-    test: Optional[str] = None,
-    suite: Optional[str] = None,
-    cutoff: Optional[int] = None,
+    backend: Optional[bool] = False,
 ) -> Any:
-    global HOME_DIRECTORY, CONFIG_PATH, REGRESSION_TESTS_PATH, REPORTS_PATH, SUCCESS_RATE_PATH, CHALLENGES_PATH
-    global REGRESSION_MANAGER, INFO_MANAGER, INTERNAL_INFO_MANAGER
+    # Redirect stdout if backend is True
+    original_stdout = sys.stdout  # Save the original standard output
+    exit_code = None
 
-    if INFO_MANAGER.tests != {}:
-        (
-            HOME_DIRECTORY,
-            CONFIG_PATH,
-            REGRESSION_TESTS_PATH,
-            REPORTS_PATH,
-            SUCCESS_RATE_PATH,
-            CHALLENGES_PATH,
-        ) = calculate_dynamic_paths()
+    if backend:
+        with open("backend/backend_stdout.txt", "w") as f:
+            sys.stdout = f
+            exit_code = run_benchmark(
+                maintain=maintain,
+                improve=improve,
+                explore=explore,
+                mock=mock,
+                no_dep=no_dep,
+                nc=nc,
+                category=category,
+                skip_category=skip_category,
+                test=test,
+                suite=suite,
+                cutoff=cutoff,
+            )
 
-        (
-            REGRESSION_MANAGER,
-            INFO_MANAGER,
-            INTERNAL_INFO_MANAGER,
-        ) = get_report_managers()
+        sys.stdout = original_stdout
 
-    sys.argv = ["run_benchmark"]
+        with open(Path(REPORTS_PATH) / "report.json", "r") as file:
+            latest_report = json.load(file)
 
-    if maintain:
-        sys.argv.append("--maintain")
-    if improve:
-        sys.argv.append("--improve")
-    if explore:
-        sys.argv.append("--explore")
-    if mock:
-        sys.argv.append("--mock")
-    if no_dep:
-        sys.argv.append("--no_dep")
-    if nc:
-        sys.argv.append("--nc")
+        print(latest_report)
 
-    if category:
-        for cat in category:
-            sys.argv.extend(["-c", cat])
+    else:
+        exit_code = run_benchmark(
+            maintain=maintain,
+            improve=improve,
+            explore=explore,
+            mock=mock,
+            no_dep=no_dep,
+            nc=nc,
+            category=category,
+            skip_category=skip_category,
+            test=test,
+            suite=suite,
+            cutoff=cutoff,
+        )
 
-    if skip_category:
-        for skip_cat in skip_category:
-            sys.argv.extend(["-s", skip_cat])
-
-    if test:
-        sys.argv.extend(["--test", test])
-
-    if suite:
-        sys.argv.extend(["--suite", suite])
-
-    if cutoff is not None:
-        sys.argv.extend(["--cutoff", str(cutoff)])
-
-    exit_code = run_benchmark(
-        maintain=maintain,
-        improve=improve,
-        explore=explore,
-        mock=mock,
-        no_dep=no_dep,
-        nc=nc,
-        category=category,
-        skip_category=skip_category,
-        test=test,
-        suite=suite,
-        cutoff=cutoff,
-    )
-
-    if exit_code != 0:
-        return f"pytest failed with exit code: {exit_code}"
-
-    with open(Path(REPORTS_PATH) / "report.json", "r") as file:
-        latest_report = json.load(file)
-
-    return latest_report
+        sys.exit(exit_code)
 
 
 def get_regression_data() -> Any:
@@ -377,5 +317,92 @@ def get_regression_data() -> Any:
     return data
 
 
-if __name__ == "__main__":
-    start()
+# def run_from_backend(
+#     maintain: bool = False,
+#     improve: bool = False,
+#     explore: bool = False,
+#     mock: bool = False,
+#     no_dep: bool = False,
+#     nc: bool = False,
+#     category: Optional[list[str]] = None,
+#     skip_category: Optional[list[str]] = None,
+#     test: Optional[str] = None,
+#     suite: Optional[str] = None,
+#     cutoff: Optional[int] = None,
+# ) -> Any:
+#     global HOME_DIRECTORY, CONFIG_PATH, REGRESSION_TESTS_PATH, REPORTS_PATH, SUCCESS_RATE_PATH, CHALLENGES_PATH
+#     global REGRESSION_MANAGER, INFO_MANAGER, INTERNAL_INFO_MANAGER
+
+#     if INFO_MANAGER.tests != {}:
+#         (
+#             HOME_DIRECTORY,
+#             CONFIG_PATH,
+#             REGRESSION_TESTS_PATH,
+#             REPORTS_PATH,
+#             SUCCESS_RATE_PATH,
+#             CHALLENGES_PATH,
+#         ) = calculate_dynamic_paths()
+
+#         (
+#             REGRESSION_MANAGER,
+#             INFO_MANAGER,
+#             INTERNAL_INFO_MANAGER,
+#         ) = get_report_managers()
+
+#     sys.argv = ["run_benchmark"]
+
+#     if maintain:
+#         sys.argv.append("--maintain")
+#     if improve:
+#         sys.argv.append("--improve")
+#     if explore:
+#         sys.argv.append("--explore")
+#     if mock:
+#         sys.argv.append("--mock")
+#     if no_dep:
+#         sys.argv.append("--no_dep")
+#     if nc:
+#         sys.argv.append("--nc")
+
+#     if category:
+#         for cat in category:
+#             sys.argv.extend(["-c", cat])
+
+#     if skip_category:
+#         for skip_cat in skip_category:
+#             sys.argv.extend(["-s", skip_cat])
+
+#     if test:
+#         sys.argv.extend(["--test", test])
+
+#     if suite:
+#         sys.argv.extend(["--suite", suite])
+
+#     if cutoff is not None:
+#         sys.argv.extend(["--cutoff", str(cutoff)])
+
+#     exit_code = run_benchmark(
+#         maintain=maintain,
+#         improve=improve,
+#         explore=explore,
+#         mock=mock,
+#         no_dep=no_dep,
+#         nc=nc,
+#         category=category,
+#         skip_category=skip_category,
+#         test=test,
+#         suite=suite,
+#         cutoff=cutoff,
+#     )
+
+#     if exit_code != 0:
+#         return f"pytest failed with exit code: {exit_code}"
+
+#     with open(Path(REPORTS_PATH) / "report.json", "r") as file:
+#         latest_report = json.load(file)
+
+#     return latest_report
+
+
+# if __name__ == "__main__":
+#     start()

@@ -91,8 +91,6 @@ def run_agent(task: str, timeout: int) -> None:
         bufsize=1,
     )
 
-    print("after running the agent")
-
     start_time = time.time()
 
     if platform.system() == "Windows":

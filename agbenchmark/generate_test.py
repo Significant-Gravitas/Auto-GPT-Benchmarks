@@ -130,7 +130,6 @@ def create_single_test(
         if "--cutoff" in sys.argv:
             timeout = int(sys.argv[sys.argv.index("--cutoff") + 1])
 
-        print("BEFORE THE EVENT LOOP")
         await self.setup_challenge(config, timeout)
 
         scores = self.get_scores(config)

@@ -257,10 +257,10 @@ def get_git_commit_sha(directory: Path) -> Optional[str]:
             remote_url = remote_url[:-4]
         git_commit_sha = f"{remote_url}/tree/{repo.head.commit.hexsha}"
 
-        print(f"GIT_COMMIT_SHA: {git_commit_sha}")
+        # print(f"GIT_COMMIT_SHA: {git_commit_sha}")
         return git_commit_sha
     except Exception:
-        print(f"{directory} is not a git repository!")
+        # print(f"{directory} is not a git repository!")
         return None
 
 

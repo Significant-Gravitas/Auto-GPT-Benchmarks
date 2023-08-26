@@ -1,14 +1,15 @@
-from typing import Optional
+from importlib import reload
 import sys
 import os
-
-from pathlib import Path
+import subprocess
+import json
+import ast
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 
 from fastapi import FastAPI, Query
-from agbenchmark.start_benchmark import run_from_backend
+import agbenchmark.start_benchmark
 from agbenchmark.utils.utils import find_absolute_benchmark_path
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -28,6 +29,8 @@ app.add_middleware(
 home_path = find_absolute_benchmark_path()
 os.chdir(home_path)
 
+general_command = ["poetry", "run", "agbenchmark", "start", "--backend"]
+
 
 @app.get("/run_single_test")
 def run_single_test(
@@ -36,7 +39,32 @@ def run_single_test(
     nc: bool = Query(False),
     cutoff: int = Query(None),
 ):
-    return run_from_backend(test=test, mock=mock, nc=nc, cutoff=cutoff)
+    command = list(general_command)  # Make a copy of the general command
+
+    # Always add the --test flag, since test is a required parameter
+    command.extend(["--test", test])
+
+    # Conditionally add other flags
+    if mock:
+        command.append("--mock")
+    if nc:
+        command.extend(["--nc", str(nc)])
+    if cutoff is not None:
+        command.extend(["--cutoff", str(cutoff)])
+
+    print(f"Running command: {' '.join(command)}")  # Debug print
+
+    result = subprocess.run(command, capture_output=True, text=True)
+
+    print(result.stdout)
+
+    stdout_dict = ast.literal_eval(result.stdout)
+
+    return {
+        "returncode": result.returncode,
+        "stdout": json.dumps(stdout_dict),
+        "stderr": result.stderr,
+    }
 
 
 @app.get("/run_suite")
@@ -46,7 +74,32 @@ def run_suite(
     nc: bool = Query(False),
     cutoff: int = Query(None),
 ):
-    return run_from_backend(suite=suite, mock=mock, nc=nc, cutoff=cutoff)
+    command = list(general_command)  # Make a copy of the general command
+
+    # Always add the --test flag, since test is a required parameter
+    command.extend(["--suite", suite])
+
+    # Conditionally add other flags
+    if mock:
+        command.append("--mock")
+    if nc:
+        command.extend(["--nc", str(nc)])
+    if cutoff is not None:
+        command.extend(["--cutoff", str(cutoff)])
+
+    print(f"Running command: {' '.join(command)}")  # Debug print
+
+    result = subprocess.run(command, capture_output=True, text=True)
+
+    print(result.stdout)
+
+    stdout_dict = ast.literal_eval(result.stdout)
+
+    return {
+        "returncode": result.returncode,
+        "stdout": json.dumps(stdout_dict),
+        "stderr": result.stderr,
+    }
 
 
 @app.get("/run_by_category")
@@ -56,12 +109,32 @@ def run_by_category(
     nc: bool = Query(False),
     cutoff: int = Query(None),
 ):
-    return run_from_backend(
-        category=category,
-        mock=mock,
-        nc=nc,
-        cutoff=cutoff,
-    )
+    command = list(general_command)  # Make a copy of the general command
+
+    # Always add the --test flag, since test is a required parameter
+    command.extend(["--category", *category])
+
+    # Conditionally add other flags
+    if mock:
+        command.append("--mock")
+    if nc:
+        command.extend(["--nc", str(nc)])
+    if cutoff is not None:
+        command.extend(["--cutoff", str(cutoff)])
+
+    print(f"Running command: {' '.join(command)}")  # Debug print
+
+    result = subprocess.run(command, capture_output=True, text=True)
+
+    print(result.stdout)
+
+    stdout_dict = ast.literal_eval(result.stdout)
+
+    return {
+        "returncode": result.returncode,
+        "stdout": json.dumps(stdout_dict),
+        "stderr": result.stderr,
+    }
 
 
 @app.get("/run")
@@ -78,16 +151,29 @@ def run(
     suite: str = Query(None),
     cutoff: int = Query(None),
 ):
-    return run_from_backend(
-        maintain=maintain,
-        improve=improve,
-        explore=explore,
-        mock=mock,
-        no_dep=no_dep,
-        nc=nc,
-        category=category,
-        skip_category=skip_category,
-        test=test,
-        suite=suite,
-        cutoff=cutoff,
-    )
+    command = list(general_command)  # Make a copy of the general command
+
+    # Always add the --test flag, since test is a required parameter
+    command.extend(["--test", test])
+
+    # Conditionally add other flags
+    if mock:
+        command.append("--mock")
+    if nc:
+        command.extend(["--nc", str(nc)])
+    if cutoff is not None:
+        command.extend(["--cutoff", str(cutoff)])
+
+    print(f"Running command: {' '.join(command)}")  # Debug print
+
+    result = subprocess.run(command, capture_output=True, text=True)
+
+    print(result.stdout)
+
+    stdout_dict = ast.literal_eval(result.stdout)
+
+    return {
+        "returncode": result.returncode,
+        "stdout": json.dumps(stdout_dict),
+        "stderr": result.stderr,
+    }
