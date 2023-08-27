@@ -10,8 +10,8 @@ from typing import Any, Dict, List
 import openai
 import pytest
 
-from agbenchmark.agent_api_interface import run_api_agent
 import agbenchmark.start_benchmark
+from agbenchmark.agent_api_interface import run_api_agent
 from agbenchmark.utils.data_types import ChallengeData, Ground
 from agbenchmark.utils.prompts import (
     END_PROMPT,

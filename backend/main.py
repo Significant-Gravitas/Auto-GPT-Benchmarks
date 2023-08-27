@@ -1,16 +1,18 @@
-from importlib import reload
-import sys
+import ast
+import json
 import os
 import subprocess
-import json
-import ast
+import sys
+from importlib import reload
+from typing import Any
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 
 from fastapi import FastAPI, Query
-from agbenchmark.utils.utils import find_absolute_benchmark_path
 from fastapi.middleware.cors import CORSMiddleware
+
+from agbenchmark.utils.utils import find_absolute_benchmark_path
 
 app = FastAPI()
 
@@ -37,7 +39,7 @@ def run_single_test(
     mock: bool = Query(False),
     nc: bool = Query(False),
     cutoff: int = Query(None),
-):
+) -> Any:
     command = list(general_command)  # Make a copy of the general command
 
     # Always add the --test flag, since test is a required parameter
@@ -70,7 +72,7 @@ def run_suite(
     mock: bool = Query(False),
     nc: bool = Query(False),
     cutoff: int = Query(None),
-):
+) -> Any:
     command = list(general_command)  # Make a copy of the general command
 
     # Always add the --test flag, since test is a required parameter
@@ -103,7 +105,7 @@ def run_by_category(
     mock: bool = Query(False),
     nc: bool = Query(False),
     cutoff: int = Query(None),
-):
+) -> Any:
     command = list(general_command)  # Make a copy of the general command
 
     # Always add the --test flag, since test is a required parameter
@@ -143,7 +145,7 @@ def run(
     test: str = Query(None),
     suite: str = Query(None),
     cutoff: int = Query(None),
-):
+) -> Any:
     command = list(general_command)  # Make a copy of the general command
 
     # Conditionally add other flags

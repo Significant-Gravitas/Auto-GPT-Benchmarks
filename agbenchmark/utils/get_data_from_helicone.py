@@ -4,8 +4,8 @@ from typing import Optional
 
 import requests
 
-from agbenchmark.agent_interface import HELICONE_GRAPHQL_LOGS
 import agbenchmark.start_benchmark
+from agbenchmark.agent_interface import HELICONE_GRAPHQL_LOGS
 
 
 def get_data_from_helicone(challenge: str) -> Optional[float]:

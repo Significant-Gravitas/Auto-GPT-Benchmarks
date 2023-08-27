@@ -9,7 +9,6 @@ import collections
 import json
 import os
 from typing import Any, Generator
-import sys
 
 import colorama
 import networkx

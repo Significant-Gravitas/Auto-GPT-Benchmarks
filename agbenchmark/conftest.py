@@ -10,13 +10,13 @@ from typing import Any, Dict, Generator
 
 import pytest
 
+import agbenchmark.start_benchmark
 from agbenchmark.reports.reports import (
     finalize_reports,
     generate_combined_suite_report,
     generate_single_call_report,
     session_finish,
 )
-import agbenchmark.start_benchmark
 from agbenchmark.utils.data_types import SuiteConfig
 
 GLOBAL_TIMEOUT = (

@@ -1,13 +1,13 @@
 import os
+import platform
+import queue
 import select
 import shutil
 import subprocess
 import sys
 import time
-from typing import List
-import platform
 from threading import Thread
-import queue
+from typing import Any, List
 
 import psutil
 from dotenv import load_dotenv
@@ -22,7 +22,7 @@ HELICONE_GRAPHQL_LOGS = (
 )
 
 
-def run_linux_env(process, start_time, timeout):
+def run_linux_env(process: Any, start_time: float, timeout: float) -> None:
     while True:
         try:
             # This checks if there's data to be read from stdout without blocking.
@@ -47,14 +47,14 @@ def run_linux_env(process, start_time, timeout):
         print("The Python function has finished running.")
 
 
-def enqueue_output(out, my_queue):
+def enqueue_output(out: Any, my_queue: Any) -> None:
     for line in iter(out.readline, b""):
         my_queue.put(line)
     out.close()
 
 
-def run_windows_env(process, start_time, timeout):
-    my_queue = queue.Queue()
+def run_windows_env(process: Any, start_time: float, timeout: float) -> None:
+    my_queue: Any = queue.Queue()
     thread = Thread(target=enqueue_output, args=(process.stdout, my_queue))
     thread.daemon = True
     thread.start()
