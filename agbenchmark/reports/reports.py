@@ -190,7 +190,7 @@ def finalize_reports(item: Any, challenge_data: dict[str, Any]) -> None:
     test_name = getattr(item, "test_name", "")
 
     if info_details and test_name:
-        if run_time:
+        if run_time is not None:
             cost = None
             if "--mock" not in sys.argv and os.environ.get("HELICONE_API_KEY"):
                 print("Getting cost from Helicone")

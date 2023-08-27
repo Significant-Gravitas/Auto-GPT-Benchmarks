@@ -9,7 +9,6 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 
 from fastapi import FastAPI, Query
-import agbenchmark.start_benchmark
 from agbenchmark.utils.utils import find_absolute_benchmark_path
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -56,8 +55,6 @@ def run_single_test(
 
     result = subprocess.run(command, capture_output=True, text=True)
 
-    print(result.stdout)
-
     stdout_dict = ast.literal_eval(result.stdout)
 
     return {
@@ -90,8 +87,6 @@ def run_suite(
     print(f"Running command: {' '.join(command)}")  # Debug print
 
     result = subprocess.run(command, capture_output=True, text=True)
-
-    print(result.stdout)
 
     stdout_dict = ast.literal_eval(result.stdout)
 
@@ -126,8 +121,6 @@ def run_by_category(
 
     result = subprocess.run(command, capture_output=True, text=True)
 
-    print(result.stdout)
-
     stdout_dict = ast.literal_eval(result.stdout)
 
     return {
@@ -153,9 +146,6 @@ def run(
 ):
     command = list(general_command)  # Make a copy of the general command
 
-    # Always add the --test flag, since test is a required parameter
-    command.extend(["--test", test])
-
     # Conditionally add other flags
     if mock:
         command.append("--mock")
@@ -163,12 +153,32 @@ def run(
         command.extend(["--nc", str(nc)])
     if cutoff is not None:
         command.extend(["--cutoff", str(cutoff)])
+    if maintain:
+        command.append("--maintain")
+    if improve:
+        command.append("--improve")
+    if explore:
+        command.append("--explore")
+    if no_dep:
+        command.append("--no_dep")
+
+    if category:
+        for cat in category:
+            command.extend(["-c", cat])
+
+    if skip_category:
+        for skip_cat in skip_category:
+            command.extend(["-s", skip_cat])
+
+    if test:
+        command.extend(["--test", test])
+
+    if suite:
+        command.extend(["--suite", suite])
 
     print(f"Running command: {' '.join(command)}")  # Debug print
 
     result = subprocess.run(command, capture_output=True, text=True)
-
-    print(result.stdout)
 
     stdout_dict = ast.literal_eval(result.stdout)
 
