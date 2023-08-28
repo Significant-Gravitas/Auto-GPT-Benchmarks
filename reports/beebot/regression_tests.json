@@ -1,14 +1,14 @@
 {
-    "TestSearch": {
-        "difficulty": "interface",
-        "data_path": "agbenchmark/challenges/interface/search/data.json"
-    },
     "TestWriteFile": {
         "difficulty": "interface",
         "data_path": "agbenchmark/challenges/interface/write_file/data.json"
     },
-    "TestBasicRetrieval": {
+    "TestReadFile": {
+        "difficulty": "interface",
+        "data_path": "agbenchmark/challenges/interface/read_file/data.json"
+    },
+    "TestBasicMemory": {
         "difficulty": "basic",
-        "data_path": "agbenchmark/challenges/retrieval/r1_book_price/data.json"
+        "data_path": "agbenchmark/challenges/memory/m1_id/data.json"
     }
 }
