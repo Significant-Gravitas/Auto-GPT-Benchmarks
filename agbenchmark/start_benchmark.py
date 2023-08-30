@@ -215,6 +215,8 @@ def run_benchmark(
         print(f"Setting cuttoff override to {cutoff} seconds.")
 
     pytest_args.extend((str(CURRENT_DIRECTORY), "--cache-clear"))
+    pytest_args.append("--disable-warnings")
+
     return pytest.main(pytest_args)
 
 
@@ -403,5 +405,5 @@ def get_regression_data() -> Any:
 #     return latest_report
 
 
-# if __name__ == "__main__":
-#     start()
+if __name__ == "__main__":
+    cli()

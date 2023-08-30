@@ -1,14 +1,18 @@
 {
-    "TestWriteFile": {
-        "difficulty": "interface",
-        "data_path": "agbenchmark/challenges/interface/write_file/data.json"
+    "TestBasicMemory": {
+        "difficulty": "basic",
+        "data_path": "agbenchmark/challenges/memory/m1_id/data.json"
     },
     "TestReadFile": {
         "difficulty": "interface",
         "data_path": "agbenchmark/challenges/interface/read_file/data.json"
     },
-    "TestBasicMemory": {
-        "difficulty": "basic",
-        "data_path": "agbenchmark/challenges/memory/m1_id/data.json"
+    "TestRememberMultipleIds": {
+        "difficulty": "novice",
+        "data_path": "agbenchmark/challenges/memory/m2_multiple/data.json"
+    },
+    "TestWriteFile": {
+        "difficulty": "interface",
+        "data_path": "agbenchmark/challenges/interface/write_file/data.json"
     }
 }
