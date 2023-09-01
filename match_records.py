@@ -139,8 +139,14 @@ def get_helicone_data():
 
 
 
-reports_df = get_reports()
-helicone_df = get_helicone_data()
+if os.path.exists('reports_raw.pkl') and os.path.exists('helicone_raw.pkl'):
+    reports_df = pd.read_pickle('reports_raw.pkl')
+    helicone_df = pd.read_pickle('helicone_raw.pkl')
+else:
+    reports_df = get_reports()
+    reports_df.to_pickle('reports_raw.pkl')
+    helicone_df = get_helicone_data()
+    helicone_df.to_pickle('helicone_raw.pkl')
 
 def try_formats(date_str):
     formats = ['%Y-%m-%d-%H:%M', '%Y-%m-%dT%H:%M:%S%z']
@@ -151,17 +157,23 @@ def try_formats(date_str):
             pass
     return None
 
+helicone_df['benchmark_start_time'] = pd.to_datetime(helicone_df['benchmark_start_time'].apply(try_formats), utc=True)
+helicone_df = helicone_df.dropna(subset=['benchmark_start_time'])
+helicone_df['createdAt'] = pd.to_datetime(helicone_df['createdAt'], unit='ms', origin='unix')
 reports_df['benchmark_start_time'] = pd.to_datetime(reports_df['benchmark_start_time'].apply(try_formats), utc=True)
 reports_df = reports_df.dropna(subset=['benchmark_start_time'])
-helicone_df['createdAt'] = pd.to_datetime(helicone_df['createdAt'], unit='ms', origin='unix')
-helicone_df['benchmark_start_time'] = pd.to_datetime(helicone_df['benchmark_start_time'], format='%Y-%m-%dT%H:%M:%S%z')
+
+assert pd.api.types.is_datetime64_any_dtype(helicone_df['benchmark_start_time']), "benchmark_start_time in helicone_df is not datetime"
+assert pd.api.types.is_datetime64_any_dtype(reports_df['benchmark_start_time']), "benchmark_start_time in reports_df is not datetime"
+
+reports_df['report_time'] = reports_df['benchmark_start_time']
 
 df = pd.merge_asof(helicone_df.sort_values('benchmark_start_time'), 
                           reports_df.sort_values('benchmark_start_time'), 
                           left_on='benchmark_start_time', 
                           right_on='benchmark_start_time', 
                           by=['agent', 'challenge'], 
-                          direction='nearest')
+                          direction='backward')
 
 df.to_pickle('df.pkl')
 print(df.info())
