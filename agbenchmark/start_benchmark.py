@@ -8,7 +8,6 @@ from typing import Any, Optional
 
 import click
 import pytest
-from helicone.lock import HeliconeLockManager
 
 from agbenchmark.reports.ReportManager import ReportManager
 from agbenchmark.utils.utils import (
@@ -19,10 +18,17 @@ from agbenchmark.utils.utils import (
 
 CURRENT_DIRECTORY = Path(__file__).resolve().parent
 BENCHMARK_START_TIME = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S+00:00")
-if os.environ.get("HELICONE_API_KEY"):
-    HeliconeLockManager.write_custom_property(
-        "benchmark_start_time", BENCHMARK_START_TIME
-    )
+
+find_env = os.environ.get("LOCAL_ENV", False)
+LOCAL_ENV = find_env == "true" if find_env else False
+
+if not LOCAL_ENV:
+    from helicone.lock import HeliconeLockManager
+
+    if os.environ.get("HELICONE_API_KEY"):
+        HeliconeLockManager.write_custom_property(
+            "benchmark_start_time", BENCHMARK_START_TIME
+        )
 
 (
     HOME_DIRECTORY,

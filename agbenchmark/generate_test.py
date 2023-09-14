@@ -15,6 +15,9 @@ from agbenchmark.utils.challenge import Challenge
 from agbenchmark.utils.data_types import ChallengeData, SuiteConfig
 from agbenchmark.utils.utils import get_test_path
 
+find_env = os.environ.get("LOCAL_ENV", False)
+LOCAL_ENV = find_env == "true" if find_env else False
+
 DATA_CATEGORY = {}
 
 
@@ -116,10 +119,11 @@ def create_single_test(
         # skip optional categories
         self.skip_optional_categories(config)
 
-        from helicone.lock import HeliconeLockManager
+        if not LOCAL_ENV:
+            from helicone.lock import HeliconeLockManager
 
-        if os.environ.get("HELICONE_API_KEY"):
-            HeliconeLockManager.write_custom_property("challenge", self.data.name)
+            if os.environ.get("HELICONE_API_KEY"):
+                HeliconeLockManager.write_custom_property("challenge", self.data.name)
 
         cutoff = self.data.cutoff or 60
 
