@@ -19,6 +19,7 @@ find_env = os.environ.get("LOCAL_ENV", False)
 LOCAL_ENV = find_env == "true" if find_env else False
 
 DATA_CATEGORY = {}
+ALL_REPORT_DATA = {}
 
 
 def setup_dummy_dependencies(
@@ -72,6 +73,24 @@ def create_single_test(
         data = data.get_data()
 
     DATA_CATEGORY[data["name"]] = data["category"][0]
+
+    # Copy the data dictionary
+    data_copy = data.copy()
+
+    # Remove the 'difficulty' key from the nested 'info' dictionary
+    if "info" in data_copy:
+        if isinstance(data_copy["info"], dict):
+            # Remove the 'difficulty' key if it exists directly under 'info'
+            if "difficulty" in data_copy["info"]:
+                data_copy["info"].pop("difficulty")
+
+            # Check each nested dictionary within 'info' for a 'difficulty' key and remove it
+            for key, value in data_copy["info"].items():
+                if isinstance(value, dict) and "difficulty" in value:
+                    value.pop("difficulty")
+
+    # Add the modified data to ALL_REPORT_DATA
+    ALL_REPORT_DATA[data["name"]] = data_copy
 
     # Define test class dynamically
     challenge_class = types.new_class(data["name"], (Challenge,))

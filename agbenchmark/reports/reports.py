@@ -221,6 +221,7 @@ def finalize_reports(item: Any, challenge_data: dict[str, Any]) -> None:
                             nested_test_info, nested_test_name
                         )
 
+        print(f"Finished {test_name} at {challenge_data['category']}")
         agbenchmark.start_benchmark.INFO_MANAGER.add_test(test_name, info_details)
 
 
@@ -260,9 +261,14 @@ def generate_separate_suite_reports(suite_reports: dict) -> None:
         }
 
         for name in suite_file_datum:
-            test_data = agbenchmark.start_benchmark.INFO_MANAGER.tests[
-                name
-            ]  # get the individual test reports
+            print(f"Finished {name} at {prefix}")
+            try:
+                test_data = agbenchmark.start_benchmark.INFO_MANAGER.tests[
+                    name
+                ]  # get the individual test reports
+            except KeyError as e:
+                print(f"Failed to get {name} from INFO_MANAGER. Reason: {e}")
+                continue
             data[name] = test_data  # this is for calculating highest difficulty
             agbenchmark.start_benchmark.INFO_MANAGER.remove_test(name)
 
@@ -271,17 +277,26 @@ def generate_separate_suite_reports(suite_reports: dict) -> None:
 
             info_details["tests"][name] = test_data
 
-        info_details["metrics"]["percentage"] = round(
-            (sum(successes) / len(successes)) * 100, 2
-        )
+        try:
+            info_details["metrics"]["percentage"] = round(
+                (sum(successes) / len(successes)) * 100, 2
+            )
+        except ZeroDivisionError:
+            info_details["metrics"]["percentage"] = 0
+            print(f"No successful tests for {prefix}")
         info_details["metrics"]["run_time"] = f"{str(round(run_time, 3))} seconds"
         info_details["metrics"]["highest_difficulty"] = get_highest_success_difficulty(
             data, just_string=True
         )
-        suite_path = (
-            Path(next(iter(data.values()))["data_path"]).resolve().parent.parent
-        )
-        info_details["data_path"] = get_test_path(suite_path)
+
+        try:
+            suite_path = (
+                Path(next(iter(data.values()))["data_path"]).resolve().parent.parent
+            )
+            info_details["data_path"] = get_test_path(suite_path)
+        except Exception as e:
+            print(f"Failed to get data_path for {prefix}. Reason: {e}")
+            info_details["data_path"] = ""
         agbenchmark.start_benchmark.INFO_MANAGER.add_test(prefix, info_details)
 
 

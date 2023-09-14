@@ -18,6 +18,7 @@ from agbenchmark.reports.reports import (
     session_finish,
 )
 from agbenchmark.utils.data_types import SuiteConfig
+from agbenchmark.generate_test import ALL_REPORT_DATA
 
 GLOBAL_TIMEOUT = (
     1500  # The tests will stop after 25 minutes so we can send the reports.
@@ -202,6 +203,8 @@ def pytest_sessionfinish(session: Any) -> None:
     """Called at the end of the session to save regression tests and info"""
 
     session_finish(suite_reports)
+    with open("paper/all_data_jsons.json", "w") as f:
+        f.write(json.dumps(ALL_REPORT_DATA))
 
 
 @pytest.fixture
