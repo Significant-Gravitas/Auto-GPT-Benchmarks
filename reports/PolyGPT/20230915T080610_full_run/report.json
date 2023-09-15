@@ -1,0 +1,35 @@
+{
+    "command": "agbenchmark start",
+    "benchmark_git_commit_sha": "https://github.com/Significant-Gravitas/Auto-GPT-Benchmarks/tree/04cff66b934e9d878223349f4399b2b3383d518b",
+    "agent_git_commit_sha": "https://github.com/polywrap/PolyGPT/tree/d621adf5f54cc0f9a6d191139fb67ac3d1436d7b",
+    "completion_time": "2023-09-15T08:20:51+00:00",
+    "benchmark_start_time": "2023-09-15T08:06:10+00:00",
+    "metrics": {
+        "run_time": "881.72 seconds",
+        "highest_difficulty": "No successful tests"
+    },
+    "tests": {
+        "TestReturnCode": {
+            "data_path": "",
+            "metrics": {
+                "percentage": 0,
+                "highest_difficulty": "No successful tests",
+                "run_time": "0.0 seconds"
+            },
+            "tests": {}
+        },
+        "TestRememberGoal": {
+            "data_path": "",
+            "metrics": {
+                "percentage": 0,
+                "highest_difficulty": "No successful tests",
+                "run_time": "0.0 seconds"
+            },
+            "tests": {}
+        }
+    },
+    "config": {
+        "workspace": "workspace",
+        "entry_path": "agbenchmark.benchmarks"
+    }
+}

@@ -1,0 +1,34 @@
+{
+    "command": "agbenchmark start",
+    "benchmark_git_commit_sha": "https://github.com/Significant-Gravitas/Auto-GPT-Benchmarks/tree/04cff66b934e9d878223349f4399b2b3383d518b",
+    "agent_git_commit_sha": "https://github.com/SilenNaihin/mini-agi/tree/24454ceee36d09d05daa5e401b140d535b2d4914",
+    "completion_time": "2023-09-15T08:19:59+00:00",
+    "benchmark_start_time": "2023-09-15T08:07:53+00:00",
+    "metrics": {
+        "run_time": "726.62 seconds",
+        "highest_difficulty": "No successful tests"
+    },
+    "tests": {
+        "TestReturnCode": {
+            "data_path": "",
+            "metrics": {
+                "percentage": 0,
+                "highest_difficulty": "No successful tests",
+                "run_time": "0.0 seconds"
+            },
+            "tests": {}
+        },
+        "TestRememberGoal": {
+            "data_path": "",
+            "metrics": {
+                "percentage": 0,
+                "highest_difficulty": "No successful tests",
+                "run_time": "0.0 seconds"
+            },
+            "tests": {}
+        }
+    },
+    "config": {
+        "workspace": "${os.path.join(Path.home(), 'miniagi')}"
+    }
+}
