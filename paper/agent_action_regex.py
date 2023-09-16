@@ -196,52 +196,51 @@ def is_action_turbo(log):
 
 
 def is_action_general(log):
-    """General actions are defined by the presence of specific keywords such as 'write', 'start', 'create', etc.
-    KEYWORDS FOUND SO FAR
-    WRITE
-    - write
-    - start
-    - create
-    - execute
-    - post
-    MODIFY
-    - modify
-    - mutate
-    - delete
-    - put
-    READ
-    - read
-    - list
-    - search
-    - find
-    - get
-    - browse
-    - query
-    - www
-    GENERAL, no specificity
-    - command
-    - call
-    - function
-    - action
-    - http
+    """General actions are defined by the presence of specific keywords.
+
+    Categories and their keywords:
+    WRITE: ['write', 'start', 'create', 'execute', 'post']
+    MODIFY: ['modify', 'mutate', 'delete', 'put']
+    READ: ['read', 'list', 'search', 'find', 'get', 'browse', 'query', 'www']
+    GENERAL: ['command', 'call', 'function', 'action', 'http']
     """
+
     if log is None:
         return False
+
+    keywords = {
+        "WRITE": ["write", "start", "create", "execute", "post", "publish"],
+        "MODIFY": ["modify", "mutate", "delete", "put", "update"],
+        "READ": [
+            "read",
+            "list",
+            "search",
+            "find",
+            "get",
+            "browse",
+            "query",
+            "www",
+            "view",
+        ],
+        "GENERAL": [
+            "command",
+            "call",
+            "function",
+            "action",
+            "http",
+            "invoke",
+            "request",
+        ],
+    }
+
+    all_keywords = [word for sublist in keywords.values() for word in sublist]
 
     if log.get("content", ""):
         log = log["content"]
     elif log.get("function_call", ""):
         log = json.dumps(log["function_call"])
 
-    if isinstance(log, dict):
-        print("log is dict", log)
-
-    return bool(
-        re.search(
-            r"\b(write|start|create|execute|post|modify|mutate|delete|put|search|find|get|browse|query|www|read|list|http)\b",
-            log,
-        )
-    )
+    return bool(re.search(rf"\b({'|'.join(all_keywords)})\b", log))
 
 
 def is_action_agent(log, agent, test="", response=""):
