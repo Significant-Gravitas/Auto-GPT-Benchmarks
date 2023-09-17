@@ -2,27 +2,27 @@
 ============================================================
                        STATUS UPDATE                        
 ============================================================
-Start Time: 2023-09-17 02:16:24
-Scoring type: trinary
+Start Time: 2023-09-17_12-40-32
+Scoring type: percentage
 Regex type: specific
 
-Time: 2023-09-17 02:16:31
+Time: 2023-09-17 12:40:36
 Challenges processed: 1
-Runs processed: 1
-Total logs processed: 3
-Inserted logs processed: 0
-Total tokens used: 2041
-Total Overall Cost: $0.006
+Runs processed: 3
+Total logs processed: 11
+Inserted logs processed: 2
+Total tokens used: 6470
+Total Overall Cost: $0.019
 
-Running Accuracy: 100.0%
-Precision: 100.0%
+Running Accuracy: 81.818%
+Precision: 81.818%
 Recall: 100.0%
-F1 Score: 100.0%
-Counters: TP: 3, FP: 0, TN: 0, FN: 0
-Running Average Score: 2.0
+F1 Score: 90.0%
+Counters: TP: 9, FP: 2, TN: 0, FN: 0
+Running Average Score: 93.182
 
 Current Challenge: TestAdaptSimpleTypoWithGuidance
-Current Run: 2023-08-04 08:14:00+00:00
-Current Log: 4
-Challenges left: 3
+Current Run: 2023-08-06 08:12:00+00:00
+Current Log: 5
+Challenges left: 0
 ============================================================
