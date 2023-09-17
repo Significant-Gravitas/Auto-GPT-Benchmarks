@@ -2,24 +2,24 @@
 ============================================================
                        STATUS UPDATE                        
 ============================================================
-Start Time: 2023-09-17_12-40-32
-Scoring type: percentage
+Start Time: 2023-09-17_13-41-39
+Scoring type: binary
 Regex type: specific
 
-Time: 2023-09-17 12:40:36
+Time: 2023-09-17 13:42:05
 Challenges processed: 1
 Runs processed: 3
 Total logs processed: 11
 Inserted logs processed: 2
-Total tokens used: 6470
-Total Overall Cost: $0.019
+Total tokens used: 6551
+Total Overall Cost: $0.021
 
-Running Accuracy: 81.818%
-Precision: 81.818%
-Recall: 100.0%
-F1 Score: 90.0%
-Counters: TP: 9, FP: 2, TN: 0, FN: 0
-Running Average Score: 93.182
+Running Accuracy: 72.727%
+Precision: 80.0%
+Recall: 88.889%
+F1 Score: 84.211%
+Counters: TP: 8, FP: 2, TN: 0, FN: 1
+Running Average Score: 0.964
 
 Current Challenge: TestAdaptSimpleTypoWithGuidance
 Current Run: 2023-08-06 08:12:00+00:00
