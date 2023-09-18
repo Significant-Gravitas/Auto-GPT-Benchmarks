@@ -1,0 +1,17 @@
+Iteration No: 1 started. Evaluating function at random point.
+An error occurred: Failed to convert the response to a number. Retrying... (attempt 1)
+An error occurred: Failed to convert the response to a number. Retrying... (attempt 1)
+An error occurred: Failed to convert the response to a number. Retrying... (attempt 1)
+An error occurred: Failed to convert the response to a number. Retrying... (attempt 1)
+Saving to results/reasoning_coarse_optimization_3/2023-09-17_16-48-16_1.json
+Iteration No: 1 ended. Evaluation done at random point.
+Time taken: 2369.2470
+Function value obtained: -0.8187
+Current minimum: -0.8187
+Iteration No: 2 started. Evaluating function at random point.
+Saving to results/reasoning_coarse_optimization_3/2023-09-17_17-27-45_1.json
+Iteration No: 2 ended. Evaluation done at random point.
+Time taken: 403.1147
+Function value obtained: -0.7296
+Current minimum: -0.8187
+Iteration No: 3 started. Evaluating function at random point.
