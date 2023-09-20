@@ -13,14 +13,14 @@
         "scores": {
             "accuracy": 0.8666666666666667,
             "avg_score": 1.9,
-            "precision": 0.8571428571428571,
-            "recall": 1.0,
-            "f1_score": 0.923076923076923,
+            "precision": 1.0,
+            "recall": 0.3333333333333333,
+            "f1_score": 0.5,
             "counters": {
-                "TP": 72,
-                "FP": 12,
-                "TN": 6,
-                "FN": 0
+                "TP": 6,
+                "FP": 0,
+                "TN": 72,
+                "FN": 12
             }
         },
         "tokens": {

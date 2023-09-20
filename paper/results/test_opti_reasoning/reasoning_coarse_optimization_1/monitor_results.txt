@@ -1,2 +1,0 @@
-Best accuracy so far: 0 with 1.0
-Best accuracy so far: 0 with 1.0
