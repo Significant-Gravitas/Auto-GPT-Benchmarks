@@ -511,7 +511,6 @@
     },
     "whitelist": {
       "read_whitelist": [],
-      "execute_whitelist": [],
       "websites_whitelist": [],
       "import_whitelist": [],
       "folder_whitelist": []
@@ -806,7 +805,6 @@
     },
     "whitelist": {
       "read_whitelist": ["instructions.txt"],
-      "execute_whitelist": [],
       "websites_whitelist": [],
       "import_whitelist": [],
       "folder_whitelist": ["the one you currently reside in '.'"]
@@ -832,7 +830,6 @@
     },
     "whitelist": {
       "read_whitelist": ["instructions.txt"],
-      "execute_whitelist": [],
       "websites_whitelist": [
         "https://www.youtube.com",
         "https://themerrythought.com",
@@ -867,7 +864,6 @@
     },
     "whitelist": {
       "read_whitelist": ["file_{index}.txt"],
-      "execute_whitelist": [],
       "websites_whitelist": [],
       "import_whitelist": [],
       "folder_whitelist": ["the one you currently reside in '.'"]
@@ -893,7 +889,6 @@
     },
     "whitelist": {
       "read_whitelist": ["file_{index}.txt"],
-      "execute_whitelist": [],
       "websites_whitelist": [],
       "import_whitelist": [],
       "folder_whitelist": ["the one you currently reside in '.'"]
