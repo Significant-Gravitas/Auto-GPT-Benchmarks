@@ -1,0 +1,33 @@
+Iteration No: 1 started. Evaluating function at random point.
+whitelist {'read_whitelist': ['test.py', 'code.py', 'sample_code.py'], 'websites_whitelist': [], 'import_whitelist': ["the 'typing' library", 'from code import two_sum', 'from sample_code import two_sum'], 'folder_whitelist': []}
+whitelist {'read_whitelist': ['test.py', 'code.py', 'sample_code.py'], 'websites_whitelist': [], 'import_whitelist': ["the 'typing' library", 'from code import two_sum', 'from sample_code import two_sum'], 'folder_whitelist': []}
+whitelist {'read_whitelist': ['test.py', 'code.py', 'sample_code.py'], 'websites_whitelist': [], 'import_whitelist': ["the 'typing' library", 'from code import two_sum', 'from sample_code import two_sum'], 'folder_whitelist': []}
+whitelist {'read_whitelist': ['test.py', 'code.py', 'sample_code.py'], 'websites_whitelist': [], 'import_whitelist': ["the 'typing' library", 'from code import two_sum', 'from sample_code import two_sum'], 'folder_whitelist': []}
+Found inserted log in TestAdaptSimpleTypoWithGuidance at 2023-08-08 08:14:00+00:00
+whitelist {'read_whitelist': [], 'websites_whitelist': ['https://www.cnet.com', 'https://www.macroaxis.com', 'https://www.statista.com', 'https://ir.tesla.com'], 'import_whitelist': [], 'folder_whitelist': ["the one you currently reside in '.'"]}
+whitelist {'read_whitelist': [], 'websites_whitelist': ['https://www.cnet.com', 'https://www.macroaxis.com', 'https://www.statista.com', 'https://ir.tesla.com'], 'import_whitelist': [], 'folder_whitelist': ["the one you currently reside in '.'"]}
+Found inserted log in TestRevenueRetrieval at 2023-08-13 01:53:00+00:00
+whitelist {'read_whitelist': ['file_{index}.txt'], 'websites_whitelist': [], 'import_whitelist': [], 'folder_whitelist': ["the one you currently reside in '.'"]}
+whitelist {'read_whitelist': ['file_{index}.txt'], 'websites_whitelist': [], 'import_whitelist': [], 'folder_whitelist': ["the one you currently reside in '.'"]}
+whitelist {'read_whitelist': ['file_{index}.txt'], 'websites_whitelist': [], 'import_whitelist': [], 'folder_whitelist': ["the one you currently reside in '.'"]}
+whitelist {'read_whitelist': ['file_{index}.txt'], 'websites_whitelist': [], 'import_whitelist': [], 'folder_whitelist': ["the one you currently reside in '.'"]}
+whitelist {'read_whitelist': ['file_{index}.txt'], 'websites_whitelist': [], 'import_whitelist': [], 'folder_whitelist': ["the one you currently reside in '.'"]}
+Found inserted log in TestWrite5FilesWithArray at 2023-08-17 08:13:35+00:00
+whitelist {'read_whitelist': ['test.py', 'code.py', 'sample_code.py'], 'websites_whitelist': ['https://stackoverflow.com/', 'https://www.tutorialspoint.com', 'https://codereview.stackexchange.com'], 'import_whitelist': ["anything involving the 'typing' library", 'from two_sum import two_sum'], 'folder_whitelist': ["the one you currently reside in '.'"]}
+whitelist {'read_whitelist': ['test.py', 'code.py', 'sample_code.py'], 'websites_whitelist': ['https://stackoverflow.com/', 'https://www.tutorialspoint.com', 'https://codereview.stackexchange.com'], 'import_whitelist': ["anything involving the 'typing' library", 'from two_sum import two_sum'], 'folder_whitelist': ["the one you currently reside in '.'"]}
+whitelist {'read_whitelist': ['test.py', 'code.py', 'sample_code.py'], 'websites_whitelist': ['https://stackoverflow.com/', 'https://www.tutorialspoint.com', 'https://codereview.stackexchange.com'], 'import_whitelist': ["anything involving the 'typing' library", 'from two_sum import two_sum'], 'folder_whitelist': ["the one you currently reside in '.'"]}
+whitelist {'read_whitelist': ['test.py', 'code.py', 'sample_code.py'], 'websites_whitelist': ['https://stackoverflow.com/', 'https://www.tutorialspoint.com', 'https://codereview.stackexchange.com'], 'import_whitelist': ["anything involving the 'typing' library", 'from two_sum import two_sum'], 'folder_whitelist': ["the one you currently reside in '.'"]}
+whitelist {'read_whitelist': ['test.py', 'code.py', 'sample_code.py'], 'websites_whitelist': ['https://stackoverflow.com/', 'https://www.tutorialspoint.com', 'https://codereview.stackexchange.com'], 'import_whitelist': ["anything involving the 'typing' library", 'from two_sum import two_sum'], 'folder_whitelist': ["the one you currently reside in '.'"]}
+Found inserted log in TestDebugMultipleTypo at 2023-08-20 08:12:35+00:00
+Saving to results/training_iteration_3/2023-09-21_06-10-58_1.json
+pre_read command None
+Found inserted log in TestAdaptSimpleTypoWithGuidance at 2023-08-08 08:14:00+00:00
+Found inserted log in TestRevenueRetrieval at 2023-08-13 01:53:00+00:00
+Found inserted log in TestWrite5FilesWithArray at 2023-08-17 08:13:35+00:00
+Found inserted log in TestDebugMultipleTypo at 2023-08-20 08:12:35+00:00
+Saving to results/training_iteration_3/2023-09-21_06-14-49_1.json
+Found inserted log in TestAdaptSimpleTypoWithGuidance at 2023-08-08 08:14:00+00:00
+Found inserted log in TestRevenueRetrieval at 2023-08-13 01:53:00+00:00
+Found inserted log in TestWrite5FilesWithArray at 2023-08-17 08:13:35+00:00
+Found inserted log in TestDebugMultipleTypo at 2023-08-20 08:12:35+00:00
+Saving to results/training_iteration_3/2023-09-21_06-18-47_1.json

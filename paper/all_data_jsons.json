@@ -23,7 +23,7 @@
     },
     "whitelist": {
       "read_whitelist": ["test.py", "code.py", "sample_code.py"],
-      "website_whitelist": [],
+      "websites_whitelist": [],
       "import_whitelist": [
         "the 'typing' library",
         "from code import two_sum",
@@ -52,7 +52,7 @@
     },
     "whitelist": {
       "read_whitelist": [],
-      "website_whitelist": [
+      "websites_whitelist": [
         "https://www.macroaxis.com",
         "https://www.statista.com"
       ],
