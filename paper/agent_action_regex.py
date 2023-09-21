@@ -24,26 +24,30 @@ def is_action_auto_gpt(log):
     command_existence = bool(re.search(r'"command"\s*:', log))
 
     if command_existence:
-        # Convert the JSON-like string to a Python dictionary
-        log_dict = json.loads(log)
+        try:
+            # Convert the JSON-like string to a Python dictionary
+            log_dict = json.loads(log)
 
-        # Check if the "command" key exists and has a "name" key
-        if "command" in log_dict and "name" in log_dict["command"]:
-            command_name = log_dict["command"]["name"]
+            # Check if the "command" key exists and has a "name" key
+            if "command" in log_dict and "name" in log_dict["command"]:
+                command_name = log_dict["command"]["name"]
 
-            # List of command names that signify an action
-            action_command_names = [
-                "web_search",
-                "write_to_file",
-                "browse_website",
-                "execute_python_file",
-                "list_files",
-                "execute_python_code",
-                "read_file",
-            ]
+                # List of command names that signify an action
+                action_command_names = [
+                    "web_search",
+                    "write_to_file",
+                    "browse_website",
+                    "execute_python_file",
+                    "list_files",
+                    "execute_python_code",
+                    "read_file",
+                ]
 
-            # Check if the command name matches any in the list
-            return command_name in action_command_names
+                # Check if the command name matches any in the list
+                return command_name in action_command_names
+        except Exception as e:
+            print(e, log)
+            raise e
 
     return False
 
