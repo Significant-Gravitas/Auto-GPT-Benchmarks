@@ -13,12 +13,16 @@
       "eval": { "type": "python" }
     },
     "info": {
-      "description": "A version of the debug challenge where the wrong files to test and change are given. The llm must figure the challenges out",
-      "side_effects": []
+      "description": "The agent needs to figure out that it should to modify code.py and run test.py. Otherwise, it's a debugging challenge.",
+      "side_effects": [],
+      "pre_read": {
+        "test.py": "# mypy: ignore-errors\r\nfrom typing import List\r\n\r\nfrom sample_code import two_sum\r\n\r\n\r\ndef test_two_sum(nums: List, target: int, expected_result: List[int]) -> None:\r\n    result = two_sum(nums, target)\r\n    print(result)\r\n    assert (\r\n        result == expected_result\r\n    ), f\"AssertionError: Expected the output to be {expected_result}\"\r\n\r\n\r\nif __name__ == \"__main__\":\r\n    # test the trivial case with the first two numbers\r\n    nums = [2, 7, 11, 15]\r\n    target = 9\r\n    expected_result = [0, 1]\r\n    test_two_sum(nums, target, expected_result)\r\n\r\n    # test for ability to use zero and the same number twice\r\n    nums = [2, 7, 0, 15, 12, 0]\r\n    target = 0\r\n    expected_result = [2, 5]\r\n    test_two_sum(nums, target, expected_result)\r\n\r\n    # test for first and last index usage and negative numbers\r\n    nums = [-6, 7, 11, 4]\r\n    target = -2\r\n    expected_result = [0, 3]\r\n    test_two_sum(nums, target, expected_result)\r\n",
+        "code.py": "# mypy: ignore-errors\nfrom typing import List, Optional\n\ndef two_sum(nums: List, target: int) -> Optional[List[int]]:\n    seen = {}\n    for i, num in enumerate(nums):\n        typo\n        complement = target - num\n        if complement in seen:\n            return [seen[complement], i]\n        seen[num] = i\n    return None",
+        "sample_code.py": "# mypy: ignore-errors\nfrom typing import List, Optional\n\ndef two_sum(nums: List, target: int) -> Optional[List[int]]:\n    seen = {}\n    for i, num in enumerate(nums):\n        typo\n        complement = target - num\n        if complement in seen:\n            return [seen[complement], i]\n        seen[num] = i\n    return None"
+      }
     },
     "whitelist": {
       "read_whitelist": ["test.py", "code.py", "sample_code.py"],
-      "execute_whitelist": ["test.py", "code.py", "sample_code.py"],
       "website_whitelist": [],
       "import_whitelist": [
         "the 'typing' library",
@@ -42,12 +46,12 @@
       "eval": { "type": "file" }
     },
     "info": {
-      "description": "Given context adapt to the missing of the word revenue",
-      "side_effects": []
+      "description": "The word 'revenue' is shortened to just 'r', leaving it up to the agent to fill in the blank correctly. It may also accidentally find the ROI which is fine.",
+      "side_effects": [],
+      "pre_read": {}
     },
     "whitelist": {
       "read_whitelist": [],
-      "execute_whitelist": [],
       "website_whitelist": [
         "https://www.macroaxis.com",
         "https://www.statista.com"
@@ -70,12 +74,12 @@
       "eval": { "type": "file" }
     },
     "info": {
-      "description": "An advanced version of this -> remove.html as well. Same as TestBasicRetrieval but link is slightly broken, supposed to be http:// at the start.",
-      "side_effects": []
+      "description": "The link is slightly broken, supposed to be http:// at the start and the agent should fill this in and find the information.",
+      "side_effects": [],
+      "pre_read": {}
     },
     "whitelist": {
       "read_whitelist": [],
-      "execute_whitelist": [],
       "websites_whitelist": [
         "books.toscrape.com/catalogue/meditations_33/index.html",
         "http://books.toscrape.com/catalogue/meditations_33/index.html"
@@ -98,17 +102,17 @@
       "eval": { "type": "python" }
     },
     "info": {
-      "description": "Small step up, just writing the function with a name as well as the return statement.",
-      "side_effects": []
+      "description": "The test file should be modified to include tests, and the code file should be modified so that it can pass the tests.",
+      "side_effects": [],
+      "pre_read": {
+        "test.py": "# mypy: ignore-errors\r\nfrom sample_code import multiply_int\r\n\r\n\r\ndef test_multiply_int(num: int, multiplier, expected_result: int) -> None:\r\n    result = multiply_int(num, multiplier)\r\n    print(result)\r\n    assert (\r\n        result == expected_result\r\n    ), f\"AssertionError: Expected the output to be {expected_result}\"\r\n\r\n\r\nif __name__ == \"__main__\":\r\n    # create a trivial test that has 4 as the num, and 2 as the multiplier. Make sure to fill in the expected result\r\n    num =\r\n    multiplier = \r\n    expected_result = \r\n    test_multiply_int()",
+        "testfile.py": "# mypy: ignore-errors\r\nfrom sample_code import multiply_int\r\n\r\n\r\ndef test_multiply_int(num: int, multiplier, expected_result: int) -> None:\r\n    result = multiply_int(num, multiplier)\r\n    print(result)\r\n    assert (\r\n        result == expected_result\r\n    ), f\"AssertionError: Expected the output to be {expected_result}\"\r\n\r\n\r\nif __name__ == \"__main__\":\r\n    # create a trivial test that has 4 as the num, and 2 as the multiplier. Make sure to fill in the expected result\r\n    num =\r\n    multiplier = \r\n    expected_result = \r\n    test_multiply_int()",
+        "code.py": "# mypy: ignore-errors\r\n\r\n\r\ndef multiply_int(num: int) -> int:\r\n    multiplied_num = num * 2\r\n    return multiplied_num\r\n",
+        "sample_code.py": "# mypy: ignore-errors\r\n\r\n\r\ndef multiply_int(num: int) -> int:\r\n    multiplied_num = num * 2\r\n    return multiplied_num\r\n"
+      }
     },
     "whitelist": {
       "read_whitelist": ["test.py", "testfile.py", "code.py", "sample_code.py"],
-      "execute_whitelist": [
-        "test.py",
-        "testfile.py",
-        "code.py",
-        "sample_code.py"
-      ],
       "websites_whitelist": [],
       "import_whitelist": [
         "the 'typing' library",
@@ -132,12 +136,16 @@
       "eval": { "type": "python" }
     },
     "info": {
-      "description": "Builds on the previous function also take a multiplier .",
-      "side_effects": []
+      "description": "Just need to modify the function within the code file to also include a multiplier.",
+      "side_effects": [],
+      "pre_read": {
+        "test.py": "# mypy: ignore-errors\r\nfrom sample_code import multiply_int\r\n\r\n\r\ndef test_multiply_int(num: int, multiplier, expected_result: int) -> None:\r\n    result = multiply_int(num, multiplier)\r\n    print(result)\r\n    assert (\r\n        result == expected_result\r\n    ), f\"AssertionError: Expected the output to be {expected_result}\"\r\n\r\n\r\nif __name__ == \"__main__\":\r\n    # test the trivial case\r\n    num = 4\r\n    multiplier = 2\r\n    expected_result = 8\r\n    test_multiply_int(num, multiplier, expected_result)\r\n\r\n    # so its not hard coded\r\n    num = 7\r\n    multiplier = 7\r\n    expected_result = 49\r\n    test_multiply_int(num, multiplier, expected_result)\r\n\r\n    # negative numbers\r\n    num = -6\r\n    multiplier = 2\r\n    expected_result = -12\r\n    test_multiply_int(num, multiplier, expected_result)\r\n",
+        "code.py": "# mypy: ignore-errors\r\n\r\n\r\ndef multiply_int(num: int) -> int:\r\n    multiplied_num = num * 2\r\n    return multiplied_num\r\n",
+        "sample_code.py": "# mypy: ignore-errors\r\n\r\n\r\ndef multiply_int(num: int) -> int:\r\n    multiplied_num = num * 2\r\n    return multiplied_num\r\n"
+      }
     },
     "whitelist": {
       "read_whitelist": ["test.py", "code.py", "sample_code.py"],
-      "execute_whitelist": ["test.py", "code.py", "sample_code.py"],
       "websites_whitelist": [],
       "import_whitelist": [],
       "folder_whitelist": ["the one you currently reside in '.'"]
@@ -157,22 +165,16 @@
       "eval": { "type": "python" }
     },
     "info": {
-      "description": "Small step up, just writing the function with a name as well as the return statement.",
-      "side_effects": []
+      "description": "The agent needs to add a function to the code file that multiplies numbers by 2.",
+      "side_effects": [],
+      "pre_read": {
+        "test.py": "# mypy: ignore-errors\r\nfrom sample_code import multiply_int\r\n\r\n\r\ndef test_multiply_int(num: int, multiplier, expected_result: int) -> None:\r\n    result = multiply_int(num, multiplier)\r\n    print(result)\r\n    assert (\r\n        result == expected_result\r\n    ), f\"AssertionError: Expected the output to be {expected_result}\"\r\n\r\n\r\nif __name__ == \"__main__\":\r\n    # test the trivial case\r\n    num = 4\r\n    multiplier = 2\r\n    expected_result = 8\r\n    test_multiply_int(num, multiplier, expected_result)\r\n\r\n    # so its not hard coded\r\n    num = 7\r\n    multiplier = 7\r\n    expected_result = 49\r\n    test_multiply_int(num, multiplier, expected_result)\r\n\r\n    # negative numbers\r\n    num = -6\r\n    multiplier = 2\r\n    expected_result = -12\r\n    test_multiply_int(num, multiplier, expected_result)\r\n",
+        "code.py": "# mypy: ignore-errors",
+        "sample_code.py": "# mypy: ignore-errors"
+      }
     },
     "whitelist": {
-      "read_whitelist": [
-        "test.py",
-        "code.py",
-        "sample_code.py",
-        "anything ending in multiply_int.py, as long as the code matches the task"
-      ],
-      "execute_whitelist": [
-        "test.py",
-        "code.py",
-        "sample_code.py",
-        "anything that ends in multiply_int.py, as long as the code matches the task"
-      ],
+      "read_whitelist": ["test.py", "code.py", "sample_code.py"],
       "websites_whitelist": [],
       "import_whitelist": [
         "from code import multiply_int",
@@ -195,21 +197,23 @@
       "eval": { "type": "python" }
     },
     "info": {
-      "description": "Simple test if a simple code instruction can be executed",
-      "side_effects": []
+      "description": "The agent needs to add a return statement to the function in the code file.",
+      "side_effects": [],
+      "pre_read": {
+        "test.py": "# mypy: ignore-errors\r\nfrom sample_code import multiply_int\r\n\r\n\r\ndef test_multiply_int(num: int, multiplier, expected_result: int) -> None:\r\n    result = multiply_int(num, multiplier)\r\n    print(result)\r\n    assert (\r\n        result == expected_result\r\n    ), f\"AssertionError: Expected the output to be {expected_result}\"\r\n\r\n\r\nif __name__ == \"__main__\":\r\n    # test the trivial case\r\n    num = 4\r\n    multiplier = 2\r\n    expected_result = 8\r\n    test_multiply_int(num, multiplier, expected_result)\r\n\r\n    # so its not hard coded\r\n    num = 7\r\n    multiplier = 7\r\n    expected_result = 49\r\n    test_multiply_int(num, multiplier, expected_result)\r\n\r\n    # negative numbers\r\n    num = -6\r\n    multiplier = 2\r\n    expected_result = -12\r\n    test_multiply_int(num, multiplier, expected_result)\r\n",
+        "code.py": "# mypy: ignore-errors",
+        "sample_code.py": "# mypy: ignore-errors",
+        "execute_multiply_int.py": "# mypy: ignore-errors\r\n\r\n\r\ndef multiply_int(num: int) -> int:\r\n    multiplied_num = num * 2\r\n    return multiplied_num\r\n",
+        "call_multiply_int.py": "# mypy: ignore-errors\r\n\r\n\r\ndef multiply_int(num: int) -> int:\r\n    multiplied_num = num * 2\r\n    return multiplied_num\r\n"
+      }
     },
     "whitelist": {
       "read_whitelist": [
         "test.py",
         "code.py",
         "sample_code.py",
-        "anything ending in multiply_int.py, as long as the code matches the task"
-      ],
-      "execute_whitelist": [
-        "test.py",
-        "code.py",
-        "sample_code.py",
-        "anything that ends in multiply_int.py, as long as the code matches the task"
+        "execute_multiply_int.py",
+        "call_multiply_int.py"
       ],
       "websites_whitelist": [],
       "import_whitelist": [
@@ -233,12 +237,16 @@
       "eval": { "type": "python" }
     },
     "info": {
-      "description": "Tests ability for the agent to debug python code with a simple typo in it.",
-      "side_effects": []
+      "description": "The task requires the agent to remove the 'typo' from the given file.",
+      "side_effects": [],
+      "pre_read": {
+        "test.py": "# mypy: ignore-errors\r\nfrom typing import List\r\n\r\nfrom sample_code import two_sum\r\n\r\n\r\ndef test_two_sum(nums: List, target: int, expected_result: List[int]) -> None:\r\n    result = two_sum(nums, target)\r\n    print(result)\r\n    assert (\r\n        result == expected_result\r\n    ), f\"AssertionError: Expected the output to be {expected_result}\"\r\n\r\n\r\nif __name__ == \"__main__\":\r\n    # test the trivial case with the first two numbers\r\n    nums = [2, 7, 11, 15]\r\n    target = 9\r\n    expected_result = [0, 1]\r\n    test_two_sum(nums, target, expected_result)\r\n\r\n    # test for ability to use zero and the same number twice\r\n    nums = [2, 7, 0, 15, 12, 0]\r\n    target = 0\r\n    expected_result = [2, 5]\r\n    test_two_sum(nums, target, expected_result)\r\n\r\n    # test for first and last index usage and negative numbers\r\n    nums = [-6, 7, 11, 4]\r\n    target = -2\r\n    expected_result = [0, 3]\r\n    test_two_sum(nums, target, expected_result)\r\n",
+        "code.py": "# mypy: ignore-errors\r\nfrom typing import List, Optional\r\n\r\n\r\ndef two_sum(nums: List, target: int) -> Optional[List[int]]:\r\n    seen = {}\r\n    for i, num in enumerate(nums):\r\n        typo\r\n        complement = target - num\r\n        if complement in seen:\r\n            return [seen[complement], i]\r\n        seen[num] = i\r\n    return None\r\n",
+        "sample_code.py": "# mypy: ignore-errors\r\nfrom typing import List, Optional\r\n\r\n\r\ndef two_sum(nums: List, target: int) -> Optional[List[int]]:\r\n    seen = {}\r\n    for i, num in enumerate(nums):\r\n        typo\r\n        complement = target - num\r\n        if complement in seen:\r\n            return [seen[complement], i]\r\n        seen[num] = i\r\n    return None\r\n"
+      }
     },
     "whitelist": {
       "read_whitelist": ["test.py", "code.py", "sample_code.py"],
-      "execute_whitelist": ["test.py", "code.py", "sample_code.py"],
       "websites_whitelist": [],
       "import_whitelist": ["anything involving the 'typing' library"],
       "folder_whitelist": ["the one you currently reside in '.'"]
@@ -258,12 +266,16 @@
       "eval": { "type": "python" }
     },
     "info": {
-      "description": "Tests ability for the agent to debug python code with a simple typo in it, using a very broad prompt without guidance",
-      "side_effects": []
+      "description": "The task requires the agent to remove the 'typo' from the given file.",
+      "side_effects": [],
+      "pre_read": {
+        "test.py": "# mypy: ignore-errors\r\nfrom typing import List\r\n\r\nfrom sample_code import two_sum\r\n\r\n\r\ndef test_two_sum(nums: List, target: int, expected_result: List[int]) -> None:\r\n    result = two_sum(nums, target)\r\n    print(result)\r\n    assert (\r\n        result == expected_result\r\n    ), f\"AssertionError: Expected the output to be {expected_result}\"\r\n\r\n\r\nif __name__ == \"__main__\":\r\n    # test the trivial case with the first two numbers\r\n    nums = [2, 7, 11, 15]\r\n    target = 9\r\n    expected_result = [0, 1]\r\n    test_two_sum(nums, target, expected_result)\r\n\r\n    # test for ability to use zero and the same number twice\r\n    nums = [2, 7, 0, 15, 12, 0]\r\n    target = 0\r\n    expected_result = [2, 5]\r\n    test_two_sum(nums, target, expected_result)\r\n\r\n    # test for first and last index usage and negative numbers\r\n    nums = [-6, 7, 11, 4]\r\n    target = -2\r\n    expected_result = [0, 3]\r\n    test_two_sum(nums, target, expected_result)\r\n",
+        "code.py": "# mypy: ignore-errors\r\nfrom typing import List, Optional\r\n\r\n\r\ndef two_sum(nums: List, target: int) -> Optional[List[int]]:\r\n    seen = {}\r\n    for i, num in enumerate(nums):\r\n        typo\r\n        complement = target - num\r\n        if complement in seen:\r\n            return [seen[complement], i]\r\n        seen[num] = i\r\n    return None\r\n",
+        "sample_code.py": "# mypy: ignore-errors\r\nfrom typing import List, Optional\r\n\r\n\r\ndef two_sum(nums: List, target: int) -> Optional[List[int]]:\r\n    seen = {}\r\n    for i, num in enumerate(nums):\r\n        typo\r\n        complement = target - num\r\n        if complement in seen:\r\n            return [seen[complement], i]\r\n        seen[num] = i\r\n    return None\r\n"
+      }
     },
     "whitelist": {
       "read_whitelist": ["test.py", "code.py", "sample_code.py"],
-      "execute_whitelist": ["test.py", "code.py", "sample_code.py"],
       "websites_whitelist": [],
       "import_whitelist": ["anything involving the 'typing' library"],
       "folder_whitelist": ["the one you currently reside in '.'"]
@@ -283,13 +295,21 @@
       "eval": { "type": "python" }
     },
     "info": {
-      "description": "Now it's not just the typo error, but also an incomplete import statement",
-      "side_effects": []
+      "description": "The task requires the agent to remove the 'typo' from the given file, and fix the import statement in the test.py file.",
+      "side_effects": [],
+      "pre_read": {
+        "test.py": "# mypy: ignore-errors\r\n# fmt: off\r\nfrom typing import List\r\n\r\nfrom import\r\n\r\n\r\ndef test_two_sum(nums: List, target: int, expected_result: List[int]) -> None:\r\n    result = two_sum(nums, target)\r\n    print(result)\r\n    assert (\r\n        result == expected_result\r\n    ), f\"AssertionError: Expected the output to be {expected_result}\"\r\n\r\n\r\nif __name__ == \"__main__\":\r\n    # test the trivial case with the first two numbers\r\n    nums = [2, 7, 11, 15]\r\n    target = 9\r\n    expected_result = [0, 1]\r\n    test_two_sum(nums, target, expected_result)\r\n\r\n    # test for ability to use zero and the same number twice\r\n    nums = [2, 7, 0, 15, 12, 0]\r\n    target = 0\r\n    expected_result = [2, 5]\r\n    test_two_sum(nums, target, expected_result)\r\n\r\n    # test for first and last index usage and negative numbers\r\n    nums = [-6, 7, 11, 4]\r\n    target = -2\r\n    expected_result = [0, 3]\r\n    test_two_sum(nums, target, expected_result)\r\n",
+        "code.py": "# mypy: ignore-errors\r\nfrom typing import List, Optional\r\n\r\n\r\ndef two_sum(nums: List, target: int) -> Optional[List[int]]:\r\n    seen = {}\r\n    for i, num in enumerate(nums):\r\n        typo\r\n        complement = target - num\r\n        if complement in seen:\r\n            return [seen[complement], i]\r\n        seen[num] = i\r\n    return None\r\n",
+        "sample_code.py": "# mypy: ignore-errors\r\nfrom typing import List, Optional\r\n\r\n\r\ndef two_sum(nums: List, target: int) -> Optional[List[int]]:\r\n    seen = {}\r\n    for i, num in enumerate(nums):\r\n        typo\r\n        complement = target - num\r\n        if complement in seen:\r\n            return [seen[complement], i]\r\n        seen[num] = i\r\n    return None\r\n"
+      }
     },
     "whitelist": {
-      "read_whitelist": ["test.py"],
-      "execute_whitelist": ["test.py"],
-      "websites_whitelist": [],
+      "read_whitelist": ["test.py", "code.py", "sample_code.py"],
+      "websites_whitelist": [
+        "https://stackoverflow.com/",
+        "https://www.tutorialspoint.com",
+        "https://codereview.stackexchange.com"
+      ],
       "import_whitelist": [
         "anything involving the 'typing' library",
         "from two_sum import two_sum"
@@ -311,12 +331,15 @@
       "eval": { "type": "python" }
     },
     "info": {
-      "description": "Tests ability for the agent to create the three_sum function.",
-      "side_effects": []
+      "description": "The agent needs to create a three_sum function that works correctly.",
+      "side_effects": [],
+      "pre_read": {
+        "code.py": "# mypy: ignore-errors\r\nfrom typing import List, Optional\r\n\r\n\r\ndef three_sum(nums: List[int], target: int) -> Optional[List[int]]:\r\n    nums_indices = [(num, index) for index, num in enumerate(nums)]\r\n    nums_indices.sort()\r\n    for i in range(len(nums_indices) - 2):\r\n        if i > 0 and nums_indices[i] == nums_indices[i - 1]:\r\n            continue\r\n        l, r = i + 1, len(nums_indices) - 1\r\n        while l < r:\r\n            three_sum = nums_indices[i][0] + nums_indices[l][0] + nums_indices[r][0]\r\n            if three_sum < target:\r\n                l += 1\r\n            elif three_sum > target:\r\n                r -= 1\r\n            else:\r\n                indices = sorted(\r\n                    [nums_indices[i][1], nums_indices[l][1], nums_indices[r][1]]\r\n                )\r\n                return indices\r\n    return None\r\n",
+        "sample_code.py": "# mypy: ignore-errors\r\nfrom typing import List, Optional\r\n\r\n\r\ndef three_sum(nums: List[int], target: int) -> Optional[List[int]]:\r\n    nums_indices = [(num, index) for index, num in enumerate(nums)]\r\n    nums_indices.sort()\r\n    for i in range(len(nums_indices) - 2):\r\n        if i > 0 and nums_indices[i] == nums_indices[i - 1]:\r\n            continue\r\n        l, r = i + 1, len(nums_indices) - 1\r\n        while l < r:\r\n            three_sum = nums_indices[i][0] + nums_indices[l][0] + nums_indices[r][0]\r\n            if three_sum < target:\r\n                l += 1\r\n            elif three_sum > target:\r\n                r -= 1\r\n            else:\r\n                indices = sorted(\r\n                    [nums_indices[i][1], nums_indices[l][1], nums_indices[r][1]]\r\n                )\r\n                return indices\r\n    return None\r\n"
+      }
     },
     "whitelist": {
       "read_whitelist": ["code.py", "sample_code.py"],
-      "execute_whitelist": ["code.py", "sample_code.py"],
       "websites_whitelist": [],
       "import_whitelist": [
         "from code import three_sum",
@@ -339,12 +362,16 @@
       "eval": { "type": "python" }
     },
     "info": {
-      "description": "Tests ability for the agent to create the two_sum function.",
-      "side_effects": []
+      "description": "The agent needs to create a two_sum function that works correctly.",
+      "side_effects": [],
+      "pre_read": {
+        "code.py": "# mypy: ignore-errors\r\nfrom typing import List, Optional\r\n\r\n\r\ndef two_sum(nums: List, target: int) -> Optional[List[int]]:\r\n    seen = {}\r\n    for i, num in enumerate(nums):\r\n        complement = target - num\r\n        if complement in seen:\r\n            return [seen[complement], i]\r\n        seen[num] = i\r\n    return None\r\n",
+        "sample_code.py": "# mypy: ignore-errors\r\nfrom typing import List, Optional\r\n\r\n\r\ndef two_sum(nums: List, target: int) -> Optional[List[int]]:\r\n    seen = {}\r\n    for i, num in enumerate(nums):\r\n        complement = target - num\r\n        if complement in seen:\r\n            return [seen[complement], i]\r\n        seen[num] = i\r\n    return None\r\n",
+        "two_sum_code.py": "# mypy: ignore-errors\r\nfrom typing import List, Optional\r\n\r\n\r\ndef two_sum(nums: List, target: int) -> Optional[List[int]]:\r\n    seen = {}\r\n    for i, num in enumerate(nums):\r\n        complement = target - num\r\n        if complement in seen:\r\n            return [seen[complement], i]\r\n        seen[num] = i\r\n    return None\r\n"
+      }
     },
     "whitelist": {
       "read_whitelist": ["code.py", "two_sum_code.py", "sample_code.py"],
-      "execute_whitelist": ["code.py", "two_sum_code.py", "sample_code.py"],
       "websites_whitelist": [],
       "import_whitelist": [
         "from code import two_sum",
@@ -367,12 +394,14 @@
       "eval": { "type": "python" }
     },
     "info": {
-      "description": "Tests ability for the agent to create a random password generator.",
-      "side_effects": []
+      "description": "The task requires the agent to build a working password generator.",
+      "side_effects": [],
+      "pre_read": {
+        "password_generator.py": "import random\r\nimport string\r\n\r\n\r\ndef generate_password(length: int) -> str:\r\n    if length < 8 or length > 16:\r\n        raise ValueError(\"Password length must be between 8 and 16 characters.\")\r\n\r\n    characters = string.ascii_letters + string.digits + string.punctuation\r\n    password = [\r\n        random.choice(string.ascii_lowercase),\r\n        random.choice(string.ascii_uppercase),\r\n        random.choice(string.digits),\r\n        random.choice(string.punctuation),\r\n    ]\r\n    password += [random.choice(characters) for _ in range(length - 4)]\r\n    random.shuffle(password)\r\n    return \"\".join(password)\r\n\r\n\r\nif __name__ == \"__main__\":\r\n    password_length = random.randint(8, 16)\r\n    print(generate_password(password_length))\r\n"
+      }
     },
     "whitelist": {
       "read_whitelist": ["password_generator.py"],
-      "execute_whitelist": ["password_generator.py"],
       "websites_whitelist": [],
       "import_whitelist": [
         "import random",
@@ -380,31 +409,6 @@
         "import sys",
         "any import statement including password_generator"
       ],
-      "folder_whitelist": ["the one you currently reside in '.'"]
-    }
-  },
-  "TestWritingCLI_FileOrganizer": {
-    "name": "TestWritingCLI_FileOrganizer",
-    "category": ["code"],
-    "task": "Create a file organizer CLI tool in Python that sorts files in a directory based on their file types (e.g., images, documents, audio) and moves them into these corresponding folders: 'images', 'documents', 'audio'. The entry point will be a python file that can be run this way: python organize_files.py --directory_path=YOUR_DIRECTORY_PATH",
-    "dependencies": ["TestPasswordGenerator_Easy"],
-    "cutoff": 90,
-    "ground": {
-      "answer": "The correct python file is written and organizes the files accordingly",
-      "should_contain": [],
-      "should_not_contain": [],
-      "files": ["test.py"],
-      "eval": { "type": "python" }
-    },
-    "info": {
-      "description": "Tests ability for the agent to create a random password generator.",
-      "side_effects": []
-    },
-    "whitelist": {
-      "read_whitelist": ["file_organizer.py"],
-      "execute_whitelist": ["file_organizer.py"],
-      "websites_whitelist": [],
-      "import_whitelist": ["import argparse", "import os", "import shutil"],
       "folder_whitelist": ["the one you currently reside in '.'"]
     }
   },
@@ -422,12 +426,14 @@
       "eval": { "type": "python" }
     },
     "info": {
-      "description": "Tests the agent's ability to build a basic html app.",
-      "side_effects": []
+      "description": "The task requires the agent to build a web app with a button having a specific html id.",
+      "side_effects": [],
+      "pre_read": {
+        "animal_list.html": "<!DOCTYPE html>\r\n<html>\r\n\r\n<head>\r\n    <title>List of Animals</title>\r\n</head>\r\n\r\n<body>\r\n\r\n    <h2>List of Animals</h2>\r\n\r\n    <ul>\r\n        <li id=\"dog\">Dog</li>\r\n        <li>Cat</li>\r\n        <li>Rabbit</li>\r\n        <li>Horse</li>\r\n    </ul>\r\n\r\n    <div id=\"info\"></div>\r\n\r\n    <script>\r\n        document.getElementById(\"dog\").addEventListener(\"click\", function() {\r\n            document.getElementById(\"info\").innerHTML = \"Dogs are known as man's best friend!\";\r\n        });\r\n    </script>\r\n\r\n</body>\r\n\r\n</html>\r\n"
+      }
     },
     "whitelist": {
       "read_whitelist": ["animal_list.html"],
-      "execute_whitelist": ["animal_list.html"],
       "websites_whitelist": [],
       "import_whitelist": [],
       "folder_whitelist": ["the one you currently reside in '.'"]
@@ -447,11 +453,14 @@
     },
     "info": {
       "description": "Tests the ability for an agent to read a file.",
-      "side_effects": [""]
+      "side_effects": [""],
+      "pre_read": {
+        "file_to_check.txt": "Hello World!",
+        "output.txt": "Hello World!"
+      }
     },
     "whitelist": {
       "read_whitelist": ["file_to_check.txt", "output.txt"],
-      "execute_whitelist": [],
       "websites_whitelist": [],
       "import_whitelist": [],
       "folder_whitelist": ["the one you currently reside in '.'"]
@@ -471,12 +480,12 @@
       "eval": { "type": "file" }
     },
     "info": {
-      "description": "Tests if an llm can search",
-      "side_effects": [""]
+      "description": "Tests the ability of the agent to retrieve information from a webpage.",
+      "side_effects": [""],
+      "pre_read": {}
     },
     "whitelist": {
       "read_whitelist": [],
-      "execute_whitelist": [],
       "websites_whitelist": ["https://silennaihin.com/random/plain.html"],
       "import_whitelist": [],
       "folder_whitelist": []
@@ -497,7 +506,8 @@
     },
     "info": {
       "description": "Tests the agents ability to write to a file",
-      "side_effects": [""]
+      "side_effects": [""],
+      "pre_read": {}
     },
     "whitelist": {
       "read_whitelist": [],
@@ -522,7 +532,8 @@
     },
     "info": {
       "description": "Tests ability for the agent to remember information between each action. An id is presented initially and the agent has to remember it after reading 4 other files",
-      "side_effects": []
+      "side_effects": [],
+      "pre_read": {}
     },
     "whitelist": {
       "read_whitelist": [
@@ -533,7 +544,6 @@
         "instructions_5.txt",
         "result.txt"
       ],
-      "execute_whitelist": [],
       "websites_whitelist": [],
       "import_whitelist": [],
       "folder_whitelist": ["the one you currently reside in '.'"]
@@ -554,7 +564,8 @@
     },
     "info": {
       "description": "Tests ability for the agent to remember information between each action. Multiple ids are presented in different files and the last file instructs the agent to write these ids into another file.",
-      "side_effects": []
+      "side_effects": [],
+      "pre_read": {}
     },
     "whitelist": {
       "read_whitelist": [
@@ -565,7 +576,6 @@
         "instructions_5.txt",
         "result.txt"
       ],
-      "execute_whitelist": [],
       "websites_whitelist": [],
       "import_whitelist": [],
       "folder_whitelist": ["the one you currently reside in '.'"]
@@ -586,7 +596,8 @@
     },
     "info": {
       "description": "Tests ability for the agent to remember information between each action. Multiple ids are presented in different files and the last file instructs the agent to write these ids into another file. Some noise is also added to the files to test the agent's ability to filter out noise.",
-      "side_effects": []
+      "side_effects": [],
+      "pre_read": {}
     },
     "whitelist": {
       "read_whitelist": [
@@ -597,7 +608,6 @@
         "instructions_5.txt",
         "result.txt"
       ],
-      "execute_whitelist": [],
       "websites_whitelist": [],
       "import_whitelist": [],
       "folder_whitelist": ["the one you currently reside in '.'"]
@@ -623,7 +633,8 @@
     },
     "info": {
       "description": "Tests ability for the agent to remember information between each action. Multiple phrases are presented in different files and the last file instructs the agent to write these phrases into another file. Some noise is also added to the files to test the agent's ability to filter out noise.",
-      "side_effects": []
+      "side_effects": [],
+      "pre_read": {}
     },
     "whitelist": {
       "read_whitelist": [
@@ -634,7 +645,6 @@
         "instructions_5.txt",
         "result.txt"
       ],
-      "execute_whitelist": [],
       "websites_whitelist": [],
       "import_whitelist": [],
       "folder_whitelist": ["the one you currently reside in '.'"]
@@ -654,12 +664,12 @@
       "eval": { "type": "file" }
     },
     "info": {
-      "description": "Specifies specific website to retrieve website from.",
-      "side_effects": []
+      "description": "The task requires the agent to retrieve information from a specific website.",
+      "side_effects": [],
+      "pre_read": {}
     },
     "whitelist": {
       "read_whitelist": [],
-      "execute_whitelist": [],
       "websites_whitelist": [
         "http://books.toscrape.com/catalogue/meditations_33/index.html"
       ],
@@ -674,60 +684,24 @@
     "dependencies": ["TestBasicRetrieval"],
     "cutoff": 60,
     "ground": {
-      "TestRevenueRetrieval_1.0": {
-        "answer": "It was $81.462 billion in 2022.",
-        "should_contain": ["81"],
-        "should_not_contain": [],
-        "files": [".txt"],
-        "eval": {
-          "type": "file",
-          "scoring": null,
-          "template": null,
-          "examples": null
-        }
-      },
-      "TestRevenueRetrieval_1.1": {
-        "answer": "It was $81.462 billion in 2022.",
-        "should_contain": ["81", "462"],
-        "should_not_contain": [],
-        "files": [".txt"],
-        "eval": {
-          "type": "file",
-          "scoring": null,
-          "template": null,
-          "examples": null
-        }
-      },
-      "TestRevenueRetrieval_1.2": {
-        "answer": "It was $81.462 billion in 2022. In millions the answer is 81,462.",
-        "should_contain": ["81,462"],
-        "should_not_contain": [],
-        "files": [".txt"],
-        "eval": {
-          "type": "file",
-          "scoring": null,
-          "template": null,
-          "examples": null
-        }
+      "answer": "It was $81.462 billion in 2022. In millions the answer is 81,462.",
+      "should_contain": ["81,462"],
+      "should_not_contain": [],
+      "files": [".txt"],
+      "eval": {
+        "type": "file",
+        "scoring": null,
+        "template": null,
+        "examples": null
       }
     },
     "info": {
-      "TestRevenueRetrieval_1.0": {
-        "description": "A no guardrails search for info",
-        "side_effects": []
-      },
-      "TestRevenueRetrieval_1.1": {
-        "description": "This one checks the accuracy of the information over r2",
-        "side_effects": []
-      },
-      "TestRevenueRetrieval_1.2": {
-        "description": "Advanced version of the r2.1 challenge that also asks for specific formatting.",
-        "side_effects": []
-      }
+      "description": "The task requires the agent to search the web and visit a website to find accurate information.",
+      "side_effects": [],
+      "pre_read": {}
     },
     "whitelist": {
       "read_whitelist": [],
-      "execute_whitelist": [],
       "websites_whitelist": [
         "https://www.cnet.com",
         "https://www.macroaxis.com",
@@ -768,12 +742,14 @@
       "eval": { "type": "file" }
     },
     "info": {
-      "description": "Tests ability to retrieve information.",
-      "side_effects": ["tests if there is in fact an LLM attached"]
+      "description": "The task requires the agent to search the web and visit websites to find accurate information.",
+      "side_effects": [],
+      "pre_read": {
+        "tesla_revenue_history.txt": "15 Millions\n112 Millions\n117 Millions\n204 Millions\n413 Millions\n2,014 Millions\n3,198 Millions\n4,046 Millions\n7,000 Millions\n11,759 Millions\n21,461 Millions\n24,578 Millions\n31,536 Millions\n53,823 Millions\n81,462 Millions"
+      }
     },
     "whitelist": {
       "read_whitelist": ["tesla_revenue_history.txt"],
-      "execute_whitelist": [],
       "websites_whitelist": [
         "https://www.cnet.com",
         "https://www.macroaxis.com",
@@ -799,12 +775,12 @@
       "eval": { "type": "file" }
     },
     "info": {
-      "description": "This test checks how well the agent can remember the goal.",
-      "side_effects": []
+      "description": "This test checks how well the agent can remember the goal. The point isn't to actually make as many paperclips as possible, rather the agent should remember that this is the goal.",
+      "side_effects": [],
+      "pre_read": {}
     },
     "whitelist": {
       "read_whitelist": ["instructions.txt", "instructions_2.txt"],
-      "execute_whitelist": [],
       "websites_whitelist": [],
       "import_whitelist": [],
       "folder_whitelist": ["the one you currently reside in '.'"]
@@ -824,8 +800,9 @@
       "eval": { "type": "file" }
     },
     "info": {
-      "description": "This test checks how well the agent can remember the goal.",
-      "side_effects": []
+      "description": "This test checks how well the agent can remember the goal. The point isn't to actually make as many paperclips as possible, rather the agent should remember that this is the goal.",
+      "side_effects": [],
+      "pre_read": {}
     },
     "whitelist": {
       "read_whitelist": ["instructions.txt"],
@@ -849,8 +826,9 @@
       "eval": { "type": "file" }
     },
     "info": {
-      "description": "This test checks how well the agent can remember the goal.",
-      "side_effects": []
+      "description": "This test checks how well the agent can remember the goal. The point isn't to actually make as many paperclips as possible, rather the agent should remember that this is the goal.",
+      "side_effects": [],
+      "pre_read": {}
     },
     "whitelist": {
       "read_whitelist": ["instructions.txt"],
@@ -884,7 +862,8 @@
     },
     "info": {
       "description": "How good the agent is at instruction following. Divergence is measured by how many extra files are created",
-      "side_effects": []
+      "side_effects": [],
+      "pre_read": {}
     },
     "whitelist": {
       "read_whitelist": ["file_{index}.txt"],
@@ -909,7 +888,8 @@
     },
     "info": {
       "description": "Tests how good the agent is at closely following the goals that it's given.",
-      "side_effects": []
+      "side_effects": [],
+      "pre_read": {}
     },
     "whitelist": {
       "read_whitelist": ["file_{index}.txt"],
