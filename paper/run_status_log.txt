@@ -2,26 +2,26 @@
 ============================================================
                        STATUS UPDATE                        
 ============================================================
-Start Time: 2023-09-22_00-06-05
-Params: agent_explanation_msg: 1, scoring_msg: 1, not_too_strict_msg: 1, few_shot_msg: 1, description_msg: 1, previous_action: 0, prompt_msg: 1, whitelist_msg: 1, pre_read_msg: 1
+Start Time: 2023-09-22_05-17-50
+Params: agent_explanation_msg: 1, scoring_msg: 1, not_too_strict_msg: 1, few_shot_msg: 1, description_msg: 1, previous_action: 1, prompt_msg: 1, whitelist_msg: 1, pre_read_msg: 0
 
-Time: 2023-09-22 00:06:43
-Challenges processed: 3
-Runs processed: 5
-Total logs processed: 13
-Inserted logs processed: 2
-Total tokens used: 39174
-Total Overall Cost: $0.118
+Time: 2023-09-22 05:59:22
+Challenges processed: 29
+Runs processed: 313
+Total logs processed: 967
+Inserted logs processed: 289
+Total tokens used: 3032815
+Total Overall Cost: $9.165
 
-Running Accuracy: 30.769%
-Precision: 18.182%
+Running Accuracy: 66.494%
+Precision: 47.145%
 Recall: 100.0%
-F1 Score: 30.769%
-Counters: TP: 2, FP: 9, TN: 2, FN: 0
-Running Average Score: 31.585
+F1 Score: 64.08%
+Counters: TP: 289, FP: 324, TN: 354, FN: 0
+Running Average Score: 41.168
 
-Current Challenge: TestAdaptLink
-Current Run: 2023-08-14 21:38:00+00:00
-Current Log: 2
-Challenges left: 26
+Current Challenge: TestWrite6Files
+Current Run: 2023-08-30 08:15:08+00:00
+Current Log: 4
+Challenges left: 0
 ============================================================
