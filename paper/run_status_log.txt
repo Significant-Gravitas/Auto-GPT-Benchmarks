@@ -2,26 +2,26 @@
 ============================================================
                        STATUS UPDATE                        
 ============================================================
-Start Time: 2023-09-21_07-47-59
+Start Time: 2023-09-21_09-55-05
 Params: agent_explanation_msg: 1, scoring_msg: 1, not_too_strict_msg: 1, few_shot_msg: 1, description_msg: 1, previous_action: 1, prompt_msg: 1, whitelist_msg: 1, pre_read_msg: 0
 
-Time: 2023-09-21 07:54:51
-Challenges processed: 29
-Runs processed: 44
-Total logs processed: 144
-Inserted logs processed: 43
-Total tokens used: 434302
-Total Overall Cost: $1.311
+Time: 2023-09-21 09:58:56
+Challenges processed: 27
+Runs processed: 41
+Total logs processed: 132
+Inserted logs processed: 39
+Total tokens used: 397723
+Total Overall Cost: $1.2
 
-Running Accuracy: 64.583%
-Precision: 45.745%
+Running Accuracy: 66.667%
+Precision: 46.988%
 Recall: 100.0%
-F1 Score: 62.774%
-Counters: TP: 43, FP: 51, TN: 50, FN: 0
-Running Average Score: 0.347
+F1 Score: 63.934%
+Counters: TP: 39, FP: 44, TN: 49, FN: 0
+Running Average Score: 0.371
 
-Current Challenge: TestWrite6Files
-Current Run: 2023-08-28 08:14:54+00:00
-Current Log: 3
-Challenges left: 0
+Current Challenge: TestRememberGoal_Simple
+Current Run: 2023-08-13 01:10:00+00:00
+Current Log: 1
+Challenges left: 2
 ============================================================
