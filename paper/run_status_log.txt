@@ -2,26 +2,26 @@
 ============================================================
                        STATUS UPDATE                        
 ============================================================
-Start Time: 2023-09-24_03-51-41
-Params: agent_explanation_msg: 0, scoring_msg: 1, not_too_strict_msg: 1, few_shot_msg: 1, description_msg: 1, previous_action: 1, prompt_msg: 1, whitelist_msg: 1, pre_read_msg: 1, deterministic_whitelist: 1
+Start Time: 2023-09-24_05-18-30
+Params: agent_explanation_msg: 1, scoring_msg: 1, not_too_strict_msg: 1, few_shot_msg: 1, description_msg: 1, previous_action: 1, prompt_msg: 1, whitelist_msg: 0, pre_read_msg: 0, deterministic_whitelist: 0
 
-Time: 2023-09-24 03:51:52
-Challenges processed: 1
-Runs processed: 1
-Total logs processed: 4
-Inserted logs processed: 0
-Total tokens used: 13201
-Total Overall Cost: $0.04
+Time: 2023-09-24 05:29:21
+Challenges processed: 23
+Runs processed: 109
+Total logs processed: 325
+Inserted logs processed: 98
+Total tokens used: 976452
+Total Overall Cost: $2.948
 
-Running Accuracy: 25.0%
-Precision: 0.0%
-Recall: 0.0%
-F1 Score: 0.0%
-Counters: TP: 0, FP: 3, TN: 1, FN: 0
-Running Average Score: 38.625
+Running Accuracy: 87.385%
+Precision: 70.504%
+Recall: 100.0%
+F1 Score: 82.7%
+Counters: TP: 98, FP: 41, TN: 186, FN: 0
+Running Average Score: 65.577
 
-Current Challenge: TestAdaptSimpleTypoWithGuidance
-Current Run: 2023-08-13 01:53:00+00:00
-Current Log: 5
-Challenges left: 0
+Current Challenge: TestWrite5FilesWithArray
+Current Run: 2023-08-15 08:15:00+00:00
+Current Log: 2
+Challenges left: 6
 ============================================================
