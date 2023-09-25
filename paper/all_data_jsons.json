@@ -2,7 +2,7 @@
   "TestAdaptSimpleTypoWithGuidance": {
     "name": "TestAdaptSimpleTypoWithGuidance",
     "category": ["adaptability"],
-    "task": "1- Run sample_code.py.\n2- Read test.py.\n3- Modify test.py.\nRepeat step 1, 2 and 3 until sample_code.py runs without errors.\n",
+    "task": "1- Run code.py/sample_code.py.\n2- Read test.py.\n3- Modify test.py.\nRepeat step 1, 2 and 3 until code.py/sample_code.py runs without errors.\n",
     "dependencies": ["TestDebugSimpleTypoWithGuidance"],
     "cutoff": 75,
     "ground": {
@@ -13,7 +13,7 @@
       "eval": { "type": "python" }
     },
     "info": {
-      "description": "The agent needs to figure out that it should to modify code.py and run test.py. Otherwise, it's a debugging challenge.",
+      "description": "The code within the file is a two_sum function with a typo which cases errors. The agent needs to figure out that it should to modify code.py/sample_code.py and run test.py. Otherwise, it's a debugging challenge.",
       "side_effects": [],
       "pre_read": {
         "test.py": "# mypy: ignore-errors\r\nfrom typing import List\r\n\r\nfrom sample_code import two_sum\r\n\r\n\r\ndef test_two_sum(nums: List, target: int, expected_result: List[int]) -> None:\r\n    result = two_sum(nums, target)\r\n    print(result)\r\n    assert (\r\n        result == expected_result\r\n    ), f\"AssertionError: Expected the output to be {expected_result}\"\r\n\r\n\r\nif __name__ == \"__main__\":\r\n    # test the trivial case with the first two numbers\r\n    nums = [2, 7, 11, 15]\r\n    target = 9\r\n    expected_result = [0, 1]\r\n    test_two_sum(nums, target, expected_result)\r\n\r\n    # test for ability to use zero and the same number twice\r\n    nums = [2, 7, 0, 15, 12, 0]\r\n    target = 0\r\n    expected_result = [2, 5]\r\n    test_two_sum(nums, target, expected_result)\r\n\r\n    # test for first and last index usage and negative numbers\r\n    nums = [-6, 7, 11, 4]\r\n    target = -2\r\n    expected_result = [0, 3]\r\n    test_two_sum(nums, target, expected_result)\r\n",
@@ -91,7 +91,7 @@
   "TestReturnCode_Tests": {
     "name": "TestReturnCode_Tests",
     "category": ["code", "iterate"],
-    "task": "First, modify testfile.py to fill in the test case to be able to test the code in sample_code.py. Next, modify the multiply_int function in sample_code.py to be able to pass in a 'multiplier' argument to multiply the 'num' by 'multiplier'. Both arguments are integers. You can make sure you have correctly done this by running testfile.py that you previously modified.",
+    "task": "First, modify test.py/testfile.py to fill in the test case to be able to test the code in code.py/sample_code.py. Next, modify the multiply_int function in code.py/sample_code.py to be able to pass in a 'multiplier' argument to multiply the 'num' by 'multiplier'. Both arguments are integers. You can make sure you have correctly done this by running test.py/testfile.py that you previously modified.",
     "dependencies": [],
     "cutoff": 120,
     "ground": {
@@ -125,7 +125,7 @@
   "TestReturnCode_Modify": {
     "name": "TestReturnCode_Modify",
     "category": ["code", "iterate"],
-    "task": "Modify the multiply_int function in sample_code.py to be able to pass in a 'multiplier' argument to multiply the 'num' by 'multiplier'. Both arguments are integers. You can make sure you have correctly done this by running test.py",
+    "task": "Modify the multiply_int function in code.py/sample_code.py to be able to pass in a 'multiplier' argument to multiply the 'num' by 'multiplier'. Both arguments are integers. You can make sure you have correctly done this by running test.py",
     "dependencies": [],
     "cutoff": 120,
     "ground": {
@@ -154,7 +154,7 @@
   "TestReturnCode_Write": {
     "name": "TestReturnCode_Write",
     "category": ["code", "iterate"],
-    "task": "Add a function called multiply_int in sample_code.py that multiplies numbers by 2. You can make sure you have correctly done this by running test.py",
+    "task": "Add a function called multiply_int in code.py/sample_code.py that multiplies numbers by 2. You can make sure you have correctly done this by running test.py",
     "dependencies": [],
     "cutoff": 120,
     "ground": {
@@ -186,7 +186,7 @@
   "TestReturnCode_Simple": {
     "name": "TestReturnCode_Simple",
     "category": ["code", "iterate"],
-    "task": "Return the multiplied number in the function multiply_int in sample_code.py. You can make sure you have correctly done this by running test.py",
+    "task": "Return the multiplied number in the function multiply_int in code.py/sample_code.py. You can make sure you have correctly done this by running test.py",
     "dependencies": [],
     "cutoff": 120,
     "ground": {
@@ -226,7 +226,7 @@
   "TestDebugSimpleTypoWithGuidance": {
     "name": "TestDebugSimpleTypoWithGuidance",
     "category": ["code", "iterate"],
-    "task": "1- Run test.py.\n2- Read sample_code.py.\n3- Modify sample_code.py.\nRepeat step 1, 2 and 3 until test.py runs without errors.\n",
+    "task": "1- Run test.py.\n2- Read code.py/sample_code.py.\n3- Modify code.py/sample_code.py.\nRepeat step 1, 2 and 3 until test.py runs without errors.\n",
     "dependencies": ["TestReadFile"],
     "cutoff": 75,
     "ground": {
@@ -317,7 +317,7 @@
   "TestThreeSum": {
     "name": "TestThreeSum",
     "category": ["code", "iterate"],
-    "task": "Create a three_sum function in a file called sample_code.py. Given an array of integers, return indices of the three numbers such that they add up to a specific target. You may assume that each input would have exactly one solution, and you may not use the same element twice. Example: Given nums = [2, 7, 11, 15], target = 20, Because nums[0] + nums[1] + nums[2] = 2 + 7 + 11 = 20, return [0, 1, 2].",
+    "task": "Create a three_sum function in a file called code.py/sample_code.py. Given an array of integers, return indices of the three numbers such that they add up to a specific target. You may assume that each input would have exactly one solution, and you may not use the same element twice. Example: Given nums = [2, 7, 11, 15], target = 20, Because nums[0] + nums[1] + nums[2] = 2 + 7 + 11 = 20, return [0, 1, 2].",
     "dependencies": ["TestFunctionCodeGeneration"],
     "cutoff": 60,
     "ground": {
@@ -348,7 +348,7 @@
   "TestFunctionCodeGeneration": {
     "name": "TestFunctionCodeGeneration",
     "category": ["code"],
-    "task": "Create a two_sum function in a file called sample_code.py. Given an array of integers, return indices of the two numbers such that they add up to a specific target. You may assume that each input would have exactly one solution, and you may not use the same element twice. Example: Given nums = [2, 7, 11, 15], target = 9, Because nums[0] + nums[1] = 2 + 7 = 9, return [0, 1].",
+    "task": "Create a two_sum function in a file called code.py/sample_code.py. Given an array of integers, return indices of the two numbers such that they add up to a specific target. You may assume that each input would have exactly one solution, and you may not use the same element twice. Example: Given nums = [2, 7, 11, 15], target = 9, Because nums[0] + nums[1] = 2 + 7 = 9, return [0, 1].",
     "dependencies": ["TestReturnCode_Write"],
     "cutoff": 90,
     "ground": {
@@ -439,7 +439,7 @@
   "TestReadFile": {
     "name": "TestReadFile",
     "category": ["interface"],
-    "task": "Read the file called file_to_read.txt and write its content to a file called output.txt",
+    "task": "Read the file called file_to_read.txt/file_to_check.txt and write its content to a file called output.txt",
     "dependencies": ["TestWriteFile"],
     "cutoff": 60,
     "ground": {
@@ -453,6 +453,7 @@
       "side_effects": [""],
       "pre_read": {
         "file_to_check.txt": "Hello World!",
+        "file_to_read.txt": "Hello World!",
         "output.txt": "Hello World!"
       }
     },
@@ -529,7 +530,10 @@
     "info": {
       "description": "Tests ability for the agent to remember information between each action. An id is presented initially and the agent has to remember it after reading 4 other files",
       "side_effects": [],
-      "pre_read": {}
+      "pre_read": {
+        "id_to_remember.txt": "2314",
+        "id.txt": "2314"
+      }
     },
     "whitelist": {
       "read_whitelist": [
@@ -561,7 +565,10 @@
     "info": {
       "description": "Tests ability for the agent to remember information between each action. Multiple ids are presented in different files and the last file instructs the agent to write these ids into another file.",
       "side_effects": [],
-      "pre_read": {}
+      "pre_read": {
+        "id_to_remember.txt": "3145\n3791\n9317\n9471",
+        "id.txt": "3145\n3791\n9317\n9471"
+      }
     },
     "whitelist": {
       "read_whitelist": [
