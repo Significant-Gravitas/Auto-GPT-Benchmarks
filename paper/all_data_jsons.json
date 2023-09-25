@@ -458,7 +458,7 @@
       }
     },
     "whitelist": {
-      "read_whitelist": ["file_to_check.txt", "output.txt"],
+      "read_whitelist": ["file_to_check.txt", "file_to_read.txt", "output.txt"],
       "websites_whitelist": [],
       "import_whitelist": [],
       "folder_whitelist": ["."]
@@ -542,7 +542,9 @@
         "instructions_3.txt",
         "instructions_4.txt",
         "instructions_5.txt",
-        "result.txt"
+        "result.txt",
+        "id_to_remember.txt",
+        "id.txt"
       ],
       "websites_whitelist": [],
       "import_whitelist": [],
@@ -577,7 +579,9 @@
         "instructions_3.txt",
         "instructions_4.txt",
         "instructions_5.txt",
-        "result.txt"
+        "result.txt",
+        "id_to_remember.txt",
+        "id.txt"
       ],
       "websites_whitelist": [],
       "import_whitelist": [],
