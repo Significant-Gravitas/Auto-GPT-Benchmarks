@@ -2,23 +2,23 @@
 ============================================================
                        STATUS UPDATE                        
 ============================================================
-Start Time: 2023-09-25_01-26-07
-Params: agent_explanation_msg: 1, scoring_msg: 1, not_too_strict_msg: 1, few_shot_msg: 1, description_msg: 1, previous_action: 0, prompt_msg: 0, whitelist_msg: 0, pre_read_msg: 0, deterministic_whitelist: 0
+Start Time: 2023-09-25_05-52-29
+Params: agent_explanation_msg: 1, scoring_msg: 1, not_too_strict_msg: 1, few_shot_msg: 1, description_msg: 1, previous_action: 0, prompt_msg: 0, whitelist_msg: 0, pre_read_msg: 1, deterministic_whitelist: 1
 
-Time: 2023-09-25 01:47:03
+Time: 2023-09-25 06:06:32
 Challenges processed: 23
 Runs processed: 109
 Total logs processed: 325
 Inserted logs processed: 98
-Total tokens used: 782290
-Total Overall Cost: $2.372
+Total tokens used: 695951
+Total Overall Cost: $2.111
 
-Running Accuracy: 93.846%
-Precision: 84.821%
-Recall: 96.939%
-F1 Score: 90.476%
-Counters: TP: 95, FP: 17, TN: 210, FN: 3
-Running Average Score: 65.926
+Running Accuracy: 91.385%
+Precision: 78.689%
+Recall: 97.959%
+F1 Score: 87.273%
+Counters: TP: 96, FP: 26, TN: 201, FN: 2
+Running Average Score: 60.757
 
 Current Challenge: TestWrite5FilesWithArray
 Current Run: 2023-08-15 08:15:00+00:00

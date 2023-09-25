@@ -1,0 +1,20 @@
+
+============================================================
+                 OPTIMIZATION STATS UPDATE                  
+============================================================
+Time: 2023-09-25_02-45-00
+Total Optimization Runs: 21
+Total Runs: 2289
+Total Logs: 6825
+Total Inserted Logs: 2058
+
+Total Prompt Tokens: 15476504
+Total Completion Tokens: 527556
+Total Overall Tokens: 16004060
+Total Prompt Cost: 46.429511999999995
+Total Completion Cost: 2.1102240000000005
+Total Overall Cost: 48.539736
+
+Best Params: {'agent_explanation_msg': 1, 'scoring_msg': 1, 'not_too_strict_msg': 1, 'few_shot_msg': 1, 'description_msg': 1, 'previous_action': 1, 'prompt_msg': 1, 'whitelist_msg': 0, 'pre_read_msg': 1, 'deterministic_whitelist': 1}
+Best Objective Value: -0.937799043062201
+============================================================
