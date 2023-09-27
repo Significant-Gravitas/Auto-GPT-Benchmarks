@@ -2,26 +2,26 @@
 ============================================================
                        STATUS UPDATE                        
 ============================================================
-Start Time: 2023-09-25_21-18-41
+Start Time: 2023-09-25_21-56-44
 Params: agent_explanation_msg: 1, scoring_msg: 1, not_too_strict_msg: 1, few_shot_msg: 1, description_msg: 1, previous_action: 1, prompt_msg: 1, whitelist_msg: 0, pre_read_msg: 1, deterministic_whitelist: 1
 
-Time: 2023-09-25 21:18:48
-Challenges processed: 1
-Runs processed: 1
-Total logs processed: 2
-Inserted logs processed: 0
-Total tokens used: 6447
-Total Overall Cost: $0.019
+Time: 2023-09-25 22:50:09
+Challenges processed: 29
+Runs processed: 313
+Total logs processed: 967
+Inserted logs processed: 289
+Total tokens used: 2538278
+Total Overall Cost: $7.684
 
-Running Accuracy: 50.0%
-Precision: 0.0%
-Recall: 0.0%
-F1 Score: 0.0%
-Counters: TP: 0, FP: 1, TN: 1, FN: 0
-Running Average Score: 62.75
+Running Accuracy: 92.037%
+Precision: 79.444%
+Recall: 98.962%
+F1 Score: 88.136%
+Counters: TP: 286, FP: 74, TN: 604, FN: 3
+Running Average Score: 60.676
 
-Current Challenge: TestAdaptSimpleTypoWithGuidance
-Current Run: 2023-08-08 08:14:00+00:00
-Current Log: 2
-Challenges left: 28
+Current Challenge: TestWrite6Files
+Current Run: 2023-08-30 08:15:08+00:00
+Current Log: 4
+Challenges left: 0
 ============================================================
