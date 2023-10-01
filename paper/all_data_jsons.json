@@ -332,11 +332,12 @@
       "side_effects": [],
       "pre_read": {
         "code.py": "# mypy: ignore-errors\r\nfrom typing import List, Optional\r\n\r\n\r\ndef three_sum(nums: List[int], target: int) -> Optional[List[int]]:\r\n    nums_indices = [(num, index) for index, num in enumerate(nums)]\r\n    nums_indices.sort()\r\n    for i in range(len(nums_indices) - 2):\r\n        if i > 0 and nums_indices[i] == nums_indices[i - 1]:\r\n            continue\r\n        l, r = i + 1, len(nums_indices) - 1\r\n        while l < r:\r\n            three_sum = nums_indices[i][0] + nums_indices[l][0] + nums_indices[r][0]\r\n            if three_sum < target:\r\n                l += 1\r\n            elif three_sum > target:\r\n                r -= 1\r\n            else:\r\n                indices = sorted(\r\n                    [nums_indices[i][1], nums_indices[l][1], nums_indices[r][1]]\r\n                )\r\n                return indices\r\n    return None\r\n",
+        "test_code.py": "# mypy: ignore-errors\r\nfrom typing import List, Optional\r\n\r\n\r\ndef three_sum(nums: List[int], target: int) -> Optional[List[int]]:\r\n    nums_indices = [(num, index) for index, num in enumerate(nums)]\r\n    nums_indices.sort()\r\n    for i in range(len(nums_indices) - 2):\r\n        if i > 0 and nums_indices[i] == nums_indices[i - 1]:\r\n            continue\r\n        l, r = i + 1, len(nums_indices) - 1\r\n        while l < r:\r\n            three_sum = nums_indices[i][0] + nums_indices[l][0] + nums_indices[r][0]\r\n            if three_sum < target:\r\n                l += 1\r\n            elif three_sum > target:\r\n                r -= 1\r\n            else:\r\n                indices = sorted(\r\n                    [nums_indices[i][1], nums_indices[l][1], nums_indices[r][1]]\r\n                )\r\n                return indices\r\n    return None\r\n",
         "sample_code.py": "# mypy: ignore-errors\r\nfrom typing import List, Optional\r\n\r\n\r\ndef three_sum(nums: List[int], target: int) -> Optional[List[int]]:\r\n    nums_indices = [(num, index) for index, num in enumerate(nums)]\r\n    nums_indices.sort()\r\n    for i in range(len(nums_indices) - 2):\r\n        if i > 0 and nums_indices[i] == nums_indices[i - 1]:\r\n            continue\r\n        l, r = i + 1, len(nums_indices) - 1\r\n        while l < r:\r\n            three_sum = nums_indices[i][0] + nums_indices[l][0] + nums_indices[r][0]\r\n            if three_sum < target:\r\n                l += 1\r\n            elif three_sum > target:\r\n                r -= 1\r\n            else:\r\n                indices = sorted(\r\n                    [nums_indices[i][1], nums_indices[l][1], nums_indices[r][1]]\r\n                )\r\n                return indices\r\n    return None\r\n"
       }
     },
     "whitelist": {
-      "read_whitelist": ["code.py", "sample_code.py"],
+      "read_whitelist": ["code.py", "sample_code.py", "test_code.py"],
       "websites_whitelist": [],
       "import_whitelist": [
         "from code import three_sum",
@@ -404,7 +405,8 @@
         "import random",
         "import string",
         "import sys",
-        "password_generator"
+        "password_generator",
+        "from password_generator import generate_password"
       ],
       "folder_whitelist": ["."]
     }
@@ -687,7 +689,7 @@
   "TestRevenueRetrieval": {
     "name": "TestRevenueRetrieval",
     "category": ["retrieval"],
-    "task": "Write tesla's exact revenue in 2022 into a .txt file. Use the US notation, with a precision rounded to the nearest million dollars (for instance, $31,578 billion).",
+    "task": "Write Tesla's exact revenue in 2022 into a .txt file. Use the US notation, with a precision rounded to the nearest million dollars (for instance, $31,578 billion).",
     "dependencies": ["TestBasicRetrieval"],
     "cutoff": 60,
     "ground": {
