@@ -2,26 +2,26 @@
 ============================================================
                        STATUS UPDATE                        
 ============================================================
-Start Time: 2023-10-01_13-45-21
-Params: agent_explanation_msg: 1, scoring_msg: 1, not_too_strict_msg: 1, few_shot_msg: 1, description_msg: 1, previous_action: 1, prompt_msg: 1, whitelist_msg: 0, pre_read_msg: 1, deterministic_whitelist: 0
+Start Time: 2023-10-03_20-29-29
+Params: agent_explanation_msg: 0, scoring_msg: 1, not_too_strict_msg: 1, few_shot_msg: 1, description_msg: 1, previous_action: 1, prompt_msg: 1, whitelist_msg: 0, pre_read_msg: 1, deterministic_whitelist: 1
 
-Time: 2023-10-01 14:24:26
-Challenges processed: 29
-Runs processed: 313
-Total logs processed: 967
-Inserted logs processed: 289
-Total tokens used: 3113492
-Total Overall Cost: $9.425
+Time: 2023-10-03 20:31:08
+Challenges processed: 7
+Runs processed: 18
+Total logs processed: 60
+Inserted logs processed: 13
+Total tokens used: 166076
+Total Overall Cost: $0.503
 
-Running Accuracy: 93.278%
-Precision: 82.558%
-Recall: 98.27%
-F1 Score: 89.731%
-Counters: TP: 284, FP: 60, TN: 618, FN: 5
-Running Average Score: 65.456
+Running Accuracy: 93.333%
+Precision: 76.471%
+Recall: 100.0%
+F1 Score: 86.667%
+Counters: TP: 13, FP: 4, TN: 43, FN: 0
+Running Average Score: 68.383
 
-Current Challenge: TestWrite6Files
-Current Run: 2023-08-30 08:15:08+00:00
-Current Log: 4
-Challenges left: 0
+Current Challenge: TestReturnCode_Simple
+Current Run: 2023-08-13 08:13:00+00:00
+Current Log: 8
+Challenges left: 22
 ============================================================
