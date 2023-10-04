@@ -9,6 +9,7 @@
     "Simple regex filter logs": 1800,
     "Specific regex filter logs": 1292,
     "train_set": 109,
-    "test_set": 313
+    "test_set": 313,
+    "unique_challenges": 29
   }
 }
