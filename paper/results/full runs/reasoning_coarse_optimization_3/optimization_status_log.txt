@@ -1,0 +1,16 @@
+
+============================================================
+                 OPTIMIZATION STATS UPDATE                  
+============================================================
+Time: 2023-09-17 17:34:28
+Total Optimization Runs: 2
+Total Runs: 910
+Total Logs: 2670
+Total Inserted Logs: 666
+Total Prompt Tokens: 1213153
+Total Completion Tokens: 105549
+Total Overall Tokens: 1318702
+Total Prompt Cost: 3.6394590000000044
+Total Completion Cost: 0.4221960000000001
+Total Overall Cost: 4.061655000000006
+============================================================

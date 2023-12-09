@@ -1,0 +1,719 @@
+Iteration No: 1 started. Evaluating function at random point.
+whitelist {'read_whitelist': ['test.py', 'code.py', 'sample_code.py'], 'websites_whitelist': [], 'import_whitelist': ["the 'typing' library", 'from code import two_sum', 'from sample_code import two_sum'], 'folder_whitelist': []}
+whitelist {'read_whitelist': ['test.py', 'code.py', 'sample_code.py'], 'websites_whitelist': [], 'import_whitelist': ["the 'typing' library", 'from code import two_sum', 'from sample_code import two_sum'], 'folder_whitelist': []}
+whitelist {'read_whitelist': ['test.py', 'code.py', 'sample_code.py'], 'websites_whitelist': [], 'import_whitelist': ["the 'typing' library", 'from code import two_sum', 'from sample_code import two_sum'], 'folder_whitelist': []}
+whitelist {'read_whitelist': ['test.py', 'code.py', 'sample_code.py'], 'websites_whitelist': [], 'import_whitelist': ["the 'typing' library", 'from code import two_sum', 'from sample_code import two_sum'], 'folder_whitelist': []}
+Found inserted log in TestAdaptSimpleTypoWithGuidance at 2023-08-08 08:14:00+00:00
+whitelist {'read_whitelist': [], 'websites_whitelist': ['https://www.cnet.com', 'https://www.macroaxis.com', 'https://www.statista.com', 'https://ir.tesla.com'], 'import_whitelist': [], 'folder_whitelist': ["the one you currently reside in '.'"]}
+whitelist {'read_whitelist': [], 'websites_whitelist': ['https://www.cnet.com', 'https://www.macroaxis.com', 'https://www.statista.com', 'https://ir.tesla.com'], 'import_whitelist': [], 'folder_whitelist': ["the one you currently reside in '.'"]}
+Found inserted log in TestRevenueRetrieval at 2023-08-13 01:53:00+00:00
+whitelist {'read_whitelist': ['file_{index}.txt'], 'websites_whitelist': [], 'import_whitelist': [], 'folder_whitelist': ["the one you currently reside in '.'"]}
+whitelist {'read_whitelist': ['file_{index}.txt'], 'websites_whitelist': [], 'import_whitelist': [], 'folder_whitelist': ["the one you currently reside in '.'"]}
+whitelist {'read_whitelist': ['file_{index}.txt'], 'websites_whitelist': [], 'import_whitelist': [], 'folder_whitelist': ["the one you currently reside in '.'"]}
+whitelist {'read_whitelist': ['file_{index}.txt'], 'websites_whitelist': [], 'import_whitelist': [], 'folder_whitelist': ["the one you currently reside in '.'"]}
+whitelist {'read_whitelist': ['file_{index}.txt'], 'websites_whitelist': [], 'import_whitelist': [], 'folder_whitelist': ["the one you currently reside in '.'"]}
+Found inserted log in TestWrite5FilesWithArray at 2023-08-17 08:13:35+00:00
+whitelist {'read_whitelist': ['test.py', 'code.py', 'sample_code.py'], 'websites_whitelist': ['https://stackoverflow.com/', 'https://www.tutorialspoint.com', 'https://codereview.stackexchange.com'], 'import_whitelist': ["anything involving the 'typing' library", 'from two_sum import two_sum'], 'folder_whitelist': ["the one you currently reside in '.'"]}
+whitelist {'read_whitelist': ['test.py', 'code.py', 'sample_code.py'], 'websites_whitelist': ['https://stackoverflow.com/', 'https://www.tutorialspoint.com', 'https://codereview.stackexchange.com'], 'import_whitelist': ["anything involving the 'typing' library", 'from two_sum import two_sum'], 'folder_whitelist': ["the one you currently reside in '.'"]}
+whitelist {'read_whitelist': ['test.py', 'code.py', 'sample_code.py'], 'websites_whitelist': ['https://stackoverflow.com/', 'https://www.tutorialspoint.com', 'https://codereview.stackexchange.com'], 'import_whitelist': ["anything involving the 'typing' library", 'from two_sum import two_sum'], 'folder_whitelist': ["the one you currently reside in '.'"]}
+whitelist {'read_whitelist': ['test.py', 'code.py', 'sample_code.py'], 'websites_whitelist': ['https://stackoverflow.com/', 'https://www.tutorialspoint.com', 'https://codereview.stackexchange.com'], 'import_whitelist': ["anything involving the 'typing' library", 'from two_sum import two_sum'], 'folder_whitelist': ["the one you currently reside in '.'"]}
+whitelist {'read_whitelist': ['test.py', 'code.py', 'sample_code.py'], 'websites_whitelist': ['https://stackoverflow.com/', 'https://www.tutorialspoint.com', 'https://codereview.stackexchange.com'], 'import_whitelist': ["anything involving the 'typing' library", 'from two_sum import two_sum'], 'folder_whitelist': ["the one you currently reside in '.'"]}
+Found inserted log in TestDebugMultipleTypo at 2023-08-20 08:12:35+00:00
+Saving to results/training_iteration_3/2023-09-21_06-10-58_1.json
+pre_read command None
+Found inserted log in TestAdaptSimpleTypoWithGuidance at 2023-08-08 08:14:00+00:00
+Found inserted log in TestRevenueRetrieval at 2023-08-13 01:53:00+00:00
+Found inserted log in TestWrite5FilesWithArray at 2023-08-17 08:13:35+00:00
+Found inserted log in TestDebugMultipleTypo at 2023-08-20 08:12:35+00:00
+Saving to results/training_iteration_3/2023-09-21_06-14-49_1.json
+Found inserted log in TestAdaptSimpleTypoWithGuidance at 2023-08-08 08:14:00+00:00
+Found inserted log in TestRevenueRetrieval at 2023-08-13 01:53:00+00:00
+Found inserted log in TestWrite5FilesWithArray at 2023-08-17 08:13:35+00:00
+Found inserted log in TestDebugMultipleTypo at 2023-08-20 08:12:35+00:00
+Saving to results/training_iteration_3/2023-09-21_06-18-47_1.json
+Found inserted log in TestAdaptSimpleTypoWithGuidance at 2023-08-08 08:14:00+00:00
+Found inserted log in TestRevenueRetrieval at 2023-08-13 01:53:00+00:00
+Found inserted log in TestWrite5FilesWithArray at 2023-08-17 08:13:35+00:00
+Found inserted log in TestDebugMultipleTypo at 2023-08-20 08:12:35+00:00
+Saving to results/training_iteration_3/2023-09-21_06-24-52_1.json
+Found inserted log in TestAdaptSimpleTypoWithGuidance at 2023-08-08 08:14:00+00:00
+Found inserted log in TestRevenueRetrieval at 2023-08-13 01:53:00+00:00
+Found inserted log in TestWrite5FilesWithArray at 2023-08-17 08:13:35+00:00
+Found inserted log in TestDebugMultipleTypo at 2023-08-20 08:12:35+00:00
+Saving to results/training_iteration_3/2023-09-21_06-26-45_1.json
+Found inserted log in TestAdaptSimpleTypoWithGuidance at 2023-08-08 08:14:00+00:00
+Found inserted log in TestRevenueRetrieval at 2023-08-13 01:53:00+00:00
+Found inserted log in TestWrite5FilesWithArray at 2023-08-17 08:13:35+00:00
+Found inserted log in TestDebugMultipleTypo at 2023-08-20 08:12:35+00:00
+Saving to results/training_iteration_3/2023-09-21_06-27-35_1.json
+Found inserted log in TestAdaptSimpleTypoWithGuidance at 2023-08-08 08:14:00+00:00
+Found inserted log in TestAdaptSimpleTypoWithGuidance at 2023-08-08 08:14:00+00:00
+Found inserted log in TestAdaptTeslaRevenue at 2023-08-13 01:53:00+00:00
+An error occurred: HTTP code 502 from API (<html>
+<head><title>502 Bad Gateway</title></head>
+<body>
+<center><h1>502 Bad Gateway</h1></center>
+<hr><center>cloudflare</center>
+</body>
+</html>
+). Retrying... (attempt 1)
+Found inserted log in TestAdaptLink at 2023-08-18 08:14:00+00:00
+Found inserted log in TestReturnCode_Tests at 2023-08-13 08:13:00+00:00
+Found inserted log in TestReturnCode_Modify at 2023-08-19 08:12:39+00:00
+An error occurred: Failed to convert the response to a number. Retrying... (attempt 1)
+Found inserted log in TestReturnCode_Write at 2023-08-13 01:53:00+00:00
+Found inserted log in TestReturnCode_Simple at 2023-08-10 08:14:00+00:00
+Found inserted log in TestDebugSimpleTypoWithGuidance at 2023-08-16 08:14:00+00:00
+An error occurred: Request timed out: HTTPSConnectionPool(host='api.openai.com', port=443): Read timed out. (read timeout=600). Retrying... (attempt 1)
+Found inserted log in TestAdaptTeslaRevenue at 2023-08-13 01:53:00+00:00
+Found inserted log in TestAdaptLink at 2023-08-18 08:14:00+00:00
+Found inserted log in TestReturnCode_Tests at 2023-08-13 08:13:00+00:00
+Found inserted log in TestReturnCode_Modify at 2023-08-19 08:12:39+00:00
+Found inserted log in TestReturnCode_Write at 2023-08-13 01:53:00+00:00
+Found inserted log in TestReturnCode_Simple at 2023-08-10 08:14:00+00:00
+Found inserted log in TestDebugSimpleTypoWithGuidance at 2023-08-16 08:14:00+00:00
+Found inserted log in TestDebugSimpleTypoWithoutGuidance at 2023-08-30 08:15:08+00:00
+Found inserted log in TestDebugMultipleTypo at 2023-08-20 08:12:35+00:00
+Found inserted log in TestThreeSum at 2023-08-13 01:53:00+00:00
+Found inserted log in TestFunctionCodeGeneration at 2023-08-20 08:12:35+00:00
+Found inserted log in TestPasswordGenerator_Easy at 2023-08-16 08:14:00+00:00
+Found inserted log in TestReadFile at 2023-08-13 01:10:00+00:00
+Found inserted log in TestSearch at 2023-08-16 08:14:00+00:00
+Found inserted log in TestWriteFile at 2023-08-24 08:14:22+00:00
+Found inserted log in TestBasicMemory at 2023-08-23 08:13:41+00:00
+Found inserted log in TestRememberMultipleIds at 2023-08-13 08:13:00+00:00
+Found inserted log in TestRememberMultipleIdsWithNoise at 2023-08-13 01:10:00+00:00
+Found inserted log in TestRememberMultiplePhrasesWithNoise at 2023-08-13 01:10:00+00:00
+Found inserted log in TestBasicRetrieval at 2023-08-16 08:14:00+00:00
+Found inserted log in TestRevenueRetrieval at 2023-08-13 01:53:00+00:00
+Found inserted log in TestRetrieval3 at 2023-08-12 17:24:00+00:00
+Found inserted log in TestRememberGoal_Advanced at 2023-08-30 08:15:08+00:00
+Found inserted log in TestRememberGoal_Medium at 2023-08-27 08:13:37+00:00
+Found inserted log in TestRememberGoal_Simple at 2023-08-13 01:10:00+00:00
+Found inserted log in TestWrite5FilesWithArray at 2023-08-17 08:13:35+00:00
+Found inserted log in TestWrite6Files at 2023-08-28 08:14:54+00:00
+Saving to results/training_iteration_4/2023-09-21_06-56-32_1.json
+Found inserted log in TestAdaptSimpleTypoWithGuidance at 2023-08-08 08:14:00+00:00
+Found inserted log in TestAdaptTeslaRevenue at 2023-08-13 01:53:00+00:00
+Found inserted log in TestAdaptLink at 2023-08-18 08:14:00+00:00
+Found inserted log in TestReturnCode_Tests at 2023-08-13 08:13:00+00:00
+Found inserted log in TestReturnCode_Modify at 2023-08-19 08:12:39+00:00
+Found inserted log in TestReturnCode_Write at 2023-08-13 01:53:00+00:00
+Found inserted log in TestReturnCode_Simple at 2023-08-10 08:14:00+00:00
+Found inserted log in TestDebugSimpleTypoWithGuidance at 2023-08-16 08:14:00+00:00
+Found inserted log in TestDebugSimpleTypoWithoutGuidance at 2023-08-30 08:15:08+00:00
+Found inserted log in TestDebugMultipleTypo at 2023-08-20 08:12:35+00:00
+An error occurred: Request timed out: HTTPSConnectionPool(host='api.openai.com', port=443): Read timed out. (read timeout=600). Retrying... (attempt 1)
+Found inserted log in TestDebugSimpleTypoWithoutGuidance at 2023-08-30 08:15:08+00:00
+Found inserted log in TestThreeSum at 2023-08-13 01:53:00+00:00
+Found inserted log in TestFunctionCodeGeneration at 2023-08-20 08:12:35+00:00
+Found inserted log in TestDebugMultipleTypo at 2023-08-20 08:12:35+00:00
+Found inserted log in TestPasswordGenerator_Easy at 2023-08-16 08:14:00+00:00
+Found inserted log in TestThreeSum at 2023-08-13 01:53:00+00:00
+Found inserted log in TestReadFile at 2023-08-13 01:10:00+00:00
+Found inserted log in TestFunctionCodeGeneration at 2023-08-20 08:12:35+00:00
+Found inserted log in TestSearch at 2023-08-16 08:14:00+00:00
+Found inserted log in TestPasswordGenerator_Easy at 2023-08-16 08:14:00+00:00
+Found inserted log in TestWriteFile at 2023-08-24 08:14:22+00:00
+Found inserted log in TestBasicMemory at 2023-08-23 08:13:41+00:00
+Found inserted log in TestReadFile at 2023-08-13 01:10:00+00:00
+Found inserted log in TestSearch at 2023-08-16 08:14:00+00:00
+Found inserted log in TestWriteFile at 2023-08-24 08:14:22+00:00
+Found inserted log in TestBasicMemory at 2023-08-23 08:13:41+00:00
+Found inserted log in TestRememberMultipleIds at 2023-08-13 08:13:00+00:00
+Found inserted log in TestRememberMultipleIdsWithNoise at 2023-08-13 01:10:00+00:00
+Found inserted log in TestRememberMultiplePhrasesWithNoise at 2023-08-13 01:10:00+00:00
+Found inserted log in TestBasicRetrieval at 2023-08-16 08:14:00+00:00
+Found inserted log in TestRevenueRetrieval at 2023-08-13 01:53:00+00:00
+Found inserted log in TestRetrieval3 at 2023-08-12 17:24:00+00:00
+Found inserted log in TestRememberGoal_Advanced at 2023-08-30 08:15:08+00:00
+Found inserted log in TestRememberGoal_Medium at 2023-08-27 08:13:37+00:00
+Found inserted log in TestRememberGoal_Simple at 2023-08-13 01:10:00+00:00
+Found inserted log in TestWrite5FilesWithArray at 2023-08-17 08:13:35+00:00
+Found inserted log in TestWrite6Files at 2023-08-28 08:14:54+00:00
+Saving to results/training_iteration_4/2023-09-21_06-56-32_1.json
+Found inserted log in TestAdaptSimpleTypoWithGuidance at 2023-08-08 08:14:00+00:00
+Found inserted log in TestAdaptTeslaRevenue at 2023-08-13 01:53:00+00:00
+Found inserted log in TestAdaptLink at 2023-08-18 08:14:00+00:00
+Found inserted log in TestReturnCode_Tests at 2023-08-13 08:13:00+00:00
+Found inserted log in TestReturnCode_Modify at 2023-08-19 08:12:39+00:00
+Found inserted log in TestReturnCode_Write at 2023-08-13 01:53:00+00:00
+Found inserted log in TestReturnCode_Simple at 2023-08-10 08:14:00+00:00
+Found inserted log in TestDebugSimpleTypoWithGuidance at 2023-08-16 08:14:00+00:00
+Found inserted log in TestDebugSimpleTypoWithoutGuidance at 2023-08-30 08:15:08+00:00
+Found inserted log in TestDebugMultipleTypo at 2023-08-20 08:12:35+00:00
+Found inserted log in TestThreeSum at 2023-08-13 01:53:00+00:00
+An error occurred: Request timed out: HTTPSConnectionPool(host='api.openai.com', port=443): Read timed out. (read timeout=600). Retrying... (attempt 1)
+Found inserted log in TestRememberMultipleIds at 2023-08-13 08:13:00+00:00
+Found inserted log in TestRememberMultipleIdsWithNoise at 2023-08-13 01:10:00+00:00
+Found inserted log in TestRememberMultiplePhrasesWithNoise at 2023-08-13 01:10:00+00:00
+Found inserted log in TestBasicRetrieval at 2023-08-16 08:14:00+00:00
+Found inserted log in TestRevenueRetrieval at 2023-08-13 01:53:00+00:00
+Found inserted log in TestRetrieval3 at 2023-08-12 17:24:00+00:00
+Found inserted log in TestRememberGoal_Advanced at 2023-08-30 08:15:08+00:00
+Found inserted log in TestRememberGoal_Medium at 2023-08-27 08:13:37+00:00
+Found inserted log in TestRememberGoal_Simple at 2023-08-13 01:10:00+00:00
+Found inserted log in TestWrite5FilesWithArray at 2023-08-17 08:13:35+00:00
+Found inserted log in TestWrite6Files at 2023-08-28 08:14:54+00:00
+Saving to results/training_iteration_4/2023-09-21_07-11-35_1.json
+Found inserted log in TestAdaptSimpleTypoWithGuidance at 2023-08-08 08:14:00+00:00
+Found inserted log in TestAdaptTeslaRevenue at 2023-08-13 01:53:00+00:00
+Found inserted log in TestAdaptLink at 2023-08-18 08:14:00+00:00
+Found inserted log in TestReturnCode_Tests at 2023-08-13 08:13:00+00:00
+Found inserted log in TestReturnCode_Modify at 2023-08-19 08:12:39+00:00
+Found inserted log in TestReturnCode_Write at 2023-08-13 01:53:00+00:00
+Found inserted log in TestReturnCode_Simple at 2023-08-10 08:14:00+00:00
+Found inserted log in TestDebugSimpleTypoWithGuidance at 2023-08-16 08:14:00+00:00
+Found inserted log in TestDebugSimpleTypoWithoutGuidance at 2023-08-30 08:15:08+00:00
+Found inserted log in TestDebugMultipleTypo at 2023-08-20 08:12:35+00:00
+Found inserted log in TestThreeSum at 2023-08-13 01:53:00+00:00
+Found inserted log in TestFunctionCodeGeneration at 2023-08-20 08:12:35+00:00
+An error occurred: Request timed out: HTTPSConnectionPool(host='api.openai.com', port=443): Read timed out. (read timeout=600). Retrying... (attempt 1)
+Found inserted log in TestPasswordGenerator_Easy at 2023-08-16 08:14:00+00:00
+Found inserted log in TestFunctionCodeGeneration at 2023-08-20 08:12:35+00:00
+Found inserted log in TestPasswordGenerator_Easy at 2023-08-16 08:14:00+00:00
+Found inserted log in TestReadFile at 2023-08-13 01:10:00+00:00
+Found inserted log in TestSearch at 2023-08-16 08:14:00+00:00
+Found inserted log in TestReadFile at 2023-08-13 01:10:00+00:00
+Found inserted log in TestWriteFile at 2023-08-24 08:14:22+00:00
+Found inserted log in TestSearch at 2023-08-16 08:14:00+00:00
+Found inserted log in TestBasicMemory at 2023-08-23 08:13:41+00:00
+Found inserted log in TestWriteFile at 2023-08-24 08:14:22+00:00
+Found inserted log in TestBasicMemory at 2023-08-23 08:13:41+00:00
+Found inserted log in TestRememberMultipleIds at 2023-08-13 08:13:00+00:00
+Found inserted log in TestRememberMultipleIds at 2023-08-13 08:13:00+00:00
+Found inserted log in TestRememberMultipleIdsWithNoise at 2023-08-13 01:10:00+00:00
+Found inserted log in TestRememberMultipleIdsWithNoise at 2023-08-13 01:10:00+00:00
+Found inserted log in TestRememberMultiplePhrasesWithNoise at 2023-08-13 01:10:00+00:00
+Found inserted log in TestRememberMultiplePhrasesWithNoise at 2023-08-13 01:10:00+00:00
+Found inserted log in TestBasicRetrieval at 2023-08-16 08:14:00+00:00
+Found inserted log in TestBasicRetrieval at 2023-08-16 08:14:00+00:00
+Found inserted log in TestRevenueRetrieval at 2023-08-13 01:53:00+00:00
+Found inserted log in TestRevenueRetrieval at 2023-08-13 01:53:00+00:00
+Found inserted log in TestRetrieval3 at 2023-08-12 17:24:00+00:00
+Found inserted log in TestRetrieval3 at 2023-08-12 17:24:00+00:00
+Found inserted log in TestRememberGoal_Advanced at 2023-08-30 08:15:08+00:00
+Found inserted log in TestRememberGoal_Advanced at 2023-08-30 08:15:08+00:00
+Found inserted log in TestRememberGoal_Medium at 2023-08-27 08:13:37+00:00
+Found inserted log in TestRememberGoal_Medium at 2023-08-27 08:13:37+00:00
+Found inserted log in TestRememberGoal_Simple at 2023-08-13 01:10:00+00:00
+Found inserted log in TestRememberGoal_Simple at 2023-08-13 01:10:00+00:00
+Found inserted log in TestWrite5FilesWithArray at 2023-08-17 08:13:35+00:00
+Found inserted log in TestWrite5FilesWithArray at 2023-08-17 08:13:35+00:00
+Found inserted log in TestWrite6Files at 2023-08-28 08:14:54+00:00
+Saving to results/training_iteration_4/2023-09-21_07-17-00_1.json
+Found inserted log in TestWrite6Files at 2023-08-28 08:14:54+00:00
+Saving to results/training_iteration_4/2023-09-21_07-26-39_1.json
+Found inserted log in TestAdaptSimpleTypoWithGuidance at 2023-08-08 08:14:00+00:00
+Found inserted log in TestAdaptSimpleTypoWithGuidance at 2023-08-08 08:14:00+00:00
+Found inserted log in TestAdaptTeslaRevenue at 2023-08-13 01:53:00+00:00
+Found inserted log in TestAdaptTeslaRevenue at 2023-08-13 01:53:00+00:00
+Found inserted log in TestAdaptLink at 2023-08-18 08:14:00+00:00
+Found inserted log in TestAdaptLink at 2023-08-18 08:14:00+00:00
+Found inserted log in TestReturnCode_Tests at 2023-08-13 08:13:00+00:00
+Found inserted log in TestReturnCode_Tests at 2023-08-13 08:13:00+00:00
+Found inserted log in TestReturnCode_Modify at 2023-08-19 08:12:39+00:00
+Found inserted log in TestReturnCode_Modify at 2023-08-19 08:12:39+00:00
+Found inserted log in TestReturnCode_Write at 2023-08-13 01:53:00+00:00
+Found inserted log in TestReturnCode_Write at 2023-08-13 01:53:00+00:00
+Found inserted log in TestReturnCode_Simple at 2023-08-10 08:14:00+00:00
+Found inserted log in TestReturnCode_Simple at 2023-08-10 08:14:00+00:00
+Found inserted log in TestDebugSimpleTypoWithGuidance at 2023-08-16 08:14:00+00:00
+Found inserted log in TestDebugSimpleTypoWithGuidance at 2023-08-16 08:14:00+00:00
+Found inserted log in TestDebugSimpleTypoWithoutGuidance at 2023-08-30 08:15:08+00:00
+Found inserted log in TestDebugSimpleTypoWithoutGuidance at 2023-08-30 08:15:08+00:00
+Found inserted log in TestDebugMultipleTypo at 2023-08-20 08:12:35+00:00
+Found inserted log in TestDebugMultipleTypo at 2023-08-20 08:12:35+00:00
+Found inserted log in TestThreeSum at 2023-08-13 01:53:00+00:00
+Found inserted log in TestThreeSum at 2023-08-13 01:53:00+00:00
+Found inserted log in TestFunctionCodeGeneration at 2023-08-20 08:12:35+00:00
+Found inserted log in TestPasswordGenerator_Easy at 2023-08-16 08:14:00+00:00
+Found inserted log in TestFunctionCodeGeneration at 2023-08-20 08:12:35+00:00
+Found inserted log in TestPasswordGenerator_Easy at 2023-08-16 08:14:00+00:00
+Found inserted log in TestReadFile at 2023-08-13 01:10:00+00:00
+Found inserted log in TestSearch at 2023-08-16 08:14:00+00:00
+Found inserted log in TestReadFile at 2023-08-13 01:10:00+00:00
+Found inserted log in TestWriteFile at 2023-08-24 08:14:22+00:00
+Found inserted log in TestSearch at 2023-08-16 08:14:00+00:00
+Found inserted log in TestWriteFile at 2023-08-24 08:14:22+00:00
+Found inserted log in TestBasicMemory at 2023-08-23 08:13:41+00:00
+Found inserted log in TestBasicMemory at 2023-08-23 08:13:41+00:00
+Found inserted log in TestRememberMultipleIds at 2023-08-13 08:13:00+00:00
+Found inserted log in TestRememberMultipleIds at 2023-08-13 08:13:00+00:00
+Found inserted log in TestRememberMultipleIdsWithNoise at 2023-08-13 01:10:00+00:00
+Found inserted log in TestRememberMultiplePhrasesWithNoise at 2023-08-13 01:10:00+00:00
+Found inserted log in TestRememberMultipleIdsWithNoise at 2023-08-13 01:10:00+00:00
+Found inserted log in TestBasicRetrieval at 2023-08-16 08:14:00+00:00
+Found inserted log in TestRevenueRetrieval at 2023-08-13 01:53:00+00:00
+Found inserted log in TestRetrieval3 at 2023-08-12 17:24:00+00:00
+Found inserted log in TestRememberMultiplePhrasesWithNoise at 2023-08-13 01:10:00+00:00
+Found inserted log in TestRememberGoal_Advanced at 2023-08-30 08:15:08+00:00
+Found inserted log in TestRememberGoal_Medium at 2023-08-27 08:13:37+00:00
+Found inserted log in TestBasicRetrieval at 2023-08-16 08:14:00+00:00
+Found inserted log in TestRevenueRetrieval at 2023-08-13 01:53:00+00:00
+Found inserted log in TestRememberGoal_Simple at 2023-08-13 01:10:00+00:00
+Found inserted log in TestRetrieval3 at 2023-08-12 17:24:00+00:00
+An error occurred: Failed to convert the response to a number. Retrying... (attempt 1)
+Found inserted log in TestRememberGoal_Advanced at 2023-08-30 08:15:08+00:00
+Found inserted log in TestWrite5FilesWithArray at 2023-08-17 08:13:35+00:00
+Found inserted log in TestRememberGoal_Medium at 2023-08-27 08:13:37+00:00
+Found inserted log in TestWrite6Files at 2023-08-28 08:14:54+00:00
+Saving to results/training_iteration_4/2023-09-21_07-32-41_1.json
+Found inserted log in TestAdaptSimpleTypoWithGuidance at 2023-08-08 08:14:00+00:00
+An error occurred: Failed to convert the response to a number. Retrying... (attempt 1)
+Found inserted log in TestRememberGoal_Simple at 2023-08-13 01:10:00+00:00
+Found inserted log in TestAdaptTeslaRevenue at 2023-08-13 01:53:00+00:00
+Found inserted log in TestAdaptLink at 2023-08-18 08:14:00+00:00
+Found inserted log in TestWrite5FilesWithArray at 2023-08-17 08:13:35+00:00
+Found inserted log in TestReturnCode_Tests at 2023-08-13 08:13:00+00:00
+Found inserted log in TestWrite6Files at 2023-08-28 08:14:54+00:00
+Saving to results/training_iteration_4/2023-09-21_07-32-34_1.json
+Found inserted log in TestReturnCode_Modify at 2023-08-19 08:12:39+00:00
+Found inserted log in TestAdaptSimpleTypoWithGuidance at 2023-08-08 08:14:00+00:00
+Found inserted log in TestReturnCode_Write at 2023-08-13 01:53:00+00:00
+Found inserted log in TestReturnCode_Simple at 2023-08-10 08:14:00+00:00
+Found inserted log in TestDebugSimpleTypoWithGuidance at 2023-08-16 08:14:00+00:00
+Found inserted log in TestAdaptTeslaRevenue at 2023-08-13 01:53:00+00:00
+Found inserted log in TestDebugSimpleTypoWithoutGuidance at 2023-08-30 08:15:08+00:00
+Found inserted log in TestAdaptLink at 2023-08-18 08:14:00+00:00
+Found inserted log in TestDebugMultipleTypo at 2023-08-20 08:12:35+00:00
+Found inserted log in TestReturnCode_Tests at 2023-08-13 08:13:00+00:00
+Found inserted log in TestReturnCode_Modify at 2023-08-19 08:12:39+00:00
+Found inserted log in TestThreeSum at 2023-08-13 01:53:00+00:00
+Found inserted log in TestReturnCode_Write at 2023-08-13 01:53:00+00:00
+Found inserted log in TestFunctionCodeGeneration at 2023-08-20 08:12:35+00:00
+Found inserted log in TestPasswordGenerator_Easy at 2023-08-16 08:14:00+00:00
+Found inserted log in TestReturnCode_Simple at 2023-08-10 08:14:00+00:00
+Found inserted log in TestDebugSimpleTypoWithGuidance at 2023-08-16 08:14:00+00:00
+Found inserted log in TestDebugSimpleTypoWithoutGuidance at 2023-08-30 08:15:08+00:00
+Found inserted log in TestReadFile at 2023-08-13 01:10:00+00:00
+Found inserted log in TestDebugMultipleTypo at 2023-08-20 08:12:35+00:00
+Found inserted log in TestSearch at 2023-08-16 08:14:00+00:00
+Found inserted log in TestWriteFile at 2023-08-24 08:14:22+00:00
+Found inserted log in TestBasicMemory at 2023-08-23 08:13:41+00:00
+Found inserted log in TestThreeSum at 2023-08-13 01:53:00+00:00
+Found inserted log in TestFunctionCodeGeneration at 2023-08-20 08:12:35+00:00
+Found inserted log in TestPasswordGenerator_Easy at 2023-08-16 08:14:00+00:00
+Found inserted log in TestRememberMultipleIds at 2023-08-13 08:13:00+00:00
+Found inserted log in TestReadFile at 2023-08-13 01:10:00+00:00
+Found inserted log in TestSearch at 2023-08-16 08:14:00+00:00
+Found inserted log in TestWriteFile at 2023-08-24 08:14:22+00:00
+Found inserted log in TestRememberMultipleIdsWithNoise at 2023-08-13 01:10:00+00:00
+An error occurred: Failed to convert the response to a number. Retrying... (attempt 1)
+Found inserted log in TestBasicMemory at 2023-08-23 08:13:41+00:00
+Found inserted log in TestRememberMultiplePhrasesWithNoise at 2023-08-13 01:10:00+00:00
+Found inserted log in TestBasicRetrieval at 2023-08-16 08:14:00+00:00
+Found inserted log in TestRememberMultipleIds at 2023-08-13 08:13:00+00:00
+Found inserted log in TestRevenueRetrieval at 2023-08-13 01:53:00+00:00
+Found inserted log in TestRetrieval3 at 2023-08-12 17:24:00+00:00
+Found inserted log in TestRememberMultipleIdsWithNoise at 2023-08-13 01:10:00+00:00
+Found inserted log in TestRememberGoal_Advanced at 2023-08-30 08:15:08+00:00
+Found inserted log in TestRememberGoal_Medium at 2023-08-27 08:13:37+00:00
+Found inserted log in TestRememberMultiplePhrasesWithNoise at 2023-08-13 01:10:00+00:00
+Found inserted log in TestBasicRetrieval at 2023-08-16 08:14:00+00:00
+Found inserted log in TestRevenueRetrieval at 2023-08-13 01:53:00+00:00
+Found inserted log in TestRememberGoal_Simple at 2023-08-13 01:10:00+00:00
+Found inserted log in TestRetrieval3 at 2023-08-12 17:24:00+00:00
+Found inserted log in TestWrite5FilesWithArray at 2023-08-17 08:13:35+00:00
+Found inserted log in TestRememberGoal_Advanced at 2023-08-30 08:15:08+00:00
+Found inserted log in TestWrite6Files at 2023-08-28 08:14:54+00:00
+Saving to results/training_iteration_4/2023-09-21_07-40-05_1.json
+Found inserted log in TestRememberGoal_Medium at 2023-08-27 08:13:37+00:00
+Found inserted log in TestAdaptSimpleTypoWithGuidance at 2023-08-08 08:14:00+00:00
+Found inserted log in TestAdaptTeslaRevenue at 2023-08-13 01:53:00+00:00
+Found inserted log in TestRememberGoal_Simple at 2023-08-13 01:10:00+00:00
+Found inserted log in TestAdaptLink at 2023-08-18 08:14:00+00:00
+Found inserted log in TestWrite5FilesWithArray at 2023-08-17 08:13:35+00:00
+Found inserted log in TestWrite6Files at 2023-08-28 08:14:54+00:00
+Saving to results/training_iteration_4/2023-09-21_07-41-12_1.json
+Found inserted log in TestReturnCode_Tests at 2023-08-13 08:13:00+00:00
+Found inserted log in TestAdaptSimpleTypoWithGuidance at 2023-08-08 08:14:00+00:00
+Found inserted log in TestReturnCode_Modify at 2023-08-19 08:12:39+00:00
+Found inserted log in TestReturnCode_Write at 2023-08-13 01:53:00+00:00
+Found inserted log in TestReturnCode_Simple at 2023-08-10 08:14:00+00:00
+Found inserted log in TestAdaptTeslaRevenue at 2023-08-13 01:53:00+00:00
+Found inserted log in TestDebugSimpleTypoWithGuidance at 2023-08-16 08:14:00+00:00
+Found inserted log in TestAdaptLink at 2023-08-18 08:14:00+00:00
+Found inserted log in TestDebugSimpleTypoWithoutGuidance at 2023-08-30 08:15:08+00:00
+Found inserted log in TestReturnCode_Tests at 2023-08-13 08:13:00+00:00
+Found inserted log in TestDebugMultipleTypo at 2023-08-20 08:12:35+00:00
+Found inserted log in TestReturnCode_Modify at 2023-08-19 08:12:39+00:00
+Found inserted log in TestReturnCode_Write at 2023-08-13 01:53:00+00:00
+Found inserted log in TestThreeSum at 2023-08-13 01:53:00+00:00
+Found inserted log in TestReturnCode_Simple at 2023-08-10 08:14:00+00:00
+Found inserted log in TestFunctionCodeGeneration at 2023-08-20 08:12:35+00:00
+Found inserted log in TestPasswordGenerator_Easy at 2023-08-16 08:14:00+00:00
+Found inserted log in TestDebugSimpleTypoWithGuidance at 2023-08-16 08:14:00+00:00
+Found inserted log in TestDebugSimpleTypoWithoutGuidance at 2023-08-30 08:15:08+00:00
+Found inserted log in TestDebugMultipleTypo at 2023-08-20 08:12:35+00:00
+Found inserted log in TestReadFile at 2023-08-13 01:10:00+00:00
+Found inserted log in TestSearch at 2023-08-16 08:14:00+00:00
+Found inserted log in TestWriteFile at 2023-08-24 08:14:22+00:00
+Found inserted log in TestThreeSum at 2023-08-13 01:53:00+00:00
+Found inserted log in TestBasicMemory at 2023-08-23 08:13:41+00:00
+Found inserted log in TestFunctionCodeGeneration at 2023-08-20 08:12:35+00:00
+Found inserted log in TestPasswordGenerator_Easy at 2023-08-16 08:14:00+00:00
+Found inserted log in TestRememberMultipleIds at 2023-08-13 08:13:00+00:00
+Found inserted log in TestReadFile at 2023-08-13 01:10:00+00:00
+Found inserted log in TestSearch at 2023-08-16 08:14:00+00:00
+Found inserted log in TestWriteFile at 2023-08-24 08:14:22+00:00
+Found inserted log in TestRememberMultipleIdsWithNoise at 2023-08-13 01:10:00+00:00
+Found inserted log in TestBasicMemory at 2023-08-23 08:13:41+00:00
+Found inserted log in TestRememberMultiplePhrasesWithNoise at 2023-08-13 01:10:00+00:00
+Found inserted log in TestBasicRetrieval at 2023-08-16 08:14:00+00:00
+Found inserted log in TestRememberMultipleIds at 2023-08-13 08:13:00+00:00
+Found inserted log in TestRevenueRetrieval at 2023-08-13 01:53:00+00:00
+Found inserted log in TestRetrieval3 at 2023-08-12 17:24:00+00:00
+Found inserted log in TestRememberMultipleIdsWithNoise at 2023-08-13 01:10:00+00:00
+Found inserted log in TestRememberGoal_Advanced at 2023-08-30 08:15:08+00:00
+Found inserted log in TestRememberGoal_Medium at 2023-08-27 08:13:37+00:00
+Found inserted log in TestRememberMultiplePhrasesWithNoise at 2023-08-13 01:10:00+00:00
+Found inserted log in TestRememberGoal_Simple at 2023-08-13 01:10:00+00:00
+Found inserted log in TestBasicRetrieval at 2023-08-16 08:14:00+00:00
+Found inserted log in TestRevenueRetrieval at 2023-08-13 01:53:00+00:00
+Found inserted log in TestWrite5FilesWithArray at 2023-08-17 08:13:35+00:00
+Found inserted log in TestWrite6Files at 2023-08-28 08:14:54+00:00
+Saving to results/training_iteration_4/2023-09-21_07-47-03_1.json
+Found inserted log in TestRetrieval3 at 2023-08-12 17:24:00+00:00
+Found inserted log in TestRememberGoal_Advanced at 2023-08-30 08:15:08+00:00
+Found inserted log in TestRememberGoal_Medium at 2023-08-27 08:13:37+00:00
+An error occurred: Failed to convert the response to a number. Retrying... (attempt 1)
+Found inserted log in TestRememberGoal_Simple at 2023-08-13 01:10:00+00:00
+Found inserted log in TestWrite5FilesWithArray at 2023-08-17 08:13:35+00:00
+Found inserted log in TestWrite6Files at 2023-08-28 08:14:54+00:00
+Saving to results/training_iteration_4/2023-09-21_07-47-59_1.json
+Found inserted log in TestAdaptSimpleTypoWithGuidance at 2023-08-08 08:14:00+00:00
+Found inserted log in TestAdaptSimpleTypoWithGuidance at 2023-08-08 08:14:00+00:00
+Found inserted log in TestAdaptTeslaRevenue at 2023-08-13 01:53:00+00:00
+Found inserted log in TestAdaptTeslaRevenue at 2023-08-13 01:53:00+00:00
+Found inserted log in TestAdaptLink at 2023-08-18 08:14:00+00:00
+Found inserted log in TestAdaptLink at 2023-08-18 08:14:00+00:00
+Found inserted log in TestReturnCode_Tests at 2023-08-13 08:13:00+00:00
+Found inserted log in TestReturnCode_Tests at 2023-08-13 08:13:00+00:00
+Found inserted log in TestReturnCode_Modify at 2023-08-19 08:12:39+00:00
+Found inserted log in TestReturnCode_Modify at 2023-08-19 08:12:39+00:00
+Found inserted log in TestReturnCode_Write at 2023-08-13 01:53:00+00:00
+Found inserted log in TestReturnCode_Write at 2023-08-13 01:53:00+00:00
+Found inserted log in TestReturnCode_Simple at 2023-08-10 08:14:00+00:00
+Found inserted log in TestReturnCode_Simple at 2023-08-10 08:14:00+00:00
+Found inserted log in TestDebugSimpleTypoWithGuidance at 2023-08-16 08:14:00+00:00
+Found inserted log in TestDebugSimpleTypoWithGuidance at 2023-08-16 08:14:00+00:00
+Found inserted log in TestDebugSimpleTypoWithoutGuidance at 2023-08-30 08:15:08+00:00
+Found inserted log in TestDebugSimpleTypoWithoutGuidance at 2023-08-30 08:15:08+00:00
+Found inserted log in TestDebugMultipleTypo at 2023-08-20 08:12:35+00:00
+Found inserted log in TestDebugMultipleTypo at 2023-08-20 08:12:35+00:00
+Found inserted log in TestThreeSum at 2023-08-13 01:53:00+00:00
+Found inserted log in TestThreeSum at 2023-08-13 01:53:00+00:00
+Found inserted log in TestFunctionCodeGeneration at 2023-08-20 08:12:35+00:00
+Found inserted log in TestPasswordGenerator_Easy at 2023-08-16 08:14:00+00:00
+Found inserted log in TestFunctionCodeGeneration at 2023-08-20 08:12:35+00:00
+Found inserted log in TestPasswordGenerator_Easy at 2023-08-16 08:14:00+00:00
+Found inserted log in TestReadFile at 2023-08-13 01:10:00+00:00
+Found inserted log in TestSearch at 2023-08-16 08:14:00+00:00
+Found inserted log in TestWriteFile at 2023-08-24 08:14:22+00:00
+Found inserted log in TestReadFile at 2023-08-13 01:10:00+00:00
+Found inserted log in TestSearch at 2023-08-16 08:14:00+00:00
+Found inserted log in TestBasicMemory at 2023-08-23 08:13:41+00:00
+Found inserted log in TestWriteFile at 2023-08-24 08:14:22+00:00
+Found inserted log in TestBasicMemory at 2023-08-23 08:13:41+00:00
+Found inserted log in TestRememberMultipleIds at 2023-08-13 08:13:00+00:00
+Found inserted log in TestRememberMultipleIdsWithNoise at 2023-08-13 01:10:00+00:00
+Found inserted log in TestRememberMultipleIds at 2023-08-13 08:13:00+00:00
+Found inserted log in TestRememberMultiplePhrasesWithNoise at 2023-08-13 01:10:00+00:00
+Found inserted log in TestRememberMultipleIdsWithNoise at 2023-08-13 01:10:00+00:00
+Found inserted log in TestBasicRetrieval at 2023-08-16 08:14:00+00:00
+Found inserted log in TestRevenueRetrieval at 2023-08-13 01:53:00+00:00
+Found inserted log in TestRememberMultiplePhrasesWithNoise at 2023-08-13 01:10:00+00:00
+Found inserted log in TestRetrieval3 at 2023-08-12 17:24:00+00:00
+Found inserted log in TestRememberGoal_Advanced at 2023-08-30 08:15:08+00:00
+Found inserted log in TestBasicRetrieval at 2023-08-16 08:14:00+00:00
+Found inserted log in TestRevenueRetrieval at 2023-08-13 01:53:00+00:00
+Found inserted log in TestRememberGoal_Medium at 2023-08-27 08:13:37+00:00
+Found inserted log in TestRetrieval3 at 2023-08-12 17:24:00+00:00
+Found inserted log in TestRememberGoal_Advanced at 2023-08-30 08:15:08+00:00
+Found inserted log in TestRememberGoal_Simple at 2023-08-13 01:10:00+00:00
+Found inserted log in TestRememberGoal_Medium at 2023-08-27 08:13:37+00:00
+Found inserted log in TestWrite5FilesWithArray at 2023-08-17 08:13:35+00:00
+Found inserted log in TestWrite6Files at 2023-08-28 08:14:54+00:00
+Saving to results/training_iteration_4/2023-09-21_09-31-51_1.json
+Found inserted log in TestRememberGoal_Simple at 2023-08-13 01:10:00+00:00
+Found inserted log in TestAdaptSimpleTypoWithGuidance at 2023-08-08 08:14:00+00:00
+Found inserted log in TestWrite5FilesWithArray at 2023-08-17 08:13:35+00:00
+Found inserted log in TestAdaptTeslaRevenue at 2023-08-13 01:53:00+00:00
+Found inserted log in TestWrite6Files at 2023-08-28 08:14:54+00:00
+Saving to results/training_iteration_4/2023-09-21_09-31-51_1.json
+Found inserted log in TestAdaptLink at 2023-08-18 08:14:00+00:00
+Found inserted log in TestAdaptSimpleTypoWithGuidance at 2023-08-08 08:14:00+00:00
+Found inserted log in TestReturnCode_Tests at 2023-08-13 08:13:00+00:00
+Found inserted log in TestReturnCode_Modify at 2023-08-19 08:12:39+00:00
+Found inserted log in TestAdaptTeslaRevenue at 2023-08-13 01:53:00+00:00
+Found inserted log in TestReturnCode_Write at 2023-08-13 01:53:00+00:00
+Found inserted log in TestAdaptLink at 2023-08-18 08:14:00+00:00
+Found inserted log in TestReturnCode_Simple at 2023-08-10 08:14:00+00:00
+Found inserted log in TestDebugSimpleTypoWithGuidance at 2023-08-16 08:14:00+00:00
+Found inserted log in TestReturnCode_Tests at 2023-08-13 08:13:00+00:00
+Found inserted log in TestDebugSimpleTypoWithoutGuidance at 2023-08-30 08:15:08+00:00
+Found inserted log in TestReturnCode_Modify at 2023-08-19 08:12:39+00:00
+Found inserted log in TestDebugMultipleTypo at 2023-08-20 08:12:35+00:00
+Found inserted log in TestReturnCode_Write at 2023-08-13 01:53:00+00:00
+Found inserted log in TestReturnCode_Simple at 2023-08-10 08:14:00+00:00
+Found inserted log in TestThreeSum at 2023-08-13 01:53:00+00:00
+Found inserted log in TestDebugSimpleTypoWithGuidance at 2023-08-16 08:14:00+00:00
+Found inserted log in TestFunctionCodeGeneration at 2023-08-20 08:12:35+00:00
+Found inserted log in TestDebugSimpleTypoWithoutGuidance at 2023-08-30 08:15:08+00:00
+Found inserted log in TestPasswordGenerator_Easy at 2023-08-16 08:14:00+00:00
+Found inserted log in TestDebugMultipleTypo at 2023-08-20 08:12:35+00:00
+Found inserted log in TestReadFile at 2023-08-13 01:10:00+00:00
+Found inserted log in TestThreeSum at 2023-08-13 01:53:00+00:00
+Found inserted log in TestSearch at 2023-08-16 08:14:00+00:00
+Found inserted log in TestWriteFile at 2023-08-24 08:14:22+00:00
+Found inserted log in TestFunctionCodeGeneration at 2023-08-20 08:12:35+00:00
+Found inserted log in TestPasswordGenerator_Easy at 2023-08-16 08:14:00+00:00
+Found inserted log in TestBasicMemory at 2023-08-23 08:13:41+00:00
+Found inserted log in TestReadFile at 2023-08-13 01:10:00+00:00
+Found inserted log in TestRememberMultipleIds at 2023-08-13 08:13:00+00:00
+Found inserted log in TestSearch at 2023-08-16 08:14:00+00:00
+Found inserted log in TestWriteFile at 2023-08-24 08:14:22+00:00
+Found inserted log in TestRememberMultipleIdsWithNoise at 2023-08-13 01:10:00+00:00
+Found inserted log in TestBasicMemory at 2023-08-23 08:13:41+00:00
+Found inserted log in TestRememberMultiplePhrasesWithNoise at 2023-08-13 01:10:00+00:00
+Found inserted log in TestRememberMultipleIds at 2023-08-13 08:13:00+00:00
+Found inserted log in TestBasicRetrieval at 2023-08-16 08:14:00+00:00
+Found inserted log in TestRevenueRetrieval at 2023-08-13 01:53:00+00:00
+Found inserted log in TestRememberMultipleIdsWithNoise at 2023-08-13 01:10:00+00:00
+Found inserted log in TestRetrieval3 at 2023-08-12 17:24:00+00:00
+Found inserted log in TestRememberGoal_Advanced at 2023-08-30 08:15:08+00:00
+Found inserted log in TestRememberGoal_Medium at 2023-08-27 08:13:37+00:00
+Found inserted log in TestRememberMultiplePhrasesWithNoise at 2023-08-13 01:10:00+00:00
+Found inserted log in TestBasicRetrieval at 2023-08-16 08:14:00+00:00
+An error occurred: Failed to convert the response to a number. Retrying... (attempt 1)
+Found inserted log in TestRememberGoal_Simple at 2023-08-13 01:10:00+00:00
+Found inserted log in TestRevenueRetrieval at 2023-08-13 01:53:00+00:00
+Found inserted log in TestWrite5FilesWithArray at 2023-08-17 08:13:35+00:00
+Found inserted log in TestRetrieval3 at 2023-08-12 17:24:00+00:00
+Found inserted log in TestWrite6Files at 2023-08-28 08:14:54+00:00
+Saving to results/training_iteration_4/2023-09-21_09-36-24_1.json
+Found inserted log in TestRememberGoal_Advanced at 2023-08-30 08:15:08+00:00
+Found inserted log in TestAdaptSimpleTypoWithGuidance at 2023-08-08 08:14:00+00:00
+Found inserted log in TestRememberGoal_Medium at 2023-08-27 08:13:37+00:00
+Found inserted log in TestAdaptTeslaRevenue at 2023-08-13 01:53:00+00:00
+Found inserted log in TestRememberGoal_Simple at 2023-08-13 01:10:00+00:00
+Found inserted log in TestAdaptLink at 2023-08-18 08:14:00+00:00
+Found inserted log in TestWrite5FilesWithArray at 2023-08-17 08:13:35+00:00
+Found inserted log in TestWrite6Files at 2023-08-28 08:14:54+00:00
+Saving to results/training_iteration_4/2023-09-21_09-36-47_1.json
+Found inserted log in TestReturnCode_Tests at 2023-08-13 08:13:00+00:00
+Found inserted log in TestAdaptSimpleTypoWithGuidance at 2023-08-08 08:14:00+00:00
+Found inserted log in TestReturnCode_Modify at 2023-08-19 08:12:39+00:00
+Found inserted log in TestReturnCode_Write at 2023-08-13 01:53:00+00:00
+Found inserted log in TestAdaptTeslaRevenue at 2023-08-13 01:53:00+00:00
+Found inserted log in TestReturnCode_Simple at 2023-08-10 08:14:00+00:00
+Found inserted log in TestDebugSimpleTypoWithGuidance at 2023-08-16 08:14:00+00:00
+Found inserted log in TestAdaptLink at 2023-08-18 08:14:00+00:00
+Found inserted log in TestDebugSimpleTypoWithoutGuidance at 2023-08-30 08:15:08+00:00
+Found inserted log in TestReturnCode_Tests at 2023-08-13 08:13:00+00:00
+Found inserted log in TestDebugMultipleTypo at 2023-08-20 08:12:35+00:00
+Found inserted log in TestReturnCode_Modify at 2023-08-19 08:12:39+00:00
+Found inserted log in TestReturnCode_Write at 2023-08-13 01:53:00+00:00
+Found inserted log in TestThreeSum at 2023-08-13 01:53:00+00:00
+Found inserted log in TestReturnCode_Simple at 2023-08-10 08:14:00+00:00
+Found inserted log in TestFunctionCodeGeneration at 2023-08-20 08:12:35+00:00
+Found inserted log in TestPasswordGenerator_Easy at 2023-08-16 08:14:00+00:00
+Found inserted log in TestDebugSimpleTypoWithGuidance at 2023-08-16 08:14:00+00:00
+Found inserted log in TestDebugSimpleTypoWithoutGuidance at 2023-08-30 08:15:08+00:00
+Found inserted log in TestReadFile at 2023-08-13 01:10:00+00:00
+Found inserted log in TestSearch at 2023-08-16 08:14:00+00:00
+Found inserted log in TestDebugMultipleTypo at 2023-08-20 08:12:35+00:00
+Found inserted log in TestWriteFile at 2023-08-24 08:14:22+00:00
+Found inserted log in TestBasicMemory at 2023-08-23 08:13:41+00:00
+Found inserted log in TestThreeSum at 2023-08-13 01:53:00+00:00
+Found inserted log in TestFunctionCodeGeneration at 2023-08-20 08:12:35+00:00
+Found inserted log in TestPasswordGenerator_Easy at 2023-08-16 08:14:00+00:00
+Found inserted log in TestRememberMultipleIds at 2023-08-13 08:13:00+00:00
+Found inserted log in TestRememberMultipleIdsWithNoise at 2023-08-13 01:10:00+00:00
+Found inserted log in TestReadFile at 2023-08-13 01:10:00+00:00
+Found inserted log in TestSearch at 2023-08-16 08:14:00+00:00
+Found inserted log in TestWriteFile at 2023-08-24 08:14:22+00:00
+Found inserted log in TestRememberMultiplePhrasesWithNoise at 2023-08-13 01:10:00+00:00
+Found inserted log in TestBasicMemory at 2023-08-23 08:13:41+00:00
+Found inserted log in TestBasicRetrieval at 2023-08-16 08:14:00+00:00
+Found inserted log in TestRevenueRetrieval at 2023-08-13 01:53:00+00:00
+Found inserted log in TestRetrieval3 at 2023-08-12 17:24:00+00:00
+Found inserted log in TestRememberMultipleIds at 2023-08-13 08:13:00+00:00
+Found inserted log in TestRememberGoal_Advanced at 2023-08-30 08:15:08+00:00
+Found inserted log in TestRememberGoal_Medium at 2023-08-27 08:13:37+00:00
+Found inserted log in TestRememberMultipleIdsWithNoise at 2023-08-13 01:10:00+00:00
+Found inserted log in TestRememberGoal_Simple at 2023-08-13 01:10:00+00:00
+Found inserted log in TestWrite5FilesWithArray at 2023-08-17 08:13:35+00:00
+Found inserted log in TestWrite6Files at 2023-08-28 08:14:54+00:00
+Saving to results/training_iteration_4/2023-09-21_09-40-51_1.json
+Found inserted log in TestRememberMultiplePhrasesWithNoise at 2023-08-13 01:10:00+00:00
+Found inserted log in TestAdaptSimpleTypoWithGuidance at 2023-08-08 08:14:00+00:00
+Found inserted log in TestBasicRetrieval at 2023-08-16 08:14:00+00:00
+Found inserted log in TestRevenueRetrieval at 2023-08-13 01:53:00+00:00
+Found inserted log in TestAdaptTeslaRevenue at 2023-08-13 01:53:00+00:00
+Found inserted log in TestRetrieval3 at 2023-08-12 17:24:00+00:00
+Found inserted log in TestAdaptLink at 2023-08-18 08:14:00+00:00
+Found inserted log in TestReturnCode_Tests at 2023-08-13 08:13:00+00:00
+Found inserted log in TestRememberGoal_Advanced at 2023-08-30 08:15:08+00:00
+Found inserted log in TestRememberGoal_Medium at 2023-08-27 08:13:37+00:00
+Found inserted log in TestReturnCode_Modify at 2023-08-19 08:12:39+00:00
+Found inserted log in TestReturnCode_Write at 2023-08-13 01:53:00+00:00
+Found inserted log in TestReturnCode_Simple at 2023-08-10 08:14:00+00:00
+Found inserted log in TestRememberGoal_Simple at 2023-08-13 01:10:00+00:00
+Found inserted log in TestDebugSimpleTypoWithGuidance at 2023-08-16 08:14:00+00:00
+Found inserted log in TestDebugSimpleTypoWithoutGuidance at 2023-08-30 08:15:08+00:00
+Found inserted log in TestWrite5FilesWithArray at 2023-08-17 08:13:35+00:00
+Found inserted log in TestDebugMultipleTypo at 2023-08-20 08:12:35+00:00
+Found inserted log in TestWrite6Files at 2023-08-28 08:14:54+00:00
+Saving to results/training_iteration_4/2023-09-21_09-41-37_1.json
+Found inserted log in TestAdaptSimpleTypoWithGuidance at 2023-08-08 08:14:00+00:00
+Found inserted log in TestThreeSum at 2023-08-13 01:53:00+00:00
+Found inserted log in TestFunctionCodeGeneration at 2023-08-20 08:12:35+00:00
+Found inserted log in TestPasswordGenerator_Easy at 2023-08-16 08:14:00+00:00
+Found inserted log in TestAdaptTeslaRevenue at 2023-08-13 01:53:00+00:00
+Found inserted log in TestAdaptLink at 2023-08-18 08:14:00+00:00
+Found inserted log in TestReadFile at 2023-08-13 01:10:00+00:00
+Found inserted log in TestReturnCode_Tests at 2023-08-13 08:13:00+00:00
+Found inserted log in TestSearch at 2023-08-16 08:14:00+00:00
+Found inserted log in TestWriteFile at 2023-08-24 08:14:22+00:00
+Found inserted log in TestReturnCode_Modify at 2023-08-19 08:12:39+00:00
+Found inserted log in TestReturnCode_Write at 2023-08-13 01:53:00+00:00
+Found inserted log in TestBasicMemory at 2023-08-23 08:13:41+00:00
+Found inserted log in TestReturnCode_Simple at 2023-08-10 08:14:00+00:00
+Found inserted log in TestDebugSimpleTypoWithGuidance at 2023-08-16 08:14:00+00:00
+Found inserted log in TestDebugSimpleTypoWithoutGuidance at 2023-08-30 08:15:08+00:00
+Found inserted log in TestRememberMultipleIds at 2023-08-13 08:13:00+00:00
+Found inserted log in TestDebugMultipleTypo at 2023-08-20 08:12:35+00:00
+Found inserted log in TestRememberMultipleIdsWithNoise at 2023-08-13 01:10:00+00:00
+Found inserted log in TestThreeSum at 2023-08-13 01:53:00+00:00
+Found inserted log in TestFunctionCodeGeneration at 2023-08-20 08:12:35+00:00
+Found inserted log in TestPasswordGenerator_Easy at 2023-08-16 08:14:00+00:00
+Found inserted log in TestRememberMultiplePhrasesWithNoise at 2023-08-13 01:10:00+00:00
+Found inserted log in TestBasicRetrieval at 2023-08-16 08:14:00+00:00
+Found inserted log in TestRevenueRetrieval at 2023-08-13 01:53:00+00:00
+Found inserted log in TestReadFile at 2023-08-13 01:10:00+00:00
+Found inserted log in TestSearch at 2023-08-16 08:14:00+00:00
+Found inserted log in TestWriteFile at 2023-08-24 08:14:22+00:00
+Found inserted log in TestRetrieval3 at 2023-08-12 17:24:00+00:00
+Found inserted log in TestRememberGoal_Advanced at 2023-08-30 08:15:08+00:00
+Found inserted log in TestBasicMemory at 2023-08-23 08:13:41+00:00
+Found inserted log in TestRememberGoal_Medium at 2023-08-27 08:13:37+00:00
+Found inserted log in TestRememberGoal_Simple at 2023-08-13 01:10:00+00:00
+Found inserted log in TestRememberMultipleIds at 2023-08-13 08:13:00+00:00
+Found inserted log in TestWrite5FilesWithArray at 2023-08-17 08:13:35+00:00
+Found inserted log in TestRememberMultipleIdsWithNoise at 2023-08-13 01:10:00+00:00
+Found inserted log in TestWrite6Files at 2023-08-28 08:14:54+00:00
+Saving to results/training_iteration_4/2023-09-21_09-45-53_1.json
+Found inserted log in TestAdaptSimpleTypoWithGuidance at 2023-08-08 08:14:00+00:00
+Found inserted log in TestRememberMultiplePhrasesWithNoise at 2023-08-13 01:10:00+00:00
+Found inserted log in TestAdaptTeslaRevenue at 2023-08-13 01:53:00+00:00
+Found inserted log in TestBasicRetrieval at 2023-08-16 08:14:00+00:00
+Found inserted log in TestRevenueRetrieval at 2023-08-13 01:53:00+00:00
+Found inserted log in TestAdaptLink at 2023-08-18 08:14:00+00:00
+Found inserted log in TestRetrieval3 at 2023-08-12 17:24:00+00:00
+Found inserted log in TestReturnCode_Tests at 2023-08-13 08:13:00+00:00
+Found inserted log in TestReturnCode_Modify at 2023-08-19 08:12:39+00:00
+Found inserted log in TestRememberGoal_Advanced at 2023-08-30 08:15:08+00:00
+Found inserted log in TestRememberGoal_Medium at 2023-08-27 08:13:37+00:00
+Found inserted log in TestReturnCode_Write at 2023-08-13 01:53:00+00:00
+Found inserted log in TestReturnCode_Simple at 2023-08-10 08:14:00+00:00
+Found inserted log in TestDebugSimpleTypoWithGuidance at 2023-08-16 08:14:00+00:00
+Found inserted log in TestRememberGoal_Simple at 2023-08-13 01:10:00+00:00
+Found inserted log in TestDebugSimpleTypoWithoutGuidance at 2023-08-30 08:15:08+00:00
+Found inserted log in TestDebugMultipleTypo at 2023-08-20 08:12:35+00:00
+Found inserted log in TestWrite5FilesWithArray at 2023-08-17 08:13:35+00:00
+Found inserted log in TestWrite6Files at 2023-08-28 08:14:54+00:00
+Saving to results/training_iteration_4/2023-09-21_09-47-28_1.json
+Found inserted log in TestAdaptSimpleTypoWithGuidance at 2023-08-08 08:14:00+00:00
+Found inserted log in TestThreeSum at 2023-08-13 01:53:00+00:00
+Found inserted log in TestAdaptTeslaRevenue at 2023-08-13 01:53:00+00:00
+Found inserted log in TestFunctionCodeGeneration at 2023-08-20 08:12:35+00:00
+Found inserted log in TestPasswordGenerator_Easy at 2023-08-16 08:14:00+00:00
+Found inserted log in TestAdaptLink at 2023-08-18 08:14:00+00:00
+Found inserted log in TestReadFile at 2023-08-13 01:10:00+00:00
+Found inserted log in TestReturnCode_Tests at 2023-08-13 08:13:00+00:00
+Found inserted log in TestSearch at 2023-08-16 08:14:00+00:00
+Found inserted log in TestReturnCode_Modify at 2023-08-19 08:12:39+00:00
+Found inserted log in TestWriteFile at 2023-08-24 08:14:22+00:00
+Found inserted log in TestReturnCode_Write at 2023-08-13 01:53:00+00:00
+Found inserted log in TestReturnCode_Simple at 2023-08-10 08:14:00+00:00
+Found inserted log in TestBasicMemory at 2023-08-23 08:13:41+00:00
+Found inserted log in TestDebugSimpleTypoWithGuidance at 2023-08-16 08:14:00+00:00
+Found inserted log in TestDebugSimpleTypoWithoutGuidance at 2023-08-30 08:15:08+00:00
+Found inserted log in TestDebugMultipleTypo at 2023-08-20 08:12:35+00:00
+Found inserted log in TestRememberMultipleIds at 2023-08-13 08:13:00+00:00
+Found inserted log in TestThreeSum at 2023-08-13 01:53:00+00:00
+Found inserted log in TestFunctionCodeGeneration at 2023-08-20 08:12:35+00:00
+Found inserted log in TestRememberMultipleIdsWithNoise at 2023-08-13 01:10:00+00:00
+Found inserted log in TestPasswordGenerator_Easy at 2023-08-16 08:14:00+00:00
+Found inserted log in TestRememberMultiplePhrasesWithNoise at 2023-08-13 01:10:00+00:00
+Found inserted log in TestReadFile at 2023-08-13 01:10:00+00:00
+Found inserted log in TestSearch at 2023-08-16 08:14:00+00:00
+Found inserted log in TestBasicRetrieval at 2023-08-16 08:14:00+00:00
+Found inserted log in TestWriteFile at 2023-08-24 08:14:22+00:00
+Found inserted log in TestRevenueRetrieval at 2023-08-13 01:53:00+00:00
+Found inserted log in TestBasicMemory at 2023-08-23 08:13:41+00:00
+Found inserted log in TestRetrieval3 at 2023-08-12 17:24:00+00:00
+Found inserted log in TestRememberGoal_Advanced at 2023-08-30 08:15:08+00:00
+Found inserted log in TestRememberGoal_Medium at 2023-08-27 08:13:37+00:00
+Found inserted log in TestRememberMultipleIds at 2023-08-13 08:13:00+00:00
+Found inserted log in TestRememberMultipleIdsWithNoise at 2023-08-13 01:10:00+00:00
+Found inserted log in TestRememberGoal_Simple at 2023-08-13 01:10:00+00:00
+Found inserted log in TestWrite5FilesWithArray at 2023-08-17 08:13:35+00:00
+Found inserted log in TestRememberMultiplePhrasesWithNoise at 2023-08-13 01:10:00+00:00
+Found inserted log in TestWrite6Files at 2023-08-28 08:14:54+00:00
+Saving to results/training_iteration_4/2023-09-21_09-50-41_1.json
+Found inserted log in TestBasicRetrieval at 2023-08-16 08:14:00+00:00
+Found inserted log in TestAdaptSimpleTypoWithGuidance at 2023-08-08 08:14:00+00:00
+Found inserted log in TestRevenueRetrieval at 2023-08-13 01:53:00+00:00
+Found inserted log in TestAdaptTeslaRevenue at 2023-08-13 01:53:00+00:00
+Found inserted log in TestRetrieval3 at 2023-08-12 17:24:00+00:00
+Found inserted log in TestAdaptLink at 2023-08-18 08:14:00+00:00
+Found inserted log in TestRememberGoal_Advanced at 2023-08-30 08:15:08+00:00
+Found inserted log in TestRememberGoal_Medium at 2023-08-27 08:13:37+00:00
+Found inserted log in TestReturnCode_Tests at 2023-08-13 08:13:00+00:00
+Found inserted log in TestReturnCode_Modify at 2023-08-19 08:12:39+00:00
+Found inserted log in TestReturnCode_Write at 2023-08-13 01:53:00+00:00
+Found inserted log in TestRememberGoal_Simple at 2023-08-13 01:10:00+00:00
+Found inserted log in TestReturnCode_Simple at 2023-08-10 08:14:00+00:00
+Found inserted log in TestDebugSimpleTypoWithGuidance at 2023-08-16 08:14:00+00:00
+Found inserted log in TestWrite5FilesWithArray at 2023-08-17 08:13:35+00:00
+Found inserted log in TestWrite6Files at 2023-08-28 08:14:54+00:00
+Saving to results/training_iteration_4/2023-09-21_09-52-07_1.json
+Found inserted log in TestDebugSimpleTypoWithoutGuidance at 2023-08-30 08:15:08+00:00
+An error occurred: Failed to convert the response to a number. Retrying... (attempt 1)
+Found inserted log in TestDebugMultipleTypo at 2023-08-20 08:12:35+00:00
+Found inserted log in TestThreeSum at 2023-08-13 01:53:00+00:00
+Found inserted log in TestFunctionCodeGeneration at 2023-08-20 08:12:35+00:00
+Found inserted log in TestPasswordGenerator_Easy at 2023-08-16 08:14:00+00:00
+Found inserted log in TestReadFile at 2023-08-13 01:10:00+00:00
+Found inserted log in TestSearch at 2023-08-16 08:14:00+00:00
+Found inserted log in TestWriteFile at 2023-08-24 08:14:22+00:00
+Found inserted log in TestBasicMemory at 2023-08-23 08:13:41+00:00
+Found inserted log in TestRememberMultipleIds at 2023-08-13 08:13:00+00:00
+Found inserted log in TestRememberMultipleIdsWithNoise at 2023-08-13 01:10:00+00:00
+Found inserted log in TestRememberMultiplePhrasesWithNoise at 2023-08-13 01:10:00+00:00
+Found inserted log in TestBasicRetrieval at 2023-08-16 08:14:00+00:00
+Found inserted log in TestRevenueRetrieval at 2023-08-13 01:53:00+00:00
+Found inserted log in TestRetrieval3 at 2023-08-12 17:24:00+00:00
+Found inserted log in TestRememberGoal_Advanced at 2023-08-30 08:15:08+00:00
+Found inserted log in TestRememberGoal_Medium at 2023-08-27 08:13:37+00:00
+An error occurred: You exceeded your current quota, please check your plan and billing details.. Retrying... (attempt 1)
+An error occurred: You exceeded your current quota, please check your plan and billing details.. Retrying... (attempt 2)
+An error occurred: You exceeded your current quota, please check your plan and billing details.. Retrying... (attempt 3)
+An error occurred: You exceeded your current quota, please check your plan and billing details.. Retrying... (attempt 4)
+An error occurred: You exceeded your current quota, please check your plan and billing details.. Retrying... (attempt 5)
+An error occurred: You exceeded your current quota, please check your plan and billing details.. Retrying... (attempt 6)
+Error: None
+An error occurred: You exceeded your current quota, please check your plan and billing details.. Retrying... (attempt 1)
+An error occurred: You exceeded your current quota, please check your plan and billing details.. Retrying... (attempt 1)
+An error occurred: You exceeded your current quota, please check your plan and billing details.. Retrying... (attempt 2)
+An error occurred: You exceeded your current quota, please check your plan and billing details.. Retrying... (attempt 2)
+An error occurred: You exceeded your current quota, please check your plan and billing details.. Retrying... (attempt 3)
+An error occurred: You exceeded your current quota, please check your plan and billing details.. Retrying... (attempt 3)
+An error occurred: You exceeded your current quota, please check your plan and billing details.. Retrying... (attempt 4)
+An error occurred: You exceeded your current quota, please check your plan and billing details.. Retrying... (attempt 4)
+An error occurred: You exceeded your current quota, please check your plan and billing details.. Retrying... (attempt 5)
+An error occurred: You exceeded your current quota, please check your plan and billing details.. Retrying... (attempt 5)
+An error occurred: You exceeded your current quota, please check your plan and billing details.. Retrying... (attempt 6)

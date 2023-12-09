@@ -3,20 +3,24 @@
         "difficulty": "basic",
         "data_path": "agbenchmark/challenges/memory/m1_id/data.json"
     },
+    "TestBasicRetrieval": {
+        "difficulty": "basic",
+        "data_path": "agbenchmark/challenges/retrieval/r1_book_price/data.json"
+    },
     "TestReadFile": {
         "difficulty": "interface",
-        "data_path": "agbenchmark/challenges/abilities/read_file/data.json"
+        "data_path": "agbenchmark/challenges/interface/read_file/data.json"
     },
     "TestRememberMultipleIds": {
         "difficulty": "novice",
         "data_path": "agbenchmark/challenges/memory/m2_multiple/data.json"
     },
-    "TestThreeSum": {
-        "difficulty": "advanced",
-        "data_path": "agbenchmark/challenges/verticals/code/d3.1_three_sum/data.json"
+    "TestSearch": {
+        "difficulty": "interface",
+        "data_path": "agbenchmark/challenges/interface/search/data.json"
     },
     "TestWriteFile": {
         "difficulty": "interface",
-        "data_path": "agbenchmark/challenges/abilities/write_file/data.json"
+        "data_path": "agbenchmark/challenges/interface/write_file/data.json"
     }
 }

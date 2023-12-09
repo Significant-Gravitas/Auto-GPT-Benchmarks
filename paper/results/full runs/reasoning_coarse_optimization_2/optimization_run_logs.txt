@@ -1,0 +1,407 @@
+Iteration No: 1 started. Evaluating function at random point.
+Found inserted log in TestAdaptSimpleTypoWithGuidance at 2023-08-06 08:12:00+00:00
+Found inserted log in TestAdaptTeslaRevenue at 2023-08-08 08:14:00+00:00
+Found inserted log in TestAdaptLink at 2023-08-08 08:14:00+00:00
+Found inserted log in TestReturnCode_Tests at 2023-08-06 08:12:00+00:00
+Found inserted log in TestReturnCode_Modify at 2023-08-13 02:18:00+00:00
+Found inserted log in TestReturnCode_Write at 2023-08-06 08:12:00+00:00
+Found inserted log in TestReturnCode_Simple at 2023-08-04 08:14:00+00:00
+Found inserted log in TestDebugSimpleTypoWithGuidance at 2023-08-04 08:14:00+00:00
+Found inserted log in TestDebugSimpleTypoWithoutGuidance at 2023-08-05 08:12:00+00:00
+Found inserted log in TestDebugMultipleTypo at 2023-08-12 17:24:00+00:00
+Found inserted log in TestThreeSum at 2023-08-13 01:53:00+00:00
+Found inserted log in TestFunctionCodeGeneration at 2023-08-06 08:12:00+00:00
+Found inserted log in TestPasswordGenerator_Easy at 2023-08-08 08:14:00+00:00
+Found inserted log in TestWebApp_ListAnimals at 2023-08-10 08:14:00+00:00
+Found inserted log in TestPlanCreation at 2023-08-06 08:12:00+00:00
+Found inserted log in TestReadFile at 2023-08-06 08:12:00+00:00
+Found inserted log in TestSearch at 2023-08-04 08:14:00+00:00
+Found inserted log in TestWriteFile at 2023-08-05 08:12:00+00:00
+Found inserted log in TestBasicMemory at 2023-08-04 08:14:00+00:00
+Found inserted log in TestRememberMultipleIds at 2023-08-13 01:10:00+00:00
+Found inserted log in TestRememberMultipleIdsWithNoise at 2023-08-13 01:10:00+00:00
+Found inserted log in TestRememberMultiplePhrasesWithNoise at 2023-08-13 01:10:00+00:00
+Found inserted log in TestBasicRetrieval at 2023-08-04 08:14:00+00:00
+Found inserted log in TestRevenueRetrieval at 2023-08-04 08:14:00+00:00
+Found inserted log in TestRetrieval3 at 2023-08-12 17:24:00+00:00
+Found inserted log in TestRememberGoal_Hard at 2023-08-27 08:13:37+00:00
+Found inserted log in TestRememberGoal_Advanced at 2023-08-27 08:13:37+00:00
+Found inserted log in TestRememberGoal_Simple at 2023-08-13 01:10:00+00:00
+Found inserted log in TestWrite5FilesWithArray at 2023-08-12 17:24:00+00:00
+Found inserted log in TestWrite6Files at 2023-08-30 08:15:08+00:00
+Saving to results/reasoning_coarse_optimization_2/2023-09-17_16-21-47_1.json
+Iteration No: 1 ended. Evaluation done at random point.
+Time taken: 305.6666
+Function value obtained: -0.8242
+Current minimum: -0.8242
+Iteration No: 2 started. Evaluating function at random point.
+Found inserted log in TestAdaptSimpleTypoWithGuidance at 2023-08-06 08:12:00+00:00
+Found inserted log in TestAdaptTeslaRevenue at 2023-08-08 08:14:00+00:00
+Found inserted log in TestAdaptLink at 2023-08-08 08:14:00+00:00
+Found inserted log in TestReturnCode_Tests at 2023-08-06 08:12:00+00:00
+Found inserted log in TestReturnCode_Modify at 2023-08-13 02:18:00+00:00
+Found inserted log in TestReturnCode_Write at 2023-08-06 08:12:00+00:00
+Found inserted log in TestReturnCode_Simple at 2023-08-04 08:14:00+00:00
+Found inserted log in TestDebugSimpleTypoWithGuidance at 2023-08-04 08:14:00+00:00
+Found inserted log in TestDebugSimpleTypoWithoutGuidance at 2023-08-05 08:12:00+00:00
+Found inserted log in TestDebugMultipleTypo at 2023-08-12 17:24:00+00:00
+Found inserted log in TestThreeSum at 2023-08-13 01:53:00+00:00
+Found inserted log in TestFunctionCodeGeneration at 2023-08-06 08:12:00+00:00
+Found inserted log in TestPasswordGenerator_Easy at 2023-08-08 08:14:00+00:00
+Found inserted log in TestWebApp_ListAnimals at 2023-08-10 08:14:00+00:00
+Found inserted log in TestPlanCreation at 2023-08-06 08:12:00+00:00
+Found inserted log in TestReadFile at 2023-08-06 08:12:00+00:00
+Found inserted log in TestSearch at 2023-08-04 08:14:00+00:00
+Found inserted log in TestWriteFile at 2023-08-05 08:12:00+00:00
+Found inserted log in TestBasicMemory at 2023-08-04 08:14:00+00:00
+Found inserted log in TestRememberMultipleIds at 2023-08-13 01:10:00+00:00
+Found inserted log in TestRememberMultipleIdsWithNoise at 2023-08-13 01:10:00+00:00
+Found inserted log in TestRememberMultiplePhrasesWithNoise at 2023-08-13 01:10:00+00:00
+Found inserted log in TestBasicRetrieval at 2023-08-04 08:14:00+00:00
+Found inserted log in TestRevenueRetrieval at 2023-08-04 08:14:00+00:00
+Found inserted log in TestRetrieval3 at 2023-08-12 17:24:00+00:00
+Found inserted log in TestRememberGoal_Hard at 2023-08-27 08:13:37+00:00
+Found inserted log in TestRememberGoal_Advanced at 2023-08-27 08:13:37+00:00
+Found inserted log in TestRememberGoal_Simple at 2023-08-13 01:10:00+00:00
+Found inserted log in TestWrite5FilesWithArray at 2023-08-12 17:24:00+00:00
+Found inserted log in TestWrite6Files at 2023-08-30 08:15:08+00:00
+Saving to results/reasoning_coarse_optimization_2/2023-09-17_16-26-52_1.json
+Iteration No: 2 ended. Evaluation done at random point.
+Time taken: 49.8759
+Function value obtained: -0.7418
+Current minimum: -0.8242
+Iteration No: 3 started. Evaluating function at random point.
+Found inserted log in TestAdaptSimpleTypoWithGuidance at 2023-08-06 08:12:00+00:00
+Found inserted log in TestAdaptTeslaRevenue at 2023-08-08 08:14:00+00:00
+Found inserted log in TestAdaptLink at 2023-08-08 08:14:00+00:00
+Found inserted log in TestReturnCode_Tests at 2023-08-06 08:12:00+00:00
+Found inserted log in TestReturnCode_Modify at 2023-08-13 02:18:00+00:00
+Found inserted log in TestReturnCode_Write at 2023-08-06 08:12:00+00:00
+Found inserted log in TestReturnCode_Simple at 2023-08-04 08:14:00+00:00
+Found inserted log in TestDebugSimpleTypoWithGuidance at 2023-08-04 08:14:00+00:00
+Found inserted log in TestDebugSimpleTypoWithoutGuidance at 2023-08-05 08:12:00+00:00
+Found inserted log in TestDebugMultipleTypo at 2023-08-12 17:24:00+00:00
+Found inserted log in TestThreeSum at 2023-08-13 01:53:00+00:00
+Found inserted log in TestFunctionCodeGeneration at 2023-08-06 08:12:00+00:00
+Found inserted log in TestPasswordGenerator_Easy at 2023-08-08 08:14:00+00:00
+Found inserted log in TestWebApp_ListAnimals at 2023-08-10 08:14:00+00:00
+Found inserted log in TestPlanCreation at 2023-08-06 08:12:00+00:00
+Found inserted log in TestReadFile at 2023-08-06 08:12:00+00:00
+Found inserted log in TestSearch at 2023-08-04 08:14:00+00:00
+Found inserted log in TestWriteFile at 2023-08-05 08:12:00+00:00
+Found inserted log in TestBasicMemory at 2023-08-04 08:14:00+00:00
+Found inserted log in TestRememberMultipleIds at 2023-08-13 01:10:00+00:00
+Found inserted log in TestRememberMultipleIdsWithNoise at 2023-08-13 01:10:00+00:00
+Found inserted log in TestRememberMultiplePhrasesWithNoise at 2023-08-13 01:10:00+00:00
+Found inserted log in TestBasicRetrieval at 2023-08-04 08:14:00+00:00
+Found inserted log in TestRevenueRetrieval at 2023-08-04 08:14:00+00:00
+Found inserted log in TestRetrieval3 at 2023-08-12 17:24:00+00:00
+Found inserted log in TestRememberGoal_Hard at 2023-08-27 08:13:37+00:00
+Found inserted log in TestRememberGoal_Advanced at 2023-08-27 08:13:37+00:00
+Found inserted log in TestRememberGoal_Simple at 2023-08-13 01:10:00+00:00
+Found inserted log in TestWrite5FilesWithArray at 2023-08-12 17:24:00+00:00
+Found inserted log in TestWrite6Files at 2023-08-30 08:15:08+00:00
+Saving to results/reasoning_coarse_optimization_2/2023-09-17_16-27-42_1.json
+Iteration No: 3 ended. Evaluation done at random point.
+Time taken: 47.0459
+Function value obtained: -0.8022
+Current minimum: -0.8242
+Iteration No: 4 started. Evaluating function at random point.
+Found inserted log in TestAdaptSimpleTypoWithGuidance at 2023-08-06 08:12:00+00:00
+Found inserted log in TestAdaptTeslaRevenue at 2023-08-08 08:14:00+00:00
+Found inserted log in TestAdaptLink at 2023-08-08 08:14:00+00:00
+Found inserted log in TestReturnCode_Tests at 2023-08-06 08:12:00+00:00
+Found inserted log in TestReturnCode_Modify at 2023-08-13 02:18:00+00:00
+Found inserted log in TestReturnCode_Write at 2023-08-06 08:12:00+00:00
+Found inserted log in TestReturnCode_Simple at 2023-08-04 08:14:00+00:00
+Found inserted log in TestDebugSimpleTypoWithGuidance at 2023-08-04 08:14:00+00:00
+Found inserted log in TestDebugSimpleTypoWithoutGuidance at 2023-08-05 08:12:00+00:00
+Found inserted log in TestDebugMultipleTypo at 2023-08-12 17:24:00+00:00
+Found inserted log in TestThreeSum at 2023-08-13 01:53:00+00:00
+Found inserted log in TestFunctionCodeGeneration at 2023-08-06 08:12:00+00:00
+Found inserted log in TestPasswordGenerator_Easy at 2023-08-08 08:14:00+00:00
+Found inserted log in TestWebApp_ListAnimals at 2023-08-10 08:14:00+00:00
+Found inserted log in TestPlanCreation at 2023-08-06 08:12:00+00:00
+Found inserted log in TestReadFile at 2023-08-06 08:12:00+00:00
+Found inserted log in TestSearch at 2023-08-04 08:14:00+00:00
+Found inserted log in TestWriteFile at 2023-08-05 08:12:00+00:00
+Found inserted log in TestBasicMemory at 2023-08-04 08:14:00+00:00
+Found inserted log in TestRememberMultipleIds at 2023-08-13 01:10:00+00:00
+Found inserted log in TestRememberMultipleIdsWithNoise at 2023-08-13 01:10:00+00:00
+Found inserted log in TestRememberMultiplePhrasesWithNoise at 2023-08-13 01:10:00+00:00
+Found inserted log in TestBasicRetrieval at 2023-08-04 08:14:00+00:00
+Found inserted log in TestRevenueRetrieval at 2023-08-04 08:14:00+00:00
+Found inserted log in TestRetrieval3 at 2023-08-12 17:24:00+00:00
+Found inserted log in TestRememberGoal_Hard at 2023-08-27 08:13:37+00:00
+Found inserted log in TestRememberGoal_Advanced at 2023-08-27 08:13:37+00:00
+Found inserted log in TestRememberGoal_Simple at 2023-08-13 01:10:00+00:00
+Found inserted log in TestWrite5FilesWithArray at 2023-08-12 17:24:00+00:00
+Found inserted log in TestWrite6Files at 2023-08-30 08:15:08+00:00
+Saving to results/reasoning_coarse_optimization_2/2023-09-17_16-28-29_1.json
+Iteration No: 4 ended. Evaluation done at random point.
+Time taken: 299.1184
+Function value obtained: -0.6758
+Current minimum: -0.8242
+Iteration No: 5 started. Evaluating function at random point.
+Found inserted log in TestAdaptSimpleTypoWithGuidance at 2023-08-06 08:12:00+00:00
+Found inserted log in TestAdaptTeslaRevenue at 2023-08-08 08:14:00+00:00
+Found inserted log in TestAdaptLink at 2023-08-08 08:14:00+00:00
+Found inserted log in TestReturnCode_Tests at 2023-08-06 08:12:00+00:00
+Found inserted log in TestReturnCode_Modify at 2023-08-13 02:18:00+00:00
+Found inserted log in TestReturnCode_Write at 2023-08-06 08:12:00+00:00
+Found inserted log in TestReturnCode_Simple at 2023-08-04 08:14:00+00:00
+Found inserted log in TestDebugSimpleTypoWithGuidance at 2023-08-04 08:14:00+00:00
+Found inserted log in TestDebugSimpleTypoWithoutGuidance at 2023-08-05 08:12:00+00:00
+Found inserted log in TestDebugMultipleTypo at 2023-08-12 17:24:00+00:00
+Found inserted log in TestThreeSum at 2023-08-13 01:53:00+00:00
+Found inserted log in TestFunctionCodeGeneration at 2023-08-06 08:12:00+00:00
+Found inserted log in TestPasswordGenerator_Easy at 2023-08-08 08:14:00+00:00
+Found inserted log in TestWebApp_ListAnimals at 2023-08-10 08:14:00+00:00
+Found inserted log in TestPlanCreation at 2023-08-06 08:12:00+00:00
+Found inserted log in TestReadFile at 2023-08-06 08:12:00+00:00
+Found inserted log in TestSearch at 2023-08-04 08:14:00+00:00
+Found inserted log in TestWriteFile at 2023-08-05 08:12:00+00:00
+Found inserted log in TestBasicMemory at 2023-08-04 08:14:00+00:00
+Found inserted log in TestRememberMultipleIds at 2023-08-13 01:10:00+00:00
+Found inserted log in TestRememberMultipleIdsWithNoise at 2023-08-13 01:10:00+00:00
+Found inserted log in TestRememberMultiplePhrasesWithNoise at 2023-08-13 01:10:00+00:00
+Found inserted log in TestBasicRetrieval at 2023-08-04 08:14:00+00:00
+Found inserted log in TestRevenueRetrieval at 2023-08-04 08:14:00+00:00
+Found inserted log in TestRetrieval3 at 2023-08-12 17:24:00+00:00
+Found inserted log in TestRememberGoal_Hard at 2023-08-27 08:13:37+00:00
+Found inserted log in TestRememberGoal_Advanced at 2023-08-27 08:13:37+00:00
+Found inserted log in TestRememberGoal_Simple at 2023-08-13 01:10:00+00:00
+Found inserted log in TestWrite5FilesWithArray at 2023-08-12 17:24:00+00:00
+Found inserted log in TestWrite6Files at 2023-08-30 08:15:08+00:00
+Saving to results/reasoning_coarse_optimization_2/2023-09-17_16-33-29_1.json
+Iteration No: 5 ended. Evaluation done at random point.
+Time taken: 59.7622
+Function value obtained: -0.7802
+Current minimum: -0.8242
+Iteration No: 6 started. Evaluating function at random point.
+Found inserted log in TestAdaptSimpleTypoWithGuidance at 2023-08-06 08:12:00+00:00
+Found inserted log in TestAdaptTeslaRevenue at 2023-08-08 08:14:00+00:00
+Found inserted log in TestAdaptLink at 2023-08-08 08:14:00+00:00
+Found inserted log in TestReturnCode_Tests at 2023-08-06 08:12:00+00:00
+Found inserted log in TestReturnCode_Modify at 2023-08-13 02:18:00+00:00
+Found inserted log in TestReturnCode_Write at 2023-08-06 08:12:00+00:00
+Found inserted log in TestReturnCode_Simple at 2023-08-04 08:14:00+00:00
+Found inserted log in TestDebugSimpleTypoWithGuidance at 2023-08-04 08:14:00+00:00
+Found inserted log in TestDebugSimpleTypoWithoutGuidance at 2023-08-05 08:12:00+00:00
+Found inserted log in TestDebugMultipleTypo at 2023-08-12 17:24:00+00:00
+Found inserted log in TestThreeSum at 2023-08-13 01:53:00+00:00
+Found inserted log in TestFunctionCodeGeneration at 2023-08-06 08:12:00+00:00
+Found inserted log in TestPasswordGenerator_Easy at 2023-08-08 08:14:00+00:00
+Found inserted log in TestWebApp_ListAnimals at 2023-08-10 08:14:00+00:00
+Found inserted log in TestPlanCreation at 2023-08-06 08:12:00+00:00
+Found inserted log in TestReadFile at 2023-08-06 08:12:00+00:00
+Found inserted log in TestSearch at 2023-08-04 08:14:00+00:00
+Found inserted log in TestWriteFile at 2023-08-05 08:12:00+00:00
+Found inserted log in TestBasicMemory at 2023-08-04 08:14:00+00:00
+Found inserted log in TestRememberMultipleIds at 2023-08-13 01:10:00+00:00
+Found inserted log in TestRememberMultipleIdsWithNoise at 2023-08-13 01:10:00+00:00
+Found inserted log in TestRememberMultiplePhrasesWithNoise at 2023-08-13 01:10:00+00:00
+Found inserted log in TestBasicRetrieval at 2023-08-04 08:14:00+00:00
+Found inserted log in TestRevenueRetrieval at 2023-08-04 08:14:00+00:00
+Found inserted log in TestRetrieval3 at 2023-08-12 17:24:00+00:00
+Found inserted log in TestRememberGoal_Hard at 2023-08-27 08:13:37+00:00
+Found inserted log in TestRememberGoal_Advanced at 2023-08-27 08:13:37+00:00
+Found inserted log in TestRememberGoal_Simple at 2023-08-13 01:10:00+00:00
+Found inserted log in TestWrite5FilesWithArray at 2023-08-12 17:24:00+00:00
+Found inserted log in TestWrite6Files at 2023-08-30 08:15:08+00:00
+Saving to results/reasoning_coarse_optimization_2/2023-09-17_16-34-28_1.json
+Iteration No: 6 ended. Evaluation done at random point.
+Time taken: 53.0695
+Function value obtained: -0.7418
+Current minimum: -0.8242
+Iteration No: 7 started. Evaluating function at random point.
+Found inserted log in TestAdaptSimpleTypoWithGuidance at 2023-08-06 08:12:00+00:00
+Found inserted log in TestAdaptTeslaRevenue at 2023-08-08 08:14:00+00:00
+Found inserted log in TestAdaptLink at 2023-08-08 08:14:00+00:00
+Found inserted log in TestReturnCode_Tests at 2023-08-06 08:12:00+00:00
+Found inserted log in TestReturnCode_Modify at 2023-08-13 02:18:00+00:00
+Found inserted log in TestReturnCode_Write at 2023-08-06 08:12:00+00:00
+Found inserted log in TestReturnCode_Simple at 2023-08-04 08:14:00+00:00
+Found inserted log in TestDebugSimpleTypoWithGuidance at 2023-08-04 08:14:00+00:00
+Found inserted log in TestDebugSimpleTypoWithoutGuidance at 2023-08-05 08:12:00+00:00
+Found inserted log in TestDebugMultipleTypo at 2023-08-12 17:24:00+00:00
+Found inserted log in TestThreeSum at 2023-08-13 01:53:00+00:00
+Found inserted log in TestFunctionCodeGeneration at 2023-08-06 08:12:00+00:00
+Found inserted log in TestPasswordGenerator_Easy at 2023-08-08 08:14:00+00:00
+Found inserted log in TestWebApp_ListAnimals at 2023-08-10 08:14:00+00:00
+Found inserted log in TestPlanCreation at 2023-08-06 08:12:00+00:00
+Found inserted log in TestReadFile at 2023-08-06 08:12:00+00:00
+Found inserted log in TestSearch at 2023-08-04 08:14:00+00:00
+Found inserted log in TestWriteFile at 2023-08-05 08:12:00+00:00
+Found inserted log in TestBasicMemory at 2023-08-04 08:14:00+00:00
+Found inserted log in TestRememberMultipleIds at 2023-08-13 01:10:00+00:00
+Found inserted log in TestRememberMultipleIdsWithNoise at 2023-08-13 01:10:00+00:00
+Found inserted log in TestRememberMultiplePhrasesWithNoise at 2023-08-13 01:10:00+00:00
+Found inserted log in TestBasicRetrieval at 2023-08-04 08:14:00+00:00
+Found inserted log in TestRevenueRetrieval at 2023-08-04 08:14:00+00:00
+Found inserted log in TestRetrieval3 at 2023-08-12 17:24:00+00:00
+Found inserted log in TestRememberGoal_Hard at 2023-08-27 08:13:37+00:00
+Found inserted log in TestRememberGoal_Advanced at 2023-08-27 08:13:37+00:00
+Found inserted log in TestRememberGoal_Simple at 2023-08-13 01:10:00+00:00
+Found inserted log in TestWrite5FilesWithArray at 2023-08-12 17:24:00+00:00
+Found inserted log in TestWrite6Files at 2023-08-30 08:15:08+00:00
+Saving to results/reasoning_coarse_optimization_2/2023-09-17_16-35-21_1.json
+Iteration No: 7 ended. Evaluation done at random point.
+Time taken: 51.3645
+Function value obtained: -0.6978
+Current minimum: -0.8242
+Iteration No: 8 started. Evaluating function at random point.
+Found inserted log in TestAdaptSimpleTypoWithGuidance at 2023-08-06 08:12:00+00:00
+Found inserted log in TestAdaptTeslaRevenue at 2023-08-08 08:14:00+00:00
+Found inserted log in TestAdaptLink at 2023-08-08 08:14:00+00:00
+Found inserted log in TestReturnCode_Tests at 2023-08-06 08:12:00+00:00
+Found inserted log in TestReturnCode_Modify at 2023-08-13 02:18:00+00:00
+Found inserted log in TestReturnCode_Write at 2023-08-06 08:12:00+00:00
+Found inserted log in TestReturnCode_Simple at 2023-08-04 08:14:00+00:00
+Found inserted log in TestDebugSimpleTypoWithGuidance at 2023-08-04 08:14:00+00:00
+Found inserted log in TestDebugSimpleTypoWithoutGuidance at 2023-08-05 08:12:00+00:00
+Found inserted log in TestDebugMultipleTypo at 2023-08-12 17:24:00+00:00
+Found inserted log in TestThreeSum at 2023-08-13 01:53:00+00:00
+Found inserted log in TestFunctionCodeGeneration at 2023-08-06 08:12:00+00:00
+Found inserted log in TestPasswordGenerator_Easy at 2023-08-08 08:14:00+00:00
+Found inserted log in TestWebApp_ListAnimals at 2023-08-10 08:14:00+00:00
+Found inserted log in TestPlanCreation at 2023-08-06 08:12:00+00:00
+Found inserted log in TestReadFile at 2023-08-06 08:12:00+00:00
+Found inserted log in TestSearch at 2023-08-04 08:14:00+00:00
+Found inserted log in TestWriteFile at 2023-08-05 08:12:00+00:00
+Found inserted log in TestBasicMemory at 2023-08-04 08:14:00+00:00
+Found inserted log in TestRememberMultipleIds at 2023-08-13 01:10:00+00:00
+Found inserted log in TestRememberMultipleIdsWithNoise at 2023-08-13 01:10:00+00:00
+Found inserted log in TestRememberMultiplePhrasesWithNoise at 2023-08-13 01:10:00+00:00
+Found inserted log in TestBasicRetrieval at 2023-08-04 08:14:00+00:00
+Found inserted log in TestRevenueRetrieval at 2023-08-04 08:14:00+00:00
+Found inserted log in TestRetrieval3 at 2023-08-12 17:24:00+00:00
+Found inserted log in TestRememberGoal_Hard at 2023-08-27 08:13:37+00:00
+Found inserted log in TestRememberGoal_Advanced at 2023-08-27 08:13:37+00:00
+Found inserted log in TestRememberGoal_Simple at 2023-08-13 01:10:00+00:00
+Found inserted log in TestWrite5FilesWithArray at 2023-08-12 17:24:00+00:00
+Found inserted log in TestWrite6Files at 2023-08-30 08:15:08+00:00
+Saving to results/reasoning_coarse_optimization_2/2023-09-17_16-36-13_1.json
+Iteration No: 8 ended. Evaluation done at random point.
+Time taken: 247.4872
+Function value obtained: -0.8242
+Current minimum: -0.8242
+Iteration No: 9 started. Evaluating function at random point.
+Found inserted log in TestAdaptSimpleTypoWithGuidance at 2023-08-06 08:12:00+00:00
+Found inserted log in TestAdaptTeslaRevenue at 2023-08-08 08:14:00+00:00
+Found inserted log in TestAdaptLink at 2023-08-08 08:14:00+00:00
+Found inserted log in TestReturnCode_Tests at 2023-08-06 08:12:00+00:00
+Found inserted log in TestReturnCode_Modify at 2023-08-13 02:18:00+00:00
+Found inserted log in TestReturnCode_Write at 2023-08-06 08:12:00+00:00
+Found inserted log in TestReturnCode_Simple at 2023-08-04 08:14:00+00:00
+Found inserted log in TestDebugSimpleTypoWithGuidance at 2023-08-04 08:14:00+00:00
+Found inserted log in TestDebugSimpleTypoWithoutGuidance at 2023-08-05 08:12:00+00:00
+Found inserted log in TestDebugMultipleTypo at 2023-08-12 17:24:00+00:00
+Found inserted log in TestThreeSum at 2023-08-13 01:53:00+00:00
+Found inserted log in TestFunctionCodeGeneration at 2023-08-06 08:12:00+00:00
+Found inserted log in TestPasswordGenerator_Easy at 2023-08-08 08:14:00+00:00
+Found inserted log in TestWebApp_ListAnimals at 2023-08-10 08:14:00+00:00
+Found inserted log in TestPlanCreation at 2023-08-06 08:12:00+00:00
+Found inserted log in TestReadFile at 2023-08-06 08:12:00+00:00
+Found inserted log in TestSearch at 2023-08-04 08:14:00+00:00
+Found inserted log in TestWriteFile at 2023-08-05 08:12:00+00:00
+Found inserted log in TestBasicMemory at 2023-08-04 08:14:00+00:00
+Found inserted log in TestRememberMultipleIds at 2023-08-13 01:10:00+00:00
+Found inserted log in TestRememberMultipleIdsWithNoise at 2023-08-13 01:10:00+00:00
+Found inserted log in TestRememberMultiplePhrasesWithNoise at 2023-08-13 01:10:00+00:00
+Found inserted log in TestBasicRetrieval at 2023-08-04 08:14:00+00:00
+Found inserted log in TestRevenueRetrieval at 2023-08-04 08:14:00+00:00
+Found inserted log in TestRetrieval3 at 2023-08-12 17:24:00+00:00
+Found inserted log in TestRememberGoal_Hard at 2023-08-27 08:13:37+00:00
+Found inserted log in TestRememberGoal_Advanced at 2023-08-27 08:13:37+00:00
+Found inserted log in TestRememberGoal_Simple at 2023-08-13 01:10:00+00:00
+Found inserted log in TestWrite5FilesWithArray at 2023-08-12 17:24:00+00:00
+Found inserted log in TestWrite6Files at 2023-08-30 08:15:08+00:00
+Saving to results/reasoning_coarse_optimization_2/2023-09-17_16-40-20_1.json
+Iteration No: 9 ended. Evaluation done at random point.
+Time taken: 54.8704
+Function value obtained: -0.7692
+Current minimum: -0.8242
+Iteration No: 10 started. Evaluating function at random point.
+Found inserted log in TestAdaptSimpleTypoWithGuidance at 2023-08-06 08:12:00+00:00
+Found inserted log in TestAdaptTeslaRevenue at 2023-08-08 08:14:00+00:00
+Found inserted log in TestAdaptLink at 2023-08-08 08:14:00+00:00
+An error occurred: Failed to convert the response to a number. Retrying... (attempt 1)
+Found inserted log in TestReturnCode_Tests at 2023-08-06 08:12:00+00:00
+Found inserted log in TestReturnCode_Modify at 2023-08-13 02:18:00+00:00
+Found inserted log in TestReturnCode_Write at 2023-08-06 08:12:00+00:00
+Found inserted log in TestReturnCode_Simple at 2023-08-04 08:14:00+00:00
+Found inserted log in TestDebugSimpleTypoWithGuidance at 2023-08-04 08:14:00+00:00
+Found inserted log in TestDebugSimpleTypoWithoutGuidance at 2023-08-05 08:12:00+00:00
+Found inserted log in TestDebugMultipleTypo at 2023-08-12 17:24:00+00:00
+Found inserted log in TestThreeSum at 2023-08-13 01:53:00+00:00
+Found inserted log in TestFunctionCodeGeneration at 2023-08-06 08:12:00+00:00
+Found inserted log in TestPasswordGenerator_Easy at 2023-08-08 08:14:00+00:00
+Found inserted log in TestWebApp_ListAnimals at 2023-08-10 08:14:00+00:00
+Found inserted log in TestPlanCreation at 2023-08-06 08:12:00+00:00
+Found inserted log in TestReadFile at 2023-08-06 08:12:00+00:00
+Found inserted log in TestSearch at 2023-08-04 08:14:00+00:00
+Found inserted log in TestWriteFile at 2023-08-05 08:12:00+00:00
+Found inserted log in TestBasicMemory at 2023-08-04 08:14:00+00:00
+Found inserted log in TestRememberMultipleIds at 2023-08-13 01:10:00+00:00
+Found inserted log in TestRememberMultipleIdsWithNoise at 2023-08-13 01:10:00+00:00
+Found inserted log in TestRememberMultiplePhrasesWithNoise at 2023-08-13 01:10:00+00:00
+Found inserted log in TestBasicRetrieval at 2023-08-04 08:14:00+00:00
+Found inserted log in TestRevenueRetrieval at 2023-08-04 08:14:00+00:00
+Found inserted log in TestRetrieval3 at 2023-08-12 17:24:00+00:00
+Found inserted log in TestRememberGoal_Hard at 2023-08-27 08:13:37+00:00
+Found inserted log in TestRememberGoal_Advanced at 2023-08-27 08:13:37+00:00
+Found inserted log in TestRememberGoal_Simple at 2023-08-13 01:10:00+00:00
+An error occurred: Failed to convert the response to a number. Retrying... (attempt 1)
+Found inserted log in TestWrite5FilesWithArray at 2023-08-12 17:24:00+00:00
+Found inserted log in TestWrite6Files at 2023-08-30 08:15:08+00:00
+Saving to results/reasoning_coarse_optimization_2/2023-09-17_16-41-15_1.json
+Iteration No: 10 ended. Evaluation done at random point.
+Time taken: 281.9674
+Function value obtained: -0.7802
+Current minimum: -0.8242
+Result of reasoning_included = 1:           fun: -0.8241758241758241
+            x: [1, 1, 1, 'trinary', 1, 0, 1]
+    func_vals: [-8.242e-01 -7.418e-01 -8.022e-01 -6.758e-01 -7.802e-01
+                -7.418e-01 -6.978e-01 -8.242e-01 -7.692e-01 -7.802e-01]
+      x_iters: [[1, 1, 1, 'trinary', 1, 0, 1], [0, 0, 0, 'trinary', 0, 0, 1], [0, 1, 0, 'trinary', 0, 1, 1], [1, 1, 1, 'percentage', 1, 1, 1], [0, 0, 0, 'percentage', 0, 0, 1], [0, 0, 0, 'trinary', 0, 1, 1], [0, 1, 1, 'binary', 0, 1, 1], [0, 0, 1, 'trinary', 1, 1, 1], [1, 0, 0, 'percentage', 0, 1, 1], [1, 1, 1, 'binary', 1, 1, 1]]
+       models: [GaussianProcessRegressor(kernel=1**2 * Matern(length_scale=[1, 1, 1, 1, 1, 1, 1], nu=2.5) + WhiteKernel(noise_level=1),
+                                        n_restarts_optimizer=2, noise='gaussian',
+                                        normalize_y=True, random_state=209652396)]
+        space: Space([Integer(low=0, high=1, prior='uniform', transform='normalize'),
+                      Integer(low=0, high=1, prior='uniform', transform='normalize'),
+                      Integer(low=0, high=1, prior='uniform', transform='normalize'),
+                      Categorical(categories=('binary', 'trinary', 'percentage'), prior=None),
+                      Integer(low=0, high=1, prior='uniform', transform='normalize'),
+                      Integer(low=0, high=1, prior='uniform', transform='normalize'),
+                      Categorical(categories=(1,), prior=None)])
+ random_state: RandomState(MT19937)
+        specs:     args:                    func: <function objective_function at 0x0000014D91D707C0>
+                                      dimensions: Space([Integer(low=0, high=1, prior='uniform', transform='normalize'),
+                                                         Integer(low=0, high=1, prior='uniform', transform='normalize'),
+                                                         Integer(low=0, high=1, prior='uniform', transform='normalize'),
+                                                         Categorical(categories=('binary', 'trinary', 'percentage'), prior=None),
+                                                         Integer(low=0, high=1, prior='uniform', transform='normalize'),
+                                                         Integer(low=0, high=1, prior='uniform', transform='normalize'),
+                                                         Categorical(categories=(1,), prior=None)])
+                                  base_estimator: GaussianProcessRegressor(kernel=1**2 * Matern(length_scale=[1, 1, 1, 1, 1, 1, 1], nu=2.5),
+                                                                           n_restarts_optimizer=2, noise='gaussian',
+                                                                           normalize_y=True, random_state=209652396)
+                                         n_calls: 10
+                                 n_random_starts: None
+                                n_initial_points: 10
+                         initial_point_generator: random
+                                        acq_func: gp_hedge
+                                   acq_optimizer: auto
+                                              x0: None
+                                              y0: None
+                                    random_state: RandomState(MT19937)
+                                         verbose: True
+                                        callback: [<skopt.callbacks.CheckpointSaver object at 0x0000014DA884A390>, <skopt.callbacks.VerboseCallback object at 0x0000014DC1884190>]
+                                        n_points: 10000
+                            n_restarts_optimizer: 5
+                                              xi: 0.01
+                                           kappa: 1.96
+                                          n_jobs: 1
+                                model_queue_size: None
+               function: base_minimizeBest accuracy so far: 0 with 0.8461538461538461

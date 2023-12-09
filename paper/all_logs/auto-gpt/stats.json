@@ -1,0 +1,15 @@
+{
+  "metrics": {
+    "inserted_%": "30%",
+    "Total logs": 1965,
+    "Total logs to insert": "57 with 7 unique commands",
+    "Category 0 count": 172,
+    "Category 1 count": 162,
+    "Category 2 count": 53,
+    "Simple regex filter logs": 1800,
+    "Specific regex filter logs": 1292,
+    "train_set": 109,
+    "test_set": 313,
+    "unique_challenges": 29
+  }
+}

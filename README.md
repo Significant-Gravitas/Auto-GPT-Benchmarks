@@ -1,4 +1,6 @@
-# Auto-GPT Benchmarks
+# This repo is currently deprecated. For the updated benchmark view the main repo at https://github.com/Significant-Gravitas/AutoGPT in the `benchmark` folder.
+
+### Auto-GPT Benchmarks
 
 Built for the purpose of benchmarking the performance of agents regardless of how they work.
 

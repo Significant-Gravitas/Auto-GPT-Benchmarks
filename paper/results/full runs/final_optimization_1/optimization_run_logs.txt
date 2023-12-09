@@ -1,0 +1,181 @@
+c:\Users\silen\AppData\Local\Programs\Python\Python311\Lib\site-packages\skopt\optimizer\optimizer.py:449: UserWarning: The objective has been evaluated at this point before.
+  warnings.warn("The objective has been evaluated "
+c:\Users\silen\AppData\Local\Programs\Python\Python311\Lib\site-packages\skopt\optimizer\optimizer.py:449: UserWarning: The objective has been evaluated at this point before.
+  warnings.warn("The objective has been evaluated "
+tarted. Evaluating function at random point.
+Saving to results/final_optimization_2/2023-09-17_19-22-04_1.json
+Iteration No: 2 ended. Evaluation done at random point.
+Time taken: 631.9839
+Function value obtained: -0.7446
+Current minimum: -0.8210
+Iteration No: 3 started. Evaluating function at random point.
+Saving to results/final_optimization_2/2023-09-17_19-32-36_1.json
+Iteration No: 3 ended. Evaluation done at random point.
+Time taken: 513.2479
+Function value obtained: -0.7423
+Current minimum: -0.8210
+Iteration No: 4 started. Evaluating function at random point.
+An error occurred: Failed to convert the response to a number. Retrying... (attempt 1)
+An error occurred: Failed to convert the response to a number. Retrying... (attempt 1)
+An error occurred: Failed to convert the response to a number. Retrying... (attempt 1)
+An error occurred: Failed to convert the response to a number. Retrying... (attempt 1)
+Saving to results/final_optimization_2/2023-09-17_19-41-09_1.json
+Iteration No: 4 ended. Evaluation done at random point.
+Time taken: 4589.0521
+Function value obtained: -0.6644
+Current minimum: -0.8210
+Iteration No: 5 started. Evaluating function at random point.
+An error occurred: Failed to convert the response to a number. Retrying... (attempt 1)
+An error occurred: Failed to convert the response to a number. Retrying... (attempt 1)
+An error occurred: Failed to convert the response to a number. Retrying... (attempt 1)
+An error occurred: Failed to convert the response to a number. Retrying... (attempt 1)
+Saving to results/final_optimization_2/2023-09-17_20-57-38_1.json
+Iteration No: 5 ended. Evaluation done at random point.
+Time taken: 558.8829
+Function value obtained: -0.7536
+Current minimum: -0.8210
+Iteration No: 6 started. Evaluating function at random point.
+Saving to results/final_optimization_2/2023-09-17_21-06-57_1.json
+Iteration No: 6 ended. Evaluation done at random point.
+Time taken: 454.6940
+Function value obtained: -0.7288
+Current minimum: -0.8210
+Iteration No: 7 started. Evaluating function at random point.
+Saving to results/final_optimization_2/2023-09-17_21-14-31_1.json
+Iteration No: 7 ended. Evaluation done at random point.
+Time taken: 446.6517
+Function value obtained: -0.6861
+Current minimum: -0.8210
+Iteration No: 8 started. Evaluating function at random point.
+An error occurred: Failed to convert the response to a number. Retrying... (attempt 1)
+An error occurred: Error communicating with OpenAI: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response')). Retrying... (attempt 1)
+Saving to results/final_optimization_2/2023-09-17_21-21-58_1.json
+Iteration No: 8 ended. Evaluation done at random point.
+Time taken: 3692.1294
+Function value obtained: -0.7993
+Current minimum: -0.8210
+Iteration No: 9 started. Evaluating function at random point.
+An error occurred: Failed to convert the response to a number. Retrying... (attempt 1)
+An error occurred: Failed to convert the response to a number. Retrying... (attempt 1)
+Saving to results/final_optimization_2/2023-09-17_22-23-30_1.json
+Iteration No: 9 ended. Evaluation done at random point.
+Time taken: 556.9101
+Function value obtained: -0.7536
+Current minimum: -0.8210
+Iteration No: 10 started. Evaluating function at random point.
+An error occurred: Failed to convert the response to a number. Retrying... (attempt 1)
+An error occurred: Failed to convert the response to a number. Retrying... (attempt 1)
+An error occurred: Failed to convert the response to a number. Retrying... (attempt 1)
+Saving to results/final_optimization_2/2023-09-17_22-32-47_1.json
+Iteration No: 10 ended. Evaluation done at random point.
+Time taken: 3890.6086
+Function value obtained: -0.7663
+Current minimum: -0.8210
+Iteration No: 11 started. Searching for the next optimal point.
+An error occurred: Failed to convert the response to a number. Retrying... (attempt 1)
+An error occurred: Request timed out: HTTPSConnectionPool(host='api.openai.com', port=443): Read timed out. (read timeout=600). Retrying... (attempt 1)
+An error occurred: Failed to convert the response to a number. Retrying... (attempt 1)
+Saving to results/final_optimization_2/2023-09-17_23-37-38_1.json
+Iteration No: 11 ended. Search finished for the next optimal point.
+Time taken: 4401.2931
+Function value obtained: -0.8075
+Current minimum: -0.8210
+Iteration No: 12 started. Searching for the next optimal point.
+Saving to results/final_optimization_2/2023-09-18_00-50-59_1.json
+Iteration No: 12 ended. Search finished for the next optimal point.
+Time taken: 538.2175
+Function value obtained: -0.7243
+Current minimum: -0.8210
+Iteration No: 13 started. Searching for the next optimal point.
+An error occurred: Failed to convert the response to a number. Retrying... (attempt 1)
+An error occurred: Failed to convert the response to a number. Retrying... (attempt 1)
+An error occurred: Failed to convert the response to a number. Retrying... (attempt 1)
+Saving to results/final_optimization_2/2023-09-18_00-59-57_1.json
+Iteration No: 13 ended. Search finished for the next optimal point.
+Time taken: 4940.2150
+Function value obtained: -0.8142
+Current minimum: -0.8210
+Iteration No: 14 started. Searching for the next optimal point.
+An error occurred: Error communicating with OpenAI: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response')). Retrying... (attempt 1)
+An error occurred: Error communicating with OpenAI: HTTPSConnectionPool(host='api.openai.com', port=443): Max retries exceeded with url: /v1/chat/completions (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x0000028333DD7F50>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed')). Retrying... (attempt 2)
+An error occurred: Failed to convert the response to a number. Retrying... (attempt 1)
+Saving to results/final_optimization_2/2023-09-18_02-22-18_1.json
+Iteration No: 14 ended. Search finished for the next optimal point.
+Time taken: 3571.3758
+Function value obtained: -0.7918
+Current minimum: -0.8210
+Iteration No: 15 started. Searching for the next optimal point.
+An error occurred: Failed to convert the response to a number. Retrying... (attempt 1)
+Saving to results/final_optimization_2/2023-09-18_03-21-49_1.json
+Iteration No: 15 ended. Search finished for the next optimal point.
+Time taken: 3557.1952
+Function value obtained: -0.8240
+Current minimum: -0.8240
+Iteration No: 16 started. Searching for the next optimal point.
+An error occurred: Failed to convert the response to a number. Retrying... (attempt 1)
+An error occurred: Failed to convert the response to a number. Retrying... (attempt 1)
+Saving to results/final_optimization_2/2023-09-18_04-21-06_1.json
+Iteration No: 16 ended. Search finished for the next optimal point.
+Time taken: 616.7127
+Function value obtained: -0.7506
+Current minimum: -0.8240
+Iteration No: 17 started. Searching for the next optimal point.
+An error occurred: Request timed out: HTTPSConnectionPool(host='api.openai.com', port=443): Read timed out. (read timeout=600). Retrying... (attempt 1)
+An error occurred: Bad gateway. {"error":{"code":502,"message":"Bad gateway.","param":null,"type":"cf_bad_gateway"}} 502 {'error': {'code': 502, 'message': 'Bad gateway.', 'param': None, 'type': 'cf_bad_gateway'}} {'Date': 'Mon, 18 Sep 2023 12:22:00 GMT', 'Content-Type': 'application/json', 'Content-Length': '84', 'Connection': 'keep-alive', 'X-Frame-Options': 'SAMEORIGIN', 'Referrer-Policy': 'same-origin', 'Cache-Control': 'private, max-age=0, no-store, no-cache, must-revalidate, post-check=0, pre-check=0', 'Expires': 'Thu, 01 Jan 1970 00:00:01 GMT', 'Server': 'cloudflare', 'CF-RAY': '808984bcba5b9673-SJC', 'alt-svc': 'h3=":443"; ma=86400'}. Retrying... (attempt 1)
+An error occurred: Failed to convert the response to a number. Retrying... (attempt 1)
+Saving to results/final_optimization_2/2023-09-18_04-31-23_1.json
+Iteration No: 17 ended. Search finished for the next optimal point.
+Time taken: 4545.4897
+Function value obtained: -0.7895
+Current minimum: -0.8240
+Iteration No: 18 started. Searching for the next optimal point.
+An error occurred: Failed to convert the response to a number. Retrying... (attempt 1)
+An error occurred: Request timed out: HTTPSConnectionPool(host='api.openai.com', port=443): Read timed out. (read timeout=600). Retrying... (attempt 1)
+An error occurred: Failed to convert the response to a number. Retrying... (attempt 1)
+Saving to results/final_optimization_2/2023-09-18_05-47-08_1.json
+Iteration No: 18 ended. Search finished for the next optimal point.
+Time taken: 4556.3025
+Function value obtained: -0.8232
+Current minimum: -0.8240
+Iteration No: 19 started. Searching for the next optimal point.
+Saving to results/final_optimization_2/2023-09-18_07-03-05_1.json
+Iteration No: 19 ended. Search finished for the next optimal point.
+Time taken: 3875.1565
+Function value obtained: -0.8180
+Current minimum: -0.8240
+Iteration No: 20 started. Searching for the next optimal point.
+Saving to results/final_optimization_2/2023-09-18_08-07-40_1.json
+Iteration No: 20 ended. Search finished for the next optimal point.
+Time taken: 3021.1210
+Function value obtained: -0.7760
+Current minimum: -0.8240
+Iteration No: 21 started. Searching for the next optimal point.
+Iteration No: 21 ended. Search finished for the next optimal point.
+Time taken: 0.3614
+Function value obtained: -0.8240
+Current minimum: -0.8240
+Iteration No: 22 started. Searching for the next optimal point.
+An error occurred: Failed to convert the response to a number. Retrying... (attempt 1)
+Saving to results/final_optimization_2/2023-09-18_08-58-01_1.json
+Iteration No: 22 ended. Search finished for the next optimal point.
+Time taken: 3216.7131
+Function value obtained: -0.8210
+Current minimum: -0.8240
+Iteration No: 23 started. Searching for the next optimal point.
+Iteration No: 23 ended. Search finished for the next optimal point.
+Time taken: 1.1994
+Function value obtained: -0.8232
+Current minimum: -0.8240
+Iteration No: 24 started. Searching for the next optimal point.
+Saving to results/final_optimization_2/2023-09-18_09-51-39_1.json
+Iteration No: 24 ended. Search finished for the next optimal point.
+Time taken: 530.4458
+Function value obtained: -0.7506
+Current minimum: -0.8240
+Iteration No: 25 started. Searching for the next optimal point.
+An error occurred: Failed to convert the response to a number. Retrying... (attempt 1)
+Saving to results/final_optimization_2/2023-09-18_10-00-30_1.json
+Iteration No: 25 ended. Search finished for the next optimal point.
+Time taken: 3317.9491
+Function value obtained: -0.8142
+Current minimum: -0.8240
